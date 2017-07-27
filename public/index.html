@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js ie89 ie8" lang="it"><![endif]-->
+<!--[if IE 9]><html class="no-js ie89 ie9" lang="it"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="it">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- <link rel="preload" href="/build/IWT.min.js" as="script"> -->
+  <!--
+    In alternativa a WebFontLoader è possibile caricare il font direttamente da Google
+      <link href='//fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700,' rel='stylesheet' type='text/css' />
+    o dal repository locale (src/fonts)
+  -->
+  <script type="text/javascript">
+    WebFontConfig = {
+      google: {
+        families: ['Titillium+Web:300,400,600,700,400italic:latin']
+      }
+    };
+    (function() {
+      var wf = document.createElement('script');
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })();
+  </script>
+
+  <!-- include HTML5shim per Explorer 8 -->
+  <script src="%PUBLIC_URL%/build/modernizr.js"></script>
+
+  
+
+  <script src="%PUBLIC_URL%/build/jquery.min.js"></script>
+  <script src="%PUBLIC_URL%/build/IWT.min.js"></script>
+
+  <link media="all" rel="stylesheet" href="%PUBLIC_URL%/build/build.css">
+  <link media="all" rel="stylesheet" href="%PUBLIC_URL%/toolkit/css/build.min.css">
+  <link media="all" rel="stylesheet" href="%PUBLIC_URL%/toolkit/css/font.css">
+  <link media="all" rel="stylesheet" href="%PUBLIC_URL%/toolkit/css/main.css">
+
+    <!-- Autocomplete CSS -->
+    <link media="all" rel="stylesheet" href="%PUBLIC_URL%/toolkit/css/autocomplete.css">
+  <title>Preview Layout</title>
+</head>
+      <!--<body class="t-Pac">-->
+      <body className="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+          <div id="root"> <!-- app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden> -->
+          </div>
+<!--
+<div class="u-background-95">
+<div class="u-layout-wide u-layoutCenter">
+
+<ul class="Skiplinks js-fr-bypasslinks u-hiddenPrint">
+  <li><a href="#main">Vai al Contenuto</a></li>
+  <li><a class="js-fr-offcanvas-open" href="#menu"
+    aria-controls="menu" aria-label="accedi al menu" title="accedi al menu">Vai alla navigazione del sito</a></li>
+</ul>
+
+
+
+
+<div class="u-background-50 u-textCenter u-padding-all-xxl">
+  <h3 class="u-text-r-l u-textWeight-300 u-color-white u-margin-top-l u-lineHeight-l">
+    La community degli sviluppatori che progettano <br>
+    e realizzano i servizi pubblici in Italia</h3>
+</div> 
+
+
+</div>
+</div> -->
+
+
+</body>
+</html>
