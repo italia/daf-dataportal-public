@@ -330,3 +330,32 @@
 .Megamenu--default .Megamenu-area {
     padding-left: 0!important;
 }
+
+.ov-hidden {
+  overflow : hidden;
+}
+
+.mt-40 {
+  margin-top: 40px;
+}
+
+.titleSeparator {
+  border-top: 2px solid #06c;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.titleSeparator .content {
+  float: left;
+  width: 80%;
+}
+
+.titleSeparator .title {
+  background-color: #06c;
+  float: right;
+  color: white;
+  text-transform: uppercase;
+  font-size: larger;
+  padding: 5px 20px;
+}
+
