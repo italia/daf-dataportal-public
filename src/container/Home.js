@@ -8,12 +8,15 @@ import { Footer } from '../components/HeaderFooter/Footer';
 import { Header } from '../components/HeaderFooter/Header';
 import UserStoryService from '../services/UserStoryService.js';
 import UserStoriesContent from '../components/UserStory/UserStoriesContent.js';
+import DatasetService from '../services/DatasetService.js';
+import DatasetContent from '../components/Dataset/DatasetContent.js';
 
 const mapStateToProps = state => ({
   appName: state.appName
 });
 
 let userStoryService = new UserStoryService();
+let datasetService = new DatasetService();
 
 class Home extends React.Component {
 
@@ -23,10 +26,18 @@ class Home extends React.Component {
     this.state = {};
 
     //get stories
-    let response = userStoryService.list();
-    response.then((list) => {
+    let userStories = userStoryService.getLast();
+    userStories.then((list) => {
       this.setState({
         userStories: list
+      });
+    });
+
+    // get datast
+    let dataset = datasetService.getLast();
+    dataset.then((list) => {
+      this.setState({
+        dataset: list
       });
     });
 
@@ -46,6 +57,9 @@ class Home extends React.Component {
               
               <UserStoriesContent userStories={this.state.userStories} >
               </UserStoriesContent>
+
+              <DatasetContent dataset={this.state.dataset} >
+              </DatasetContent>
 
             </div>
           </section>

@@ -1,7 +1,7 @@
 
-export default class UserStoryService {
+export default class DatasetService {
     
-    baseUrl = "http://localhost:3000/mock/" + "user_story";
+    baseUrl = "http://localhost:3000/mock/" + "dataset";
 
     constructor() {
 
