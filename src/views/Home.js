@@ -16,7 +16,7 @@ import DatasetContent from '../components/Dataset/DatasetContent.js';
 let userStoryService = new UserStoryService();
 let datasetService = new DatasetService();
 
-class Dataset extends Component {
+class Home extends Component {
   constructor(props) {
     super(props)
 
@@ -389,7 +389,7 @@ class Dataset extends Component {
 
 
 
-Dataset.propTypes = {
+Home.propTypes = {
   selectDataset: PropTypes.string,
   datasets: PropTypes.array,
   dataset: PropTypes.object,
@@ -404,4 +404,4 @@ function mapStateToProps(state) {
   return {datasets, dataset, isFetching, lastUpdated, ope}
 }
 
-export default connect(mapStateToProps)(Dataset)
+export default connect(mapStateToProps)(Home)

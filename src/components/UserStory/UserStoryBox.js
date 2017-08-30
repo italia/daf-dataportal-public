@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Link } from 'react-router-dom';
 
 
 class UserStoriesBox extends React.Component {
@@ -25,9 +26,13 @@ class UserStoriesBox extends React.Component {
             <div className="u-nbfc u-borderRadius-m u-background-grey-10 u-color-grey-70">
               <section className="u-text-r-l u-padding-r-all u-layout-prose">
                 <h3 className="u-padding-r-bottom">
-                  <a className="u-text-h4 u-textClean u-color-50" href="">
-                    {this.state.story.title}
-                  </a>
+                  
+                  <Link role="button" to={"/user_story/" + this.state.story.id}>
+                    <a className="u-text-h4 u-textClean u-color-50" href="">
+                      {this.state.story.title}
+                    </a>
+                  </Link>
+
                 </h3>
                 <p className="u-lineHeight-l u-text-r-xs u-textSecondary u-padding-r-right  u-padding-r-bottom">
                   {this.trunc(this.state.story.text, 300)}

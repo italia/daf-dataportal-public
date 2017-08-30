@@ -12,4 +12,9 @@ export default class UserStoryService {
         return response.json();
     }
 
-} 
+    async get(id) {
+        const response = await fetch( this.baseUrl + "/" + id );
+        return response.json();
+    }
+
+}

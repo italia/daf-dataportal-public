@@ -3,7 +3,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 import { Route, BrowserRouter, Redirect, Switch } from 'react-router-dom'
 import Login from '../container/Login'
 import Register from '../container/Register'
-import Home from './Home'
+import Main from './Main'
+
 import { firebaseAuth } from '../config/constants'
 import { Provider } from 'react-redux';
 import configureStore from '../configureStore'
@@ -38,11 +39,11 @@ export default class App extends Component {
       <Provider store={store}>
       <BrowserRouter>
         <Switch>
-          <Route authed={this.state.authed} path='/' exact component={Home} />
-          <Route authed={this.state.authed} path="/login" component={Home} />
-          <Route authed={this.state.authed} path='/register' component={Home} />
-          <Route authed={this.state.authed} path='/datasetdetail/:name' component={Home} />
-          <Route render={() => <h3>Pagina non trovata</h3>} />
+          <Route authed={this.state.authed} path="/login" component={Main} />
+          <Route authed={this.state.authed} path='/register' component={Main} />
+          <Route authed={this.state.authed} path='/datasetdetail/:name' component={Main} />
+          <Route authed={this.state.authed} path='/' exact component={Main} />
+          <Route component={Main} />
         </Switch>
       </BrowserRouter>
       </Provider>
