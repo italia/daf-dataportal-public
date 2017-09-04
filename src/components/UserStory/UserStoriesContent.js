@@ -8,7 +8,17 @@ class UserStoriesContent extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {};
+    this.state = {
+      title : "storie",
+      subtitle : "Le storie sono articoli scritti da noi e dalla nostra community di esperti: partendo dai dati, interpretiamo il mondo e aiutiamo la socità a prendere decisioni basate sui fatti"
+    };
+
+    if (this.props.title)
+      this.state.title = this.props.title;
+
+    if (this.props.subtitle)
+      this.state.subtitle = this.props.subtitle;
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -33,7 +43,7 @@ class UserStoriesContent extends React.Component {
 
     return (
         <div className = "Grid Grid--withGutter text-left mt-40">
-          <TitleSeparator text="Le storie sono articoli scritti da noi e dalla nostra community di esperti: partendo dai dati, interpretiamo il mondo e aiutiamo la socità a prendere decisioni basate sui fatti" title="storie" />
+          <TitleSeparator text={this.state.subtitle} title={this.state.title} />
           {stories}
         </div>
       );

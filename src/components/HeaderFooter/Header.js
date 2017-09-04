@@ -1,6 +1,7 @@
 import React from 'react'
 import { logout } from '../../helpers/auth'
 import SlimHeader from '../MegaHeader/SlimHeader'
+import { Link } from 'react-router-dom';
 
 export const Header = () => (
   <div className="u-background-95">
@@ -15,7 +16,11 @@ export const Header = () => (
 
               <div className="Header-banner u-background-50">
                 <div className="Header-owner Headroom-hideme u-border-bottom-xxs">
-                  <a href=""><span>AgID <span className="u-hidden u-md-inline u-lg-inline u-sm-inline">- Agenzia per l'Italia Digitale</span></span></a>
+                  
+                  <Link role="button" to={"/"}>
+                    <span>AgID <span className="u-hidden u-md-inline u-lg-inline u-sm-inline">- Agenzia per l'Italia Digitale</span></span>
+                  </Link>
+
                   <div className="Header-languages u-background-50">
                       <a href="#languages" data-menu-trigger="languages" className="Header-language u-border-none u-zindex-max u-inlineBlock">
                         <span className="u-hiddenVisually">lingua attiva:</span>
@@ -45,17 +50,17 @@ export const Header = () => (
               <div className="Header-navbar u-background-50">
                 <div className="u-layout-wide Grid Grid--alignMiddle u-layoutCenter">
                   <div className="Header-logo Grid-cell" aria-hidden="true">
-                    <a href="" tabIndex="-1">
+                    <Link role="button" to={"/"}>
                       <img src="http://designer.italia.it/images/loghi/logo-it.svg" alt=""/>
-                    </a>
+                    </Link>
                   </div>
 
                   <div className="Header-title Grid-cell">
                     <h1 className="Header-titleLink">
-                      <a href="/">
+                      <Link role="button" to={"/"}>
                         Dati Pubblici <span className="u-lg-hidden u-md-hidden u-sm-hidden u-cf u-padding-top-xxs u-block"></span><br/>
                         <small>Analisi dei dati per lo sviluppo del Paese</small>
-                      </a>
+                      </Link>
                     </h1>
                   </div>
 
