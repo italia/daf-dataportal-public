@@ -40,8 +40,10 @@ class UserStoriesBox extends React.Component {
                 <p><strong>Pubblicato da:</strong> {this.state.story.user}</p>
                 <p><strong>Data di ultima modifica:</strong> {this.state.story.dateLastEdit}</p>
                 <p className="u-textCenter u-text-md-right u-text-lg-right u-margin-r-top u-padding-r-top">
-                  <a href="#" className="u-color-50 u-textClean u-text-h6">
-                  Per saperne di più <span className="Icon Icon-chevron-right"></span></a>
+                  <Link role="button" to={"/user_story/" + this.state.story.id}>
+                    <a href="#" className="u-color-50 u-textClean u-text-h6">
+                    Per saperne di più <span className="Icon Icon-chevron-right"></span></a>
+                  </Link>
                 </p>
               </section>
             </div>
