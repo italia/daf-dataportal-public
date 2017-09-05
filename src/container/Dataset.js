@@ -134,14 +134,14 @@ class Dataset extends Component {
 			  </div>
 
 			  <div className="u-textCenter u-padding-r-all u-textCenter">
-				<form className="Form u-padding-r-top u-md-size7of12 u-lg-size5of12 u-layoutCenter" action="https://a0x0b4.mailupclient.com/frontend/subscribe.aspx" method="get" target="_blank">
+				<form className="Form u-padding-r-top u-md-size7of12 u-lg-size5of12 u-layoutCenter" method="get" target="_blank">
 				  <div className="Form-field Form-field--withPlaceholder Grid u-background-white u-color-grey-30 u-borderRadius-s u-borderShadow-xxl">
 					<button className="Grid-cell u-sizeFit Icon-search u-color-grey-40 u-text-r-m u-padding-all-s u-textWeight-400">
 					  </button>
-					<input className="Form-input Form-input--ultraLean Grid-cell u-sizeFill u-text-r-s u-color-black u-text-r-xs u-borderHideFocus " required="" id="esplora" name="cerca" />
+					<input className="Form-input Form-input--ultraLean Grid-cell u-sizeFill u-text-r-s u-color-black u-text-r-xs u-borderHideFocus " required="" id="esplora" name="cerca"  onClick={this.handleLoadDatasetClick}/>
 					<label className="Form-label u-color-grey-50 u-padding-left-xxl" htmlFor="esplora"><span className="u-hidden u-md-inline u-lg-inline">
 						cerca</span></label>
-					<button type="submit" className="Grid-cell u-sizeFit u-background-60 u-color-white u-textWeight-600 u-padding-r-left u-padding-r-right u-textUppercase u-borderRadius-s">Esplora</button>
+					<button type="button" className="Grid-cell u-sizeFit u-background-60 u-color-white u-textWeight-600 u-padding-r-left u-padding-r-right u-textUppercase u-borderRadius-s">Esplora</button>
 				  </div>
 				</form>
 				<div className="u-layoutCenter u-textCenter u-color-white">

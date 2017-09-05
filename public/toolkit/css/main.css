@@ -438,3 +438,9 @@
   top: 15px;
   position: relative;
 }
+
+/* HEADER */
+
+.Header-owner, .Megamenu--default>.Megamenu-list, .u-layout-wide {
+  max-width: none!important;
+}
