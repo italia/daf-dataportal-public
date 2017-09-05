@@ -18,7 +18,7 @@ export default class DatasetService {
         if(query)
             queryurl = '&q='+ query;
 
-        const response = await fetch( this.baseUrl + "/searchDataset?rows=20" + queryurl );
+        const response = await fetch( this.baseUrlMock + "/searchDataset?rows=20" + queryurl );
         return response.json();
     }
 

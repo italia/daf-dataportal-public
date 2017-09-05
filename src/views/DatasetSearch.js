@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AutocompleteDataset from '../components/Autocomplete/AutocompleteDataset.js'
+import DatasetSearchCard from '../components/Dataset/DatasetSearchCard.js'
 
 // SERVICES
 import DatasetService from '../services/DatasetService';
@@ -41,40 +41,14 @@ export default class DatasetSearch extends React.Component {
     });
   }
   
-      
-  renderDatasetList(datasets){
-    console.log('datasets: ' + datasets);
-    return datasets.map(dataset => {
-        return(
-            <div className="u-background-grey-10 u-color-grey-50 u-padding-right-xxl u-margin-bottom-l">
-            <p className="u-padding-r-bottom">
-                <span className="Dot u-background-40"></span>
-                <a className="u-textClean u-textWeight-700 u-text-r-xs u-color-50 u-margin-right-s" href="#">xlsx</a>
-                <span className="Dot u-background-40"></span>
-                <a className="u-textClean u-textWeight-700 u-text-r-xs u-color-50 u-margin-right-s" href="#">shp</a>
-                <span className="Dot u-background-40"></span>
-                <a className="u-textClean u-textWeight-700 u-text-r-xs u-color-50 u-margin-right-s" href="#">wms</a>
-            </p>
-            <h3 className="u-padding-r-top u-padding-r-bottom">
-                <a className="u-text-h4 u-textClean u-color-black" href=""  onClick={this.handleLoadDatasetDetailClick.bind(this, dataset.name)}>
-                {dataset.resources[0].name}
-                            </a>
-            </h3>
-            <p className="u-lineHeight-l u-text-r-xs u-textSecondary u-padding-r-right  u-padding-r-bottom">
-                {dataset.resources[0].description}
-                        </p>
-            <p><strong>Pubblicato da: </strong>{dataset.organization.title}</p>
-            <p><strong>Data di ultima modifica: </strong>{dataset.organization.created}</p>
-            </div>
-        );
-    });
-  }
 
   render() {
     return (
         <div className="u-layout-wide u-layoutCenter u-layout-withGutter u-padding-r-top u-padding-bottom-xxl">
           <div className="Grid Grid--withGutter">
             <div className="Grid-cell u-md-size8of12 u-lg-size8of12 u-padding-right-xl">
+              
+              {/* INTESTAZIONE */}
               <h2 className=" u-padding-bottom-l">Trovati {this.state.datasets.length} Dataset</h2>
               <form className="Form u-text-r-xs u-margin-bottom-l">
                 <fieldset className="Form-fieldset">
@@ -88,7 +62,17 @@ export default class DatasetSearch extends React.Component {
                   </div>
                 </fieldset>
               </form>
-              {this.renderDatasetList(this.state.datasets)}
+
+              {/* LISTA RISULTATI */}
+              {
+                this.state.datasets.map((dataset) => {
+                  return(
+                    <DatasetSearchCard dataset={dataset}/>
+                  );
+                })
+              }
+
+              {/* PAGINAZIONE */}
               <nav role="navigation" aria-label="Navigazione paginata" className="u-layout-prose Grid-cell--center u-text-r-xss u-padding-top-xxl u-padding-bottom-l">
                 <ul className="Grid Grid--fit Grid--alignMiddle u-text-r-xxs">
                   <li className="Grid-cell u-textCenter">
@@ -132,6 +116,9 @@ export default class DatasetSearch extends React.Component {
                 </ul>
               </nav>
             </div>
+
+            
+            {/* FILTRI RICERCA */}
             <div className="Grid-cell u-sizeFull u-md-size4of12 u-lg-size4of12">
               <form className="Form u-text-r-xs u-padding-bottom-l">
                 <fieldset className="Form-fieldset">
@@ -157,6 +144,8 @@ export default class DatasetSearch extends React.Component {
               </div>
               <a href="#" title="torna all'inizio del contenuto" className="u-hiddenVisually">torna all'inizio del contenuto</a>
             </div>
+
+
           </div>
         </div>
       );
