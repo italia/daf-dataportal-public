@@ -13,10 +13,11 @@ import DatasetService from '../../services/DatasetService';
 
 const datasetService = new DatasetService();
 
-class SearchBar extends React.Component {
+export default class SearchBar extends React.Component {
 
     constructor(props) {
         super(props);
+        this.props = props;
         //init state
         this.state = {
             text: ""
@@ -30,7 +31,8 @@ class SearchBar extends React.Component {
 
     searchDataset(){
         let path = '/dataset/search?text=' + this.state.text;
-        window.location = path;
+        //window.location = path;
+        this.props.history.pushState(path)
         
     }
 
@@ -97,5 +99,3 @@ class SearchBar extends React.Component {
         );
     }
 }
-
-export default SearchBar;

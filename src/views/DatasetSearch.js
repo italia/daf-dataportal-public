@@ -10,7 +10,6 @@ export default class DatasetSearch extends React.Component {
 
   constructor(props) {
     super(props);
-
     //init state
     this.state={
       datasets: [],

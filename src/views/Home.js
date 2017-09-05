@@ -45,7 +45,7 @@ class Home extends Component {
     return (
       <div>
           <div className="u-textCenter">
-            <SearchBar />
+            <SearchBar history={this.props.history}/>
 
             <section className="u-nbfc u-background-white  u-textCenter u-layout-r-withGutter u-padding-r-top u-padding-r-bottom u-posRelative u-zindex-30">
               <div className="u-layout-wide u-layoutCenter">
