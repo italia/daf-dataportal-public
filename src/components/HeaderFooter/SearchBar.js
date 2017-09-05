@@ -1,4 +1,12 @@
 import React from 'react';
+import { Route, Link } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+//import { browserHistory } from 'react-router';
+import {
+    createBrowserHistory,
+    createHashHistory,
+    createMemoryHistory
+  } from 'history'
 
 // SERVICES
 import DatasetService from '../../services/DatasetService';
@@ -9,19 +17,31 @@ class SearchBar extends React.Component {
 
     constructor(props) {
         super(props);
-
         //init state
         this.state = {
             text: ""
         };
 
+        // bind function    
+        this.searchDataset = this.searchDataset.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+
+    }
+
+    searchDataset(){
+        let path = '/dataset/search?text=' + this.state.text;
+        window.location = path;
+        
+    }
+
+    handleChange(event) {
+        this.setState({text: event.target.value});
     }
 
     render() {
         return (
             <div>
                 <div>
-
                     <div className="u-background-50 u-textCenter u-padding-top-xxl">
                         <h2 className="u-layoutCenter u-text-r-l u-textWeight-300 u-color-white u-lineHeight-l" >
                             Scopri la bellezza e la ricchezza dei dati
@@ -47,13 +67,15 @@ class SearchBar extends React.Component {
                             <div className="Form-field Form-field--withPlaceholder Grid u-background-white u-color-grey-30 u-borderRadius-s u-borderShadow-xxl">
                                 <button className="Grid-cell u-sizeFit Icon-search u-color-grey-40 u-text-r-m u-padding-all-s u-textWeight-400">
                                 </button>
-                                <input className="Form-input Form-input--ultraLean Grid-cell u-sizeFill u-text-r-s u-color-black u-text-r-xs u-borderHideFocus " required="" id="esplora" name="cerca" />
+                                <input value={this.state.text} onChange={this.handleChange} className="Form-input Form-input--ultraLean Grid-cell u-sizeFill u-text-r-s u-color-black u-text-r-xs u-borderHideFocus " required="" id="esplora" name="cerca" />
                                 <label className="Form-label u-color-grey-50 u-padding-left-xxl" htmlFor="esplora">
                                     <span className="u-hidden u-md-inline u-lg-inline">
                                         cerca
                                     </span>
                                 </label>
-                                <button type="button" onClick={this.handleLoadDatasetClick} className="Grid-cell u-sizeFit u-background-60 u-color-white u-textWeight-600 u-padding-r-left u-padding-r-right u-textUppercase u-borderRadius-s">Esplora 3</button>
+                                <button type="button" onClick={this.searchDataset} className="Grid-cell u-sizeFit u-background-60 u-color-white u-textWeight-600 u-padding-r-left u-padding-r-right u-textUppercase u-borderRadius-s">
+                                    Esplora
+                                </button>
                             </div>
                         </form>
                         <div className="u-layoutCenter u-textCenter u-color-white">

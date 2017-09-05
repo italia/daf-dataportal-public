@@ -9,7 +9,8 @@ import { Footer } from '../components/HeaderFooter/Footer';
 import { Header } from '../components/HeaderFooter/Header';
 
 import Home from '../views/Home';
-import UserStoryView from '../views/UserStoryView'
+import UserStoryView from '../views/UserStoryView';
+import DatasetSearch from '../views/DatasetSearch';
 
 
 const mapStateToProps = state => ({
@@ -32,6 +33,7 @@ class Main extends React.Component {
             <Route path="/login" component={Login} />
             <Route path='/register' component={Register} />
             <Route path='/user_story/:id' exact component={UserStoryView} />
+            <Route path='/dataset/search' exact component={DatasetSearch} />
 
             <Route render={() => <h3>Pagina non trovata</h3>} />
           </Switch>
