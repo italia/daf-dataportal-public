@@ -10,15 +10,19 @@ export default class DatasetSearch extends React.Component {
 
   constructor(props) {
     super(props);
+
     //init state
     this.state={
       datasets: [],
-      text: ""
+      text: props.history.location.state.query
     };
 
     //bind functions
     this.search = this.search.bind(this);
     this.handleChange = this.handleChange.bind(this);
+
+    if (this.state.text)
+      this.search();
   }
 
   handleChange(event) {
@@ -27,8 +31,10 @@ export default class DatasetSearch extends React.Component {
 
   
   search(event) {
-    event.preventDefault();
-    event.stopPropagation();
+    if(event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
     
     //get stories
 

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
 
 class DatasetBox extends React.Component {
 
@@ -35,9 +36,11 @@ class DatasetBox extends React.Component {
                 </p>
 
                 <h3 className="u-padding-r-top u-padding-r-bottom">
-                  <a className="u-text-h4 u-textClean u-color-black" href="">
-                    {this.state.dataset.title}
-                  </a>
+                  <Link to={"/dataset/" + this.state.dataset.id}>
+                    <a className="u-text-h4 u-textClean u-color-black" href="">
+                      {this.state.dataset.title}
+                    </a>
+                  </Link>
                 </h3>
 
                 <p className="u-lineHeight-l u-text-r-xs u-textSecondary u-padding-r-right  u-padding-r-bottom">

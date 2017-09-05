@@ -30,9 +30,11 @@ export default class SearchBar extends React.Component {
     }
 
     searchDataset(){
-        let path = '/dataset/search?text=' + this.state.text;
-        //window.location = path;
-        this.props.history.pushState(path)
+        let path = '/dataset/search';
+        
+        this.props.history.push(path, {
+            query: this.state.text
+        });
         
     }
 
