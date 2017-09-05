@@ -11,6 +11,7 @@ import { Header } from '../components/HeaderFooter/Header';
 import Home from '../views/Home';
 import UserStoryView from '../views/UserStoryView';
 import DatasetSearch from '../views/DatasetSearch';
+import DatasetDetail from '../views/DatasetDetail';
 
 
 const mapStateToProps = state => ({
@@ -34,6 +35,7 @@ class Main extends React.Component {
             <Route path='/register' component={Register} />
             <Route path='/user_story/:id' exact component={UserStoryView} />
             <Route path='/dataset/search' exact component={DatasetSearch} />
+            <Route path='/dataset/:id' exact component={DatasetDetail} />
 
             <Route render={() => <h3>Pagina non trovata</h3>} />
           </Switch>

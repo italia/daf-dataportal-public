@@ -2,6 +2,7 @@ import React from 'react';
 
 import TitleSeparator from '../TitleSeparator/titleSeparator.js';
 import DatasetBox from './DatasetBox.js';
+import { Link } from 'react-router-dom';
 
 export default class DatasetSearchCard extends React.Component {
 
@@ -22,9 +23,11 @@ export default class DatasetSearchCard extends React.Component {
                     <a className="u-textClean u-textWeight-700 u-text-r-xs u-color-50 u-margin-right-s" href="#">wms</a>
                 </p>
                 <h3 className="u-padding-r-top u-padding-r-bottom">
-                    <a className="u-text-h4 u-textClean u-color-black" href="">
-                        {this.props.dataset.resources[0].name}
-                    </a>
+                    <Link to={"/dataset/" + this.props.dataset.id}>
+                        <a className="u-text-h4 u-textClean u-color-black" href="">
+                            {this.props.dataset.resources[0].name}
+                        </a>
+                    </Link>
                 </h3>
                 <p className="u-lineHeight-l u-text-r-xs u-textSecondary u-padding-r-right  u-padding-r-bottom">
                     {this.props.dataset.resources[0].description}
