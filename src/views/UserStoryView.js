@@ -12,14 +12,20 @@ import UserStoryService from '../services/UserStoryService';
 
 const userStoryService = new UserStoryService();
 
+var disqus_config;
+
 class UserStoryView extends React.Component {
 
   constructor(props) {
     super(props);
+    this.init(props);
+  }
+
+  init(props) {
 
     //init state
     this.state={
-      id: this.props.match.params.id
+      id: props.match.params.id
     };
 
     //bind functions
@@ -45,16 +51,27 @@ class UserStoryView extends React.Component {
     
     //INIT DISQUS
     
-    var disqus_config = function () {
-      this.page.url = window.location.href;
-      this.page.identifier = "user_story_" + this.state.id; 
+    var d = document;
+    var sConfig = d.createElement('script');
+    sConfig.onload = function() {
+      disqus_config = function () {
+        this.page.url =  window.location.href ;
+        this.page.identifier = 'user_story_' + props.match.params.id 
+      }
     };
-    
-    var d = document, s = d.createElement('script');
+
+    (d.head || d.body).appendChild(sConfig);
+
+
+    var s = d.createElement('script');
     s.src = 'https://dati-gov-it.disqus.com/embed.js';
     s.setAttribute('data-timestamp', + new Date());
     (d.head || d.body).appendChild(s);
 
+  }
+
+  componentWillReceiveProps(newProps) {
+    this.init(newProps);
   }
 
   render() {
@@ -73,7 +90,7 @@ class UserStoryView extends React.Component {
                   <div className="footer" dangerouslySetInnerHTML={{__html: this.state.story.footer}}></div>
                 </div>
 
-
+                
                 <div id="disqus_thread"></div>
                 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 

@@ -17,13 +17,16 @@ class UserStoryView extends React.Component {
 
     return (
         <div>
-            <iframe
-              className={this.props.class}
-              ref="iframe"
-              frameBorder={'0'}
-              style={iframeStyle}
-              src={this.props.graph.props.url}
-            />
+            {
+              this.props.graph &&
+              <iframe
+                className={this.props.class}
+                ref="iframe"
+                frameBorder={'0'}
+                style={iframeStyle}
+                src={this.props.graph.props.url}
+              />
+            }
         </div>
       );
   }

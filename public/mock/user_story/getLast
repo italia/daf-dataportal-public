@@ -1,6 +1,6 @@
 [
     {
-        "id":1,
+        "id": "18eb4b82-cbc3-4c5e-8536-166b7975ff2a",
         "title": "Storia 1",
         "published": true,
         "subtitle": "Storia di prova",
@@ -20,7 +20,7 @@
         "dateLastEdit": "2017-06-22 09:19"
     },
     {
-        "id":2,
+        "id": "18eb4b82-cbc3-4c5e-8536-166b7975ff2a",
         "title": "Storia 2",
         "published": false,
         "subtitle": "Storia di prova",
@@ -40,7 +40,7 @@
         "dateLastEdit": "2017-06-22 09:19"
     },
     {
-        "id":3,
+        "id": "18eb4b82-cbc3-4c5e-8536-166b7975ff2a",
         "title": "Storia 3",
         "subtitle": "Storia di prova",
         "graph": {

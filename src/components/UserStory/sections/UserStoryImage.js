@@ -13,10 +13,15 @@ class UserStoryImage extends React.Component {
 
     return (
         <div className="text-center">
-          <img className="image-container" src={this.props.image.url} />
-          <div className="image-caption" >
-            <div dangerouslySetInnerHTML={{__html: this.props.image.caption}}></div>
-          </div>
+          {
+            this.props.image &&
+            <div>
+              <img className="image-container" src={this.props.image.url} />
+              <div className="image-caption" >
+                <div dangerouslySetInnerHTML={{__html: this.props.image.caption}}></div>
+              </div>
+            </div>
+          }
         </div>
       );
   }

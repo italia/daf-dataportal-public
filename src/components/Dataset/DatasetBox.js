@@ -36,10 +36,8 @@ class DatasetBox extends React.Component {
                 </p>
 
                 <h3 className="u-padding-r-top u-padding-r-bottom">
-                  <Link to={"/dataset/" + this.state.dataset.id}>
-                    <a className="u-text-h4 u-textClean u-color-black" href="">
-                      {this.state.dataset.title}
-                    </a>
+                  <Link className="u-text-h4 u-textClean u-color-black" to={"/dataset/" + this.state.dataset.id}>
+                    {this.state.dataset.title}
                   </Link>
                 </h3>
 
