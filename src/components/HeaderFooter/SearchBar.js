@@ -10,8 +10,10 @@ import {
 
 // SERVICES
 import DatasetService from '../../services/DatasetService';
+import CategoryService from '../../services/CategoryService';
 
 const datasetService = new DatasetService();
+const categoryService = new CategoryService();
 
 export default class SearchBar extends React.Component {
 
@@ -20,26 +22,46 @@ export default class SearchBar extends React.Component {
         this.props = props;
         //init state
         this.state = {
-            text: ""
+            text: "",
+            category_filter: {}
         };
 
         // bind function    
         this.searchDataset = this.searchDataset.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.toggleCategory = this.toggleCategory.bind(this)
+        this.enableCategory = this.enableCategory.bind(this)
 
+        //init
+        categoryService.list().then((list) => {
+            this.setState({categories: list});
+        });
     }
 
     searchDataset(){
         let path = '/dataset/search';
         
         this.props.history.push(path, {
-            query: this.state.text
+            query: this.state.text,
+            category: this.state.category_filter
         });
         
     }
 
     handleChange(event) {
         this.setState({text: event.target.value});
+    }
+
+    toggleCategory(event) {
+        event.preventDefault();
+        this.setState({showCategory: !this.state.showCategory});
+    }
+
+    enableCategory(id_category) {
+        this.state.category_filter[id_category] = !this.state.category_filter[id_category];
+        this.setState({
+            category_filter: this.state.category_filter
+        })
     }
 
     render() {
@@ -85,16 +107,40 @@ export default class SearchBar extends React.Component {
                         <div className="u-layoutCenter u-textCenter u-color-white">
                             <ul className="u-textCenter u-layoutCenter u-padding-r-all u-margin-top">
                                 <li className="u-inlineBlock u-padding-right-xs u-padding-left-xs">
-                                    <a href="#" title="" className="u-padding-all-xxs u-color-50 u-inlineBlock u-borderRadius-circle u-alignMiddle u-textWeight-600">Categoria 1</a>
-                                </li>
-                                <li className="u-inlineBlock u-padding-right-xs u-padding-left-xs">
-                                    <a href="#" title="" className="u-padding-all-xxs u-color-50 u-inlineBlock u-borderRadius-circle u-alignMiddle u-textWeight-600">Categoria 2</a>
-                                </li>
-                                <li className="u-inlineBlock u-padding-right-xs u-padding-left-xs">
-                                    <a href="#" title="" className="u-padding-all-xxs u-color-50 u-inlineBlock u-borderRadius-circle u-alignMiddle u-textWeight-600">Categoria 3</a>
+                                    <a onClick={this.toggleCategory} href="#" title="" className="u-padding-all-xxs u-color-50 u-inlineBlock u-borderRadius-circle u-alignMiddle u-textWeight-600">
+                                        {
+                                            !this.state.showCategory &&
+                                            <span className="Icon Icon-drop-up mr-20" ></span>
+                                        }
+                                        {
+                                            this.state.showCategory &&
+                                            <span className="Icon Icon-drop-down mr-20" ></span>
+                                        }
+                                        Filtra per Categoria
+                                    </a>
                                 </li>
                             </ul>
                         </div>
+                        
+                        {
+                            this.state.showCategory &&
+                            <div>
+                                <div className="category-box row">
+                                    {
+                                        this.state.categories.map((category, index) => { return (
+                                            <div key={index} className="col-sm-6">
+                                                <div className={"category-item " + (this.state.category_filter[category.id]==true ? "active": "") } onClick={() => this.enableCategory(category.id)}>
+                                                    <img src={"img/category/" + category.id + (this.state.category_filter[category.id]==true ? "_blu": "") + ".png"} />
+                                                    {category.name}
+                                                </div>
+                                            </div>
+                                            )
+                                        })
+                                    }
+                                </div>
+                                <div className="clearfix"></div>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
