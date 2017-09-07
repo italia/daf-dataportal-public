@@ -57,6 +57,37 @@ a:hover Icon-* {
     margin-right: 20px;
 }
 
+/* CATEGORY FILTER */
+
+.category-list .category-item {
+    border: 1px solid #f5f5f0!important;
+    margin: 5px;
+    text-align: left;
+    padding: 5px 15px;
+    font-size: large;
+    cursor: pointer;
+    color:#333!important;
+}
+
+.category-list .category-item.active {
+    border: 1px solid #06c!important;
+    color:#06c!important;
+}
+
+.category-list .category-item:hover {
+    background-color: #f5f5f0;
+    color:black!important;
+}
+
+.category-list .category-item.active:hover {
+    color:#06c!important;
+}
+
+.category-list .category-item img {
+    height: 50px;
+    margin-right: 20px;
+}
+
 /* LAYOUT TITLE */
 .titleSeparator {
     border-top: 2px solid #06c;

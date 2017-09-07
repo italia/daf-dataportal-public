@@ -12,7 +12,7 @@ export default class DatasetService {
 
     }
 
-    async search(query){
+    async search(query, category_filter){
         
         let queryurl = '';
         if(query)

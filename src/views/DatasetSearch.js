@@ -1,6 +1,7 @@
 import React from 'react';
 
 import DatasetSearchCard from '../components/Dataset/DatasetSearchCard.js'
+import CategoryFilter from '../components/Dataset/CategoryFilter.js'
 
 // SERVICES
 import DatasetService from '../services/DatasetService';
@@ -14,12 +15,14 @@ export default class DatasetSearch extends React.Component {
     //init state
     this.state={
       datasets: [],
-      text: props.history.location.state.query
+      text: props.history.location.state.query,
+      category_filter: props.history.location.state.category
     };
-
+    
     //bind functions
     this.search = this.search.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.onSearch = this.onSearch.bind(this);
 
     if (this.state.text)
       this.search();
@@ -38,7 +41,7 @@ export default class DatasetSearch extends React.Component {
     
     //get stories
 
-    let datasets = datasetService.search(this.state.text);
+    let datasets = datasetService.search(this.state.text, this.state.category_filter);
     datasets.then((list) => {
       this.setState({
         datasets: list
@@ -46,6 +49,12 @@ export default class DatasetSearch extends React.Component {
     });
   }
   
+  onSearch(category_filter) {
+    this.setState({
+      category_filter: category_filter
+    });
+    this.search();
+  }
 
   render() {
     return (
@@ -70,9 +79,9 @@ export default class DatasetSearch extends React.Component {
 
               {/* LISTA RISULTATI */}
               {
-                this.state.datasets.map((dataset) => {
+                this.state.datasets.map((dataset, index) => {
                   return(
-                    <DatasetSearchCard dataset={dataset}/>
+                    <DatasetSearchCard key={index} dataset={dataset}/>
                   );
                 })
               }
@@ -141,11 +150,7 @@ export default class DatasetSearch extends React.Component {
               </form>
               <h2 className=" u-padding-bottom-l">Filtra categorie</h2>
               <div className="u-sizeFull" id="subnav">
-                <ul className="Linklist Linklist--padded u-layout-prose u-text-r-xs">
-                  <li><a href="">Perferendis eaque quas ipsa.</a></li>
-                  <li><a href="">Quod facere ab.</a></li>
-                  <li><a href="">Suscipit perferendis animi voluptas quibusdam qui.</a></li>
-                </ul>
+                <CategoryFilter category_filter={this.state.category_filter} onSearch={this.onSearch}/>
               </div>
               <a href="#" title="torna all'inizio del contenuto" className="u-hiddenVisually">torna all'inizio del contenuto</a>
             </div>

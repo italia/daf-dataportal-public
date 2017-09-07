@@ -130,7 +130,7 @@ export default class SearchBar extends React.Component {
                                         this.state.categories.map((category, index) => { return (
                                             <div key={index} className="col-sm-6">
                                                 <div className={"category-item " + (this.state.category_filter[category.id]==true ? "active": "") } onClick={() => this.enableCategory(category.id)}>
-                                                    <img src={"img/category/" + category.id + (this.state.category_filter[category.id]==true ? "_blu": "") + ".png"} />
+                                                    <img src={"/img/category/" + category.id + (this.state.category_filter[category.id]==true ? "_blu": "") + ".png"} />
                                                     {category.name}
                                                 </div>
                                             </div>

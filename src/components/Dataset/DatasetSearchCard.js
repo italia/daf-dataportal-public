@@ -23,10 +23,8 @@ export default class DatasetSearchCard extends React.Component {
                     <a className="u-textClean u-textWeight-700 u-text-r-xs u-color-50 u-margin-right-s" href="#">wms</a>
                 </p>
                 <h3 className="u-padding-r-top u-padding-r-bottom">
-                    <Link to={"/dataset/" + this.props.dataset.id}>
-                        <a className="u-text-h4 u-textClean u-color-black" href="">
-                            {this.props.dataset.resources[0].name}
-                        </a>
+                    <Link className="u-text-h4 u-textClean u-color-black" to={"/dataset/" + this.props.dataset.id}>
+                        {this.props.dataset.resources[0].name}
                     </Link>
                 </h3>
                 <p className="u-lineHeight-l u-text-r-xs u-textSecondary u-padding-r-right  u-padding-r-bottom">
