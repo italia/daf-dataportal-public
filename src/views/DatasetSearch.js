@@ -15,8 +15,8 @@ export default class DatasetSearch extends React.Component {
     //init state
     this.state={
       datasets: [],
-      text: props.history.location.state.query,
-      category_filter: props.history.location.state.category
+      text: props.history.location.state && props.history.location.state.query,
+      category_filter: props.history.location.state && props.history.location.state.category
     };
     
     //bind functions
@@ -79,7 +79,7 @@ export default class DatasetSearch extends React.Component {
 
               {/* LISTA RISULTATI */}
               {
-                this.state.datasets.map((dataset, index) => {
+                this.state.dataset && this.state.dataset.map &&  this.state.datasets.map((dataset, index) => {
                   return(
                     <DatasetSearchCard key={index} dataset={dataset}/>
                   );

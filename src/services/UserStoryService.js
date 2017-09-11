@@ -2,7 +2,6 @@ import { serviceurl } from '../config/serviceurl.js'
 
 export default class UserStoryService {
     
-    baseUrlMock = serviceurl.apiURLMock + "/user_story";
     baseUrl = serviceurl.apiURLDatiGov + "/user-stories";
 
     constructor() {
@@ -10,8 +9,8 @@ export default class UserStoryService {
     }
 
     async getLast() {
-        //const response = await fetch( this.baseUrl + "/getLast" );
-        const response = await fetch( this.baseUrl);
+        const response = await fetch( this.baseUrl + "/getLast" );
+        //const response = await fetch( this.baseUrl);
         return response.json();
     }
     

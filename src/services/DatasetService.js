@@ -3,10 +3,8 @@ import { serviceurl } from '../config/serviceurl.js'
 
 export default class DatasetService {
     
-    //MOCK
-    baseUrl = serviceurl.apiURLMock + "/dataset";
-    
-    //baseUrl = serviceurl.apiURLDatiGov + "/ckan";
+    baseUrlCkan = serviceurl.apiURLCatalogManager + "/ckan";
+    baseUrl = serviceurl.apiURLCatalogManager + "/dataset";
 
     constructor() {
 
@@ -18,7 +16,12 @@ export default class DatasetService {
         if(query)
             queryurl = '&q='+ query;
 
-        const response = await fetch( this.baseUrl + "/searchDataset?rows=20" + queryurl );
+        const response = await fetch( this.baseUrlCkan + "/searchDataset?rows=20" + queryurl, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            } 
+        });
         return response.json();
     }
 
