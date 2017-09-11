@@ -56,7 +56,7 @@
             ]
         
     },
-    "/catalog-manager/v1/dataset/1": {
+    "/catalog-manager/v1/ckan/datasets/1": {
         "get": {
                 "id":1,
                 "organization": {
@@ -149,7 +149,7 @@
             }
         
     },
-    "/catalog-manager/v1/dataset/getLast": {
+    "/catalog-manager/v1/ckan/datasets/getLast": {
         "get":  [
                 {
                     "id":1,

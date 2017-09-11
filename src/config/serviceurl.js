@@ -8,7 +8,6 @@ export const serviceurl = {
   apiURLCatalogManager: "http://localhost:3001/catalog-manager/v1", 
   
   // DatasetBackend module configs 
-  apiURLMock: "http://localhost:3000/mock/",
   "DatasetBackend": {
     "Search": {
       "host": "localhost",

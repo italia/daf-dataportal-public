@@ -3,9 +3,7 @@ import { serviceurl } from '../config/serviceurl.js'
 
 export default class DatasetService {
     
-    baseUrlCkan = serviceurl.apiURLCatalogManager + "/ckan";
-    baseUrl = serviceurl.apiURLCatalogManager + "/dataset";
-
+    baseUrl = serviceurl.apiURLCatalogManager + "/ckan";
     constructor() {
 
     }
@@ -16,7 +14,7 @@ export default class DatasetService {
         if(query)
             queryurl = '&q='+ query;
 
-        const response = await fetch( this.baseUrlCkan + "/searchDataset?rows=20" + queryurl, {
+        const response = await fetch( this.baseUrl + "/searchDataset?rows=20" + queryurl, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -26,12 +24,12 @@ export default class DatasetService {
     }
 
     async get(id) {
-        const response = await fetch( this.baseUrl + "/" + id );
+        const response = await fetch( this.baseUrl + "/datasets/" + id );
         return response.json();
     }
 
     async getLast() {
-        const response = await fetch( this.baseUrl + "/getLast" );
+        const response = await fetch( this.baseUrl + "/datasets/getLast" );
         return response.json();
     }
 
