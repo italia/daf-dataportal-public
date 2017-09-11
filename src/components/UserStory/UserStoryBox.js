@@ -23,7 +23,7 @@ class UserStoriesBox extends React.Component {
 
     return (
         <div className="Grid-cell u-sizeFull u-md-size1of3 u-lg-size1of3 u-margin-r-bottom u-layout-matchHeight">
-            <div className="u-nbfc u-borderRadius-m u-background-grey-10 u-color-grey-70">
+            <div className="w-100 u-nbfc u-borderRadius-m u-background-grey-10 u-color-grey-70">
               <section className="u-text-r-l u-padding-r-all u-layout-prose">
                 <h3 className="u-padding-r-bottom">
                   

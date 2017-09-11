@@ -10,19 +10,16 @@ export default class UserStoryService {
 
     async getLast() {
         const response = await fetch( this.baseUrl + "/getLast" );
-        //const response = await fetch( this.baseUrl);
         return response.json();
     }
     
     async getSimili(id) {
-        //const response = await fetch( this.baseUrl + "/getLast" );
-        const response = await fetch( this.baseUrl);
+        const response = await fetch( this.baseUrl + "/getLast" );
         return response.json();
     }
     
     async getCommunity() {
-        //const response = await fetch( this.baseUrl + "/getLast" );
-        const response = await fetch( this.baseUrl);
+        const response = await fetch( this.baseUrl + "/getLast" );
         return response.json();
     }
 
