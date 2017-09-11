@@ -7,13 +7,4 @@ export const serviceurl = {
   apiURLDatiGov: "http://localhost:3001/dati-gov/v1", 
   apiURLCatalogManager: "http://localhost:3001/catalog-manager/v1", 
   
-  // DatasetBackend module configs 
-  "DatasetBackend": {
-    "Search": {
-      "host": "localhost",
-      "port": 9000,
-      "nameSearch": "/dati-gov/v1/ckan/searchDataset",
-      "nameDetail": "/dati-gov/v1/ckan/datasets/"
-    }
-  }
 }

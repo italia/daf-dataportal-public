@@ -6,10 +6,6 @@ import Register from '../container/Register'
 import Main from './Main'
 
 import { firebaseAuth } from '../config/constants'
-import { Provider } from 'react-redux';
-import configureStore from '../configureStore'
-
-const store = configureStore();
 
 export default class App extends Component {
   state = {
@@ -36,7 +32,7 @@ export default class App extends Component {
   }
   render() {
     return this.state.loading === true ? <h1>Loading</h1> : (
-      <Provider store={store}>
+      
       <BrowserRouter>
         <Switch>
           <Route authed={this.state.authed} path="/login" component={Main} />
@@ -46,7 +42,7 @@ export default class App extends Component {
           <Route component={Main} />
         </Switch>
       </BrowserRouter>
-      </Provider>
+      
     );
   }
 }

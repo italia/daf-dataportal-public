@@ -45,4 +45,4 @@ class Main extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, () => ({}))(Main);
+export default Main;

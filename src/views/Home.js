@@ -1,11 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import {
-  loadDatasets,
-  unloadDatasets,
-  datasetDetail
-} from '../actions'
 import AutocompleteDataset from '../components/Autocomplete/AutocompleteDataset.js'
 
 import UserStoryService from '../services/UserStoryService.js';
@@ -76,9 +71,4 @@ Home.propTypes = {
   ope: PropTypes.string
 }
 
-function mapStateToProps(state) {
-  const { isFetching, lastUpdated, dataset,  items: datasets, ope } = state.datasetReducer['obj'] || { isFetching: true, items: [], ope:'' }
-  return {datasets, dataset, isFetching, lastUpdated, ope}
-}
-
-export default connect(mapStateToProps)(Home)
+export default Home
