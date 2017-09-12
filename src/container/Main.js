@@ -13,6 +13,10 @@ import UserStoryView from '../views/UserStoryView';
 import DatasetSearch from '../views/DatasetSearch';
 import DatasetDetail from '../views/DatasetDetail';
 
+import {IntlProvider} from 'react-intl';
+import it from "react-intl/locale-data/it";
+import {addLocaleData} from 'react-intl';
+addLocaleData(it);
 
 const mapStateToProps = state => ({
   appName: state.appName
@@ -27,7 +31,8 @@ class Main extends React.Component {
 
   render() {
     return (
-       <div data-reactroot className="app">
+      <IntlProvider locale="it">
+       <div data-reactroot className="app">   
           <Header />
           <Switch>
             <Route path='/' exact component={Home} />
@@ -40,7 +45,8 @@ class Main extends React.Component {
             <Route render={() => <h3>Pagina non trovata</h3>} />
           </Switch>
           <Footer />
-      </div>
+        </div>
+      </IntlProvider>
       );
   }
 }

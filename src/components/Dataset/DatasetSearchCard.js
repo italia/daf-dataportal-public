@@ -4,6 +4,8 @@ import TitleSeparator from '../TitleSeparator/titleSeparator.js';
 import DatasetBox from './DatasetBox.js';
 import { Link } from 'react-router-dom';
 
+import {FormattedDate} from 'react-intl';
+
 export default class DatasetSearchCard extends React.Component {
 
     constructor(props) {
@@ -31,8 +33,14 @@ export default class DatasetSearchCard extends React.Component {
                     {this.props.dataset.notes}
                 </p>
                 <p><strong>Pubblicato da: </strong>{this.props.dataset.organization.title}</p>
-                <p><strong>Data di ultima modifica: </strong>{this.props.dataset.organization.created}</p>
-                <p><strong>Categorie: </strong>
+                <p><strong>Data di ultima modifica: </strong>
+                    <FormattedDate
+                        value={this.props.dataset.organization.created}
+                        day="numeric"
+                        month="long"
+                        year="numeric" />
+                </p>
+                <div><strong>Categorie: </strong>
                     {
                         this.props.dataset.tags.map((tag, index) => {
                         return(
@@ -42,7 +50,7 @@ export default class DatasetSearchCard extends React.Component {
                         );
                         })
                     }
-                </p>
+                </div>
             </div>
         );
     }
