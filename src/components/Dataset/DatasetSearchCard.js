@@ -16,15 +16,7 @@ export default class DatasetSearchCard extends React.Component {
 
         return (
             <div className="u-padding-left-xxl u-padding-top-xxl u-padding-bottom-xxl u-background-grey-10 u-color-grey-50 u-padding-right-xxl u-margin-bottom-l">
-                <p className="u-padding-r-bottom">
-                    <span className="Dot u-background-40"></span>
-                    <a className="u-textClean u-textWeight-700 u-text-r-xs u-color-50 u-margin-right-s" href="#">xlsx</a>
-                    <span className="Dot u-background-40"></span>
-                    <a className="u-textClean u-textWeight-700 u-text-r-xs u-color-50 u-margin-right-s" href="#">shp</a>
-                    <span className="Dot u-background-40"></span>
-                    <a className="u-textClean u-textWeight-700 u-text-r-xs u-color-50 u-margin-right-s" href="#">wms</a>
-                </p>
-                <h3 className="u-padding-r-top u-padding-r-bottom">
+                <h3 className="u-padding-r-bottom">
                     <Link className="u-text-h4 u-textClean u-color-black" to={"/dataset/" + this.props.dataset.id}>
                         {this.props.dataset.title}
                     </Link>
@@ -51,6 +43,25 @@ export default class DatasetSearchCard extends React.Component {
                         })
                     }
                 </div>
+                <p className="u-padding-top-xxl">
+                    {
+                        this.props.dataset.resources.length == 0 &&
+                        <div>
+                            <span className="u-textWeight-700 u-text-r-xs u-margin-right-s">Nessuna risorsa presente nel dataset</span>
+                        </div>
+                    }
+                    {
+                        this.props.dataset.resources.map((res, index) => {
+                        return(
+                            <div key={index}>
+                                <span className="Dot u-background-40"></span>
+                                <a className="u-textClean u-textWeight-700 u-text-r-xs u-color-50 u-margin-right-s" href="#">{res.format}</a>
+                            </div>
+                        );
+                        })
+                    }
+                </p>
+                
             </div>
         );
     }
