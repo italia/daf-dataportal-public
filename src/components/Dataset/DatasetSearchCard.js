@@ -24,11 +24,11 @@ export default class DatasetSearchCard extends React.Component {
                 </p>
                 <h3 className="u-padding-r-top u-padding-r-bottom">
                     <Link className="u-text-h4 u-textClean u-color-black" to={"/dataset/" + this.props.dataset.id}>
-                        {this.props.dataset.resources[0].name}
+                        {this.props.dataset.title}
                     </Link>
                 </h3>
                 <p className="u-lineHeight-l u-text-r-xs u-textSecondary u-padding-r-right  u-padding-r-bottom">
-                    {this.props.dataset.resources[0].description}
+                    {this.props.dataset.notes}
                 </p>
                 <p><strong>Pubblicato da: </strong>{this.props.dataset.organization.title}</p>
                 <p><strong>Data di ultima modifica: </strong>{this.props.dataset.organization.created}</p>

@@ -43,8 +43,9 @@ export default class DatasetSearch extends React.Component {
 
     let datasets = datasetService.search(this.state.text, this.state.category_filter);
     datasets.then((list) => {
+      console.log(list);
       this.setState({
-        datasets: list
+        datasets: list.result.results
       });
     });
   }
@@ -64,7 +65,7 @@ export default class DatasetSearch extends React.Component {
               
               {/* INTESTAZIONE */}
               <h2 className=" u-padding-bottom-l">Trovati {this.state.datasets.length} Dataset</h2>
-              <form className="Form u-text-r-xs u-margin-bottom-l">
+              <form onSubmit={this.search} className="Form u-text-r-xs u-margin-bottom-l">
                 <fieldset className="Form-fieldset">
                   <div className="Form-field Form-field--withPlaceholder Grid u-background-white u-color-grey-30 u-borderRadius-s u-border-all-xxs">
                     <button className="Grid-cell u-sizeFit Icon-search u-color-grey-40 u-text-r-m u-padding-all-s u-textWeight-400">
