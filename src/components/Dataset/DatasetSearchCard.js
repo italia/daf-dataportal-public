@@ -32,6 +32,17 @@ export default class DatasetSearchCard extends React.Component {
                 </p>
                 <p><strong>Pubblicato da: </strong>{this.props.dataset.organization.title}</p>
                 <p><strong>Data di ultima modifica: </strong>{this.props.dataset.organization.created}</p>
+                <p><strong>Categorie: </strong>
+                    {
+                        this.props.dataset.tags.map((tag, index) => {
+                        return(
+                            <div className="badge mr-10" key={index}>
+                                {tag.name}
+                            </div>
+                        );
+                        })
+                    }
+                </p>
             </div>
         );
     }

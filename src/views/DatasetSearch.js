@@ -24,8 +24,7 @@ export default class DatasetSearch extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.onSearch = this.onSearch.bind(this);
 
-    if (this.state.text)
-      this.search();
+    this.search();
   }
 
   handleChange(event) {
@@ -43,7 +42,7 @@ export default class DatasetSearch extends React.Component {
 
     let datasets = datasetService.search(this.state.text, this.state.category_filter);
     datasets.then((list) => {
-      console.log(list);
+      
       this.setState({
         datasets: list.result.results
       });
