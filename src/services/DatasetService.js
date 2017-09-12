@@ -4,18 +4,33 @@ import { serviceurl } from '../config/serviceurl.js'
 export default class DatasetService {
     
     baseUrl = serviceurl.apiURLCatalogManager + "/ckan";
+    
     constructor() {
-
     }
 
     async search(query, category_filter){
-        
+
         let queryurl = '';
         if(query) {
             queryurl = '&q=title:*'+ query + '*';
         }
 
-        const response = await fetch( serviceurl.apiCKAN + "?rows=20" + queryurl, {
+        let categoryurl = '';
+        if(category_filter) {
+            let first = true;
+            for ( let i in category_filter) {
+                if (category_filter[i] == true) {
+                    if (!query && first)
+                        categoryurl += "&q=";
+                    else
+                        categoryurl += "%20AND%20";
+                    categoryurl += "tags:" + i;
+                    first = false;
+                }
+            }
+        }
+
+        const response = await fetch( serviceurl.apiCKAN + "?rows=20" + queryurl + categoryurl, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',

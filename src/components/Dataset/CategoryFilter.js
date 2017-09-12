@@ -46,8 +46,8 @@ export default class CategoryFilter extends React.Component {
                 {
                     this.state.categories.map((category, index) => {
                         return (
-                            <li key={index} className={"category-item " + (this.state.category_filter[category.id] == true ? "active" : "")} onClick={() => this.enableCategory(category.id)}>
-                                <img src={"/img/category/" + category.id + (this.state.category_filter[category.id] == true ? "_blu" : "") + ".png"} />
+                            <li key={index} className={"category-item " + (this.state.category_filter[category.tag] == true ? "active" : "")} onClick={() => this.enableCategory(category.tag)}>
+                                <img src={"/img/category/" + category.tag + (this.state.category_filter[category.tag] == true ? "_blu" : "") + ".png"} />
                                 {category.name}
                             </li>
                         )
