@@ -20,14 +20,23 @@ export default class DatasetService {
             let first = true;
             for ( let i in category_filter) {
                 if (category_filter[i] == true) {
-                    if (!query && first)
-                        categoryurl += "&q=";
+                    if (first) {
+                        if (!query) {
+                            categoryurl += "&q=(";
+                        } else {
+                            categoryurl += "%20AND%20(";
+                        }
+                    }
+
                     else
-                        categoryurl += "%20AND%20";
+                        categoryurl += "%20OR%20";
                     categoryurl += "tags:" + i;
                     first = false;
                 }
             }
+    
+            if (!first)
+                categoryurl += ")";
         }
 
         const response = await fetch( serviceurl.apiCKAN + "?rows=20" + queryurl + categoryurl, {
