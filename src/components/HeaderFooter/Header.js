@@ -51,7 +51,7 @@ export const Header = () => (
                 <div className="u-layout-wide Grid Grid--alignMiddle u-layoutCenter">
                   <div className="Header-logo Grid-cell" aria-hidden="true">
                     <Link role="button" to={"/"}>
-                      <img src="http://designer.italia.it/images/loghi/logo-it.svg" alt=""/>
+                      <img src="http://designer.italia.it/assets/icons/logo-it.png" alt=""/>
                     </Link>
                   </div>
 

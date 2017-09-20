@@ -50,12 +50,17 @@ export default class DatasetService {
     }
 
     async get(id) {
-        const response = await fetch( this.baseUrl + "/datasets/" + id );
+        const response = await fetch( serviceurl.apiCKAN + "/package_show?id=" + id );
         return response.json();
     }
 
     async getLast() {
-        const response = await fetch( this.baseUrl + "/datasets/getLast" );
+        const response = await fetch( serviceurl.apiCKAN + "/package_search?rows=3", {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
         return response.json();
     }
 

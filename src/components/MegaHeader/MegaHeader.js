@@ -24,7 +24,7 @@ class MegaHeader extends React.Component {
           <div className="u-layout-wide Grid Grid--alignMiddle u-layoutCenter">
             <div className="Header-logo Grid-cell" aria-hidden="true">
               <a href="" tabIndex="-1">
-                <img src="http://designer.italia.it/images/loghi/logo-it.svg" alt=""/>
+                <img src="http://designer.italia.it/assets/icons/logo-it.png" alt=""/>
               </a>
             </div>
 

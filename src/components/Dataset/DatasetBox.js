@@ -42,7 +42,7 @@ class DatasetBox extends React.Component {
                 </h3>
 
                 <p className="u-lineHeight-l u-text-r-xs u-textSecondary u-padding-r-right  u-padding-r-bottom">
-                  {this.trunc(this.state.dataset.text, 300)}
+                  {this.trunc(this.state.dataset.name, 300)}
                 </p>
                 <p><strong>Pubblicato da:</strong> {this.state.dataset.user}</p>
                 <p><strong>Data di ultima modifica:</strong> {this.state.dataset.dateLastEdit}</p>

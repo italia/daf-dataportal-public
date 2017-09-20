@@ -19,7 +19,7 @@ export default class DatasetDetail extends React.Component {
     let dataset = datasetService.get(this.props.match.params.id);
     dataset.then((dataset) => {
       this.setState({
-        dataset: dataset
+        dataset: dataset.result
       });
     });
     
