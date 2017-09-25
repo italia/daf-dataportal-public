@@ -31,7 +31,7 @@ class MegaHeader extends React.Component {
             <div className="Header-title Grid-cell">
               <h1 className="Header-titleLink">
                 <a href="/">
-                  /dataportal <span className="u-lg-hidden u-md-hidden u-sm-hidden u-cf u-padding-top-xxs u-block"></span>
+                  /publicdata <span className="u-lg-hidden u-md-hidden u-sm-hidden u-cf u-padding-top-xxs u-block"></span>
               <span className="u-color-20 u-text-xxs
               u-alignMiddle u-padding-right-xxs u-padding-left-xxs">beta</span><br/>
                   <small>Dati Pubblici</small>
