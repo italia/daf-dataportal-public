@@ -23,7 +23,9 @@ export default class SearchBar extends React.Component {
         //init state
         this.state = {
             text: "",
-            category_filter: {}
+            category_filter: {},
+            group_filter: {},
+            organization_filter: {}
         };
 
         // bind function    
@@ -43,7 +45,9 @@ export default class SearchBar extends React.Component {
         
         this.props.history.push(path, {
             query: this.state.text,
-            category: this.state.category_filter
+            category: this.state.category_filter,
+            group: this.state.group_filter,
+            organization: this.state.organization_filter
         });
         
     }

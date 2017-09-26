@@ -68,7 +68,35 @@
                 }
             ]
         
+    }, 
+    "/dati-gov/v1/group": {
+      "get":  [
+              {
+                  "id": 1,
+                  "name": "group1",
+                  "group": "group1"
+              },
+              {
+                  "id": 2,
+                  "name": "group2",
+                  "group": "group2"
+              }                
+          ]        
     },
+    "/dati-gov/v1/organization": {
+      "get":  [
+              {
+                  "id": 1,
+                  "name": "Altopiano di Pinè e Cembra",
+                  "org": "APT Altopiano di Pinè e Valle di Cembra it"
+              },
+              {
+                  "id": 2,
+                  "name": "Organizzazione prova",
+                  "org": "org2"
+              }                
+          ]        
+    },  
     "/catalog-manager/v1/ckan/datasets/1": {
         "get": {
                 "id":1,
