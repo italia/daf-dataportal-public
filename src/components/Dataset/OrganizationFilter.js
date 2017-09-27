@@ -49,7 +49,7 @@ export default class OrganizationFilter extends React.Component {
                         return (
                         
                             <li key={index} className={"category-item " + (this.state.organization_filter[organization] == true ? "active" : "")} onClick={() => this.enableGroup(organization)}> 
-                                <img src={"/img/organization/" + organization + (this.state.organization_filter[organization] == true ? "_blu" : "") + ".png"} />
+                               {/*  <img src={"/img/organization/" + organization + (this.state.organization_filter[organization] == true ? "_blu" : "") + ".png"} /> */}
                                 {organization}
                             </li>
 

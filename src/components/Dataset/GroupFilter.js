@@ -26,7 +26,7 @@ export default class GroupFilter extends React.Component {
 
         //init
         groupService.list().then((list) => {
-            this.setState({ groups: list.result });
+            this.setState({ groups: list });
         });
     }
 
@@ -48,8 +48,8 @@ export default class GroupFilter extends React.Component {
                     this.state.groups.map((group, index) => {
                         return (
                         
-                            <li key={index} className={"category-item " + (this.state.group_filter[group.group] == true ? "active" : "")} onClick={() => this.enableGroup(group.group)}> 
-                                <img src={"/img/group/" + group.group + (this.state.group_filter[group.group] == true ? "_blu" : "") + ".png"} />
+                            <li key={index} className={"category-item " + (this.state.group_filter[group.name] == true ? "active" : "")} onClick={() => this.enableGroup(group.name)}> 
+                               {/*  <img src={"/img/group/" + group  + (this.state.group_filter[group] == true ? "_blu" : "") + ".png"} /> */}
                                 {group.name}
                             </li>
 

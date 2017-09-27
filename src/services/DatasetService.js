@@ -51,7 +51,7 @@ export default class DatasetService {
                     }
                     else
                         groupurl += "%20OR%20";
-                    groupurl += "groups:" + i;
+                    groupurl += "res_format:" + i;
                     first = false;
                 }
             }
@@ -98,6 +98,18 @@ export default class DatasetService {
 
     async get(id) {
         const response = await fetch( serviceurl.apiCKAN + "/package_show?id=" + id );
+        return response.json();
+    }
+
+    async searchOrder(order_filter) {
+
+                
+        const response = await fetch( serviceurl.apiCKAN + "/package_search?sort=" + order_filter, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
         return response.json();
     }
 

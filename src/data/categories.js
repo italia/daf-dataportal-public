@@ -32,7 +32,7 @@ const categories = [
                     {
                         "id": 7,
                         "name": "Salute",
-                        "tag": "HEAL"
+                        "tag": "Salute"
                     },
                     {
                         "id": 8,

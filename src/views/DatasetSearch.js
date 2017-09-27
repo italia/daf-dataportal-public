@@ -3,6 +3,7 @@ import React from 'react';
 import DatasetSearchCard from '../components/Dataset/DatasetSearchCard.js'
 import CategoryFilter from '../components/Dataset/CategoryFilter.js'
 import GroupFilter from '../components/Dataset/GroupFilter.js'
+import OrderFilter from '../components/Dataset/OrderFilter.js'
 import OrganizationFilter from '../components/Dataset/OrganizationFilter.js'
 
 // SERVICES
@@ -21,6 +22,7 @@ export default class DatasetSearch extends React.Component {
       category_filter: props.history.location.state && props.history.location.state.category,
       group_filter: props.history.location.state && props.history.location.state.group,
       organization_filter: props.history.location.state && props.history.location.state.organization,
+      order_filter: "metadata_modified%20desc",
       showDivCategory: false,
       showDivGroup: false,
       showDivOrganization: false  
@@ -31,12 +33,14 @@ export default class DatasetSearch extends React.Component {
     this.search = this.search.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.onSearch = this.onSearch.bind(this);
+    this.onSearchOrder = this.onSearchOrder.bind(this);
 
     this.handleToggleClickCat = this.handleToggleClickCat.bind(this);
     this.handleToggleClickGroup = this.handleToggleClickGroup.bind(this);
     this.handleToggleClickOrganization = this.handleToggleClickOrganization.bind(this);
 
     this.search();
+    this.searchOrder();
   }
 
   handleToggleClickCat() {   
@@ -93,6 +97,34 @@ export default class DatasetSearch extends React.Component {
       });
     this.search();
   }
+
+  onSearchOrder(order_filter){
+
+   /*  this.setState({
+      order_filter: order_filter
+    }); */
+    this.state.order_filter = order_filter;
+    this.searchOrder();
+  }
+
+
+  searchOrder(event) {
+    if(event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    
+    //get stories
+
+    let datasets = datasetService.searchOrder(this.state.order_filter);
+    datasets.then((list) => {
+      
+      this.setState({
+        datasets: list.result.results
+      });
+    });
+  }
+
 
   
   render() {
@@ -179,11 +211,7 @@ export default class DatasetSearch extends React.Component {
 
                   <div className="Form-field">
 
-                    <select className="Form-input u-text-r-xs u-borderRadius-m u-padding-top-s u-padding-bottom-s " id="ordinamento" aria-required="true">
-                      <option disabled="" defaultValue="">Data dalla più recente</option>
-                      <option>Data dalla più lontana</option>
-                      <option>Per categoria</option>
-                    </select>
+                    <OrderFilter order_filter={this.state.order_filter} onSearchOrder={this.onSearchOrder}/>
                   </div>
                 </fieldset>
               </form>
@@ -195,13 +223,15 @@ export default class DatasetSearch extends React.Component {
                 <CategoryFilter category_filter={this.state.category_filter} onSearch={this.onSearch}/>
               </div> 
               }
-              <h2 className=" u-padding-bottom-l" onClick={this.handleToggleClickGroup}>Filtra gruppi</h2>
+              <h2 className=" u-padding-bottom-l" onClick={this.handleToggleClickGroup}>Filtra formati</h2>
               {this.state.showDivGroup &&
               <div className="u-sizeFull" id="subnav">
                 <GroupFilter group_filter={this.state.group_filter} onSearch={this.onSearch}/>
               </div>
               }
+              
               <h2 className=" u-padding-bottom-l" onClick={this.handleToggleClickOrganization}>Filtra organizzazioni</h2>
+              
               {this.state.showDivOrganization &&
               <div className="u-sizeFull" id="subnav">
                 <OrganizationFilter organization_filter={this.state.organization_filter}  onSearch={this.onSearch}/>
