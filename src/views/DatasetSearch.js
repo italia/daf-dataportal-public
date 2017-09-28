@@ -22,13 +22,13 @@ export default class DatasetSearch extends React.Component {
       category_filter: props.history.location.state && props.history.location.state.category,
       group_filter: props.history.location.state && props.history.location.state.group,
       organization_filter: props.history.location.state && props.history.location.state.organization,
-      order_filter: "metadata_modified%20desc",
-      showDivCategory: false,
+      order_filter: "",
+      showDivCategory: props.history.location.state.isCategoryEnabled,
       showDivGroup: false,
       showDivOrganization: false  
         
     };
-    
+       
     //bind functions
     this.search = this.search.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -114,15 +114,17 @@ export default class DatasetSearch extends React.Component {
       event.stopPropagation();
     }
     
-    //get stories
-
-    let datasets = datasetService.searchOrder(this.state.order_filter);
-    datasets.then((list) => {
-      
-      this.setState({
-        datasets: list.result.results
+    //controllo per problema della prima ricerca
+    if(this.state.order_filter){  
+      let datasets = datasetService.searchOrder(this.state.order_filter);
+      datasets.then((list) => {
+        
+        this.setState({
+          datasets: list.result.results
+        });
       });
-    });
+    }
+
   }
 
 

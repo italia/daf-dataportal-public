@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import SlimHeader from './SlimHeader'
 import {  opts,listToMegaMenu, Megamenu} from './megamenu'
 import Navigation from '../../container/Nav'
@@ -116,3 +116,4 @@ class MegaHeader extends React.Component {
 }
 
 export default MegaHeader;
+ */

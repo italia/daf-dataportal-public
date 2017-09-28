@@ -1249,11 +1249,19 @@
                 "title": "Storia 1",
                 "published": true,
                 "subtitle": "Storia di prova",
-                "graph": {
+                "user": "User 1",
+                "dateLastEdit": "2017-06-22 09:19",
+                "graph1": {
                     "title": "",
                     "props": {
                         "url": null
                     }
+                },
+                "graph2": {
+                  "title": "",
+                  "props": {
+                      "url": null
+                  }
                 },
                 "text": "Contenuto della storia",
                 "image": {
@@ -1267,11 +1275,19 @@
                 "title": "Storia 2",
                 "published": false,
                 "subtitle": "Storia di prova",
-                "graph": {
-                    "title": "",
-                    "props": {
-                        "url": null
-                    }
+                "user": "User 2",
+                "dateLastEdit": "2017-06-22 09:19",
+                "graph1": {
+                  "title": "",
+                  "props": {
+                      "url": null
+                  }
+                },
+                "graph2": {
+                  "title": "",
+                  "props": {
+                      "url": null
+                  }
                 },
                 "text": "Contenuto della storia",
                 "image": {
@@ -1284,11 +1300,19 @@
                 "id":3,
                 "title": "Storia 3",
                 "subtitle": "Storia di prova",
-                "graph": {
-                    "title": "",
-                    "props": {
-                        "url": null
-                    }
+                "user": "User 3",
+                "dateLastEdit": "2017-06-22 09:19",
+                "graph1": {
+                  "title": "",
+                  "props": {
+                      "url": null
+                  }
+                },
+                "graph2": {
+                  "title": "",
+                  "props": {
+                      "url": null
+                  }
                 },
                 "text": "Contenuto della storia",
                 "image": {
@@ -1300,6 +1324,242 @@
         ]
         
     },
+    "/dati-gov/v1/user-stories/getLastCrea": {
+      "get": [
+          {
+              "id":1,
+              "title": "Storia 1",
+              "published": true,
+              "subtitle": "Storia di prova",
+              "user": "User 1",
+              "dateLastEdit": "2017-06-22 09:19",
+              "graph1": {
+                  "title": "",
+                  "props": {
+                      "url": null
+                  }
+              },
+              "graph2": {
+                "title": "",
+                "props": {
+                    "url": null
+                }
+              },
+              "text": "Contenuto della storia",
+              "image": {
+                  "url": "https://theclayblog.files.wordpress.com/2013/03/this-is-my-story-2.jpg",
+                  "caption": "Testo Immagine"
+              },
+              "footer": "Questo è il footer"
+          },
+          {
+              "id":2,
+              "title": "Storia 2",
+              "published": false,
+              "subtitle": "Storia di prova",
+              "user": "User 2",
+              "dateLastEdit": "2017-06-22 09:19",
+              "graph1": {
+                "title": "",
+                "props": {
+                    "url": null
+                }
+              },
+              "graph2": {
+                "title": "",
+                "props": {
+                    "url": null
+                }
+              },
+              "text": "Contenuto della storia",
+              "image": {
+                  "url": "https://theclayblog.files.wordpress.com/2013/03/this-is-my-story-2.jpg",
+                  "caption": "Testo Immagine"
+              },
+              "footer": "Questo è il footer"
+          },
+          {
+              "id":3,
+              "title": "Storia 3",
+              "subtitle": "Storia di prova",
+              "user": "User 3",
+              "dateLastEdit": "2017-06-22 09:19",
+              "graph1": {
+                "title": "",
+                "props": {
+                    "url": null
+                }
+              },
+              "graph2": {
+                "title": "",
+                "props": {
+                    "url": null
+                }
+              },
+              "text": "Contenuto della storia",
+              "image": {
+                  "url": "https://theclayblog.files.wordpress.com/2013/03/this-is-my-story-2.jpg",
+                  "caption": "Testo Immagine"
+              },
+              "footer": "Questo è il footer"
+          },
+          {
+            "id":4,
+            "title": "Storia 4",
+            "published": true,
+            "subtitle": "Storia di prova",
+            "user": "User 4",
+            "dateLastEdit": "2017-06-22 09:19",
+            "graph1": {
+                "title": "",
+                "props": {
+                    "url": null
+                }
+            },
+            "graph2": {
+              "title": "",
+              "props": {
+                  "url": null
+              }
+            },
+            "text": "Contenuto della storia",
+            "image": {
+                "url": "https://theclayblog.files.wordpress.com/2013/03/this-is-my-story-2.jpg",
+                "caption": "Testo Immagine"
+            },
+            "footer": "Questo è il footer"
+        },
+        {
+            "id":5,
+            "title": "Storia 5",
+            "published": false,
+            "subtitle": "Storia di prova",
+            "user": "User 5",
+            "dateLastEdit": "2017-06-22 09:19",
+            "graph1": {
+              "title": "",
+              "props": {
+                  "url": null
+              }
+            },
+            "graph2": {
+              "title": "",
+              "props": {
+                  "url": null
+              }
+            },
+            "text": "Contenuto della storia",
+            "image": {
+                "url": "https://theclayblog.files.wordpress.com/2013/03/this-is-my-story-2.jpg",
+                "caption": "Testo Immagine"
+            },
+            "footer": "Questo è il footer"
+        },
+        {
+            "id":6,
+            "title": "Storia 6",
+            "subtitle": "Storia di prova",
+            "user": "User 6",
+            "dateLastEdit": "2017-06-22 09:19",
+            "graph1": {
+              "title": "",
+              "props": {
+                  "url": null
+              }
+            },
+            "graph2": {
+              "title": "",
+              "props": {
+                  "url": null
+              }
+            },
+            "text": "Contenuto della storia",
+            "image": {
+                "url": "https://theclayblog.files.wordpress.com/2013/03/this-is-my-story-2.jpg",
+                "caption": "Testo Immagine"
+            },
+            "footer": "Questo è il footer"
+        },
+        {
+          "id":7,
+          "title": "Storia 7",
+          "published": true,
+          "subtitle": "Storia di prova",
+          "user": "User 7",
+          "dateLastEdit": "2017-06-22 09:19",
+          "graph1": {
+              "title": "",
+              "props": {
+                  "url": null
+              }
+          },
+          "graph2": {
+            "title": "",
+            "props": {
+                "url": null
+            }
+          },
+          "text": "Contenuto della storia",
+          "image": {
+              "url": "https://theclayblog.files.wordpress.com/2013/03/this-is-my-story-2.jpg",
+              "caption": "Testo Immagine"
+          },
+          "footer": "Questo è il footer"
+      },
+      {
+          "id":8,
+          "title": "Storia 8",
+          "published": false,
+          "subtitle": "Storia di prova",
+          "user": "User 8",
+          "dateLastEdit": "2017-06-22 09:19",
+          "graph1": {
+            "title": "",
+            "props": {
+                "url": null
+            }
+          },
+          "graph2": {
+            "title": "",
+            "props": {
+                "url": null
+            }
+          },
+          "text": "Contenuto della storia",
+          "image": {
+              "url": "https://theclayblog.files.wordpress.com/2013/03/this-is-my-story-2.jpg",
+              "caption": "Testo Immagine"
+          },
+          "footer": "Questo è il footer"
+      },
+      {
+          "id":9,
+          "title": "Storia 9",
+          "subtitle": "Storia di prova",
+          "user": "User 9",
+          "dateLastEdit": "2017-06-22 09:19",
+          "graph1": {
+            "title": "",
+            "props": {
+                "url": null
+            }
+          },
+          "graph2": {
+            "title": "",
+            "props": {
+                "url": null
+            }
+          },
+          "text": "Contenuto della storia",
+          "image": {
+              "url": "https://theclayblog.files.wordpress.com/2013/03/this-is-my-story-2.jpg",
+              "caption": "Testo Immagine"
+          },
+          "footer": "Questo è il footer"
+      }
+      ]
+      
+  },
     
     "/dati-gov/v1/user-stories/1": {
         "get": {
@@ -1307,11 +1567,19 @@
             "title": "Storia 1",
             "published": true,
             "subtitle": "Storia di prova",
-            "graph": {
-                "title": "Sp ID Overalls, Filtered by Year 2017",
-                "props": {
-                    "url": "http://91.206.129.158:8080/public/question/b9f1e87b-5cd0-46e0-b816-0ad7cefd2ef6"
-                }
+            "user": "User 1",
+            "dateLastEdit": "2017-06-22 09:19",
+            "graph1": {
+              "title": "",
+              "props": {
+                  "url": null
+              }
+            },
+            "graph2": {
+              "title": "",
+              "props": {
+                  "url": null
+              }
             },
             "text": "Contenuto della storia",
             "image": {
@@ -1328,11 +1596,19 @@
             "title": "Storia 2",
             "published": false,
             "subtitle": "Storia di prova",
-            "graph": {
-                "title": "Sp ID Overalls, Filtered by Year 2017",
-                "props": {
-                    "url": "http://91.206.129.158:8080/public/question/b9f1e87b-5cd0-46e0-b816-0ad7cefd2ef6"
-                }
+            "user": "User 2",
+            "dateLastEdit": "2017-06-22 09:19",
+            "graph1": {
+              "title": "",
+              "props": {
+                  "url": null
+              }
+            },
+            "graph2": {
+              "title": "",
+              "props": {
+                  "url": null
+              }
             },
             "text": "Contenuto della storia",
             "image": {
@@ -1346,11 +1622,19 @@
             "id":3,
             "title": "Storia 3",
             "subtitle": "Storia di prova",
-            "graph": {
-                "title": "",
-                "props": {
-                    "url": null
-                }
+            "user": "User 3",
+            "dateLastEdit": "2017-06-22 09:19",
+            "graph1": {
+              "title": "",
+              "props": {
+                  "url": null
+              }
+            },
+            "graph2": {
+              "title": "",
+              "props": {
+                  "url": null
+              }
             },
             "text": "Contenuto della storia",
             "image": {

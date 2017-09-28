@@ -2,32 +2,32 @@ const categories = [
                     {
                         "id": 1,
                         "name": "Agricoltura, pesca, silvicoltura e prodotti alimentari",
-                        "tag": "AGRI"
+                        "tag": "Agricoltura"
                     },
                     {
                         "id": 2,
                         "name": "Economia e finanze",
-                        "tag": "ECON"
+                        "tag": "Economia"
                     },
                     {
                         "id": 3,
                         "name": "Istruzione, cultura e sport",
-                        "tag": "EDUC"
+                        "tag": "Istruzione"
                     },
                     {
                         "id": 4,
                         "name": "Energia",
-                        "tag": "ENER"
+                        "tag": "Energia"
                     },
                     {
                         "id": 5,
                         "name": "Ambiente",
-                        "tag": "ENVI"
+                        "tag": "Ambiente"
                     },
                     {
                         "id": 6,
                         "name": "Governo e settore pubblico",
-                        "tag": "GOVE"
+                        "tag": "Governo"
                     },
                     {
                         "id": 7,
@@ -37,32 +37,32 @@ const categories = [
                     {
                         "id": 8,
                         "name": "Tematiche internazionali",
-                        "tag": "INTR"
+                        "tag": "Internazionali"
                     },
                     {
                         "id": 9,
                         "name": "Giustizia, sistema giuridico e sicurezza pubblica",
-                        "tag": "JUST"
+                        "tag": "Giustizia"
                     },
                     {
                         "id": 10,
                         "name": "Regioni e città",
-                        "tag": "REGI"
+                        "tag": "Regioni"
                     },
                     {
                         "id": 11,
                         "name": "Popolazione e società",
-                        "tag": "SOCI"
+                        "tag": "Società"
                     },
                     {
                         "id": 12,
                         "name": "Scienza e tecnologia",
-                        "tag": "TECH"
+                        "tag": "Scienza"
                     },
                     {
                         "id": 13,
                         "name": "Trasporti",
-                        "tag": "TRAN"
+                        "tag": "Trasporti"
                     }
                   ];
   

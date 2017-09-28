@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Link } from 'react-router-dom';
+import {FormattedDate} from 'react-intl';
 
 class DatasetBox extends React.Component {
 
@@ -27,13 +28,19 @@ class DatasetBox extends React.Component {
               <section className="u-text-r-l u-padding-r-all u-layout-prose">
                 
                 <p className="u-padding-r-bottom">
-                  <span className="Dot u-background-40"></span>
-                  <a className="u-textClean u-textWeight-700 u-text-r-xs u-color-50 u-margin-right-s" href="#">xlsx</a>
-                  <span className="Dot u-background-40"></span>
-                  <a className="u-textClean u-textWeight-700 u-text-r-xs u-color-50 u-margin-right-s" href="#">shp</a>
-                  <span className="Dot u-background-40"></span>
-                  <a className="u-textClean u-textWeight-700 u-text-r-xs u-color-50 u-margin-right-s" href="#">wms</a>
-                </p>
+                
+                {this.state.dataset.resources.map((res, index) => {
+                  if (index < 3) {
+                  return(                 
+                    <a className="u-textClean u-textWeight-700 u-text-r-xs u-color-50 u-margin-right-s" href="#"><span key={index} className="Dot u-background-40"></span>{res.format}</a>
+                    );   
+                  }  if(index = 3) {
+                    return(<Link className="u-textClean u-textWeight-700 u-text-r-xs u-color-50 u-margin-right-s" to={"/dataset/" + this.state.dataset.id}>...</Link>);
+                  }
+                })
+                
+                }
+                </p>             
 
                 <h3 className="u-padding-r-top u-padding-r-bottom">
                   <Link className="u-text-h4 u-textClean u-color-black" to={"/dataset/" + this.state.dataset.id}>
@@ -44,8 +51,13 @@ class DatasetBox extends React.Component {
                 <p className="u-lineHeight-l u-text-r-xs u-textSecondary u-padding-r-right  u-padding-r-bottom">
                   {this.trunc(this.state.dataset.name, 300)}
                 </p>
-                <p><strong>Pubblicato da:</strong> {this.state.dataset.user}</p>
-                <p><strong>Data di ultima modifica:</strong> {this.state.dataset.dateLastEdit}</p>
+                <p><strong>Pubblicato da:</strong> {this.state.dataset.organization.title} </p>
+                <p><strong>Data di ultima modifica:</strong> <FormattedDate
+                        value={this.props.dataset.organization.created}
+                        day="numeric"
+                        month="long"
+                        year="numeric" />
+                </p>
 
               </section>
             </div>

@@ -24,6 +24,7 @@ export default class SearchBar extends React.Component {
         this.state = {
             text: "",
             category_filter: {},
+            isCategoryEnabled: false,
             group_filter: {},
             organization_filter: {}
         };
@@ -46,6 +47,7 @@ export default class SearchBar extends React.Component {
         this.props.history.push(path, {
             query: this.state.text,
             category: this.state.category_filter,
+            isCategoryEnabled: this.state.isCategoryEnabled,
             group: this.state.group_filter,
             organization: this.state.organization_filter
         });
@@ -63,8 +65,10 @@ export default class SearchBar extends React.Component {
 
     enableCategory(id_category) {
         this.state.category_filter[id_category] = !this.state.category_filter[id_category];
+        
         this.setState({
-            category_filter: this.state.category_filter
+            category_filter: this.state.category_filter,
+            isCategoryEnabled: this.state.category_filter[id_category]
         })
     }
 

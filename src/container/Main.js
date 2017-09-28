@@ -4,6 +4,12 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 
 import Login from '../container/Login'
 import Register from '../container/Register'
+import Crea from '../container/Crea'
+import Missione from '../container/Missione'
+import LineeGuida from '../container/LineeGuida'
+import Team from '../container/Team'
+import TeamDett from '../container/TeamDett'
+import Partecipa from '../container/Partecipa'
 
 import { Footer } from '../components/HeaderFooter/Footer';
 import { Header } from '../components/HeaderFooter/Header';
@@ -41,6 +47,13 @@ class Main extends React.Component {
             <Route path='/user_story/:id' exact component={UserStoryView} />
             <Route path='/dataset/search' exact component={DatasetSearch} />
             <Route path='/dataset/:id' exact component={DatasetDetail} />
+
+            <Route path="/crea" component={Crea} />
+            <Route path="/missione" component={Missione} />
+            <Route path="/lineeguida" component={LineeGuida} />
+            <Route path="/team" component={Team} />
+            <Route path="/teamDett" component={TeamDett} />
+            <Route path="/partecipa" component={Partecipa} />
 
             <Route render={() => <h3>Pagina non trovata</h3>} />
           </Switch>
