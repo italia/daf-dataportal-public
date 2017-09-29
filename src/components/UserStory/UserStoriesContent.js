@@ -33,7 +33,7 @@ class UserStoriesContent extends React.Component {
 
     if (this.state.userStories) {
       stories = this.state.userStories.map((story, key) => {
-        if (key > 3) return;
+        
         return (
           <UserStoryBox key={key} story={story}>
           </UserStoryBox>

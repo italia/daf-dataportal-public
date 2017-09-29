@@ -30,6 +30,16 @@ a:hover Icon-* {
     text-decoration: none;
 }
 
+
+/* LINK */
+a:focus,
+a:active {
+    outline:none!important;
+    box-shadow: 0 0 0 white !important;
+}
+
+
+
 /* HOME */
 .category-box {
     background-color: white;
@@ -199,6 +209,6 @@ a:hover Icon-* {
   
 /* HEADER */
   
-.Header-owner, .Megamenu--default>.Megamenu-list, .u-layout-wide {
-    max-width: none!important;
+ .Header-owner, .Megamenu--default>.Megamenu-list, .u-layout-wide {
+    max-width: none!important; 
 }

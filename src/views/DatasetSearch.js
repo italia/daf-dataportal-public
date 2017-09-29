@@ -2,6 +2,9 @@ import React from 'react';
 
 import DatasetSearchCard from '../components/Dataset/DatasetSearchCard.js'
 import CategoryFilter from '../components/Dataset/CategoryFilter.js'
+import GroupFilter from '../components/Dataset/GroupFilter.js'
+import OrderFilter from '../components/Dataset/OrderFilter.js'
+import OrganizationFilter from '../components/Dataset/OrganizationFilter.js'
 
 // SERVICES
 import DatasetService from '../services/DatasetService';
@@ -16,15 +19,44 @@ export default class DatasetSearch extends React.Component {
     this.state={
       datasets: [],
       text: props.history.location.state && props.history.location.state.query,
-      category_filter: props.history.location.state && props.history.location.state.category
+      category_filter: props.history.location.state && props.history.location.state.category,
+      group_filter: props.history.location.state && props.history.location.state.group,
+      organization_filter: props.history.location.state && props.history.location.state.organization,
+      order_filter: "",
+      showDivCategory: props.history.location.state.isCategoryEnabled,
+      showDivGroup: false,
+      showDivOrganization: false  
+        
     };
-    
+       
     //bind functions
     this.search = this.search.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.onSearch = this.onSearch.bind(this);
+    this.onSearchOrder = this.onSearchOrder.bind(this);
+
+    this.handleToggleClickCat = this.handleToggleClickCat.bind(this);
+    this.handleToggleClickGroup = this.handleToggleClickGroup.bind(this);
+    this.handleToggleClickOrganization = this.handleToggleClickOrganization.bind(this);
 
     this.search();
+    this.searchOrder();
+  }
+
+  handleToggleClickCat() {   
+      this.setState(prevState => ({
+        showDivCategory: !prevState.showDivCategory
+      }));    
+  }
+  handleToggleClickGroup() {   
+    this.setState(prevState => ({
+      showDivGroup: !prevState.showDivGroup
+    }));    
+  }
+  handleToggleClickOrganization() {   
+    this.setState(prevState => ({
+      showDivOrganization: !prevState.showDivOrganization
+    }));    
   }
 
   handleChange(event) {
@@ -40,7 +72,7 @@ export default class DatasetSearch extends React.Component {
     
     //get stories
 
-    let datasets = datasetService.search(this.state.text, this.state.category_filter);
+    let datasets = datasetService.search(this.state.text, this.state.category_filter, this.state.group_filter, this.state.organization_filter);
     datasets.then((list) => {
       
       this.setState({
@@ -48,14 +80,55 @@ export default class DatasetSearch extends React.Component {
       });
     });
   }
-  
-  onSearch(category_filter) {
+
+  onSearch(category_filter, group_filter, organization_filter) {
+    if (category_filter) 
     this.setState({
       category_filter: category_filter
     });
+
+    if (group_filter) 
+    this.setState({        
+      group_filter: group_filter
+    });
+    if (organization_filter) 
+      this.setState({        
+        organization_filter: organization_filter
+      });
     this.search();
   }
 
+  onSearchOrder(order_filter){
+
+   /*  this.setState({
+      order_filter: order_filter
+    }); */
+    this.state.order_filter = order_filter;
+    this.searchOrder();
+  }
+
+
+  searchOrder(event) {
+    if(event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    
+    //controllo per problema della prima ricerca
+    if(this.state.order_filter){  
+      let datasets = datasetService.searchOrder(this.state.order_filter);
+      datasets.then((list) => {
+        
+        this.setState({
+          datasets: list.result.results
+        });
+      });
+    }
+
+  }
+
+
+  
   render() {
     return (
         <div className="u-layout-wide u-layoutCenter u-layout-withGutter u-padding-r-top u-padding-bottom-xxl">
@@ -140,18 +213,33 @@ export default class DatasetSearch extends React.Component {
 
                   <div className="Form-field">
 
-                    <select className="Form-input u-text-r-xs u-borderRadius-m u-padding-top-s u-padding-bottom-s " id="ordinamento" aria-required="true">
-                      <option disabled="" defaultValue="">Data dalla più recente</option>
-                      <option>Data dalla più lontana</option>
-                      <option>Per categoria</option>
-                    </select>
+                    <OrderFilter order_filter={this.state.order_filter} onSearchOrder={this.onSearchOrder}/>
                   </div>
                 </fieldset>
               </form>
-              <h2 className=" u-padding-bottom-l">Filtra categorie</h2>
+              
+                
+              <h2 className=" u-padding-bottom-l" onClick={this.handleToggleClickCat}>Filtra categorie</h2>  
+              {this.state.showDivCategory &&
               <div className="u-sizeFull" id="subnav">
                 <CategoryFilter category_filter={this.state.category_filter} onSearch={this.onSearch}/>
+              </div> 
+              }
+              <h2 className=" u-padding-bottom-l" onClick={this.handleToggleClickGroup}>Filtra formati</h2>
+              {this.state.showDivGroup &&
+              <div className="u-sizeFull" id="subnav">
+                <GroupFilter group_filter={this.state.group_filter} onSearch={this.onSearch}/>
               </div>
+              }
+              
+              <h2 className=" u-padding-bottom-l" onClick={this.handleToggleClickOrganization}>Filtra organizzazioni</h2>
+              
+              {this.state.showDivOrganization &&
+              <div className="u-sizeFull" id="subnav">
+                <OrganizationFilter organization_filter={this.state.organization_filter}  onSearch={this.onSearch}/>
+              </div>
+              }
+
               <a href="#" title="torna all'inizio del contenuto" className="u-hiddenVisually">torna all'inizio del contenuto</a>
             </div>
 

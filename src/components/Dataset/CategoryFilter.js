@@ -13,13 +13,13 @@ export default class CategoryFilter extends React.Component {
 
         this.state = props;
         let category_filter = [];
-
+        
         if (props.category_filter)
             category_filter = props.category_filter;
-
+        
         this.state = {
             categories: [],
-            category_filter: category_filter
+            category_filter: category_filter            
         };
 
 
@@ -36,7 +36,7 @@ export default class CategoryFilter extends React.Component {
         });
         
         if (this.props.onSearch)
-            this.props.onSearch(this.state.category_filter);
+            this.props.onSearch(this.state.category_filter, null, null);
     }
 
     render() {
@@ -50,6 +50,8 @@ export default class CategoryFilter extends React.Component {
                                 <img src={"/img/category/" + category.tag + (this.state.category_filter[category.tag] == true ? "_blu" : "") + ".png"} />
                                 {category.name}
                             </li>
+
+                            
                         )
                     })
                 }

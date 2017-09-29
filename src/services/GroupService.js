@@ -1,23 +1,24 @@
 import { serviceurl } from '../config/serviceurl.js'
-import  categories  from '../data/categories.js'
+import  formats  from '../data/formats.js'
 
-export default class CategoryService {
+export default class GroupService {
     
-    //baseUrl = serviceurl.apiURLDatiGov + "/category";
-    //baseUrl = serviceurl.apiCKAN + "/tag_list";
+    //baseUrl = serviceurl.apiURLDatiGov + "/group";
+
+    //chiamata a CKAN per il recupero dei gruppi
+    //baseUrl = serviceurl.apiCKAN + "/group_list";
     
     constructor() {
 
     }
 
-    async list_mock() {
+    async list_prova() {
         const response = await fetch( this.baseUrl );
         return response.json();
     }
 
-
     async list_ckan(){
-
+        
         const response = await fetch( this.baseUrl, {
             headers: {
                 'Accept': 'application/json',
@@ -30,11 +31,7 @@ export default class CategoryService {
 
     async list() {
         
-        return categories;
+        return formats;
     }
-
-
-
-
 
 }

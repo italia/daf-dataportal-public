@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Footer = () => (
     
-    <div className="u-background-95">
+  <div className="u-background-95">
     	<div className="u-layout-wide u-layoutCenter u-layout-r-withGutter u-hiddenPrint">
             <footer className="Footer u-background-95">
 
@@ -15,6 +15,8 @@ export const Footer = () => (
 
                   </p>
                 </div>
+
+             
 
                 <div className="Grid-cell u-layout-centerRight u-padding-r-bottom u-flexAlignSelfEnd">
                   <h3 className="u-md-flexInline u-lg-flexInline u-text-p u-color-white u-textWeight-400 u-hidden u-margin-r-right u-flexAlignSelfCenter">Seguici su</h3>

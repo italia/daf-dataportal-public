@@ -83,10 +83,11 @@ class UserStoryView extends React.Component {
               this.state.story && 
               <div>
                 <UserStoryHeader story={this.state.story} />
-                <UserStoryGraph graph={this.state.story.graph} />
+                <UserStoryGraph graph={this.state.story.graph1} />
                 <div className="body">
                   <div dangerouslySetInnerHTML={{__html: this.state.story.text}}></div>
-                  <UserStoryImage image={this.state.story.image} />
+                  {/* <UserStoryImage image={this.state.story.image} /> */}
+                  <UserStoryGraph graph={this.state.story.graph2} />
                   <div className="footer" dangerouslySetInnerHTML={{__html: this.state.story.footer}}></div>
                 </div>
 
@@ -100,8 +101,8 @@ class UserStoryView extends React.Component {
             <UserStoriesContent subtitle=" " title="Storie di argomento simile" userStories={this.state.userStoriesSimili} >
             </UserStoriesContent>
 
-            <UserStoriesContent subtitle=" " title="Storie dalla community" userStories={this.state.userStoriesCommunity} >
-            </UserStoriesContent>
+            {/* <UserStoriesContent subtitle=" " title="Storie dalla community" userStories={this.state.userStoriesCommunity} >
+            </UserStoriesContent> */}
 
           </div>
         </div>

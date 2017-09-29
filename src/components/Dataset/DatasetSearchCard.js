@@ -55,7 +55,7 @@ export default class DatasetSearchCard extends React.Component {
                         return(
                             <div key={index}>
                                 <span className="Dot u-background-40"></span>
-                                <a className="u-textClean u-textWeight-700 u-text-r-xs u-color-50 u-margin-right-s" href="#">{res.format}</a>
+                                <a className="u-textClean u-textWeight-700 u-text-r-xs u-color-50 u-margin-right-s" href={res.uri}>{res.format}:</a> {res.name} 
                             </div>
                         );
                         })

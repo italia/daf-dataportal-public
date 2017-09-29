@@ -9,5 +9,13 @@ export const serviceurl = {
   
   // local
   //apiURLCatalogManager: "http://catalog-manager.default.svc.cluster.local:9000/catalog-manager/v1", 
-  apiCKAN: "http://192.168.0.33/api/3/action"
+  apiCKAN: "http://192.168.0.33/api/3/action",
+//ckan centrale "http://192.168.0.33/api/3/action", 
+
+  apiURLCatalogManager: "http://10.100.208.168:5000/api/3/action", 
+  
+  apiURLDatiGov: "http://localhost:3001/dati-gov/v1",
+  
+  apiCKAN: "http://10.100.208.168:5000/api/3/action"
+  
 }
