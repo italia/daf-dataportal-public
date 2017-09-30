@@ -9,9 +9,9 @@ RUN apt-get update && apt-get install -y \
   git-core 
 
 # Copy all local files into the image.
-RUN git clone https://github.com/italia/dati-frontend
+RUN git clone https://github.com/italia/daf-publicdata
 
-WORKDIR /dati-frontend
+WORKDIR /daf-publicdata
 
 RUN npm install
 
