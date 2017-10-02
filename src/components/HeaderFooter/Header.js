@@ -17,10 +17,12 @@ export const Header = () => (
               <div className="Header-banner u-background-50">
                 <div className="Header-owner Headroom-hideme u-border-bottom-xxs">
                   
-                  <Link role="button" to={"/"}>
+               {/*    <Link role="button" to={"/"}>
                     <span>AgID <span className="u-hidden u-md-inline u-lg-inline u-sm-inline">- Agenzia per l'Italia Digitale</span></span>
-                  </Link>
-
+                  </Link> */}
+                  <a  className="u-hidden u-md-inline u-lg-inline u-sm-inline" href="/">
+                    <span>AgID <span >- Agenzia per l'Italia Digitale</span></span>
+                  </a>
                   {/* <div className="Header-languages u-background-50 u-jsVisibilityHidden">
                       <a href="#languages" data-menu-trigger="languages" className="Header-language u-border-none u-zindex-max u-inlineBlock">
                         <span className="u-hiddenVisually">lingua attiva:</span>
@@ -122,23 +124,42 @@ export const Header = () => (
               </div>
               <nav>
                 <ul className="Linklist Linklist--padded u-layout-prose u-text-r-xs Treeview Treeview--default js-Treeview">            
+                  
                   <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
                   <a href="/" className="Linklist-link">Il Progetto</a>
                   <ul>
 							      <li><a href="/missione" className="Linklist-link">Missione</a></li>
-                    <li><a href="/team" className="Linklist-link">Team</a></li>
+                    <li><a href="/team" className="Linklist-link">Chi Siamo</a></li>
                     <li><a href="/lineeguida" className="Linklist-link">Linee Guida</a></li>
                   </ul>
                   </li>
+
                   <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
-                  <a href="/" className="Linklist-link">Esplora</a>
+                  <a href="/" className="Linklist-link">Dati</a>
                   </li>
+
                   <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
-                  <a href="/crea" className="Linklist-link">Crea</a>
+                  <a href="/" className="Linklist-link">Community</a>
+                  <ul>
+                    <li><a href="/crea" className="Linklist-link">Data Stories</a></li>
+                    <li><a href="/" className="Linklist-link">Notizie</a></li>
+                    <li><a href="/" className="Linklist-link">Forum</a></li>
+                  </ul>
                   </li>
+
+                  <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
+                  <a href="/" className="Linklist-link">Dataproducts</a>
+                  </li>
+
                   <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
                   <a href="/partecipa" className="Linklist-link">Partecipa</a>
+                  <ul>
+                    <li><a href="/crea" className="Linklist-link">Tools</a></li>
+                    <li><a href="/" className="Linklist-link">Sviluppatori</a></li>
+                    <li><a href="/" className="Linklist-link">API</a></li>
+                  </ul>
                   </li>
+
                   <li data-megamenu-class="Megamenu-item Megamenu-area u-background-40 u-padding-left-none">
                   <a className="Button Button--default u-border-none u-color-95 u-background-compl u-text-r-xxs" href="/login">Accedi</a>                             
                   </li>
