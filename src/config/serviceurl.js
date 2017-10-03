@@ -1,21 +1,23 @@
 export const serviceurl = {
-  // service url
-  apiURLDatiGov: "http://10.100.82.195:9000/dati-gov/v1", 
-  apiURLCatalogManager: "http://10.100.82.195:9001/catalog-manager/v1", 
-  
-  // mock url
-  apiURLDatiGov: "http://localhost:3001/dati-gov/v1", 
-  apiURLCatalogManager: "http://localhost:3001/catalog-manager/v1", 
-  
-  // local
-  //apiURLCatalogManager: "http://catalog-manager.default.svc.cluster.local:9000/catalog-manager/v1", 
-  apiCKAN: "http://192.168.0.33/api/3/action",
-//ckan centrale "http://192.168.0.33/api/3/action", 
+  // ANDREA
+  // apiURLDatiGov: "http://10.100.82.195:9000/dati-gov/v1", 
 
-  apiURLCatalogManager: "http://192.168.0.33/api/3/action", 
+  // mock url
+  //apiURLDatiGov: "http://localhost:3001/dati-gov/v1", 
+  //apiURLCatalogManager: "http://localhost:3001/catalog-manager/v1",   
+    
+  //Ckan centrale 
+  apiCKAN: "http://192.168.0.33/api/3/action",
+  //apiURLDatiGov: "http://datipubblici.default.svc.cluster.local:9000/dati-gov/v1", 
+  apiURLDatiGov: "http://10.102.59.183:9000/dati-gov/v1", 
+
+  //PRODUCTION
+  auth: "YW5kcmVhOmFuZHJlYQ=="
+
+
+  //apiURLDatiGov: user stories e dashboard
+  //apickan: dataset
+  // 10.102.59.183
   
-  apiURLDatiGov: "http://localhost:3001/dati-gov/v1",
-  
-  apiCKAN: "http://192.168.0.33/api/3/action"
-  
+ 
 }

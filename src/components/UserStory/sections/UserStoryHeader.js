@@ -4,16 +4,19 @@ import React from 'react';
 class UserStoryHeader extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props);    
   }
 
+  
   render() {
 
+    let timestamp = this.props.story.timestamp;
     return (
-        <div>
+      <div >
             <div className="text-center">
               <h1>{this.props.story.title}</h1>
-              <h3 dangerouslySetInnerHTML={{__html: this.props.story.subtitle}}></h3>
+              <h3 dangerouslySetInnerHTML={{__html: this.props.story.subtitle}}></h3> 
+              
 
               {/* SHARE */}
               <div className="share">
@@ -40,19 +43,21 @@ class UserStoryHeader extends React.Component {
               {/* USER */}
               <div className="user-box text-left">
                 <img className="user-img" src="/img/user.png"/>
-                <div className="user-caption">
+                <span className="user-caption">
                   <h4>
-                    Joe Sample
+                    {this.props.story.user}
                   </h4>
-                  <div>
-                    Keyboardist and compose
-                  </div>
-                </div>
+                  <span>
+                    <h4>
+                    {timestamp.dayOfMonth+"-"+timestamp.monthValue+"-"+timestamp.year+" "+timestamp.hour+":"+timestamp.minute}
+                    </h4>
+                  </span>
+                </span>
               </div>
 
             </div>
 
-            {/* USER BOX */}
+            {/* USER BOX 
             <div>
               <div className="img-user">
 
@@ -66,6 +71,7 @@ class UserStoryHeader extends React.Component {
                 </div>
               </div>
             </div>
+            */}
         </div>
       );
   }

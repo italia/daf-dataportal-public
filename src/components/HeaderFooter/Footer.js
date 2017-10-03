@@ -18,14 +18,14 @@ export const Footer = () => (
 
              
 
-                <div className="Grid-cell u-layout-centerRight u-padding-r-bottom u-flexAlignSelfEnd">
+                {/* <div className="Grid-cell u-layout-centerRight u-padding-r-bottom u-flexAlignSelfEnd">
                   <h3 className="u-md-flexInline u-lg-flexInline u-text-p u-color-white u-textWeight-400 u-hidden u-margin-r-right u-flexAlignSelfCenter">Seguici su</h3>
                   <ul className="Footer-socialIcons">
                     <li><a href=""><span className="Icon Icon-facebook u-background-white"></span><span className="u-hiddenVisually">Facebook</span></a></li>
                     <li><a href=""><span className="Icon Icon-twitter u-background-white"></span><span className="u-hiddenVisually">Twitter</span></a></li>
                     <li><a href=""><span className="Icon Icon-youtube u-background-white"></span><span className="u-hiddenVisually">Youtube</span></a></li>
                   </ul>
-                </div>
+                </div> */}
 
               </div>
 

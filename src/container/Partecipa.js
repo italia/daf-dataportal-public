@@ -12,7 +12,7 @@ class Partecipa extends Component {
       render() {
         
 				return (
-					<div>
+					<div className="u-layout-wide u-layoutCenter">
 						<div className="u-background-50 u-layout-r-withGutter u-padding-top-xxl">
 							<h2 className="u-text-r-l u-textWeight-300 u-color-white u-lineHeight-l">La Palestra</h2>
 						</div>
@@ -38,7 +38,7 @@ class Partecipa extends Component {
 
 											<h3 className="u-text-h3">Metabase</h3>
 
-											<img src="img/partecipa/metabase.png" class="u-inlineBlock u-margin-bottom-s u-border-all-xxs u-color-grey-30" alt="" />
+											<img src="img/partecipa/metabase.png" className="u-inlineBlock u-margin-bottom-s u-border-all-xxs u-color-grey-30" alt="" />
 
 											<p>Magnam aut deserunt sed commodi. Et delectus praesentium consectetur quasi incidunt. Similique enim quibusdam aut consequatur quia.
 

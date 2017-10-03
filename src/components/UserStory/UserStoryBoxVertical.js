@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Link } from 'react-router-dom';
 
 
-class UserStoriesBox extends React.Component {
+class UserStoryBoxVertical extends React.Component {
 
   constructor(props) {
     super(props)
@@ -27,8 +27,8 @@ class UserStoriesBox extends React.Component {
 
     return (
      
-        <div className="Grid-cell u-sizeFull u-md-size1of3 u-lg-size1of3 u-margin-r-bottom u-layout-matchHeight">
-            <div className="w-100 u-nbfc u-borderRadius-m u-background-grey-10 u-color-grey-70">
+        <div className="Grid-cell u-sizeFull u-md-size1of1 u-lg-size1of1 u-margin-r-bottom u-layout-matchHeight">
+            <div className="w-100 u-nbfc u-borderRadius-m u-background-grey-10">
               <section className="u-text-r-l u-padding-r-all u-layout-prose">
                 <h3 className="u-padding-r-bottom">
                   
@@ -47,12 +47,14 @@ class UserStoriesBox extends React.Component {
                     Per saperne di più <span className="Icon Icon-chevron-right"></span>
                   </Link>
                 </p>
-              </section>
+               
+              </section>            
+              
             </div>
           </div>
-  
+    
       );
   }
 }
 
-export default UserStoriesBox;
+export default UserStoryBoxVertical;

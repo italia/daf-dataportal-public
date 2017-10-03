@@ -12,7 +12,7 @@ class LineeGuida extends Component {
       render() {
         
         return (
-        <div>          
+			<div className="u-layout-wide u-layoutCenter">         
                 
 					 <div className="u-background-50 u-layout-r-withGutter u-padding-top-xxl">
 						<h2 className="u-text-r-l u-textWeight-300 u-color-white u-lineHeight-l">Linee guida sui dati</h2>
