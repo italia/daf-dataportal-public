@@ -23,6 +23,6 @@ export const serviceurl = {
   // service url
   apiURLDatiGov: "http://datipubblici.default.svc.cluster.local:9000/dati-gov/v1", 
   apiURLCatalogManager: "http://catalog-manager.default.svc.cluster.local:9000/catalog-manager/v1", 
-  apiCKAN: "http://192.168.0.33/api/3/action"
+  apiCKAN: "http://192.168.0.33/api/3/action",
   auth: "YW5kcmVhOmFuZHJlYQ=="
 }
