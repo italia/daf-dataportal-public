@@ -35,8 +35,8 @@ a:hover Icon-* {
 a:focus,
 a:active {
     outline:none!important;
-    box-shadow: 0 0 0 white !important;
-}
+    box-shadow: 0 0 0 white !important;    
+} 
 
 
 
@@ -130,16 +130,40 @@ a:active {
     padding: 5px 20px;
     margin-top: -10px;
 }
+
+.titleSeparatorVert {
+    border-top: 2px solid #06c;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.titleSeparatorVert .content {
+    float: left;
+    width: 50%;
+}
+.titleSeparatorVert .title {
+    background-color: #06c;
+    float: right;
+    color: white;
+    text-transform: uppercase;
+    font-size: 6;
+    padding: 5px 20px;
+    margin-top: -10px;
+}
   
 /* USER STORY */
 .user-story-view h1 {
     margin: 0 auto;
     margin-top: 80px;
     max-width: 500px;
+    color: #337ab7;
 }
   
 .user-story-view h3 {
     margin-top: 50px;
+    color: #337ab7;
 }
   
 .user-story-view .share {
@@ -202,10 +226,11 @@ a:active {
 .user-story-view .user-box .user-caption {
     display: inline-block;
     margin-left: 20px;
-    height: 70px;
-    top: 15px;
+    height: 30px;
+    
     position: relative;
 }
+
   
 /* HEADER */
   

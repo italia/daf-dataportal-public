@@ -1,7 +1,9 @@
 import React from 'react';
 
 import TitleSeparator from '../TitleSeparator/titleSeparator.js';
+import TitleSeparatorVert from '../TitleSeparator/titleSeparatorVert.js';
 import UserStoryBox from './UserStoryBox.js';
+import UserStoryBoxVertical from './UserStoryBoxVertical.js';
 
 class UserStoriesContent extends React.Component {
 
@@ -19,6 +21,9 @@ class UserStoriesContent extends React.Component {
     if (this.props.subtitle)
       this.state.subtitle = this.props.subtitle;
 
+    if (this.props.userStoryView)
+      this.state.userStoryView = this.props.userStoryView;
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -31,22 +36,50 @@ class UserStoriesContent extends React.Component {
 
     let stories = [];
 
-    if (this.state.userStories) {
+    if (this.state.userStories && this.state.userStoryView) {
       stories = this.state.userStories.map((story, key) => {
-        
+        if (key > 2) return;
         return (
-          <UserStoryBox key={key} story={story}>
-          </UserStoryBox>
+         
+          <UserStoryBoxVertical key={key} story={story}>
+          </UserStoryBoxVertical>
+         
         )
       });
+    } else  if (this.state.userStories) {
+      stories = this.state.userStories.map((story, key) => {
+        if (key > 2) return;
+        return (
+         
+          <UserStoryBox key={key} story={story}>
+          </UserStoryBox>
+         
+        )
+      });
+
     }
 
-    return (
-        <div className = "Grid Grid--withGutter text-left mt-40">
-          <TitleSeparator text={this.state.subtitle} title={this.state.title} />
-          {stories}
-        </div>
-      );
+    if (this.state.userStories && this.state.userStoryView) {
+      return (
+      
+          <div className = "Grid Grid--withGutter text-left mt-40">
+            <TitleSeparatorVert text={this.state.subtitle} title={this.state.title} />
+            {stories}
+          </div>
+          
+        );
+    } else {
+
+      return (
+        
+           <div className = "Grid Grid--withGutter text-left mt-40">
+             <TitleSeparator text={this.state.subtitle} title={this.state.title} />
+             {stories}
+           </div>
+           
+         );
+
+    }
   }
 }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import 'bootstrap/dist/css/bootstrap.css'
+//import 'bootstrap/dist/css/bootstrap.css'
 import { Route, BrowserRouter, Redirect, Switch } from 'react-router-dom'
 import Login from '../container/Login'
 import Register from '../container/Register'

@@ -12,16 +12,39 @@ export const Header = () => (
               <li><a className="js-fr-offcanvas-open" href="#menu"
                 aria-controls="menu" aria-label="accedi al menu" title="accedi al menu">Vai alla navigazione del sito</a></li>
             </ul>
-            <header className="Header  u-hiddenPrint">
-
+            <header className="Header  u-hiddenPrint" />
+          
+              
               <div className="Header-banner u-background-50">
-                <div className="Header-owner Headroom-hideme u-border-bottom-xxs">
+              <div className="Header-owner Headroom-hideme u-flex u-flexJustifyBetween u-flexAlignItemsCenter">
                   
                   <Link role="button" to={"/"}>
-                    <span>AgID <span className="u-hidden u-md-inline u-lg-inline u-sm-inline">- Agenzia per l'Italia Digitale</span></span>
-                  </Link>
+                    <span>AgID <span className="u-hidden u-md-inline u-lg-inline u-sm-inline">+ Team Digitale</span></span>
+                  </Link> 
+                  {/* ####################
+                  <div className="u-hidden u-md-block u-lg-block">
+                  <div className="Header-slim u-background-50">
 
-                  {/* <div className="Header-languages u-background-50 u-jsVisibilityHidden">
+                    <ul className="Header-links u-cf">
+
+                      <li ><a className="u-color-white" href="https://pianotriennale-ict.italia.it">Piano Triennale</a></li>
+
+                      <li><a className="u-color-white" href="https://developers.italia.it/">Developers</a></li>
+
+                      <li><a className="u-color-white" href="http://designers.italia.it">Designers</a></li>
+
+                      <li ><a className="u-color-white" href="https://forum.italia.it/">Forum</a></li>
+
+                      <li ><a className="u-color-white" href="https://docs.developers.italia.it/">Docs</a></li>
+
+                      <li ><a className="u-color-white" href="https://github.com/italia/">Github</a></li>
+
+
+                    </ul>
+                  </div>
+                </div>  ####################################*/}
+                  
+                 {/*  <div className="Header-languages u-background-50 u-jsVisibilityHidden">
                       <a href="#languages" data-menu-trigger="languages" className="Header-language u-border-none u-zindex-max u-inlineBlock">
                         <span className="u-hiddenVisually">lingua attiva:</span>
                         <span className="">ITA</span>
@@ -43,14 +66,20 @@ export const Header = () => (
                           <li><a href="#9" className="u-padding-r-all"><span lang="tr">TÜRKÇE</span></a></li>
                         </ul>
                       </div>
-                  </div> */}
+                  </div>  */}
                 </div>
-              </div>
+              </div> 
+
+
+
+           
+
+
 
               <div className="Header-navbar u-background-50">
                 <div className="u-layout-wide Grid Grid--alignMiddle u-layoutCenter">
                   <div className="Header-logo Grid-cell" aria-hidden="true">
-                    <Link role="button" to={"/"}>
+                    <Link to={"/"}>
                       <img src="http://designer.italia.it/assets/icons/logo-it.png" alt=""/>
                     </Link>
                   </div>
@@ -64,22 +93,25 @@ export const Header = () => (
                     </h1>
                   </div>
 
-                  <div className="Header-searchTrigger Grid-cell">
-                    <button aria-controls="header-search" className="js-Header-search-trigger Icon Icon-search u-background-50"
-                      title="attiva il form di ricerca" aria-label="attiva il form di ricerca" aria-hidden="false">
-                    </button>
-                    <button aria-controls="header-search" className="js-Header-search-trigger Icon Icon-close u-hidden u-background-50"
-                      title="disattiva il form di ricerca" aria-label="disattiva il form di ricerca" aria-hidden="true">
-                    </button>
-                  </div>
-
                   <div className="Header-utils Grid-cell">
+                    <div className="Header-social Headroom-hideme">
+                      <p>Seguici su</p>
+                      <ul className="Header-socialIcons">
+
+                        <li><a href="https://twitter.com/developersITA" title="twitter"><span className="Icon-twitter"></span>
+                          <span className="u-hiddenVisually">Twitter</span></a></li>
+
+                        <li><a href="https://medium.com/team-per-la-trasformazione-digitale/" title="medium"><span className="Icon-medium"></span>
+                          <span className="u-hiddenVisually">Medium</span></a></li>
+
+                      </ul>
+                    </div>
                     <div className="Header-search " id="header-search">
                       <form className="Form">
                           <div className="Form-field Form-field--withPlaceholder Grid u-background-white u-color-grey-30 u-borderRadius-s" role="search">
                             <input className="Form-input Form-input--ultraLean Grid-cell u-sizeFill u-text-r-s u-color-black u-text-r-xs u-borderRadius-s"
                               required id="cerca"/>
-                            <label className="Form-label u-color-grey-50 u-text-r-xxs" htmlFor="cerca">cerca nel sito</label>
+                            <label className="Form-label u-color-grey-50 u-text-r-xxs" htmlFor="cerca">cerca nei dataset</label>
                             <button className="Grid-cell u-sizeFit Icon-search Icon--rotated u-color-grey-50 u-padding-all-s u-textWeight-700" title="Avvia la ricerca" aria-label="Avvia la ricerca">
                           </button>
                           </div>
@@ -88,13 +120,7 @@ export const Header = () => (
                     </div>
                   </div>
 
-                 {/*  <div className="Header-toggle Grid-cell">
-                    <a className="Hamburger-toggleContainer js-fr-offcanvas-open u-nojsDisplayInlineBlock u-lg-hidden u-md-hidden" href="#menu"
-                      aria-controls="menu" aria-label="accedi al menu" title="accedi al menu">
-                      <span className="Hamburger-toggle" role="presentation"></span>
-                      <span className="Header-toggleText" role="presentation">Menu</span>
-                    </a>
-                  </div> */}
+             
 
                 </div>
               </div>
@@ -107,7 +133,7 @@ export const Header = () => (
               </div>
 
 
-            </header>
+         
 
 
 
@@ -122,23 +148,42 @@ export const Header = () => (
               </div>
               <nav>
                 <ul className="Linklist Linklist--padded u-layout-prose u-text-r-xs Treeview Treeview--default js-Treeview">            
+                  
                   <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
                   <a href="/" className="Linklist-link">Il Progetto</a>
                   <ul>
 							      <li><a href="/missione" className="Linklist-link">Missione</a></li>
-                    <li><a href="/team" className="Linklist-link">Team</a></li>
+                    <li><a href="/team" className="Linklist-link">Chi Siamo</a></li>
                     <li><a href="/lineeguida" className="Linklist-link">Linee Guida</a></li>
                   </ul>
                   </li>
+
                   <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
-                  <a href="/" className="Linklist-link">Esplora</a>
+                  <a href="/" className="Linklist-link">Dati</a>
                   </li>
+
                   <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
-                  <a href="/crea" className="Linklist-link">Crea</a>
+                  <a href="/" className="Linklist-link">Community</a>
+                  <ul>
+                    <li><a href="/crea" className="Linklist-link">Data Stories</a></li>
+                    <li><a href="/" className="Linklist-link">Notizie</a></li>
+                    <li><a href="/" className="Linklist-link">Forum</a></li>
+                  </ul>
                   </li>
+
                   <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
-                  <a href="/partecipa" className="Linklist-link">Partecipa</a>
+                  <a href="/" className="Linklist-link">Dataproducts</a>
                   </li>
+
+                  <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
+                  <a href="/" className="Linklist-link">Partecipa</a>
+                  <ul>
+                    <li><a href="/partecipa" className="Linklist-link">Tools</a></li>
+                    <li><a href="/" className="Linklist-link">Sviluppatori</a></li>
+                    <li><a href="/" className="Linklist-link">API</a></li>
+                  </ul>
+                  </li>
+
                   <li data-megamenu-class="Megamenu-item Megamenu-area u-background-40 u-padding-left-none">
                   <a className="Button Button--default u-border-none u-color-95 u-background-compl u-text-r-xxs" href="/login">Accedi</a>                             
                   </li>

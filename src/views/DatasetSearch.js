@@ -131,6 +131,13 @@ export default class DatasetSearch extends React.Component {
   
   render() {
     return (
+        
+        <div>
+      <div className="u-background-50 u-layout-r-withGutter u-padding-top-xxl">
+      <h1 className="u-text-r-l u-textWeight-300 u-color-white u-lineHeight-l">Risultati ricerca</h1>
+    </div><div className="u-padding-top-xxl u-background-50"></div>
+    <hr className="Separator Separator--up u-background-white" />
+    <div className="u-background-white u-layout-r-withGutter u-posRelative u-zindex-30">
         <div className="u-layout-wide u-layoutCenter u-layout-withGutter u-padding-r-top u-padding-bottom-xxl">
           <div className="Grid Grid--withGutter">
             <div className="Grid-cell u-md-size8of12 u-lg-size8of12 u-padding-right-xl">
@@ -245,6 +252,8 @@ export default class DatasetSearch extends React.Component {
 
 
           </div>
+        </div>
+        </div>
         </div>
       );
   }
