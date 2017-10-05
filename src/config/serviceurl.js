@@ -9,7 +9,7 @@ export const serviceurl = {
   //Ckan centrale 
   apiCKAN: "http://192.168.0.33/api/3/action",
   //apiURLDatiGov: "http://datipubblici.default.svc.cluster.local:9000/dati-gov/v1", 
-  apiURLDatiGov: "http://10.102.59.183:9000/dati-gov/v1", 
+  apiURLDatiGov: "http://10.99.232.252:9000/dati-gov/v1", 
 
   //PRODUCTION
   auth: "YW5kcmVhOmFuZHJlYQ=="

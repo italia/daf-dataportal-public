@@ -87,8 +87,8 @@ export const Header = () => (
                   <div className="Header-title Grid-cell">
                     <h1 className="Header-titleLink">
                       <Link role="button" to={"/"}>
-                        Dati Pubblici <span className="u-lg-hidden u-md-hidden u-sm-hidden u-cf u-padding-top-xxs u-block"></span><br/>
-                        <small>Analisi dei dati per lo sviluppo del Paese</small>
+                        /daf <span className="u-lg-hidden u-md-hidden u-sm-hidden u-cf u-padding-top-xxs u-block"></span><br/>
+                        <small>Il framework dei dati pubblici del Paese</small>
                       </Link>
                     </h1>
                   </div>
@@ -159,29 +159,21 @@ export const Header = () => (
                   </li>
 
                   <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
-                  <a href="/" className="Linklist-link">Dati</a>
+                  {/* <a href="/dataset/search" className="Linklist-link">Esplora</a> */}
+                  <a href="/" className="Linklist-link">Esplora</a>
                   </li>
 
                   <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
                   <a href="/" className="Linklist-link">Community</a>
                   <ul>
                     <li><a href="/crea" className="Linklist-link">Data Stories</a></li>
-                    <li><a href="/" className="Linklist-link">Notizie</a></li>
-                    <li><a href="/" className="Linklist-link">Forum</a></li>
+                    <li><a href="https://developers.italia.it/news" target="_blank" className="Linklist-link">Notizie</a></li>
+                    <li><a href="https://forum.italia.it" target="_blank" className="Linklist-link">Forum</a></li>
                   </ul>
                   </li>
 
                   <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
-                  <a href="/" className="Linklist-link">Dataproducts</a>
-                  </li>
-
-                  <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
-                  <a href="/" className="Linklist-link">Partecipa</a>
-                  <ul>
-                    <li><a href="/partecipa" className="Linklist-link">Tools</a></li>
-                    <li><a href="/" className="Linklist-link">Sviluppatori</a></li>
-                    <li><a href="/" className="Linklist-link">API</a></li>
-                  </ul>
+                  <a href="/partecipa" className="Linklist-link">Partecipa</a>
                   </li>
 
                   <li data-megamenu-class="Megamenu-item Megamenu-area u-background-40 u-padding-left-none">
