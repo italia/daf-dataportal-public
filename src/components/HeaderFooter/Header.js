@@ -1,28 +1,94 @@
 import React from 'react';
 import { logout } from '../../helpers/auth';
-//import SlimHeader from '../MegaHeader/SlimHeader';
+import SlimHeader from '../MegaHeader/SlimHeader';
 import { Link } from 'react-router-dom';
 
 export const Header = () => (
   <div className="u-background-95">
-        <div className="u-layout-wide u-layoutCenter">
+    <div className="u-layout-wide u-layoutCenter">
 
-            <ul className="Skiplinks js-fr-bypasslinks u-hiddenPrint">
-              <li><a href="#main">Vai al Contenuto</a></li>
-              <li><a className="js-fr-offcanvas-open" href="#menu"
-                aria-controls="menu" aria-label="accedi al menu" title="accedi al menu">Vai alla navigazione del sito</a></li>
-            </ul>
-            <header className="Header  u-hiddenPrint" />
-          
-              
-              <div className="Header-banner u-background-50">
-              <div className="Header-owner Headroom-hideme u-flex u-flexJustifyBetween u-flexAlignItemsCenter">
-                  
-                  <Link role="button" to={"/"}>
-                    <span>AgID <span className="u-hidden u-md-inline u-lg-inline u-sm-inline">+ Team Digitale</span></span>
-                  </Link> 
-                  {/* ####################
-                  <div className="u-hidden u-md-block u-lg-block">
+      <ul className="Skiplinks js-fr-bypasslinks u-hiddenPrint">
+        <li><a href="#main">Vai al Contenuto</a></li>
+        <li><a className="js-fr-offcanvas-open" href="#menu"
+          aria-controls="menu" aria-label="accedi al menu" title="accedi al menu">Vai alla navigazione del sito</a></li>
+      </ul>
+      <header className="Header  u-hiddenPrint" />
+
+
+      <div className="Header-banner u-background-50">
+        <div className="Header-owner Headroom-hideme u-flex u-flexJustifyBetween u-flexAlignItemsCenter">
+          <div className="Header-owner__institutions">
+            <div className="u-md-hidden u-lg-hidden u-border-right-xxs u-margin-right-xs u-padding-right-xs u-inlineBlock u-alignMiddle">
+              <a className="js-fr-offcanvas-open u-block" href="#network" aria-controls="network" aria-label="" title="">
+              {/*   <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTkuMnB4IiBoZWlnaHQ9IjE2cHgiIHZpZXdCb3g9IjAgMCAxMiAxMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxkZWZzPjwvZGVmcz4KICAgIDxnIGlkPSIxMDI0dXAiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSItLWhvbWUtLS1wYXJhbGxheC0tLW1vYmlsZSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTI0LjAwMDAwMCwgLTIwLjAwMDAwMCkiIGZpbGw9IiNGRkZGRkYiPgogICAgICAgICAgICA8ZyBpZD0iLW5ldHdvcmstc2xpbS1oZWFkZXIiPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTI0LDI0IEwzNiwyNCBMMzYsMjYgTDI0LDI2IEwyNCwyNCBaIE0yNCwyMCBMMzIsMjAgTDMyLDIyIEwyNCwyMiBMMjQsMjAgWiBNMjQsMjggTDMyLDI4IEwzMiwzMCBMMjQsMzAgTDI0LDI4IFoiIGlkPSJpY29uLXNtYWxsLWJ1cmdlciI+PC9wYXRoPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=" />
+ */}
+          </a>
+        </div>
+              <a href="http://www.agid.gov.it">
+                <span className="u-inline u-md-hidden u-lg-hidden u-sm-hidden">
+                  AgID
+          </span>
+                <span className="u-hidden u-md-inline u-lg-inline u-sm-inline">
+                  AgID
+          </span>
+              </a>
+              <span className="u-color-white">&nbsp;+&nbsp;</span>
+              <a href="https://teamdigitale.governo.it">
+                <span className="u-inline u-md-hidden u-lg-hidden u-sm-hidden">
+                  Team Digitale
+          </span>
+                <span className="u-hidden u-md-inline u-lg-inline u-sm-inline">
+                  Team Digitale
+          </span>
+              </a>
+            </div>
+            <div className="u-hidden u-md-block u-lg-block">
+              <div className="Header-slim u-background-50">
+
+                <ul className="Header-links u-cf">
+
+                  <li className="delimiter"><a className="u-color-white" href="https://pianotriennale-ict.italia.it">Piano Triennale</a></li>
+
+                  <li className="current"><a className="u-color-white" href="https://developers.italia.it/">Developers</a></li>
+
+                  <li className="delimiter"><a className="u-color-white" href="http://designers.italia.it">Designers</a></li>
+
+                  <li className=""><a className="u-color-white" href="https://forum.italia.it/">Forum</a></li>
+
+                  <li className=""><a className="u-color-white" href="https://docs.developers.italia.it/">Docs</a></li>
+
+                  <li className="delimiter"><a className="u-color-white" href="https://github.com/italia/">Github</a></li>
+
+
+                  <li>
+                    <a href="#languages" data-menu-trigger="languages" className="Header-language u-border-none u-zindex-max u-inlineBlock" aria-controls="languages" aria-haspopup="true" role="button">
+                      <span className="u-hiddenVisually">lingua attiva:</span>
+                      <span className="">ITA</span>
+                      <span className="Icon Icon-expand u-padding-left-xs"></span>
+                    </a>
+                  </li>
+
+                 
+
+
+
+
+                </ul>
+
+
+              </div>
+
+
+            </div>
+          </div>
+
+              {/* <div className="Header-owner Headroom-hideme u-flex u-flexJustifyBetween u-flexAlignItemsCenter">
+
+                <Link role="button" to={"/"}>
+                  <span>AgID <span className="u-hidden u-md-inline u-lg-inline u-sm-inline">+ Team Digitale</span></span>
+                </Link>
+
+                <div className="u-hidden u-md-block u-lg-block">
                   <div className="Header-slim u-background-50">
 
                     <ul className="Header-links u-cf">
@@ -42,33 +108,9 @@ export const Header = () => (
 
                     </ul>
                   </div>
-                </div>  ####################################*/}
-                  
-                 {/*  <div className="Header-languages u-background-50 u-jsVisibilityHidden">
-                      <a href="#languages" data-menu-trigger="languages" className="Header-language u-border-none u-zindex-max u-inlineBlock">
-                        <span className="u-hiddenVisually">lingua attiva:</span>
-                        <span className="">ITA</span>
-                        <span className="Icon Icon-expand u-padding-left-xs"></span>
-                      </a>
-                      <div id="languages" data-menu className="Dropdown-menu Header-language-other u-jsVisibilityHidden u-nojsDisplayNone">
-                        <span className="Icon-drop-down Dropdown-arrow u-color-white"></span>
-                        <ul>
-                          <li><a href="#1" className="u-padding-r-all"><span lang="en">English</span></a></li>
-                          <li><a href="#1" className="u-padding-r-all"><span lang="ar">عربي</span></a></li>
-                          <li><a href="#2" className="u-padding-r-all"><span lang="ch">中文网</span></a></li>
-                          <li><a href="#3" className="u-padding-r-all"><span lang="de">Deutsch</span></a></li>
-                          <li><a href="#8" className="u-padding-r-all"><span lang="es">Español</span></a></li>
-                          <li><a href="#4" className="u-padding-r-all"><span lang="fr">Français</span></a></li>
-                          <li><a href="#5" className="u-padding-r-all"><span lang="ja">日本語</span></a></li>
-                          <li><a href="#6" className="u-padding-r-all"><span lang="pt">Portuguese</span></a></li>
-                          <li><a href="#7" className="u-padding-r-all"><span lang="ru">НА РУССКОМ</span></a></li>
-                          <li><a href="#10" className="u-padding-r-all"><span lang="uk">УКРАЇНСЬКA</span></a></li>
-                          <li><a href="#9" className="u-padding-r-all"><span lang="tr">TÜRKÇE</span></a></li>
-                        </ul>
-                      </div>
-                  </div>  */}
                 </div>
-              </div> 
+              </div> */}
+            </div> 
 
 
 
@@ -80,15 +122,15 @@ export const Header = () => (
                 <div className="u-layout-wide Grid Grid--alignMiddle u-layoutCenter">
                   <div className="Header-logo Grid-cell" aria-hidden="true">
                     <Link to={"/"}>
-                      <img src="http://designer.italia.it/assets/icons/logo-it.png" alt=""/>
+                      <img src="https://developers.italia.it/assets/icons/logo-it.png" alt=""/>
                     </Link>
                   </div>
 
                   <div className="Header-title Grid-cell">
                     <h1 className="Header-titleLink">
                       <Link role="button" to={"/"}>
-                        Dati Pubblici <span className="u-lg-hidden u-md-hidden u-sm-hidden u-cf u-padding-top-xxs u-block"></span><br/>
-                        <small>Analisi dei dati per lo sviluppo del Paese</small>
+                        /daf <span className="u-lg-hidden u-md-hidden u-sm-hidden u-cf u-padding-top-xxs u-block"></span><br/>
+                        <small>Il framework dei dati pubblici del Paese</small>
                       </Link>
                     </h1>
                   </div>
@@ -159,29 +201,21 @@ export const Header = () => (
                   </li>
 
                   <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
-                  <a href="/" className="Linklist-link">Dati</a>
+                  {/* <a href="/dataset/search" className="Linklist-link">Esplora</a> */}
+                  <a href="/" className="Linklist-link">Esplora</a>
                   </li>
 
                   <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
                   <a href="/" className="Linklist-link">Community</a>
                   <ul>
                     <li><a href="/crea" className="Linklist-link">Data Stories</a></li>
-                    <li><a href="/" className="Linklist-link">Notizie</a></li>
-                    <li><a href="/" className="Linklist-link">Forum</a></li>
+                    <li><a href="https://developers.italia.it/news" target="_blank" className="Linklist-link">Notizie</a></li>
+                    <li><a href="https://forum.italia.it" target="_blank" className="Linklist-link">Forum</a></li>
                   </ul>
                   </li>
 
                   <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
-                  <a href="/" className="Linklist-link">Dataproducts</a>
-                  </li>
-
-                  <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
-                  <a href="/" className="Linklist-link">Partecipa</a>
-                  <ul>
-                    <li><a href="/partecipa" className="Linklist-link">Tools</a></li>
-                    <li><a href="/" className="Linklist-link">Sviluppatori</a></li>
-                    <li><a href="/" className="Linklist-link">API</a></li>
-                  </ul>
+                  <a href="/partecipa" className="Linklist-link">Partecipa</a>
                   </li>
 
                   <li data-megamenu-class="Megamenu-item Megamenu-area u-background-40 u-padding-left-none">

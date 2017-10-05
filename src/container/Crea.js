@@ -12,7 +12,8 @@ class Crea extends Component {
       this.state = {};
   
       //get stories
-      let userStories = userStoryService.getLastCrea();
+      //let userStories = userStoryService.getLastCrea();
+      let userStories = userStoryService.getLast();
       userStories.then((list) => {
         this.setState({
           userStories: list

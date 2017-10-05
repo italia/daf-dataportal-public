@@ -8,7 +8,7 @@ export default class DatasetService {
     constructor() {
     }
 
-    async search(query, category_filter, group_filter, organization_filter){
+    async search(totalDataDisplayed,offset,query, category_filter, group_filter, organization_filter){
 
         let queryurl = '';
         if(query) {
@@ -86,7 +86,7 @@ export default class DatasetService {
         if(!queryurl && (categoryurl || groupurl || orgurl))  
             stringaIniz = '&q=('
 
-        const response = await fetch( serviceurl.apiCKAN + "/package_search?rows=20" + stringaIniz + queryurl + categoryurl + groupurl +orgurl, {
+        const response = await fetch( serviceurl.apiCKAN + "/package_search?rows=" +totalDataDisplayed +"&start="+ totalDataDisplayed*offset+"&"+stringaIniz + queryurl + categoryurl + groupurl +orgurl, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -122,5 +122,7 @@ export default class DatasetService {
         });
         return response.json();
     }
+
+   
 
 } 
