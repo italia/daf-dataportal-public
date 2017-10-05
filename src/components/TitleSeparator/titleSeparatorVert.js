@@ -12,7 +12,7 @@ class TitleSeparatorVert extends React.Component {
 
     return (
         <div className="titleSeparatorVert">
-            <div className="content">
+            <div >
                 {this.state.text}
             </div>
             <div className="title">

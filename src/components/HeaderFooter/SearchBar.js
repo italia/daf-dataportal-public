@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
+import Columns from 'react-columns';
 //import { browserHistory } from 'react-router';
 import {
     createBrowserHistory,
@@ -112,6 +113,7 @@ export default class SearchBar extends React.Component {
                                 </button>
                             </div>
                         </form>
+                        
                         <div className="u-layoutCenter u-textCenter u-color-white">
                             <ul className="u-textCenter u-layoutCenter u-padding-r-all u-margin-top">
                                 <li className="u-inlineBlock u-padding-right-xs u-padding-left-xs">
@@ -129,25 +131,29 @@ export default class SearchBar extends React.Component {
                                 </li>
                             </ul>
                         </div>
-                        
+                       
                         {
                             this.state.showCategory &&
                             <div>
-                                <div className="category-box row">
+                            
+                                <div className="category-box cols">
                                     {
                                         this.state.categories.map((category, index) => { return (
-                                            <div key={index} className="col-sm-6">
-                                                <div className={"category-item " + (this.state.category_filter[category.tag]==true ? "active": "") } onClick={() => this.enableCategory(category.tag)}>
-                                                    <img src={"/img/category/" + category.tag + (this.state.category_filter[category.tag]==true ? "_blu": "") + ".png"} />
-                                                    {category.name}
+                                            
+                                                <div key={index} className="col-sm-6">
+                                                    <div className={"category-item " + (this.state.category_filter[category.tag]==true ? "active": "") } onClick={() => this.enableCategory(category.tag)}>
+                                                        <img src={"/img/category/" + category.tag + (this.state.category_filter[category.tag]==true ? "_blu": "") + ".png"} />
+                                                        {category.name}
+                                                    </div>
                                                 </div>
-                                            </div>
+                                           
                                             )
                                         })
                                     }
                                 </div>
+                                
                                 <div className="clearfix"></div>
-                            </div>
+                            </div> 
                         }
                     </div>
                 </div>

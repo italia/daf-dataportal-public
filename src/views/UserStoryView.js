@@ -76,72 +76,72 @@ class UserStoryView extends React.Component {
 
   render() {
     return (
-      <div className="u-layout-wide u-layoutCenter">         
-      
- <div className="u-background-50 u-layout-r-withGutter u-padding-top-xxl">
-  <h2 className="u-text-r-l u-textWeight-300 u-color-white u-lineHeight-l">Linee guida sui dati</h2>
-</div>
-<div className="u-padding-top-xxl u-background-50"></div>
-<hr className="Separator Separator--up u-background-white" />					
-<div className="u-background-white u-layout-r-withGutter u-posRelative u-zindex-30">			
-  
-  <div className="u-layout-wide u-layoutCenter u-layout-withGutter u-padding-r-top u-padding-bottom-xxl">
-    <div className="Grid Grid--withGutter">
-      <div className="Grid-cell u-md-size9of12 u-lg-size9of12 u-padding-right-xl">
+      <div className="u-layout-wide u-layoutCenter">
+
+        <div className="u-background-50 u-layout-r-withGutter u-padding-top-xxl">
+          <h2 className="u-text-r-l u-textWeight-300 u-color-white u-lineHeight-l">Linee guida sui dati</h2>
+        </div>
+        <div className="u-padding-top-xxl u-background-50"></div>
+        <hr className="Separator Separator--up u-background-white" />
+        <div className="u-background-white u-layout-r-withGutter u-posRelative u-zindex-30">
+
+          <div className="u-layout-wide u-layoutCenter u-layout-withGutter u-padding-r-top u-padding-bottom-xxl">
+            <div className="Grid Grid--withGutter">
+              <div className="Grid-cell u-md-size9of12 u-lg-size9of12 u-padding-right-xl">
 
 
 
-     
-        <div className="row user-story-view">
-          <div>
-          
-            { 
-              this.state.story && 
-              <div>
-                <UserStoryHeader story={this.state.story} />
-                <UserStoryGraph graph={this.state.story.graph1} />
-                <div className="body">
-                  <div dangerouslySetInnerHTML={{__html: this.state.story.text}}></div>
-                  {/* <UserStoryImage image={this.state.story.image} />*/}
-                  <UserStoryGraph graph={this.state.story.graph2} /> 
-                  <div className="footer" dangerouslySetInnerHTML={{__html: this.state.story.footer}}></div>
-                </div>
 
-                
-                <div id="disqus_thread"></div>
-                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                <div className="row user-story-view">
+                  <div>
 
-              </div>
-            }
+                    {
+                      this.state.story &&
+                      <div>
+                        <UserStoryHeader story={this.state.story} />
+                        <UserStoryGraph graph={this.state.story.graph1} />
+                        <div className="body">
+                          <div dangerouslySetInnerHTML={{ __html: this.state.story.text }}></div>
+                          {/* <UserStoryImage image={this.state.story.image} />*/}
+                          <UserStoryGraph graph={this.state.story.graph2} />
+                          <div className="footer" dangerouslySetInnerHTML={{ __html: this.state.story.footer }}></div>
+                        </div>
 
-           
 
-            {/* <UserStoriesContent subtitle=" " title="Storie dalla community" userStories={this.state.userStoriesCommunity} >
+                        <div id="disqus_thread"></div>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+                      </div>
+                    }
+
+
+
+                    {/* <UserStoriesContent subtitle=" " title="Storie dalla community" userStories={this.state.userStoriesCommunity} >
             </UserStoriesContent> */}
 
-          </div>
-        </div>
+                  </div>
+                </div>
 
 
 
-        </div>
-								<div className="Grid-cell u-sizeFull u-md-size3of12 u-lg-size3of12">
-								
-									<article className="u-padding-all-l u-background-white u-lineHeight-l u-text-r-s u-textSecondary u-margin-bottom-l Prose-blockquote">
-                  <UserStoriesContent subtitle=" " title="Storie di argomento simile" userStories={this.state.userStoriesSimili} userStoryView="true">
+              </div>
+              <div className="Grid-cell u-sizeFull u-md-size3of12 u-lg-size3of12">
+
+                <article className="u-padding-all-l u-background-white u-lineHeight-l u-text-r-s u-textSecondary u-margin-bottom-l Prose-blockquote">
+                  <UserStoriesContent subtitle=" " title="Storie simili" userStories={this.state.userStoriesSimili} userStoryView="true">
                   </UserStoriesContent>
-									</article>
+                </article>
 
-								
-								
-								</div>
-							</div>
-						</div>
-						
-						</div>
-							
-		
+
+
+              </div>
+            </div>
+          </div>
+
         </div>
+
+
+      </div>
         
       );
   }
