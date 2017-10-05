@@ -245,6 +245,8 @@ a:active {
   
 /* HEADER */
   
- .Header-owner, .Megamenu--default>.Megamenu-list, .u-layout-wide {
-    max-width: none!important; 
+.Header-owner {
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    border-bottom: 1px solid #127ae2;
 }
