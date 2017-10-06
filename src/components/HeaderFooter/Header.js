@@ -3,10 +3,6 @@ import { logout } from '../../helpers/auth';
 import SlimHeader from '../MegaHeader/SlimHeader';
 import { Link } from 'react-router-dom';
 
-const iconStyle = {
-  "font-family": "ita!important"
-}
-
 function searchDataset(){
   let path = '/dataset/search';
   
@@ -152,7 +148,7 @@ export const Header = () => (
                         <li><a href="https://twitter.com/datigovit" title="twitter"><span className="Icon-twitter"></span>
                           <span className="u-hiddenVisually">Twitter</span></a></li>
 
-                        <li><a href="https://medium.com/team-per-la-trasformazione-digitale/" title="medium"><span style={iconStyle} className="Icon Icon-medium iconStyle"></span>
+                        <li><a href="https://medium.com/team-per-la-trasformazione-digitale/" title="medium"><span className="Icon Icon-medium"></span>
                           <span className="u-hiddenVisually">Medium</span></a></li>
 
                       </ul>

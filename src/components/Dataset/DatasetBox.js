@@ -32,10 +32,10 @@ class DatasetBox extends React.Component {
                 {this.state.dataset.resources.map((res, index) => {
                   if (index < 3) {
                   return(                 
-                    <a className="u-textClean u-textWeight-700 u-text-r-xs u-color-50 u-margin-right-s" href="#"><span key={index} className="Dot u-background-40"></span>{res.format}</a>
+                    <a key={index} className="u-textClean u-textWeight-700 u-text-r-xs u-color-50 u-margin-right-s" href="#"><span key={index} className="Dot u-background-40"></span>{res.format}</a>
                     );   
                   }  if(index = 3) {
-                    return(<Link className="u-textClean u-textWeight-700 u-text-r-xs u-color-50 u-margin-right-s" to={"/dataset/" + this.state.dataset.id}>...</Link>);
+                    return(<Link key={index} className="u-textClean u-textWeight-700 u-text-r-xs u-color-50 u-margin-right-s" to={"/dataset/" + this.state.dataset.id}>...</Link>);
                   }
                 })
                 

@@ -1,7 +1,7 @@
 import React from 'react'
 
 const styleImg = {"height": "4em", 
-                  "max-width": "100%"}
+                  "maxWidth": "100%"}
 
 export const Footer = () => (
     
