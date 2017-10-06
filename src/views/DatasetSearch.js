@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactPaginate from 'react-paginate';
 
 import DatasetSearchCard from '../components/Dataset/DatasetSearchCard.js'
 import CategoryFilter from '../components/Dataset/CategoryFilter.js'
@@ -26,7 +25,7 @@ export default class DatasetSearch extends React.Component {
       group_filter: props.history.location.state && props.history.location.state.group,
       organization_filter: props.history.location.state && props.history.location.state.organization,
       order_filter: "",
-      showDivCategory: props.history.location.state.isCategoryEnabled,
+      showDivCategory: props.history.location.state?props.history.location.state.isCategoryEnabled:false,
       showDivGroup: false,
       showDivOrganization: false,
       offset: 0,

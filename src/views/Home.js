@@ -33,6 +33,14 @@ class Home extends Component {
         dataset: list
       });
     });
+
+    // get number of
+    let datasets = datasetService.getNumber();
+    datasets.then((list) => {
+      this.setState({
+        datasetNumber: list?list.result.length:0
+      });
+    });
   }
 
   render() {
@@ -40,7 +48,7 @@ class Home extends Component {
     return (
       <div>
           <div className="u-textCenter">
-            <SearchBar history={this.props.history}/>
+            <SearchBar history={this.props.history} datasetNumber={this.state.datasetNumber}/>
 
             <section className="u-nbfc u-background-white  u-textCenter u-layout-r-withGutter u-padding-r-top u-padding-r-bottom u-posRelative u-zindex-30">
               <div className="u-layout-wide u-layoutCenter">
@@ -65,9 +73,9 @@ Home.propTypes = {
   selectDataset: PropTypes.string,
   datasets: PropTypes.array,
   dataset: PropTypes.object,
-  isFetching: PropTypes.bool.isRequired,
+  isFetching: PropTypes.bool,
   lastUpdated: PropTypes.number,
-  dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func,
   ope: PropTypes.string
 }
 

@@ -62,16 +62,7 @@ Il Dataportal è in grado di effettuare harvesting di cataloghi che espongono:
 
                                     </article>
                             </div>
-                            <div className="Grid-cell u-sizeFull u-md-size4of12 u-lg-size4of12">
-                                <article className="u-padding-all-l u-background-grey-10 u-lineHeight-l u-text-r-s u-textSecondary u-margin-bottom-l Prose-blockquote">
-                                    <p>Magnam aut deserunt sed commodi. Et delectus praesentium consectetur quasi incidunt. Similique enim quibusdam aut consequatur quia.
-							In reprehenderit harum et sequi et dolor amet rerum. Autem ad aliquam id ipsum rerum. Corporis omnis aliquam nihil deserunt. Autem voluptatem consectetur magnam quo aperiam autem dolores doloremque nihil. Assumenda non sunt quis deserunt molestiae incidunt quia quasi.
-							Soluta minima dolorem eum cupiditate. Officiis perferendis enim voluptatem ea harum vel non. Sapiente rerum vero doloremque omnis. Tempora culpa nostrum rem quas aut quas maxime ullam. Et nobis animi optio et ea dolor ipsam hic.</p>
-                                </article>
-
-
-                                <a href="#" title="torna all'inizio del contenuto" className="u-hiddenVisually">torna all'inizio del contenuto</a>
-                            </div>
+            
                         </div>
                     </div>
 

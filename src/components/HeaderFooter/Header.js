@@ -3,10 +3,25 @@ import { logout } from '../../helpers/auth';
 import SlimHeader from '../MegaHeader/SlimHeader';
 import { Link } from 'react-router-dom';
 
-export const Header = () => (
-  <div className="u-background-95">
-    <div className="u-layout-wide u-layoutCenter">
+const iconStyle = {
+  "font-family": "ita!important"
+}
 
+function searchDataset(){
+  let path = '/dataset/search';
+  
+  this.props.history.push(path, {
+      query: "",
+      category: "",
+      isCategoryEnabled: false,
+      group: "",
+      organization: ""
+  });
+  
+}
+
+export const Header = () => (
+    <div>
       <ul className="Skiplinks js-fr-bypasslinks u-hiddenPrint">
         <li><a href="#main">Vai al Contenuto</a></li>
         <li><a className="js-fr-offcanvas-open" href="#menu"
@@ -53,20 +68,14 @@ export const Header = () => (
 
                   <li className="delimiter"><a className="u-color-white" href="http://designers.italia.it">Designers</a></li>
 
-                  <li className=""><a className="u-color-white" href="https://forum.italia.it/">Forum</a></li>
+                  <li className=""><a className="u-color-white" href="https://forum.italia.it/c/daf">Forum</a></li>
 
                   <li className=""><a className="u-color-white" href="https://docs.developers.italia.it/">Docs</a></li>
 
                   <li className="delimiter"><a className="u-color-white" href="https://github.com/italia/">Github</a></li>
 
 
-                  <li>
-                    <a href="#languages" data-menu-trigger="languages" className="Header-language u-border-none u-zindex-max u-inlineBlock" aria-controls="languages" aria-haspopup="true" role="button">
-                      <span className="u-hiddenVisually">lingua attiva:</span>
-                      <span className="">ITA</span>
-                      <span className="Icon Icon-expand u-padding-left-xs"></span>
-                    </a>
-                  </li>
+
 
                  
 
@@ -140,10 +149,10 @@ export const Header = () => (
                       <p>Seguici su</p>
                       <ul className="Header-socialIcons">
 
-                        <li><a href="https://twitter.com/developersITA" title="twitter"><span className="Icon-twitter"></span>
+                        <li><a href="https://twitter.com/datigovit" title="twitter"><span className="Icon-twitter"></span>
                           <span className="u-hiddenVisually">Twitter</span></a></li>
 
-                        <li><a href="https://medium.com/team-per-la-trasformazione-digitale/" title="medium"><span className="Icon-medium"></span>
+                        <li><a href="https://medium.com/team-per-la-trasformazione-digitale/" title="medium"><span style={iconStyle} className="Icon Icon-medium iconStyle"></span>
                           <span className="u-hiddenVisually">Medium</span></a></li>
 
                       </ul>
@@ -202,7 +211,7 @@ export const Header = () => (
 
                   <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
                   {/* <a href="/dataset/search" className="Linklist-link">Esplora</a> */}
-                  <a href="/" className="Linklist-link">Esplora</a>
+                  <a href="/dataset/search" onClick={this.searchDataset} className="Linklist-link">Esplora</a>
                   </li>
 
                   <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
@@ -219,12 +228,11 @@ export const Header = () => (
                   </li>
 
                   <li data-megamenu-class="Megamenu-item Megamenu-area u-background-40 u-padding-left-none">
-                  <a className="Button Button--default u-border-none u-color-95 u-background-compl u-text-r-xxs" href="/login">Accedi</a>                             
+                  <a className="Button Button--default u-border-none u-color-95 u-background-compl u-text-r-xxs" href="https://dataportal-private.daf.teamdigitale.it">Accedi</a>                             
                   </li>
                 </ul>
               </nav>
             </div>
       </section>
       </div>
-	</div>
 );

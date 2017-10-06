@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
-import Columns from 'react-columns';
 //import { browserHistory } from 'react-router';
 import {
     createBrowserHistory,
@@ -82,8 +81,7 @@ export default class SearchBar extends React.Component {
                             Scopri la bellezza e la ricchezza dei dati
                         </h2>
                         <p className="u-text-r-xs  u-color-10 u-layout-prose u-layoutCenter u-padding-r-left u-padding-r-right">
-                            Assumenda consequatur cupiditate mollitia ullam cupiditate similique.
-                            Quis excepturi fuga assumenda animi officiis eum delectus illo.
+                            Cerca nei {this.props.datasetNumber} dataset
                         </p>
                     </div>
                 </div>
