@@ -39,6 +39,8 @@ class Main extends React.Component {
     return (
       <IntlProvider locale="it">
        <div data-reactroot className="app">   
+       <div className="u-background-95">
+          <div className="u-layout-wide u-layoutCenter">
           <Header />
           <Switch>
             <Route path='/' exact component={Home} />
@@ -58,6 +60,8 @@ class Main extends React.Component {
             <Route render={() => <h3>Pagina non trovata</h3>} />
           </Switch>
           <Footer />
+        </div>
+        </div>
         </div>
       </IntlProvider>
       );
