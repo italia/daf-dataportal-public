@@ -6,7 +6,7 @@ export const serviceurl = {
   // mock url
   //apiURLDatiGov: "http://localhost:3001/dati-gov/v1", 
   //apiURLCatalogManager: "http://localhost:3001/catalog-manager/v1",   
-  apiCKAN: "http://localhost:3001/api/3/action",
+  //apiCKAN: "http://localhost:3001/api/3/action",
   //Ckan centrale 
   //apiCKAN: "http://192.168.0.33/api/3/action",
   //apiURLDatiGov: "http://10.99.232.252:9000/dati-gov/v1", 
