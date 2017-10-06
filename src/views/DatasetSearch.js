@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactPaginate from 'react-paginate';
 
 import DatasetSearchCard from '../components/Dataset/DatasetSearchCard.js'
 import CategoryFilter from '../components/Dataset/CategoryFilter.js'
@@ -26,7 +25,7 @@ export default class DatasetSearch extends React.Component {
       group_filter: props.history.location.state && props.history.location.state.group,
       organization_filter: props.history.location.state && props.history.location.state.organization,
       order_filter: "",
-      showDivCategory: props.history.location.state.isCategoryEnabled,
+      showDivCategory: props.history.location.state?props.history.location.state.isCategoryEnabled:false,
       showDivGroup: false,
       showDivOrganization: false,
       offset: 0,
@@ -219,9 +218,9 @@ export default class DatasetSearch extends React.Component {
                 <ul className="Grid Grid--fit Grid--alignMiddle">
                     
                     <li className="Grid-cell u-textCenter">
-                        <a href="#" className="u-color-50 u-textClean u-padding-all-s" title="Pagina precedente">
+                        <a onClick={this.handlePageChange.bind(this,0)} className="u-color-50 u-textClean u-padding-all-s" title="Prima Pagina">
                           <span className="Icon-chevron-left u-text-r-s" role="presentation"></span>
-                          <span className="u-hiddenVisually">Pagina precedente</span>
+                          <span className="u-hiddenVisually">Prima Pagina</span>
                         </a>
                       </li>
                      
@@ -256,9 +255,9 @@ export default class DatasetSearch extends React.Component {
                       } 
 
                       <li className="Grid-cell u-textCenter">
-                        <a href="#" className="u-padding-all-s u-color-50 u-textClean" title="Pagina successiva">
+                        <a onClick={this.handlePageChange.bind(this,this.state.paginator.length-1)} className="u-padding-all-s u-color-50 u-textClean" title="Ultima Pagina">
                           <span className="Icon-chevron-right u-text-r-s" role="presentation"></span>
-                          <span className="u-hiddenVisually">Pagina successiva</span>
+                          <span className="u-hiddenVisually">Ultima Pagina</span>
                         </a>
                       </li>
                 </ul>

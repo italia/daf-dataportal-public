@@ -41,12 +41,8 @@ class UserStoryBoxVertical extends React.Component {
                   <span dangerouslySetInnerHTML={{__html: this.trunc(this.state.story.text, 300)}}></span>
                 </p>
                 <p><span className="u-color-50"><strong>Pubblicato da:</strong></span>  {this.state.story.user}</p>
-                <p><span className="u-color-50"><strong>Data di ultima modifica:</strong></span>  {this.state.story.dateLastEdit}</p>
-                <p className="u-textCenter u-text-md-right u-text-lg-right u-margin-r-top u-padding-r-top">
-                  <Link className="u-color-50 u-textClean u-text-h6" role="button" to={"/user_story/" + this.state.story.id}>
-                    Per saperne di più <span className="Icon Icon-chevron-right"></span>
-                  </Link>
-                </p>
+                <p><span className="u-color-50"><strong>Data di ultima modifica:</strong></span>  {this.state.story.dateLastEdit}</p>       
+
                
               </section>            
               

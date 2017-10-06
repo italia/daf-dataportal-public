@@ -38,17 +38,17 @@ class Main extends React.Component {
   render() {
     return (
       <IntlProvider locale="it">
-        <div data-reactroot className="app">
-          <div className="u-background-95">
-            <div className="u-layout-wide u-layoutCenter">
-              <Header />
-              <Switch>
-                <Route path='/' exact component={Home} />
-                <Route path="/login" component={Login} />
-                <Route path='/register' component={Register} />
-                <Route path='/user_story/:id' exact component={UserStoryView} />
-                <Route path='/dataset/search' exact component={DatasetSearch} />
-                <Route path='/dataset/:id' exact component={DatasetDetail} />
+       <div data-reactroot className="app">   
+       <div className="u-background-95">
+          <div className="u-layout-wide u-layoutCenter">
+          <Header />
+          <Switch>
+            <Route path='/' exact component={Home} />
+            <Route path="/login" component={Login} />
+            <Route path='/register' component={Register} />
+            <Route path='/user_story/:id' exact component={UserStoryView} />
+            <Route path='/dataset/search' exact component={DatasetSearch} />
+            <Route path='/dataset/:id' exact component={DatasetDetail} />
 
                 <Route path="/crea" component={Crea} />
                 <Route path="/missione" component={Missione} />
@@ -62,7 +62,7 @@ class Main extends React.Component {
               <Footer />
             </div>
           </div>
-        </div>
+        </div>        
       </IntlProvider>
       );
   }

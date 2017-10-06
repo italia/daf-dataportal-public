@@ -99,11 +99,10 @@ class UserStoryView extends React.Component {
                       this.state.story &&
                       <div>
                         <UserStoryHeader story={this.state.story} />
-                        <UserStoryGraph graph={this.state.story.graph1} />
+                        <UserStoryImage story={this.state.story} graph={1}/>
                         <div className="body">
                           <div dangerouslySetInnerHTML={{ __html: this.state.story.text }}></div>
-                          {/* <UserStoryImage image={this.state.story.image} />*/}
-                          <UserStoryGraph graph={this.state.story.graph2} />
+                          <UserStoryImage story={this.state.story} graph={2}/>
                           <div className="footer" dangerouslySetInnerHTML={{ __html: this.state.story.footer }}></div>
                         </div>
 

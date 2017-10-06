@@ -44,7 +44,7 @@ class DatasetBox extends React.Component {
                    
                   if (index < 3) {
                   return(                 
-                    <div className="u-background-5 u-color-black u-margin-right-l u-margin-bottom-l u-borderRadius-m u-padding-all-xs u-textWeight-500">                                            
+                    <div key={index} className="u-background-5 u-color-black u-margin-right-l u-margin-bottom-l u-borderRadius-m u-padding-all-xs u-textWeight-500">                                            
                          
                       {res}
                    </div>

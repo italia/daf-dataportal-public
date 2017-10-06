@@ -32,9 +32,8 @@ class Missione extends Component {
                                     Il primo progetto nazionale di pubblicazione di dati delle Pubbliche Amministrazioni è stato lanciato nel 2011 con il portale dati.gov.it,  divenuto nel tempo il riferimento nazionale per i dati aperti della Pubblica Amministrazione Italiana. Dati.gov.it nasceva con l’obiettivo di fornire, in un unico punto di accesso, le principali informazioni sui dati aperti esposti dalle Pubbliche Amministrazioni locali e centrali, facilitando così la ricerca dei dati e pertanto il loro potenziale riutilizzo.
                                     </p>
                                     
-                                    <p>Il nuovo progetto Dataportal ha lo scopo di andare oltre la mera pubblicazione di un catalogo di dati aperti, Esso mira a rendere i dati delle pubbliche amministrazioni:</p>
+                                    <p>Il nuovo progetto Dataportal ha lo scopo di andare oltre la mera pubblicazione di un catalogo di dati aperti. Esso mira a rendere i dati delle pubbliche amministrazioni:</p>
 
-                                    <h4 id="attività">Attività</h4>
                                     <ol>
                                         <li>facilmente scopribili: esso rappresenta ancora un unico punto di accesso ai dati pubblici delle Pubbliche Amministrazioni;</li>
                                         
@@ -48,9 +47,8 @@ class Missione extends Component {
                             </div>
                             <div className="Grid-cell u-sizeFull u-md-size4of12 u-lg-size4of12">
                                 <article className="u-padding-all-l u-background-grey-10 u-lineHeight-l u-text-r-s u-textSecondary u-margin-bottom-l Prose-blockquote">
-                                    <p>Magnam aut deserunt sed commodi. Et delectus praesentium consectetur quasi incidunt. Similique enim quibusdam aut consequatur quia.
-							In reprehenderit harum et sequi et dolor amet rerum. Autem ad aliquam id ipsum rerum. Corporis omnis aliquam nihil deserunt. Autem voluptatem consectetur magnam quo aperiam autem dolores doloremque nihil. Assumenda non sunt quis deserunt molestiae incidunt quia quasi.
-							Soluta minima dolorem eum cupiditate. Officiis perferendis enim voluptatem ea harum vel non. Sapiente rerum vero doloremque omnis. Tempora culpa nostrum rem quas aut quas maxime ullam. Et nobis animi optio et ea dolor ipsam hic.</p>
+                                    <p>Il patrimonio informativo pubblico è vasto e articolato, costituito da diverse tipologie di dato. Il DAF e la sua componente Dataportal ti offrono l’opportunità di rendere disponibili i tuoi dati alle community, di esplorare e scoprire i dati di cui hai bisogno, di comprendere i dati più facilmente attraverso dashboard e strumenti di analisi e monitoraggio.
+                                    Scopri come fare! Inizia a <a href="/dataset/search">esplorare</a> la ricchezza che i dati possono offrire!</p>
                                 </article>
 
 

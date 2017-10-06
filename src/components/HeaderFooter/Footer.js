@@ -1,5 +1,8 @@
 import React from 'react'
 
+const styleImg = {"height": "4em", 
+                  "maxWidth": "100%"}
+
 export const Footer = () => (
     
   <div className="u-background-95">
@@ -14,6 +17,18 @@ export const Footer = () => (
                   <p className="Footer-siteName">
 
                   </p>
+                </div>
+                <div className="Grid-cell u-layout-centerLeft u-padding-r-bottom">
+                <div className="Grid">
+                    <div className="u-inlineBlock">
+                      <img className="u-padding-top-xxs u-padding-right-xs" src="https://teamdigitale.governo.it/images/loghi/governo.svg" alt="" style={styleImg}/>
+                      <img className="u-padding-top-xxs u-padding-right-xxs" src="https://developers.italia.it/assets/icons/dt-logo.svg" alt="" style={styleImg}/>
+                    </div>
+                    <div className="Grid-cell u-size1of12 u-padding-left-none team-bar"></div>
+                    <p className="Grid-cell u-size5of12 Footer-siteName u-padding-left-xs u-text-r-xs">
+                      TEAM PER LA TRASFORMAZIONE DIGITALE
+                    </p>
+                  </div>
                 </div>
 
              
@@ -30,9 +45,8 @@ export const Footer = () => (
               </div>
 
               <ul className="Footer-links u-cf u-color-80">
-                <li><a href="" title="Privacy policy">Privacy</a></li>
-                <li><a href="" title="Note legali">Note legali</a></li>
-                <li><a href="" title="Dati monitoraggio sito">Contatti</a></li>
+                <li><a href="https://designers.italia.it/privacy-policy/" title="Privacy policy">Privacy</a></li>
+                <li><a href="https://designers.italia.it/note-legali/" title="Note legali">Note legali</a></li>
               </ul>
 
             </footer>

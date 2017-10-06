@@ -123,6 +123,16 @@ export default class DatasetService {
         return response.json();
     }
 
+    async getNumber() {
+        const response = await fetch( serviceurl.apiCKAN + "/package_list", {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+        return response.json();
+    }
+
    
 
 } 
