@@ -32,8 +32,8 @@ a:hover Icon-* {
 
 
 /* LINK */
-a:focus,
-a:active {
+:focus,
+:active {
     outline:none!important;
     box-shadow: 0 0 0 white !important;    
 } 

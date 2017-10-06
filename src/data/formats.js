@@ -5,7 +5,7 @@ const formats = [
                     },
                     {
                         "id": 2,
-                        "name": "XML"
+                        "name": "JSON"
                     },
                     {
                         "id": 3,
@@ -29,7 +29,7 @@ const formats = [
                     },
                     {
                         "id": 8,
-                        "name": "JSON"
+                        "name": "XML"
                     },
                     {
                         "id": 9,
@@ -37,7 +37,11 @@ const formats = [
                     },
                     {
                         "id": 10,
-                        "name": "OP_DATPRO"
+                        "name": "RDF"
+                    },
+                    {
+                        "id": 10,
+                        "name": "GeoJSON"
                     }
                   ];
   

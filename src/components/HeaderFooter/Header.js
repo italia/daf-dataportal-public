@@ -4,9 +4,8 @@ import SlimHeader from '../MegaHeader/SlimHeader';
 import { Link } from 'react-router-dom';
 
 export const Header = () => (
-  <div className="u-background-95">
-    <div className="u-layout-wide u-layoutCenter">
-
+  
+<div>
       <ul className="Skiplinks js-fr-bypasslinks u-hiddenPrint">
         <li><a href="#main">Vai al Contenuto</a></li>
         <li><a className="js-fr-offcanvas-open" href="#menu"
@@ -49,7 +48,9 @@ export const Header = () => (
 
                   <li className="delimiter"><a className="u-color-white" href="https://pianotriennale-ict.italia.it">Piano Triennale</a></li>
 
-                  <li className="current"><a className="u-color-white" href="https://developers.italia.it/">Developers</a></li>
+                  <li className="delimiter"><a className="u-color-white" href="https://developers.italia.it/">Developers</a></li>
+
+                  <li className="current"><a className="u-color-white" href="/">DAF</a></li>
 
                   <li className="delimiter"><a className="u-color-white" href="http://designers.italia.it">Designers</a></li>
 
@@ -60,14 +61,14 @@ export const Header = () => (
                   <li className="delimiter"><a className="u-color-white" href="https://github.com/italia/">Github</a></li>
 
 
-                  <li>
+                  {/* <li>
                     <a href="#languages" data-menu-trigger="languages" className="Header-language u-border-none u-zindex-max u-inlineBlock" aria-controls="languages" aria-haspopup="true" role="button">
                       <span className="u-hiddenVisually">lingua attiva:</span>
                       <span className="">ITA</span>
                       <span className="Icon Icon-expand u-padding-left-xs"></span>
                     </a>
                   </li>
-
+ */}
                  
 
 
@@ -129,8 +130,9 @@ export const Header = () => (
                   <div className="Header-title Grid-cell">
                     <h1 className="Header-titleLink">
                       <Link role="button" to={"/"}>
-                        /daf <span className="u-lg-hidden u-md-hidden u-sm-hidden u-cf u-padding-top-xxs u-block"></span><br/>
-                        <small>Il framework dei dati pubblici del Paese</small>
+                        /daf <span className="u-lg-hidden u-md-hidden u-sm-hidden u-cf u-padding-top-xxs u-block"></span>
+                        <span className="u-color-20 u-text-xxs u-alignMiddle u-padding-right-xxs u-padding-left-xxs">alfa</span>
+                        <br/><small>Il framework dei dati pubblici del Paese</small>
                       </Link>
                     </h1>
                   </div>
@@ -225,6 +227,5 @@ export const Header = () => (
               </nav>
             </div>
       </section>
-      </div>
-	</div>
+  </div>
 );

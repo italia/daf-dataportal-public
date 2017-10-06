@@ -30,7 +30,8 @@ export default class DatasetSearch extends React.Component {
       showDivGroup: false,
       showDivOrganization: false,
       offset: 0,
-      totalDataDisplayed: 5
+      totalDataDisplayed: 15,
+      totalResult: 0
       /*currentPage: 1,
       activePage: 10 */
         
@@ -95,27 +96,25 @@ export default class DatasetSearch extends React.Component {
       event.stopPropagation();
     }
     
-    //get stories
-
     let datasets = datasetService.search(this.state.totalDataDisplayed,this.state.offset,this.state.text, this.state.category_filter, this.state.group_filter, this.state.organization_filter);
     
     datasets.then((list) => {
-      
+      let paginator = []; 
+      let i = 0;
+      let totalResult = list.result.count;
+      let totalPage = totalResult/this.state.totalDataDisplayed;
+     
+      while (i<totalPage) {
+        paginator.push(i);        
+        i = i+1;       
+      }
       this.setState({
-        datasets: list.result.results
+        datasets: list.result.results,
+        paginator: paginator,
+        totalResult: totalResult
       });
     });
 
-
-    /* let paginator = this.state.paginator.slice();
-    let i = 0;
-    let totalPage = this.state.datasets.list.result.count/this.state.totalDataDisplayed;
-    while (i<totalPage) {
-      paginator.push(i);
-    }
-    
-    //this.setState({paginator:paginator});
-    this.state.paginator = paginator; */
     
   }
 
@@ -154,11 +153,21 @@ export default class DatasetSearch extends React.Component {
     
     //controllo per problema della prima ricerca
     if(this.state.order_filter){  
-      let datasets = datasetService.searchOrder(this.state.order_filter);
+      let datasets = datasetService.searchOrder(this.state.totalDataDisplayed,this.state.offset,this.state.order_filter);
       datasets.then((list) => {
-        
+        let paginator = []; 
+        let i = 0;
+        let totalResult = list.result.count;
+        let totalPage = totalResult/this.state.totalDataDisplayed;
+       
+        while (i<totalPage) {
+          paginator.push(i);        
+          i = i+1;       
+        }
         this.setState({
-          datasets: list.result.results
+          datasets: list.result.results,
+          paginator: paginator,
+          totalResult: totalResult
         });
       });
     }
@@ -181,7 +190,7 @@ export default class DatasetSearch extends React.Component {
             <div className="Grid-cell u-md-size8of12 u-lg-size8of12 u-padding-right-xl">
               
               {/* INTESTAZIONE */}
-              <h2 className=" u-padding-bottom-l">Trovati {this.state.datasets.length} Dataset</h2>
+              <h2 className=" u-padding-bottom-l">Trovati {this.state.totalResult} Dataset</h2>
               <form onSubmit={this.search} className="Form u-text-r-xs u-margin-bottom-l">
                 <fieldset className="Form-fieldset">
                   <div className="Form-field Form-field--withPlaceholder Grid u-background-white u-color-grey-30 u-borderRadius-s u-border-all-xxs">
@@ -207,84 +216,55 @@ export default class DatasetSearch extends React.Component {
 
               {/*#######################   PAGINAZIONE prova */}
               <nav role="navigation" aria-label="Navigazione paginata" className="u-layout-prose Grid-cell--center u-text-r-xss u-padding-top-xxl u-padding-bottom-l">
-                <ul className="Grid Grid--fit Grid--alignMiddle u-text-r-xxs">
-                  
+                <ul className="Grid Grid--fit Grid--alignMiddle">
+                    
+                    <li className="Grid-cell u-textCenter">
+                        <a href="#" className="u-color-50 u-textClean u-padding-all-s" title="Pagina precedente">
+                          <span className="Icon-chevron-left u-text-r-s" role="presentation"></span>
+                          <span className="u-hiddenVisually">Pagina precedente</span>
+                        </a>
+                      </li>
+                     
+                      
                       {
                         this.state.paginator.map((page, index) => {
-                          return(
-
-                            <li className="Grid-cell u-textCenter u-hidden u-md-inlineBlock u-lg-inlineBlock">
-                            <a  onClick={this.handlePageChange.bind(this,index)} key={index} aria-label={"Pagina " + index} className="u-padding-all-s u-color-50 u-textClean">
-                               <span className="u-text-r-m">{index}</span>
-                            </a>
-                            </li>
-                          );
+                          if(index < 3){
+                            return(          
+                              <li className="Grid-cell u-textCenter u-hidden u-md-inlineBlock u-lg-inlineBlock">                  
+                              <a  onClick={this.handlePageChange.bind(this,index)} key={index} aria-label={"Pagina " + index} className="u-padding-all-s u-color-50 u-textClean">
+                                <span className="u-text-r-m">{index+1}</span>
+                              </a>   
+                              </li>                         
+                            );
+                          } else  if(index == 3){
+                            return(         
+                              <li className="Grid-cell u-textCenter u-hidden u-md-inlineBlock u-lg-inlineBlock">     
+                                 <span className="u-text-r-m u-color-50">...</span>  
+                                 </li>                           
+                            );
+                          } else  if(index > this.state.paginator.length - 3){
+                            return(    
+                              <li className="Grid-cell u-textCenter u-hidden u-md-inlineBlock u-lg-inlineBlock">          
+                              <a  onClick={this.handlePageChange.bind(this,index)} key={index} aria-label={"Pagina " + index} className="u-padding-all-s u-color-50 u-textClean">
+                                <span className="u-text-r-m">{index+1}</span>
+                              </a>        
+                              </li>                     
+                            );
+                          }
                         })
-                      }
+                        
+                      } 
 
-                     
+                      <li className="Grid-cell u-textCenter">
+                        <a href="#" className="u-padding-all-s u-color-50 u-textClean" title="Pagina successiva">
+                          <span className="Icon-chevron-right u-text-r-s" role="presentation"></span>
+                          <span className="u-hiddenVisually">Pagina successiva</span>
+                        </a>
+                      </li>
                 </ul>
               </nav> 
-             
-
-              {/* #######################   PAGINAZIONE 
-              <nav role="navigation" aria-label="Navigazione paginata" className="u-layout-prose Grid-cell--center u-text-r-xss u-padding-top-xxl u-padding-bottom-l">
-                <ul className="Grid Grid--fit Grid--alignMiddle u-text-r-xxs">
-                  <li className="Grid-cell u-textCenter">
-                    <a href="#" className="u-color-50 u-textClean u-padding-all-s" title="Pagina precedente">
-                      <span className="Icon-chevron-left u-text-r-s" role="presentation"></span>
-                      <span className="u-hiddenVisually">Pagina precedente</span>
-                    </a>
-                  </li>
-                  <li className="Grid-cell u-textCenter u-hidden u-md-inlineBlock u-lg-inlineBlock">
-                    <a href="/page-1" aria-label="Pagina 1" className="u-padding-all-s u-color-50 u-textClean">
-                      <span className="u-text-r-m">1</span>
-                    </a>
-                  </li>
-                  <li className="Grid-cell u-textCenter u-hidden u-md-inlineBlock u-lg-inlineBlock" aria-hidden="true">
-                    <span className="u-padding-all-s u-color-50">
-                      <span className="u-text-r-m">...</span>
-                    </span>
-                  </li>
-                  <li className="Grid-cell u-textCenter">
-                    <span className="u-padding-all-s u-background-50 u-color-white">
-                      <span className="u-text-r-s"><span className="u-md-hidden u-lg-hidden">Pagina</span> 11</span>
-                    </span>
-                  </li>
-
-                  <li className="Grid-cell u-textCenter u-hidden u-md-inlineBlock u-lg-inlineBlock">
-                    <a href="#page-12" aria-label="Pagina 12" className="u-padding-all-s u-color-50 u-textClean">
-                      <span className="u-text-r-s">12</span>
-                    </a>
-                  </li>
-                  <li className="Grid-cell u-textCenter u-hidden u-md-inlineBlock u-lg-inlineBlock">
-                    <a href="#page-13" aria-label="Pagina 13" className="u-padding-all-s u-color-50 u-textClean">
-                      <span className="u-text-r-s">{this.state.datasets.length/this.state.totalDataDisplayed}</span>
-                    </a>
-                  </li>
-                  <li className="Grid-cell u-textCenter">
-                    <a href="#" className="u-padding-all-s u-color-50 u-textClean" title="Pagina successiva">
-                      <span className="Icon-chevron-right u-text-r-s" role="presentation"></span>
-                      <span className="u-hiddenVisually">Pagina successiva</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav> */}
-              
-
  </div>
-
-
-
-
-
-
-
-
-
-
-
-            
+     
             {/* FILTRI RICERCA */}
             <div className="Grid-cell u-sizeFull u-md-size4of12 u-lg-size4of12">
               <form className="Form u-text-r-xs u-padding-bottom-l">

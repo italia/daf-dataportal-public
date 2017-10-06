@@ -31,7 +31,7 @@ export default class UserStoryService {
 
     // utilizzato per la pagina Crea (restituisce 9 storie)
     async getLastCrea() {
-        const response = await fetch( this.baseUrl + "/user-stories/getLastCrea" );
+        const response = await fetch( this.baseUrl + "/getLastCrea" );
         return response.json();
     }
     

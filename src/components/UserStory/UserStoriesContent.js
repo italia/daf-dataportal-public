@@ -36,6 +36,8 @@ class UserStoriesContent extends React.Component {
 
     let stories = [];
 
+    // userStoryView indica se arrivo in questo Component dal dettaglio della singola storia
+    // in questo caso devo far vedere le altre storie in verticale  
     if (this.state.userStories && this.state.userStoryView) {
       stories = this.state.userStories.map((story, key) => {
         if (key > 2) return;
