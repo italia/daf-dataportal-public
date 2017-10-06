@@ -3,10 +3,6 @@ import { logout } from '../../helpers/auth';
 import SlimHeader from '../MegaHeader/SlimHeader';
 import { Link } from 'react-router-dom';
 
-const iconStyle = {
-  "font-family": "ita!important"
-}
-
 function searchDataset(){
   let path = '/dataset/search';
   
@@ -64,7 +60,9 @@ export const Header = () => (
 
                   <li className="delimiter"><a className="u-color-white" href="https://pianotriennale-ict.italia.it">Piano Triennale</a></li>
 
-                  <li className="current"><a className="u-color-white" href="https://developers.italia.it/">Developers</a></li>
+                  <li className="delimiter"><a className="u-color-white" href="https://developers.italia.it/">Developers</a></li>
+
+                  <li className="current"><a className="u-color-white" href="/">DAF</a></li>
 
                   <li className="delimiter"><a className="u-color-white" href="http://designers.italia.it">Designers</a></li>
 
@@ -138,8 +136,9 @@ export const Header = () => (
                   <div className="Header-title Grid-cell">
                     <h1 className="Header-titleLink">
                       <Link role="button" to={"/"}>
-                        /daf <span className="u-lg-hidden u-md-hidden u-sm-hidden u-cf u-padding-top-xxs u-block"></span><br/>
-                        <small>Il framework dei dati pubblici del Paese</small>
+                        /daf <span className="u-lg-hidden u-md-hidden u-sm-hidden u-cf u-padding-top-xxs u-block"></span>
+                        <span className="u-color-20 u-text-xxs u-alignMiddle u-padding-right-xxs u-padding-left-xxs">alfa</span>
+                        <br/><small>Il framework dei dati pubblici del Paese</small>
                       </Link>
                     </h1>
                   </div>
@@ -152,7 +151,7 @@ export const Header = () => (
                         <li><a href="https://twitter.com/datigovit" title="twitter"><span className="Icon-twitter"></span>
                           <span className="u-hiddenVisually">Twitter</span></a></li>
 
-                        <li><a href="https://medium.com/team-per-la-trasformazione-digitale/" title="medium"><span style={iconStyle} className="Icon Icon-medium iconStyle"></span>
+                        <li><a href="https://medium.com/team-per-la-trasformazione-digitale/" title="medium"><span className="Icon Icon-medium"></span>
                           <span className="u-hiddenVisually">Medium</span></a></li>
 
                       </ul>

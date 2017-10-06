@@ -6659,7 +6659,8 @@ option:hover {
 }
 
 .Form-field--choose:focus+span {
-    outline: 3px solid #ff8c00
+    /* outline: 3px solid #ff8c00 */
+    outline: 3px solid white
 }
 
 .Form-field--choose .Form-input {

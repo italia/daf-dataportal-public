@@ -50,19 +50,19 @@ class Main extends React.Component {
             <Route path='/dataset/search' exact component={DatasetSearch} />
             <Route path='/dataset/:id' exact component={DatasetDetail} />
 
-            <Route path="/crea" component={Crea} />
-            <Route path="/missione" component={Missione} />
-            <Route path="/lineeguida" component={LineeGuida} />
-            <Route path="/team" component={Team} />
-            <Route path="/teamDett" component={TeamDett} />
-            <Route path="/partecipa" component={Partecipa} />
+                <Route path="/crea" component={Crea} />
+                <Route path="/missione" component={Missione} />
+                <Route path="/lineeguida" component={LineeGuida} />
+                <Route path="/team" component={Team} />
+                <Route path="/teamDett" component={TeamDett} />
+                <Route path="/partecipa" component={Partecipa} />
 
-            <Route render={() => <h3>Pagina non trovata</h3>} />
-          </Switch>
-          <Footer />
-        </div>
-        </div>
-        </div>
+                <Route render={() => <h3>Pagina non trovata</h3>} />
+              </Switch>
+              <Footer />
+            </div>
+          </div>
+        </div>        
       </IntlProvider>
       );
   }

@@ -31,7 +31,7 @@ export default class UserStoryService {
 
     // utilizzato per la pagina Crea (restituisce 9 storie)
     async getLastCrea() {
-        const response = await fetch( this.baseUrl + "/user-stories/getLastCrea" );
+        const response = await fetch( this.baseUrl + "/getLastCrea" );
         return response.json();
     }
     
@@ -41,7 +41,6 @@ export default class UserStoryService {
         var headers = new Headers();
         headers.append("Accept", "application/json");
         headers.append("Content-Type", "application/json");
-        headers.append("Authorization", "Basic " + serviceurl.auth);
         const response = await fetch( this.baseUrl + "/" + id  , {
             method: 'GET',
             headers: headers
@@ -53,7 +52,6 @@ export default class UserStoryService {
         var headers = new Headers();
         headers.append("Accept", "application/json");
         headers.append("Content-Type", "application/json");
-        headers.append("Authorization", "Basic " + serviceurl.auth);
         const response = await fetch( this.baseUrl , {
             method: 'GET',
             headers: headers
@@ -66,7 +64,6 @@ export default class UserStoryService {
         var headers = new Headers();
         headers.append("Accept", "application/json");
         headers.append("Content-Type", "application/json");
-        headers.append("Authorization", "Basic " + serviceurl.auth);
         const response = await fetch( this.baseUrl , {
             method: 'GET',
             headers: headers

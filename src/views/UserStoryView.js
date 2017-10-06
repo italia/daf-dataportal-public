@@ -79,7 +79,7 @@ class UserStoryView extends React.Component {
       <div className="u-layout-wide u-layoutCenter">
 
         <div className="u-background-50 u-layout-r-withGutter u-padding-top-xxl">
-          <h2 className="u-text-r-l u-textWeight-300 u-color-white u-lineHeight-l">Linee guida sui dati</h2>
+          <h2 className="u-text-r-l u-textWeight-300 u-color-white u-lineHeight-l">Data Stories</h2>
         </div>
         <div className="u-padding-top-xxl u-background-50"></div>
         <hr className="Separator Separator--up u-background-white" />
@@ -87,7 +87,7 @@ class UserStoryView extends React.Component {
 
           <div className="u-layout-wide u-layoutCenter u-layout-withGutter u-padding-r-top u-padding-bottom-xxl">
             <div className="Grid Grid--withGutter">
-              <div className="Grid-cell u-md-size9of12 u-lg-size9of12 u-padding-right-xl">
+              <div className="Grid-cell u-md-size8of12 u-lg-size8of12 u-padding-right-xl">
 
 
 
@@ -99,11 +99,10 @@ class UserStoryView extends React.Component {
                       this.state.story &&
                       <div>
                         <UserStoryHeader story={this.state.story} />
-                        <UserStoryGraph graph={this.state.story.graph1} />
+                        <UserStoryImage story={this.state.story} graph={1}/>
                         <div className="body">
                           <div dangerouslySetInnerHTML={{ __html: this.state.story.text }}></div>
-                          {/* <UserStoryImage image={this.state.story.image} />*/}
-                          <UserStoryGraph graph={this.state.story.graph2} />
+                          <UserStoryImage story={this.state.story} graph={2}/>
                           <div className="footer" dangerouslySetInnerHTML={{ __html: this.state.story.footer }}></div>
                         </div>
 
@@ -125,7 +124,7 @@ class UserStoryView extends React.Component {
 
 
               </div>
-              <div className="Grid-cell u-sizeFull u-md-size3of12 u-lg-size3of12">
+              <div className="Grid-cell u-sizeFull u-md-size4of12 u-lg-size4of12">
 
                 <article className="u-padding-all-l u-background-white u-lineHeight-l u-text-r-s u-textSecondary u-margin-bottom-l Prose-blockquote">
                   <UserStoriesContent subtitle=" " title="Storie simili" userStories={this.state.userStoriesSimili} userStoryView="true">

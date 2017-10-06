@@ -101,10 +101,10 @@ export default class DatasetService {
         return response.json();
     }
 
-    async searchOrder(order_filter) {
+    async searchOrder(totalDataDisplayed, offset, order_filter) {
 
                 
-        const response = await fetch( serviceurl.apiCKAN + "/package_search?sort=" + order_filter, {
+        const response = await fetch( serviceurl.apiCKAN + "/package_search?rows=" +totalDataDisplayed +"&start="+ totalDataDisplayed*offset+"&"+"&sort=" + order_filter, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
