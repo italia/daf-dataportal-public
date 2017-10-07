@@ -23,7 +23,7 @@ import DatasetDetail from '../views/DatasetDetail';
 import {IntlProvider} from 'react-intl';
 import it from "react-intl/locale-data/it";
 import {addLocaleData} from 'react-intl';
-import MapViewer from "./MapViewer";
+import MapViewer from "./Map/MapViewer";
 addLocaleData(it);
 
 const mapStateToProps = state => ({
