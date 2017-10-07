@@ -63,7 +63,7 @@ export default class DatasetDetail extends React.Component {
                     <h3 className=" u-padding-bottom-s"><strong>Distribuzioni</strong></h3>
 
                     {this.state.dataset.resources && this.state.dataset.resources.map((res, index) => {
-                      res.url = "https://docs.google.com/spreadsheets/d/1AsJaD0IoqSH88LZcqEbPhM91QDoX2k5c1XXPKqIYXIg/export?format=csv&gid=0&single=trueZdYjke92UQ0rxEN5qLwzE/export?format=csv&gid=0&single=true"
+                      // res.url = "https://docs.google.com/spreadsheets/d/1AsJaD0IoqSH88LZcqEbPhM91QDoX2k5c1XXPKqIYXIg/export?format=csv&gid=0&single=trueZdYjke92UQ0rxEN5qLwzE/export?format=csv&gid=0&single=true"
                       let dataVisualizer = null;
                       if (res.format === 'CSV'){
                         dataVisualizer = <Collapsible className=".Collapsible__trigger" trigger="Anteprima" >
