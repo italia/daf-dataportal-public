@@ -52,19 +52,16 @@ export default class CsvMap extends Component {
         const {latFieldName} = this.props;
         const {dataColumnName} = this.props;
         const {zoom} = this.props;
-        //console.log("MARKERS ",this.props.markers);
+        console.log("MARKERS ",this.props.rows);
         const {autoCenter} = this.props;
-        if(autoCenter && autoCenter===true){
-            this.getLatLngListsMarker(rows,latFieldName,longFieldName);
-        }
         return (
-            <div>
-            <Map
-        width='100%'
-        height={400}
-        center={center}
-        zoom={zoom}
-        bounds={this.latLngs}
+        <div>
+        <Map
+            width='100%'
+            height={400}
+            center={center}
+            zoom={zoom}
+            bounds={this.latLngs}
         >
         <TileLayer
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
