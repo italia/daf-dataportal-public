@@ -7,5 +7,5 @@ script:
   - npm test
 #  - npm run test:lint
   - npm run test:coverage
-#after_success:
-#  - bash <(curl -s https://codecov.io/bash)
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
