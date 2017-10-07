@@ -2,13 +2,19 @@ import React , {Component} from 'react'
 import * as csv from "csvtojson"
 import * as request from "request";
 import CsvMap from './map/CsvMap.js';
+import CsvTable from './CsvTable/CsvTable.js'
 /**
  * @author: Davide Pastore
  * @author: Cosimo,Francesco Pichierri
  * 
  */
+const VIEW_TYPE = Object.freeze({
+    MAP:   Symbol("map"),
+    TABLE:  Symbol("table"),
+});
 
 class CsvDisplayer extends Component {
+    
     constructor(props){
         super(props);
         this.headers = [];
@@ -18,6 +24,7 @@ class CsvDisplayer extends Component {
         this.noheader=false;
         this.dataColumnName=""; 
         this.tmpEl = [];
+        this.type=VIEW_TYPE.TABLE;
         this.state = {
             headers: [],
             rows: []
@@ -41,6 +48,9 @@ class CsvDisplayer extends Component {
         }
         if(this.props.dataColumnName){
             this.dataColumnName=this.props.dataColumnName;
+        }
+        if(this.props.type===VIEW_TYPE.MAP){
+            this.type=VIEW_TYPE.MAP;
         }
         //Retrieve csv
          // Retrieve the csv
@@ -70,18 +80,15 @@ class CsvDisplayer extends Component {
         const dataColumnName = this.dataColumnName;
         console.log("Invoking markers ",this.state.rows);
         return (
-            <div>
-                {
-                   <CsvMap markers={rows} center={[51.505, -0.09]} longFieldName={longFieldName} latFieldName={latFieldName}
-                    dataColumnName={dataColumnName}
-                    ></CsvMap>
-                }
-             </div>
+            CSV_MAP_COMPONENT
         );
     }
 
-
 }
 
+
+const CSV_MAP_COMPONENT = (rows,longFieldName,latFieldName,dataColumnName) => <CsvMap markers={rows} center={[51.505, -0.09]} longFieldName={longFieldName} latFieldName={latFieldName} dataColumnName={dataColumnName} ></CsvMap>
+
+const CSV_TABLE_COMPONENT= (headers,rows,caption) => <CsvTable headers={headers} rows={rows} caption={caption}></CsvTable>
 
 export default CsvDisplayer;

@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow, configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-15';
-import CsvTable from '../components/CsvTable/CsvTable.js';
+import CsvTable from '../components/CsvDisplayer/CsvTable/CsvTable';
 
 configure({ adapter: new Adapter() });
 

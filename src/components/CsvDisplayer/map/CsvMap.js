@@ -1,6 +1,6 @@
 import React , {Component} from 'react';
 import { Map, InfoControl, TileLayer, Marker } from 'react-leaflet-wrapper';
-import '../../../../node_modules/leaflet/dist/leaflet.css'
+import '~/leaflet/dist/leaflet.css'
 
 /**
  * @author Francesco Pichierri

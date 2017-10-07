@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CsvTable from '../components/CsvTable/CsvTable.js';
+import CsvTable from '../components/CsvDisplayer/CsvTable/CsvTable'
 
 class Table extends Component {
     constructor(props) {
