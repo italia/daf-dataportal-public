@@ -23,5 +23,5 @@ serve -s build
 ```
 
 
-[ico-travis]: https://travis-ci.org/DavidePastore/daf-dataportal-public.svg?branch=master
+[ico-travis]: https://travis-ci.org/DavidePastore/daf-dataportal-public.svg?branch=csv-table
 [link-travis]: https://travis-ci.org/DavidePastore/daf-dataportal-public
