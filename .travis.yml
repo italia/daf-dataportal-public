@@ -4,7 +4,8 @@ node_js:
   - "7"
   - "8"
 script:
-  - npm run test:lint
-  - npm run test:coverage
+  - npm test
+#  - npm run test:lint
+#  - npm run test:coverage
 #after_success:
 #  - bash <(curl -s https://codecov.io/bash)
