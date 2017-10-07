@@ -9,8 +9,8 @@ import CsvTable from './CsvTable/CsvTable.js'
  * 
  */
 const VIEW_TYPE = Object.freeze({
-    MAP:   Symbol("map"),
-    TABLE:  Symbol("table"),
+    MAP:   "map",
+    TABLE:  "table",
 });
 
 class CsvDisplayer extends Component {
@@ -50,7 +50,7 @@ class CsvDisplayer extends Component {
         if(this.props.dataColumnName){
             this.dataColumnName=this.props.dataColumnName;
         }
-        if(this.props.type===VIEW_TYPE.MAP){
+        if(this.props.type==VIEW_TYPE.MAP){
             this.type=VIEW_TYPE.MAP;
         }
         if(this.props.caption){
@@ -84,12 +84,19 @@ class CsvDisplayer extends Component {
         const dataColumnName = this.dataColumnName;
         const caption = this.caption;
         console.log("Headers ",headers);
-        return (
-            <div>
-                <CsvMap markers={rows} center={[51.505, -0.09]} longFieldName={longFieldName} latFieldName={latFieldName} dataColumnName={dataColumnName}></CsvMap>
-                <CsvTable headers={headers} rows={rows} caption={caption}></CsvTable>
-            </div>
-        );
+        if(this.type==VIEW_TYPE.MAP){
+            return (
+                <div>
+                    <CsvMap rows={rows} center={[51.505, -0.09]} longFieldName={longFieldName} latFieldName={latFieldName} dataColumnName={dataColumnName}></CsvMap>
+                </div>
+            );
+        }else{
+            return (
+                <div>
+                    <CsvTable headers={headers} rows={rows} caption={caption}></CsvTable>    
+                </div>
+            );
+        }
     }
 
 }

@@ -16,7 +16,7 @@ export default class CsvMap extends Component {
         };
     }
     componentDidMount(){
-        this.state.markers=this.props.markers ? this.props.markers : [] ;
+        this.state.markers=this.props.rows ? this.props.rows : [] ;
     }
 
     getLatLng(curMarker,latFieldName,longFieldName){
@@ -34,7 +34,7 @@ export default class CsvMap extends Component {
         return curLabel;
     }
     render(){
-        const {markers} = this.props;
+        const rows = this.props.rows;
         const {center}=this.props;
         const {longFieldName} = this.props;
         const {latFieldName} = this.props;
@@ -54,7 +54,7 @@ export default class CsvMap extends Component {
         />
         {
            
-                                (markers || {}).map((markerCsv,index) => 
+                                (rows || {}).map((markerCsv,index) => 
                                         <Marker key={index}
                                         latlng={this.getLatLng(markerCsv,latFieldName,longFieldName)}
                                         popupContent={feature => <span>{this.getDataColumn(markerCsv,dataColumnName)}</span>}

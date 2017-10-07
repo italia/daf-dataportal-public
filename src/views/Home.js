@@ -62,8 +62,7 @@ class Home extends Component {
 
                 <CsvDisplayer src='https://docs.google.com/spreadsheets/d/1PV2dpPmxydu4IoHoyEB3LaZduCZxeng5_CbC1Mr8C9U/export?format=csv&gid=734835459&single=true'
                      latFieldName='Lat' longFieldName='Lon' noheader={false} dataColumnName="Luogo"
-                ></CsvDisplayer>
-            
+                     type="map"></CsvDisplayer>
               </div>
             </section>
           </div>
