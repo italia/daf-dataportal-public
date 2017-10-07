@@ -13,6 +13,7 @@
     "history": "^4.7.2",
     "immutable": "^3.8.1",
     "jquery": "^3.2.1",
+    "leaflet": "0.7.7",
     "mock-json-server": "0.0.4",
     "moment": "^2.18.1",
     "papaparse": "^4.3.3",
