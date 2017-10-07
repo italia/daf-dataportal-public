@@ -137,7 +137,7 @@ export const Header = () => (
                     <h1 className="Header-titleLink">
                       <Link role="button" to={"/"}>
                         /daf <span className="u-lg-hidden u-md-hidden u-sm-hidden u-cf u-padding-top-xxs u-block"></span>
-                        <span className="u-color-20 u-text-xxs u-alignMiddle u-padding-right-xxs u-padding-left-xxs">alfa</span>
+                        <span className="u-color-20 u-text-xxs u-alignMiddle u-padding-right-xxs u-padding-left-xxs">alpha</span>
                         <br/><small>Il framework dei dati pubblici del Paese</small>
                       </Link>
                     </h1>
