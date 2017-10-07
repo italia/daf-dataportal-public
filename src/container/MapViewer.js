@@ -15,18 +15,20 @@ const Lista = ({entries}) => <ol>
 </ol>
 
 
-class SimpleExample extends React.Component {
+class Mappa extends React.Component {
 
     render() {
         return (
-            <div>
-                <div  style={{height: "100%", width: "300px"}} id="map" ref="map"/>
-            </div>
+                <div  style={{height: "500px", width: "100%"}} id="open_map"/>
         )
     }
 
     componentDidMount() {
-        var mymap =L.map('map',{center: [51.505,-0.09], zoom:13});
+        var mymap = L.map('open_map',{
+            center:[45,11], zoom:5,layers: [
+                L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' })
+            ],
+        });
 
 }}
 
@@ -46,7 +48,7 @@ class MapViewer extends Component {
             <div className="u-background-white u-layout-r-withGutter u-posRelative u-zindex-30">
                 <div className="u-layout-wide u-layoutCenter u-layout-withGutter u-padding-r-top u-padding-bottom-xxl">
                     <div >
-                        <SimpleExample/>
+                        <Mappa/>
                         <Lista entries={mapmockup}></Lista>
                     </div>
                 </div>
