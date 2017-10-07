@@ -23,29 +23,10 @@ export default class CsvTable extends Component {
             rows: this.props.rows ? this.props.rows: [],
             headers: this.props.headers ? this.props.headers: []
         });
-
-        // Retrieve the csv
-        /*
-        csv({
-            toArrayString: true
-        })
-        .fromStream(request.get(this.props.src))
-        .on('header', (header)=>{
-            this.setState({headers: header});
-        })
-        .on('json', (jsonObj) => {
-            this.setState({
-                rows: [...this.state.rows, jsonObj]
-            });
-        })
-        .on('done', (error) => {
-            console.log('Finito!', error);
-        })
-        */
     }
 
     render() {
-        const {headers, rows, caption, noHeader, showFoot} = this.state;
+        const {headers, rows, caption, noHeader, showFoot} = this.props;
         let header = '';
         let foot = '';
 
@@ -56,6 +37,7 @@ export default class CsvTable extends Component {
         if(showFoot){
             foot = <TableFoot foot={headers}></TableFoot>
         }
+        console.log("Rows ",this.props.rows);
         return (
                <table className="Table Table--withBorder u-text-r-xs">
                    <caption className="u-hiddenVisually">{caption}</caption>

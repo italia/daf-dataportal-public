@@ -25,6 +25,7 @@ class CsvDisplayer extends Component {
         this.dataColumnName=""; 
         this.tmpEl = [];
         this.type=VIEW_TYPE.TABLE;
+        this.caption='';
         this.state = {
             headers: [],
             rows: []
@@ -52,6 +53,9 @@ class CsvDisplayer extends Component {
         if(this.props.type===VIEW_TYPE.MAP){
             this.type=VIEW_TYPE.MAP;
         }
+        if(this.props.caption){
+            this.caption=this.props.caption;
+        }
         //Retrieve csv
          // Retrieve the csv
         csv({
@@ -64,7 +68,7 @@ class CsvDisplayer extends Component {
             this.setState({headers: header});
         })
         .on('json', (jsonObj)=>{
-            this.tmpEl.push([...this.state.rows, jsonObj]);
+            this.tmpEl.push(...this.state.rows,jsonObj);
         })
         .on('done', (error)=>{
             this.setState({
@@ -78,17 +82,16 @@ class CsvDisplayer extends Component {
         const latFieldName = this.latFieldName;
         const rows = this.state.rows;
         const dataColumnName = this.dataColumnName;
-        console.log("Invoking markers ",this.state.rows);
+        const caption = this.caption;
+        console.log("Headers ",headers);
         return (
-            CSV_MAP_COMPONENT
+            <div>
+                <CsvMap markers={rows} center={[51.505, -0.09]} longFieldName={longFieldName} latFieldName={latFieldName} dataColumnName={dataColumnName}></CsvMap>
+                <CsvTable headers={headers} rows={rows} caption={caption}></CsvTable>
+            </div>
         );
     }
 
 }
-
-
-const CSV_MAP_COMPONENT = (rows,longFieldName,latFieldName,dataColumnName) => <CsvMap markers={rows} center={[51.505, -0.09]} longFieldName={longFieldName} latFieldName={latFieldName} dataColumnName={dataColumnName} ></CsvMap>
-
-const CSV_TABLE_COMPONENT= (headers,rows,caption) => <CsvTable headers={headers} rows={rows} caption={caption}></CsvTable>
 
 export default CsvDisplayer;
