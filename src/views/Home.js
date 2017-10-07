@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import {BrowserRouter , Route} from 'react-router-dom';
 import AutocompleteDataset from '../components/Autocomplete/AutocompleteDataset.js'
 
 import UserStoryService from '../services/UserStoryService.js';
@@ -59,10 +60,15 @@ class Home extends Component {
 
                 <DatasetContent dataset={this.state.dataset} >
                 </DatasetContent>
-
-                <CsvDisplayer src='https://docs.google.com/spreadsheets/d/1PV2dpPmxydu4IoHoyEB3LaZduCZxeng5_CbC1Mr8C9U/export?format=csv&gid=734835459&single=true'
-                     latFieldName='Lat' longFieldName='Lon' noheader={false} dataColumnName="Luogo"
-                     type="map"  zoom="13" center={[40.36135,18.18825]}></CsvDisplayer>
+                
+                
+                  <CsvDisplayer src='https://docs.google.com/spreadsheets/d/1PV2dpPmxydu4IoHoyEB3LaZduCZxeng5_CbC1Mr8C9U/export?format=csv&gid=734835459&single=true'
+                        latFieldName='Lat' longFieldName='Lon' noheader={false} dataColumnName="Luogo"
+                        type="map"  zoom="18" center={[40.36135,18.18825]}></CsvDisplayer>
+                  
+                  <CsvDisplayer src='https://docs.google.com/spreadsheets/d/1PV2dpPmxydu4IoHoyEB3LaZduCZxeng5_CbC1Mr8C9U/export?format=csv&gid=734835459&single=true'
+                        noheader={false} type="table"></CsvDisplayer>
+                        
               </div>
             </section>
           </div>

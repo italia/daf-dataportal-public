@@ -33,8 +33,7 @@ export default class CsvMap extends Component {
         if(markerCsv){
             for(var curMarker in markerCsv){
                 this.latLngs.push(this.getLatLng(markerCsv[curMarker],latFieldName,longFieldName));
-            }   
-            console.log("Centered",this.latLngs);    
+            }
         }
         
     }
