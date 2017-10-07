@@ -15,7 +15,7 @@ class Table extends Component {
 				return (
 					<div className="u-layout-wide u-layoutCenter">
                         <div className="u-background-50 u-layout-r-withGutter u-padding-top-xxl">
-                            <h2 className="u-text-r-l u-textWeight-300 u-color-white u-lineHeight-l">Chi Siamo</h2>
+                            <h2 className="u-text-r-l u-textWeight-300 u-color-white u-lineHeight-l">Componenti tabella e mappa</h2>
                         </div>
                         <div className="u-padding-top-xxl u-background-50"></div>
                         <hr className="Separator Separator--up u-background-white" />
