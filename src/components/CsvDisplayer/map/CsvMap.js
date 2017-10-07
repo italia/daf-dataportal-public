@@ -2,7 +2,7 @@ import React , {Component} from 'react';
 import { Map, InfoControl, TileLayer, Marker } from 'react-leaflet-wrapper';
 
 /**
- * @author Francesco Pichierri
+ * @author Cosimo,Francesco Pichierri
  * @author Davide Pastore
  * 
  */
@@ -11,6 +11,7 @@ export default class CsvMap extends Component {
 
     constructor(props){
         super(props);
+        this.latLngs=[];
         this.state = {
             markers: []
         };
@@ -26,6 +27,17 @@ export default class CsvMap extends Component {
                     lng: curMarker[longFieldName]
                 };
     }
+
+    getLatLngListsMarker(markerCsv,latFieldName,longFieldName){
+        this.latLngs=[];
+        if(markerCsv){
+            for(var curMarker in markerCsv){
+                this.latLngs.push(this.getLatLng(markerCsv[curMarker],latFieldName,longFieldName));
+            }   
+            console.log("Centered",this.latLngs);    
+        }
+        
+    }
     getDataColumn(curMarkerCsv, dataColumnName){
         var curLabel= '';
         if(curMarkerCsv && curMarkerCsv[dataColumnName]){
@@ -39,14 +51,20 @@ export default class CsvMap extends Component {
         const {longFieldName} = this.props;
         const {latFieldName} = this.props;
         const {dataColumnName} = this.props;
+        const {zoom} = this.props;
         //console.log("MARKERS ",this.props.markers);
+        const {autoCenter} = this.props;
+        if(autoCenter && autoCenter===true){
+            this.getLatLngListsMarker(rows,latFieldName,longFieldName);
+        }
         return (
             <div>
             <Map
         width='100%'
         height={400}
         center={center}
-        zoom={13}
+        zoom={zoom}
+        bounds={this.latLngs}
         >
         <TileLayer
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
@@ -69,5 +87,3 @@ export default class CsvMap extends Component {
    
 
 }
-
-//export default CsvMap;

@@ -33,7 +33,6 @@ class CsvDisplayer extends Component {
     }
 
     componentDidMount(){
-        console.log("Component did mount");
         if(this.props.separator){
             this.delimiter=this.props.delimiter;
         }
@@ -83,11 +82,14 @@ class CsvDisplayer extends Component {
         const rows = this.state.rows;
         const dataColumnName = this.dataColumnName;
         const caption = this.caption;
-        console.log("Headers ",headers);
+        const {autoCenter} = this.props;
+        const {zoom} = this.props;
+        const {center} = this.props;
         if(this.type==VIEW_TYPE.MAP){
             return (
                 <div>
-                    <CsvMap rows={rows} center={[51.505, -0.09]} longFieldName={longFieldName} latFieldName={latFieldName} dataColumnName={dataColumnName}></CsvMap>
+                    <CsvMap rows={rows} center={center} longFieldName={longFieldName} latFieldName={latFieldName} dataColumnName={dataColumnName}
+                    autoCenter={autoCenter} zoom={zoom}></CsvMap>
                 </div>
             );
         }else{
