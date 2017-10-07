@@ -8,6 +8,7 @@ import UserStoriesContent from '../components/UserStory/UserStoriesContent.js';
 import DatasetService from '../services/DatasetService.js';
 import DatasetContent from '../components/Dataset/DatasetContent.js';
 import SearchBar from '../components/HeaderFooter/SearchBar.js';
+import CsvDisplayer from '../components/CsvDisplayer/CsvDisplayer.js';
 
 let userStoryService = new UserStoryService();
 let datasetService = new DatasetService();
@@ -58,7 +59,11 @@ class Home extends Component {
 
                 <DatasetContent dataset={this.state.dataset} >
                 </DatasetContent>
-                
+
+                <CsvDisplayer src='https://docs.google.com/spreadsheets/d/1PV2dpPmxydu4IoHoyEB3LaZduCZxeng5_CbC1Mr8C9U/export?format=csv&gid=734835459&single=true'
+                     latFieldName='Lat' longFieldName='Lon' noheader={false} dataColumnName="123"
+                ></CsvDisplayer>
+            
               </div>
             </section>
           </div>
