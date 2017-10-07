@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import TableRow from './TableRow.js'
 import TableHead from './TableHead.js'
+import TableFoot from './TableFoot.js'
 import * as csv from "csvtojson"
 import * as request from "request";
 
@@ -17,10 +18,14 @@ export default class CsvTable extends Component {
     componentDidMount() {
         this.setState({
             caption: this.props.caption ? this.props.caption: '',
-            noHeader: this.props.noHeader ? this.props.noHeader: false
+            noHeader: this.props.noHeader ? this.props.noHeader: false,
+            showFoot: this.props.showFoot ? this.props.showFoot: false,
+            rows: this.props.rows ? this.props.rows: [],
+            headers: this.props.headers ? this.props.headers: []
         });
 
         // Retrieve the csv
+        /*
         csv({
             toArrayString: true
         })
@@ -36,18 +41,26 @@ export default class CsvTable extends Component {
         .on('done', (error) => {
             console.log('Finito!', error);
         })
+        */
     }
 
     render() {
-        const {headers, rows, caption, noHeader} = this.state;
+        const {headers, rows, caption, noHeader, showFoot} = this.state;
         let header = '';
+        let foot = '';
+
         if(!noHeader){
             header = <TableHead headers={headers}></TableHead>;
+        }
+
+        if(showFoot){
+            foot = <TableFoot foot={headers}></TableFoot>
         }
         return (
                <table className="Table Table--withBorder u-text-r-xs">
                    <caption className="u-hiddenVisually">{caption}</caption>
                    {header}
+                   {foot}
                    <tbody>
                         {
                             rows.map((row, index) => 
