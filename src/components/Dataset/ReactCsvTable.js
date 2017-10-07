@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-
-import "react-table/react-table.css";
-
 import ReactTable from "react-table";
-import Papa from 'papaparse'
+import Papa from 'papaparse';
+import './ReactCsvTable.css';
 
 class ReactCsvTable extends Component {
 
@@ -15,20 +13,20 @@ class ReactCsvTable extends Component {
           {
             Header: element,
             accessor: i.toString(),
-            // filterAll: true
+            minWidth: 144
           });
     });
     return columns;
   }
 
-  //loads the table data from the csv link
   loadData(link) {
     const validate = (link) =>
       new RegExp(/[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi).test(link);
     let rows = [];
     // here check if it's a link
     if (!validate(link)) return;
-    Papa.parse(link, {
+    //this url acts as proxy to bypass cors requests that block the fetching
+    Papa.parse("https://cors-anywhere.herokuapp.com/"+link, {
       download: true,
       dynamicTyping: true,
       step: function(row) {
@@ -62,6 +60,7 @@ class ReactCsvTable extends Component {
   render() {
     const { data } = this.state;
     const { columns } = this.state;
+    const {initialRows} = this.props || 20;
     return (
       <div>
         <ReactTable
@@ -69,10 +68,9 @@ class ReactCsvTable extends Component {
           defaultFilterMethod={(filter, row) => String(row[filter.id]).toUpperCase().indexOf(filter.value.toUpperCase()) === 0 }
           data={data}
           columns={columns}
-          defaultPageSize={25}
+          defaultPageSize={initialRows}
           className="-striped -highlight"
         />
-        <br />
       </div>
     );
   }
