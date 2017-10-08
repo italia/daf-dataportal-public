@@ -20,7 +20,7 @@ class MapViewer extends Component {
         this.handleMarkerClick = this.handleMarkerClick.bind(this);
     }
 
-    handleMarkerClick = (marker) =>{
+    handleMarkerClick = (marker) => {
         console.log(this.state)
         this.setState({
             ...this.state,
@@ -62,10 +62,10 @@ class MapViewer extends Component {
                             selectedPoint={this.state.selectedPoint}
                             onMarkerClick={this.handleMarkerClick}
                         />
-                        <PointsList title={this.state.name}
-                                    points={this.state.data}
-                                    onPointClick={this.handlePointClick}
-                                    selectedMarker={this.state.selectedPoint}/>
+                        <PointsList
+                            points={this.state.data}
+                            onPointClick={this.handlePointClick}
+                            selectedMarker={this.state.selectedPoint}/>
                     </div>
                 </div>
             </div>
