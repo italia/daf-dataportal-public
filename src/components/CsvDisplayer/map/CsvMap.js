@@ -42,7 +42,7 @@ export default class CsvMap extends Component {
     getLatLngListsMarker(markerCsv,latFieldName,longFieldName){
         this.latLngs=[];
         if(markerCsv){
-            for(var curMarker in markerCsv){
+            for(let curMarker in markerCsv){
                 this.latLngs.push(this.getLatLng(markerCsv[curMarker],latFieldName,longFieldName));
             }
         }
