@@ -107,7 +107,7 @@ let rows = [{
     'Col-1': 'Cella 1',
     'Col-2': 'Cella 2'
 }];
-let caption = 'The caption';
+let caption = 'Dati comunali';
 let showFoot = true;
 let noHeader = false;
 
