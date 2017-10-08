@@ -18,7 +18,7 @@ export default class TableHead extends Component {
             <thead>
                 <tr>
                     {
-                        headers.map((header, index) => 
+                        Array.isArray(headers) &&  headers.map((header, index) => 
                             <th className="u-border-bottom-xs" key={index}>{header}</th>
                         )
                     }

@@ -44,7 +44,7 @@ export default class CsvTable extends Component {
         if(showFoot){
             foot = <TableFoot foot={headers}></TableFoot>
         }
-        console.log("Rows ",this.props.rows);
+        //console.log("Rows ",this.props.rows);
         return (
                <table className="Table Table--withBorder u-text-r-xs">
                    <caption className="u-hiddenVisually">{caption}</caption>
@@ -52,7 +52,7 @@ export default class CsvTable extends Component {
                    {foot}
                    <tbody>
                         {
-                            (rows || {}).map((row, index) => 
+                            Array.isArray(rows) && rows.map((row, index) => 
                                 <tr key={index}>
                                     {
                                         Object.keys(row).map((key, td) =>
