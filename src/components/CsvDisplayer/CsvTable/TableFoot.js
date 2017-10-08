@@ -1,10 +1,6 @@
 import React, {Component} from 'react'
 
 export default class TableFoot extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const {foot} = this.props;
         return (
