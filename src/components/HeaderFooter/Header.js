@@ -205,6 +205,7 @@ export const Header = () => (
 							      <li><a href="/missione" className="Linklist-link">Missione</a></li>
                     <li><a href="/team" className="Linklist-link">Chi Siamo</a></li>
                     <li><a href="/lineeguida" className="Linklist-link">Linee Guida</a></li>
+                    <li><a href="/map" className="Linklist-link">Map</a></li>
                     <li><a href="/table" className="Linklist-link">Table</a></li>
                   </ul>
                   </li>

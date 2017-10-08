@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import CsvDisplayer from '../components/CsvDisplayer/CsvDisplayer'
 
-class Table extends Component {
+class Map extends Component {
     constructor(props) {
       super(props)
   
@@ -14,7 +14,7 @@ class Table extends Component {
         return (
             <div className="u-layout-wide u-layoutCenter">
                 <div className="u-background-50 u-layout-r-withGutter u-padding-top-xxl">
-                    <h2 className="u-text-r-l u-textWeight-300 u-color-white u-lineHeight-l">Componente tabella</h2>
+                    <h2 className="u-text-r-l u-textWeight-300 u-color-white u-lineHeight-l">Componente mappa</h2>
                 </div>
                 <div className="u-padding-top-xxl u-background-50"></div>
                 <hr className="Separator Separator--up u-background-white" />
@@ -23,7 +23,8 @@ class Table extends Component {
                         <div className="Grid Grid--withGutter">
                             <div className="Grid-cell u-md-size12of12 u-lg-size12of12 u-padding-right-xl">
                                 <CsvDisplayer src={src}
-                                    noheader={false} type="table"></CsvDisplayer>
+                                    latFieldName='Lat' longFieldName='Lon' noheader={false} dataColumnName="Luogo"
+                                    type="map"  zoom="18" center={[40.36135,18.18825]}></CsvDisplayer>
                             </div>
                         </div>
                     </div>
@@ -33,4 +34,4 @@ class Table extends Component {
     }
 }
 
-export default Table
+export default Map

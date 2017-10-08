@@ -10,6 +10,7 @@ import LineeGuida from '../container/LineeGuida'
 import Team from '../container/Team'
 import TeamDett from '../container/TeamDett'
 import Partecipa from '../container/Partecipa'
+import Map from '../container/Map'
 import Table from '../container/Table'
 
 import { Footer } from '../components/HeaderFooter/Footer';
@@ -54,6 +55,7 @@ class Main extends React.Component {
                 <Route path="/crea" component={Crea} />
                 <Route path="/missione" component={Missione} />
                 <Route path="/lineeguida" component={LineeGuida} />
+                <Route path="/map" component={Map} />
                 <Route path="/table" component={Table} />
                 <Route path="/team" component={Team} />
                 <Route path="/teamDett" component={TeamDett} />
