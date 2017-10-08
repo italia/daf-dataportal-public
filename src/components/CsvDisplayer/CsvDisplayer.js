@@ -1,4 +1,4 @@
-import React , {Component} from 'react'
+import React, {Component} from 'react'
 import * as csv from "csvtojson"
 import * as request from "request";
 import CsvMap from './Map/CsvMap.js';
@@ -6,27 +6,24 @@ import CsvTable from './CsvTable/CsvTable.js'
 /**
  * @author: Davide Pastore
  * @author: Cosimo,Francesco Pichierri
- * 
+ *
  * Render Csv content in various forms
  */
-const VIEW_TYPE = Object.freeze({
-    MAP:   "map",
-    TABLE:  "table",
-});
+const VIEW_TYPE = Object.freeze({MAP: "map", TABLE: "table"});
 
 class CsvDisplayer extends Component {
-    
-    constructor(props){
+
+    constructor(props) {
         super(props);
         this.headers = [];
-        this.delimiter= "auto";
-        this.latFieldName="Lat";
-        this.longFieldName="Lon";
-        this.noheader=false;
-        this.dataColumnName=""; 
+        this.delimiter = "auto";
+        this.latFieldName = "Lat";
+        this.longFieldName = "Lon";
+        this.noheader = false;
+        this.dataColumnName = "";
         this.tmpEl = [];
-        this.type=VIEW_TYPE.TABLE;
-        this.caption='';
+        this.type = VIEW_TYPE.TABLE;
+        this.caption = '';
         this.showFoot = false;
         this.state = {
             headers: [],
@@ -34,51 +31,51 @@ class CsvDisplayer extends Component {
         };
     }
 
-    componentDidMount(){
-        if(this.props.separator){
-            this.delimiter=this.props.delimiter;
+    componentDidMount() {
+        if (this.props.separator) {
+            this.delimiter = this.props.delimiter;
         }
-        if(this.props.latFieldName){
-            this.latFieldName=this.props.latFieldName;
+        if (this.props.latFieldName) {
+            this.latFieldName = this.props.latFieldName;
         }
-        if(this.props.longFieldName){
-            this.longFieldName=this.props.longFieldName;
+        if (this.props.longFieldName) {
+            this.longFieldName = this.props.longFieldName;
         }
-        if(this.props.noheader){
+        if (this.props.noheader) {
             //this.noheader=this.props.noheader ==='true' ? true : false;
-            this.noheader=this.props.noheader
+            this.noheader = this.props.noheader
         }
-        if(this.props.dataColumnName){
-            this.dataColumnName=this.props.dataColumnName;
+        if (this.props.dataColumnName) {
+            this.dataColumnName = this.props.dataColumnName;
         }
-        if(this.props.type==VIEW_TYPE.MAP){
-            this.type=VIEW_TYPE.MAP;
+        if (this.props.type == VIEW_TYPE.MAP) {
+            this.type = VIEW_TYPE.MAP;
         }
-        if(this.props.caption){
-            this.caption=this.props.caption;
+        if (this.props.caption) {
+            this.caption = this.props.caption;
         }
-        if(this.props.showFoot){
+        if (this.props.showFoot) {
             this.showFoot = this.props.showFoot;
         }
 
         // Retrieve the csv
-        csv({
-            toArrayString: true,
-            delimiter: this.delimiter,
-            noheader: this.noheader
-        })
-        .fromStream(request.get(this.props.src))
-        .on('header', (header)=>{
-            this.setState({headers: header});
-        })
-        .on('json', (jsonObj)=>{
-            this.tmpEl.push(...this.state.rows,jsonObj);
-        })
-        .on('done', (error)=>{
-            this.setState({
-                rows: [...this.tmpEl]
-            });
-        })
+        csv({toArrayString: true, delimiter: this.delimiter, noheader: this.noheader})
+            .fromStream(
+                request.get(this.props.src)
+            )
+            .on('header', (header) => {
+                this.setState({headers: header});
+            })
+            .on('json', (jsonObj) => {
+                this
+                    .tmpEl
+                    .push(...this.state.rows, jsonObj);
+            })
+            .on('done', (error) => {
+                this.setState({
+                    rows: [...this.tmpEl]
+                });
+            })
     }
     render() {
         const {headers} = this.state;
@@ -90,17 +87,23 @@ class CsvDisplayer extends Component {
         const {autoCenter} = this.props;
         const {zoom} = this.props;
         const {center, showFoot} = this.props;
-        if(this.type==VIEW_TYPE.MAP){
+        if (this.type == VIEW_TYPE.MAP) {
             return (
                 <div>
-                    <CsvMap rows={rows} center={center} longFieldName={longFieldName} latFieldName={latFieldName} dataColumnName={dataColumnName}
-                    autoCenter={autoCenter} zoom={zoom}></CsvMap>
+                    <CsvMap
+                        rows={rows}
+                        center={center}
+                        longFieldName={longFieldName}
+                        latFieldName={latFieldName}
+                        dataColumnName={dataColumnName}
+                        autoCenter={autoCenter}
+                        zoom={zoom}></CsvMap>
                 </div>
             );
-        }else{
+        } else {
             return (
                 <div>
-                    <CsvTable headers={headers} rows={rows} caption={caption} showFoot={showFoot}></CsvTable>    
+                    <CsvTable headers={headers} rows={rows} caption={caption} showFoot={showFoot}></CsvTable>
                 </div>
             );
         }
