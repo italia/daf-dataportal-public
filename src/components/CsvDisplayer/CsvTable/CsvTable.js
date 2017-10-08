@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
-import TableRow from './TableRow.js'
 import TableHead from './TableHead.js'
 import TableFoot from './TableFoot.js'
 import * as csv from "csvtojson"
-import * as request from "request";
+import * as request from "request"
 
 /**
  *
