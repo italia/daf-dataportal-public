@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Map, InfoControl, TileLayer, Marker} from 'react-leaflet-wrapper';
+import {Map, TileLayer, Marker} from 'react-leaflet-wrapper';
 import CsvTable from '../CsvTable/CsvTable.js';
 
 /**
@@ -25,7 +25,7 @@ export default class CsvMap extends Component {
         this.selectedMarker = null;
     }
     componentDidMount() {
-        this.state.markers = this.props.rows ? this.props.rows : [];
+        this.setState({markers: this.props.rows});
     }
 
     /**
@@ -90,8 +90,6 @@ export default class CsvMap extends Component {
         const {latFieldName} = this.props;
         const {dataColumnName} = this.props;
         const {zoom} = this.props;
-        const {selected} = this.props;
-        const {autoCenter} = this.props;
         return (
             <div>
                 <Map
