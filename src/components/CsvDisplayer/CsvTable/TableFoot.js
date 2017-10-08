@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
 export default class TableFoot extends Component {
     constructor(props) {
@@ -11,8 +11,8 @@ export default class TableFoot extends Component {
             <tfoot>
                 <tr>
                     {
-                        Array.isArray(foot) && foot.map((header, index) => 
-                            <th className="u-border-bottom-xs" key={index}>{header}</th>
+                        Array.isArray(foot) && foot.map(
+                            (header, index) => <th className="u-border-bottom-xs" key={index}>{header}</th>
                         )
                     }
                 </tr>
