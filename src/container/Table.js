@@ -23,7 +23,7 @@ class Table extends Component {
                         <div className="Grid Grid--withGutter">
                             <div className="Grid-cell u-md-size12of12 u-lg-size12of12 u-padding-right-xl">
                                 <CsvDisplayer src={src}
-                                    noHeader={true} type="table" showFoot={true}></CsvDisplayer>
+                                    noHeader={false} type="table" showFoot={true}></CsvDisplayer>
                             </div>
                         </div>
                     </div>
