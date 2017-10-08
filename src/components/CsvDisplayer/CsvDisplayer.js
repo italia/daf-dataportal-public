@@ -33,7 +33,7 @@ class CsvDisplayer extends Component {
     }
 
     componentDidMount() {
-        if (this.props.separator) {
+        if (this.props.delimiter) {
             this.delimiter = this.props.delimiter;
         }
         if (this.props.latFieldName) {
