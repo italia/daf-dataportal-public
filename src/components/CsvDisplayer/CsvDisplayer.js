@@ -27,6 +27,7 @@ class CsvDisplayer extends Component {
         this.tmpEl = [];
         this.type=VIEW_TYPE.TABLE;
         this.caption='';
+        this.showFoot = false;
         this.state = {
             headers: [],
             rows: []
@@ -56,8 +57,11 @@ class CsvDisplayer extends Component {
         if(this.props.caption){
             this.caption=this.props.caption;
         }
-        //Retrieve csv
-         // Retrieve the csv
+        if(this.props.showFoot){
+            this.showFoot = this.props.showFoot;
+        }
+
+        // Retrieve the csv
         csv({
             toArrayString: true,
             delimiter: this.delimiter,
@@ -85,7 +89,7 @@ class CsvDisplayer extends Component {
         const caption = this.caption;
         const {autoCenter} = this.props;
         const {zoom} = this.props;
-        const {center} = this.props;
+        const {center, showFoot} = this.props;
         if(this.type==VIEW_TYPE.MAP){
             return (
                 <div>
@@ -96,7 +100,7 @@ class CsvDisplayer extends Component {
         }else{
             return (
                 <div>
-                    <CsvTable headers={headers} rows={rows} caption={caption}></CsvTable>    
+                    <CsvTable headers={headers} rows={rows} caption={caption} showFoot={showFoot}></CsvTable>    
                 </div>
             );
         }
