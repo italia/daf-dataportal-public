@@ -7,8 +7,8 @@ import * as request from "request";
 
 /**
  * 
- * @author: Davide Pastore
- * @author: Cosimo,Francesco Pichierri
+ * @author Davide Pastore
+ * @author Cosimo,Francesco Pichierri
  * 
  * Visualize CSV content into a Table
  */
