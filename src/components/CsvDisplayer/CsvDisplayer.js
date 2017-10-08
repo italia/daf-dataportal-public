@@ -50,7 +50,7 @@ class CsvDisplayer extends Component {
         if (this.props.dataColumnName) {
             this.dataColumnName = this.props.dataColumnName;
         }
-        if (this.props.type == VIEW_TYPE.MAP) {
+        if (this.props.type === VIEW_TYPE.MAP) {
             this.type = VIEW_TYPE.MAP;
         }
         if (this.props.caption) {
@@ -88,7 +88,7 @@ class CsvDisplayer extends Component {
         const caption = this.caption;
         const {autoCenter, zoom, center, showFoot, noHeader} = this.props;
         const {showDetail} = this.props;
-        if (this.type == VIEW_TYPE.MAP) {
+        if (this.type === VIEW_TYPE.MAP) {
             return (
                 <div>
                     <CsvMap
