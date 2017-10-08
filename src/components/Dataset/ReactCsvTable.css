@@ -34,7 +34,8 @@
 	color: #333333;
 	position: relative;
 	padding: 10px;
-	background: #0066cc;
+  background: #0066cc;
+  border-radius: 2px;
 	color: white;
 }
 
@@ -58,7 +59,6 @@ input {
   font-family: 'Titillium Web', sans-serif;
   outline: none;
   border-color: #f0f0f0;
-  background-color: transparent;
   border-width: 0 0 1px;
   border-style: solid;
   transition: all 0.1s ease;
@@ -71,13 +71,33 @@ input {
 select {
   font-family: 'Titillium Web', sans-serif;
 }
+.s-inline {
+  display: inline;
+}
+/* .chiudi {
+  position: absolute;
+  right: 5px;
+}
+.chiudi:after {
+  content: url("close.svg");
+  display: inline-flex;
+  height: 24px;
+  width: 24px;
+  vertical-align: middle;
+}
+.chiudi:hover {
+  cursor: pointer;
+}
+.chiudi:hover:after {
+  content: url("close2.svg");
+} */
 .ReactTable {
   position: relative;
   display: flex;
   flex-direction: column;
   font-family: 'Titillium Web', sans-serif;
   border: 1px solid rgba(0,0,0,0.1);
-  margin: 0.2em;
+  margin: 0.5em;
 }
 .ReactTable * {
   box-sizing: border-box;
@@ -109,8 +129,9 @@ select {
   border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 .ReactTable .rt-thead.-filters {
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding: 0.2em 0 0.3em;
 }
+
 .ReactTable .rt-thead .rt-th,
 .ReactTable .rt-thead .rt-td {
   padding: 0.4em 0.2em;

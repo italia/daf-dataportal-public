@@ -68,6 +68,8 @@ export default class DatasetDetail extends React.Component {
                         dataVisualizer = <div className="Grid-cell"><Collapsible trigger="Anteprima">
                                             <ReactCsvTable csvPath={res.url} initialRows="10"/>
                                          </Collapsible></div>;
+                      }else{
+                        //Todo: preview for other data types/ formats
                       }
                       return (
                         <div className="Grid Grid--fit Grid--withGutter " key={index}>

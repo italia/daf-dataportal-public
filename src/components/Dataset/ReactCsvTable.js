@@ -13,7 +13,18 @@ class ReactCsvTable extends Component {
           {
             Header: element,
             accessor: i.toString(),
-            minWidth: 144
+            minWidth: 144,
+            Filter: ({ filter, onChange }) =>
+            <span>
+              <input
+                type={"text"}
+                onChange={event => onChange(event.target.value)}
+                style={{ width: "100%" }}
+                placeholder={"Filtra"}
+                className={"s-inline"}
+                id={`s-${i}`}
+              />
+            </span>
           });
     });
     return columns;
