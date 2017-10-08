@@ -1,0 +1,22 @@
+.table {
+	background-color: whitesmoke !important; 
+}
+
+.CSVTable__outer {
+	background-color: whitesmoke !important; 
+	padding: 10px;	
+}
+
+.CSVTable__overflowx {
+	overflow-x: auto;
+	table-layout: fixed;
+}
+
+.CSVTable__pagination > button {
+	padding: 5px;
+}
+
+.CSVTable__pagination > .CSVTable__button--selected {
+	background-color: #3B5998;
+	color: white;
+}
