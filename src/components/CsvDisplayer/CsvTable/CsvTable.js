@@ -52,7 +52,7 @@ export default class CsvTable extends Component {
                    {foot}
                    <tbody>
                         {
-                            rows.map((row, index) => 
+                            (rows || {}).map((row, index) => 
                                 <tr key={index}>
                                     {
                                         Object.keys(row).map((key, td) =>
