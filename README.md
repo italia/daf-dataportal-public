@@ -28,3 +28,33 @@ cd react-open-map
 npm install
 yarn storybook
 ```
+
+How to use map component:
+```
+<DafOpenMap
+  url={"http://localhost:9009/example_dataset.json"}
+  lat={"enteBeneficiario.geoLat"}
+  lng={"enteBeneficiario.geoLng"}
+/>
+```
+
+Where:
+
+url: The URL of dataset
+lat: Path of the JSON field latitude defined in the dataset
+lng: Path of the JSON field longitude defined in the dataset
+
+You can modify the component by editing the file in the following path :
+```
+react-open-map/src/components/DafOpenMap.js
+```
+
+You can create new stories by editing the file in the following path :
+```
+react-open-map/src/stories/DafOpenMap.js
+```
+
+NOTE: Currently the popup shown when user clicks on the geopoint is customized on a example dataset in :
+```
+react-open-map/public/example_dataset.json
+```
