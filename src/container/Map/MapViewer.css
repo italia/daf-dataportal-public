@@ -1,0 +1,40 @@
+.map-container {
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-rows: 500px;
+    grid-gap: 10px;
+}
+
+/*data list*/
+.map-datalist{
+    /*display: inline-flex;*/
+    font-size: 1em !important;
+    color: #06c !important;
+    font-weight: 600 !important;
+}
+
+.map-datalist li{
+    margin-bottom: 10px;
+}
+
+.ismap{
+/*width: 100%;*/
+}
+
+.map-container .map{
+    /*display: flex;
+    flex-direction: row;*/
+    display: inline;
+    font-size: 1em !important;
+    color: #06c !important;
+    font-weight: 600 !important;
+}
+
+.map-container .map li{
+    margin-bottom: 10px;
+}
+
+.title{
+    font-size: 1.2em !important;
+    color: #1e1212;
+}

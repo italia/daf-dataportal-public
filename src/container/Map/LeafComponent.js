@@ -10,7 +10,7 @@ class LeafComponent extends React.Component {
     }
 
     render() {
-        return <div style={{height: "500px", width: "100%"}} id="open_map"/>
+        return <div className="ismap" id="open_map"/>
     }
 
     componentDidMount() {

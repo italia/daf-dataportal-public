@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 
+import './MapViewer.css'
+
 import mapmockup from '../../data/mapmockup'
 import MapsList from "./MapsList";
 import LeafComponent from "./LeafComponent";
@@ -52,7 +54,7 @@ class MapViewer extends Component {
 
             <div className="u-background-white u-layout-r-withGutter u-posRelative u-zindex-30">
                 <div className="u-layout-wide u-layoutCenter u-layout-withGutter u-padding-r-top u-padding-bottom-xxl">
-                    <div style={{display: "flex"}}>
+                    <div className="map-container">
                         <MapsList maps={mapmockup} onMapClick={this.handleMapClick}
                                   selectedPoint={this.state.selectedPoint}/>
                         <LeafComponent
