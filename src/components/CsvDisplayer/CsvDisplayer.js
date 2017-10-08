@@ -1,7 +1,7 @@
 import React , {Component} from 'react'
 import * as csv from "csvtojson"
 import * as request from "request";
-import CsvMap from './Map/CsvMap.js';
+import CsvMap from './map/CsvMap.js';
 import CsvTable from './CsvTable/CsvTable.js'
 /**
  * @author: Davide Pastore
