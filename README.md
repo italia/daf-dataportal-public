@@ -56,6 +56,43 @@ An example of usage could be:
 | caption        | The text to add to the table as a caption.                                                                                 | no       | ""      | String                             | table     |
 | showFoot       | If true show the foot with the same column of the headers, otherwise doesn't show the foot.                                | no       | false   | Boolean                            | table     |
 
+### Map
+
+The map shows the data passed using the parameters, creating a marker for each point.
+The component is the one required [here](https://github.com/italia/daf-dataportal-public/issues/6).
+An example of usage could be:
+
+```js
+let rows = [{
+    'Col-1': 'Cella 1',
+    'Col-2': 'Cella 2'
+}];
+let center = {[40.36135,18.18825]};
+let longFieldName = 'Lon';
+let latFieldName = 'Lat';
+let dataColumnName = 'Luogo';
+let zoom = 18;
+
+<CsvMap
+    rows={rows}
+    center={center}
+    longFieldName={longFieldName}
+    latFieldName={latFieldName}
+    dataColumnName={dataColumnName}
+    zoom={zoom}></CsvMap>
+```
+
+#### Properties
+
+| Name           | Description                                           | Required | Default          | Type                               |
+|----------------|-------------------------------------------------------|----------|------------------|------------------------------------|
+| rows           | The list of rows to display                           | no       | [] (empty array) | Array of objects                   |
+| latFieldName   | The name of the latitude field csv file               | no       | "Lat"            | String                             |
+| longFieldName  | The name of the longitude field in the csv file       | no       | "Lon"            | String                             |
+| dataColumnName | The name of the field in the csv to show in the popup | no       | ""               | String                             |
+| zoom           | The zoom of the map                                   | no       | false            | Integer                            |
+| center         | The center position of the map                        | no       | false            | Object (ex. {[40.36135,18.18825]}) |
+
 ### Table
 
 The table shows the data passed using the parameters.
@@ -76,11 +113,11 @@ let noHeader = false;
 <CsvTable headers={headers} rows={rows} caption={caption} showFoot={showFoot} noHeader={noHeader}></CsvTable>
 ```
 
-### Properties
+#### Properties
 
 | Name     | Description                                                                                | Required | Default          | Type             |
 |----------|--------------------------------------------------------------------------------------------|----------|------------------|------------------|
-| rows     | The list of rows to display                                                                | no       | [] (empty array) | Array of Objects |
+| rows     | The list of rows to display                                                                | no       | [] (empty array) | Array of objects |
 | headers  | The list of headers                                                                        | no       | [] (empty array) | Array of String  |
 | noHeader | If tru hide the header                                                                     | no       | false            | Boolean          |
 | caption  | The text to add to the table as a caption                                                  | no       | ""               | String           |
