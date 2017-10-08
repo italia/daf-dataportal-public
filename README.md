@@ -55,7 +55,7 @@ An example of usage could be:
 | center         | The center position of the map.                                                                                            | no       | false   | Object (ex. {[40.36135,18.18825]}) | map       |
 | caption        | The text to add to the table as a caption.                                                                                 | no       | ""      | String                             | table     |
 | showFoot       | If true show the foot with the same column of the headers, otherwise doesn't show the foot.                                | no       | false   | Boolean                            | table     |
-| showDetail     | If true show details of content after the map, otherwise doesn't show the details                                          | no       | false   | Boolean           
+| showDetail     | If true show details of content after the map, otherwise doesn't show the details                                          | no       | false   | Boolean                            |map/table  |       
 
 ### Map
 
