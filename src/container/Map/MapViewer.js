@@ -13,8 +13,17 @@ class MapViewer extends Component {
             name: "",
             selectedPoint: null
         }
-        this.handleMapClick = this.handleMapClick.bind(this)
-        this.handlePointClick = this.handlePointClick.bind(this)
+        this.handleMapClick = this.handleMapClick.bind(this);
+        this.handlePointClick = this.handlePointClick.bind(this);
+        this.handleMarkerClick = this.handleMarkerClick.bind(this);
+    }
+
+    handleMarkerClick = (marker) =>{
+        console.log(this.state)
+        this.setState({
+            ...this.state,
+            selectedPoint: marker,
+        })
     }
 
     handleMapClick = (data, name) => this.setState({
@@ -27,10 +36,10 @@ class MapViewer extends Component {
     //todo: controllare al click del punto cosa succede alla mappa
 
     handlePointClick = point => {
-        return this.state = {
+        return this.setState({
             ...this.state,
             selectedPoint: point
-        };
+        });
     }
 
     render() {
@@ -46,9 +55,15 @@ class MapViewer extends Component {
                     <div style={{display: "flex"}}>
                         <MapsList maps={mapmockup} onMapClick={this.handleMapClick}
                                   selectedPoint={this.state.selectedPoint}/>
-                        <LeafComponent data={this.state.data} selectedPoint={this.state.selectedPoint}/>
-                        <PointsList title={this.state.name} points={this.state.data}
-                                    onPointClick={this.handlePointClick}/>
+                        <LeafComponent
+                            data={this.state.data}
+                            selectedPoint={this.state.selectedPoint}
+                            onMarkerClick={this.handleMarkerClick}
+                        />
+                        <PointsList title={this.state.name}
+                                    points={this.state.data}
+                                    onPointClick={this.handlePointClick}
+                                    selectedMarker={this.state.selectedPoint}/>
                     </div>
                 </div>
             </div>

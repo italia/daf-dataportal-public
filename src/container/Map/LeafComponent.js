@@ -24,66 +24,78 @@ class LeafComponent extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         if (this.markerlist !== [])
-            this.markerlist.map(marker => this.mapToShow.removeLayer(marker))
+            this.markerlist.map(marker => this.mapToShow.removeLayer(marker));
+            this.attachAndPositionData(nextProps.data,this.props.onMarkerClick);
+
         if (nextProps.selectedPoint !== null) {
-            //selezionare solo quel punto
-            alert("selzionato punto")
-        }
-        else {
-            this.attachAndPositionData(nextProps.data)
+            this.centerToData(nextProps.selectedPoint);
         }
     }
 
-    attachAndPositionData(data) {
+    centerToData(data){
+        this.mapToShow.panTo(this.extractCoord(data));
+    }
+
+    //TODO change/adapt based on REAL data
+    extractCoord(data){
+        return [data.latitude, data.longitude]
+    }
+
+    //TODO change/adapt based on REAL data
+    attachAndPositionData(data,onMarkerClick) {
+        //null check, don't display anything
+        if (data == null || data.length == 0) return;
+
         let center_lat = 0;
         let center_lon = 0;
 
+        //init
+        let cornerTopLeft = this.extractCoord(data[0]);
+        let cornerBottomRight = this.extractCoord(data[0]);
 
-        let cornerTop = null;
-        let cornerBottom = null;
-        this.markerlist = []
-
-        //var bounds = new L.LatLngBounds(arrayOfLatLngs);
+        this.markerlist = [];
 
         data.forEach(current => {
-            const {latitude, longitude, title} = current
+            const [latitude, longitude] = this.extractCoord(current);
+            const title = current.title;
+
             center_lat += latitude;
             center_lon += longitude;
 
-            if (cornerTop === null) {
-                cornerTop = [latitude, longitude];
-            } else {
-                if (cornerTop[0] > latitude)
-                    cornerTop[0] = latitude;
-                if (cornerTop[1] < longitude)
-                    cornerTop[1] = longitude;
-            }
+                if (cornerTopLeft[0] > latitude)
+                    cornerTopLeft[0] = latitude;
+                if (cornerTopLeft[1] < longitude)
+                    cornerTopLeft[1] = longitude;
 
-            if (cornerBottom === null) {
-                cornerBottom = [latitude, longitude];
-            } else {
-                if (cornerBottom[0] < latitude)
-                    cornerBottom[0] = latitude;
-                if (cornerBottom[1] > longitude)
-                    cornerBottom[1] = longitude;
-            }
+                if (cornerBottomRight[0] < latitude)
+                    cornerBottomRight[0] = latitude;
+                if (cornerBottomRight[1] > longitude)
+                    cornerBottomRight[1] = longitude;
 
-            // mapbound.push([ data.latitude, data.longitude ]);
+            let tempMarker = L.marker([latitude, longitude]
+                // {icon:Icon} // eventually you can use another icon: see docs
+            );
 
-            this.markerlist.push(L.marker([latitude, longitude],
-                // {icon:Icon}
-            ).bindPopup(title + ` ${latitude}:${longitude}`).addTo(this.mapToShow));
+            //bind listner
+            tempMarker.addEventListener('click',()=>{
+                onMarkerClick(current);
+            })
+                //.bindPopup(title)
+                .addTo(this.mapToShow);
+
+            //tempMarker.bindPopup(title); //set title
+            //tempMarker.addTo(this.mapToShow); //add to map
+
+            this.markerlist.push(tempMarker);//keep track off all markers
         });
 
+        //calculate center point
         center_lon /= data.length;
         center_lat /= data.length;
 
-        let mapbound = L.latLngBounds(cornerTop, cornerBottom);
-        // console.log(mapbound);
-
-        // mapToShow.options.center = L.latLng([center_lat, center_lon]);
-        // mapToShow.options.layers = markerlist;
-        // mapToShow.options.
+        //force map to zoom on markers area
+        let mapbound = L.latLngBounds(cornerTopLeft, cornerBottomRight);
+        this.mapToShow.fitBounds(mapbound);
     }
 }
 
