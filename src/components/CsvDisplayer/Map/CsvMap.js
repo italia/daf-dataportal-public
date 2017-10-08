@@ -22,9 +22,7 @@ export default class CsvMap extends Component {
         this.selectedMarker = null;
     }
     componentDidMount() {
-        this.state.markers = this.props.rows
-            ? this.props.rows
-            : [];
+        this.state.markers = this.props.rows ? this.props.rows : [];
     }
 
     /**
@@ -42,9 +40,7 @@ export default class CsvMap extends Component {
         this.latLngs = [];
         if (markerCsv) {
             for (let curMarker in markerCsv) {
-                this
-                    .latLngs
-                    .push(this.getLatLng(markerCsv[curMarker], latFieldName, longFieldName));
+                this.latLngs.push(this.getLatLng(markerCsv[curMarker], latFieldName, longFieldName));
             }
         }
 
@@ -74,9 +70,7 @@ export default class CsvMap extends Component {
         const {dataColumnName} = this.props;
         const {zoom} = this.props;
         const {selected} = this.props;
-        //console.log("MARKERS ",this.props.rows);
         const {autoCenter} = this.props;
-        //console.log("selectedMarker ",this.selectedMarker);
         return (
             <div>
                 <Map
@@ -87,13 +81,12 @@ export default class CsvMap extends Component {
                     bounds={this.latLngs}>
                     <TileLayer
                         url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-                        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/> {
+                        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>  
+                   {
 
-                        (rows || {}).map(
-                            (markerCsv, index) => <Marker
-                                key={index}
-                                latlng={this.getLatLng(markerCsv, latFieldName, longFieldName)}
-                                popupContent={feature => <span>{this.getDataColumn(markerCsv, dataColumnName)}</span>
+                    Array.isArray(rows) && rows.map(
+                            (markerCsv, index) => <Marker key={index} latlng={this.getLatLng(markerCsv, latFieldName, longFieldName)}
+                                    popupContent={feature => <span>{this.getDataColumn(markerCsv, dataColumnName)}</span>
                                 }
                             />
                         )
