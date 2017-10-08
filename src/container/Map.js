@@ -25,6 +25,10 @@ class Map extends Component {
                                 <CsvDisplayer src={src}
                                     latFieldName='Lat' longFieldName='Lon' noheader={false} dataColumnName="Luogo"
                                     type="map"  zoom="18" center={[40.36135,18.18825]}></CsvDisplayer>
+
+                                 <CsvDisplayer src={src}
+                                    latFieldName='Lat' longFieldName='Lon' noheader={false} dataColumnName="Luogo"
+                                    type="map"  zoom="18" center={[40.36135,18.18825]} showDetail={true}></CsvDisplayer>   
                             </div>
                         </div>
                     </div>

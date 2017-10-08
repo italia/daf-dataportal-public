@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Map, InfoControl, TileLayer, Marker} from 'react-leaflet-wrapper';
+import CsvTable from '../CsvTable/CsvTable.js';
 
 /**
  * @author Cosimo,Francesco Pichierri
@@ -15,10 +16,12 @@ export default class CsvMap extends Component {
     constructor(props) {
         super(props);
         this.latLngs = [];
+        this.headerDetail=null;
+        this.rowsDetail=[];
         this.state = {
-            markers: []
+            markers: [],
+            showDetail: false
         };
-        this.nativeLeafMarkers = [];
         this.selectedMarker = null;
     }
     componentDidMount() {
@@ -44,6 +47,24 @@ export default class CsvMap extends Component {
             }
         }
 
+    }
+    clicked(marker){
+        this.rowsDetail=[];
+        //Get headers from markerCsv //Rows from marker, caption "Detail"
+        const headers = this.extractHeaderFromCsv(marker); //Keys
+        const rows = marker;
+        this.headerDetail = headers;
+        this.rowsDetail.push(rows);
+        if(this.props.showDetail){
+            this.setState({
+                showDetail: true,
+            });
+        }
+    }
+    extractHeaderFromCsv(markers){
+        if(markers){
+            return Object.keys(markers);
+        }
     }
     /**
      * Given a row  and a data column field Name returns
@@ -85,7 +106,7 @@ export default class CsvMap extends Component {
                    {
 
                     Array.isArray(rows) && rows.map(
-                            (markerCsv, index) => <Marker key={index} latlng={this.getLatLng(markerCsv, latFieldName, longFieldName)}
+                            (markerCsv, index) => <Marker key={index} onClick={()=>this.clicked(markerCsv)} latlng={this.getLatLng(markerCsv, latFieldName, longFieldName)}
                                     popupContent={feature => <span>{this.getDataColumn(markerCsv, dataColumnName)}</span>
                                 }
                             />
@@ -93,6 +114,13 @@ export default class CsvMap extends Component {
                     }
 
                 </Map>
+                { 
+                    this.state.showDetail ?
+                        <div>
+                            <CsvTable headers={this.headerDetail} rows={this.rowsDetail} showFoot={false}></CsvTable>
+                        </div>
+                    : null
+                }
             </div>
         );
     }

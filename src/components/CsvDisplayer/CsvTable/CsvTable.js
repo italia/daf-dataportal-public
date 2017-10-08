@@ -46,7 +46,7 @@ export default class CsvTable extends Component {
         const {headers, rows, caption, noHeader, showFoot} = this.props;
         let header = '';
         let foot = '';
-
+        console.log("Rows ",rows);
         if (!noHeader) {
             header = <TableHead headers={headers}></TableHead>;
         }
