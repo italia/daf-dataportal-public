@@ -68,7 +68,7 @@ export default class DatasetDetail extends React.Component {
 
                       if (res.format === 'CSV') {
                       // In this section it is possible to visualize table of data given as CSV file
-                        dataVisualizer = <div className="Grid-cell">
+                        dataVisualizer = <div className="Grid-cell table-preview">
                                             <Collapsible trigger="Anteprima">
                                               <ReactCsvTable csvPath={res.url} />
                                             </Collapsible>
