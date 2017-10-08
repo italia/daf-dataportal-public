@@ -23,8 +23,8 @@ class Map extends Component {
                         <div className="Grid Grid--withGutter">
                             <div className="Grid-cell u-md-size12of12 u-lg-size12of12 u-padding-right-xl">
                                 <CsvDisplayer src={src}
-                                    latFieldName='Lat' longFieldName='Lon' noheader={false} dataColumnName="Luogo"
-                                    type="map"  zoom="18" center={[40.36135,18.18825]}></CsvDisplayer>
+                                    latFieldName='Lat' longFieldName='Lon' dataColumnName="Luogo"
+                                    type="map" zoom="18" center={[40.36135,18.18825]}></CsvDisplayer>
                             </div>
                         </div>
                     </div>
