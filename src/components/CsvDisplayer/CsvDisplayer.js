@@ -84,9 +84,7 @@ class CsvDisplayer extends Component {
         const rows = this.state.rows;
         const dataColumnName = this.dataColumnName;
         const caption = this.caption;
-        const {autoCenter} = this.props;
-        const {zoom} = this.props;
-        const {center, showFoot} = this.props;
+        const {autoCenter, zoom, center, showFoot} = this.props;
         if (this.type == VIEW_TYPE.MAP) {
             return (
                 <div>
