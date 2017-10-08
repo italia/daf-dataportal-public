@@ -10,7 +10,7 @@ import * as request from "request";
  * @author Davide Pastore
  * @author Cosimo,Francesco Pichierri
  * 
- * Visualize CSV content into a Table
+ * Display  data  into a Table
  */
 export default class CsvTable extends Component {
 

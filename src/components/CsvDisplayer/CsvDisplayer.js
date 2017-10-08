@@ -7,6 +7,7 @@ import CsvTable from './CsvTable/CsvTable.js'
  * @author: Davide Pastore
  * @author: Cosimo,Francesco Pichierri
  * 
+ * Render Csv content in various forms
  */
 const VIEW_TYPE = Object.freeze({
     MAP:   "map",
