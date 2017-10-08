@@ -18,3 +18,13 @@ npm run build
 npm install -g serve
 serve -s build
 ```
+
+# DAF Open Map
+React Open Map Component with OpenStreetMap and react-leaf.
+
+How to start:
+```
+cd react-open-map
+npm install
+yarn storybook
+```
