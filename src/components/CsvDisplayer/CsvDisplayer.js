@@ -19,7 +19,7 @@ class CsvDisplayer extends Component {
         this.delimiter = "auto";
         this.latFieldName = "Lat";
         this.longFieldName = "Lon";
-        this.noheader = false;
+        this.noHeader = false;
         this.dataColumnName = "";
         this.tmpEl = [];
         this.type = VIEW_TYPE.TABLE;
@@ -41,9 +41,9 @@ class CsvDisplayer extends Component {
         if (this.props.longFieldName) {
             this.longFieldName = this.props.longFieldName;
         }
-        if (this.props.noheader) {
-            //this.noheader=this.props.noheader ==='true' ? true : false;
-            this.noheader = this.props.noheader
+        if (this.props.noHeader) {
+            //this.noHeader=this.props.noHeader ==='true' ? true : false;
+            this.noHeader = this.props.noHeader
         }
         if (this.props.dataColumnName) {
             this.dataColumnName = this.props.dataColumnName;
@@ -59,7 +59,7 @@ class CsvDisplayer extends Component {
         }
 
         // Retrieve the csv
-        csv({toArrayString: true, delimiter: this.delimiter, noheader: this.noheader})
+        csv({toArrayString: true, delimiter: this.delimiter, noHeader: this.noHeader})
             .fromStream(
                 request.get(this.props.src)
             )
@@ -84,7 +84,7 @@ class CsvDisplayer extends Component {
         const rows = this.state.rows;
         const dataColumnName = this.dataColumnName;
         const caption = this.caption;
-        const {autoCenter, zoom, center, showFoot} = this.props;
+        const {autoCenter, zoom, center, showFoot, noHeader} = this.props;
         if (this.type == VIEW_TYPE.MAP) {
             return (
                 <div>
@@ -101,7 +101,7 @@ class CsvDisplayer extends Component {
         } else {
             return (
                 <div>
-                    <CsvTable headers={headers} rows={rows} caption={caption} showFoot={showFoot}></CsvTable>
+                    <CsvTable headers={headers} rows={rows} caption={caption} showFoot={showFoot} noHeader={noHeader}></CsvTable>
                 </div>
             );
         }
