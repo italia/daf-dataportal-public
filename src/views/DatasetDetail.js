@@ -65,9 +65,9 @@ export default class DatasetDetail extends React.Component {
                     {this.state.dataset.resources && this.state.dataset.resources.map((res, index) => {
                       let dataVisualizer = null;
                       if (res.format === 'CSV'){
-                        dataVisualizer = <Collapsible className="accordion_preview" trigger="Anteprima">
+                        dataVisualizer = <div className="Grid-cell"><Collapsible trigger="Anteprima">
                                             <ReactCsvTable csvPath={res.url} initialRows="10"/>
-                                         </Collapsible>;
+                                         </Collapsible></div>;
                       }
                       return (
                         <div className="Grid Grid--fit Grid--withGutter " key={index}>

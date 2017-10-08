@@ -6,17 +6,51 @@
 
 @import url("https://fonts.googleapis.com/css?family=Titillium+Web:400,400i,600");
 
-.accordion_preview{
-  margin: 0.5em;
-  font-family: 'Titillium Web', sans-serif;
-  color: white;
-  margin: 0.8em;
-  background: #0066cc;
-  display: block;
+.Collapsible {
+  font-family: 'Titillium Web', sans-serif;  
+  background-color: white;
+  margin-bottom: 1em;
 }
 
-.Collapsible{
-  max-width: 100%;
+.Collapsible__contentInner {
+  padding: 10px;
+  border-top: 0;
+}
+
+.Collapsible__contentInner p {
+	margin-bottom: 10px;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+.Collapsible__contentInner p:last-child {
+	margin-bottom: 0;
+}
+
+.Collapsible__trigger {
+	display: block;
+	font-weight: 400;
+	text-decoration: none;
+	color: #333333;
+	position: relative;
+	padding: 10px;
+	background: #0066cc;
+	color: white;
+}
+
+.Collapsible__trigger:after {
+  content: url('../../drop.svg');
+  color: white;
+	position: absolute;
+  right: 1em;
+  top: 0.5em;
+	display: block;
+	transition: transform 300ms;
+}
+
+.Collapsible__trigger.is-open:after {
+  transform: rotateZ(180deg);
+  top: 0.8em;
 }
 
 input {
@@ -43,7 +77,7 @@ select {
   flex-direction: column;
   font-family: 'Titillium Web', sans-serif;
   border: 1px solid rgba(0,0,0,0.1);
-  margin: 0.5em;
+  margin: 0.2em;
 }
 .ReactTable * {
   box-sizing: border-box;
