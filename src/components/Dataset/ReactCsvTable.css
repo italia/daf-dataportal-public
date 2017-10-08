@@ -31,7 +31,6 @@
 	display: block;
 	font-weight: 400;
 	text-decoration: none;
-	color: #333333;
 	position: relative;
 	padding: 10px;
   background: #0066cc;
@@ -74,23 +73,7 @@ select {
 .s-inline {
   display: inline;
 }
-/* .chiudi {
-  position: absolute;
-  right: 5px;
-}
-.chiudi:after {
-  content: url("close.svg");
-  display: inline-flex;
-  height: 24px;
-  width: 24px;
-  vertical-align: middle;
-}
-.chiudi:hover {
-  cursor: pointer;
-}
-.chiudi:hover:after {
-  content: url("close2.svg");
-} */
+
 .ReactTable {
   position: relative;
   display: flex;
@@ -121,8 +104,6 @@ select {
   -ms-user-select: none;
   user-select: none;
   border-bottom: 1px solid #f0f0f0;
-/*.rt-header-pivot
-      border-right-color: #f7f7f7*/
 }
 .ReactTable .rt-thead.-headerGroups {
   background: rgba(0,0,0,0.03);
@@ -135,14 +116,10 @@ select {
 .ReactTable .rt-thead .rt-th,
 .ReactTable .rt-thead .rt-td {
   padding: 0.4em 0.2em;
-/*min-width: 128px*/
   line-height: normal;
   position: relative;
-/*border-right: 1px solid alpha(black, .05)*/
   transition: box-shadow 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: inset 0 0 0 0 transparent;
-/*&:last-child
-        border-right: 0*/
 }
 .ReactTable .rt-thead .rt-th.-sort-asc,
 .ReactTable .rt-thead .rt-td.-sort-asc {
@@ -197,10 +174,6 @@ select {
   display: flex;
   flex-direction: column;
   overflow: auto;
-/*.rt-td
-      border-right:1px solid alpha(black, .02)
-      &:last-child
-        border-right:0*/
 }
 .ReactTable .rt-tbody .rt-tr-group {
   border-bottom: solid 1px rgba(0,0,0,0.05);
@@ -244,7 +217,7 @@ select {
   display: inline-block;
   position: relative;
   color: transparent;
-  margin: 0 10;
+  margin: 0 10px;
 }
 .ReactTable .rt-expander:after {
   content: '';
@@ -254,8 +227,7 @@ select {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-90deg);
-  border-left: 5.04px solid transparent;
-/*border-right: ($expandSize * .72) solid transparent*/
+  border-left: 5px solid transparent;
   border-top: 7px solid rgba(0,0,0,0.8);
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
@@ -279,10 +251,6 @@ select {
   flex-direction: column;
   box-shadow: 0 0 15px 0 rgba(0,0,0,0.15);
 }
-/*    .rt-td
-      border-right:1px solid alpha(black, .05)
-      &:last-child
-        border-right:0*/
 .-striped .rt-tr.-odd {
   background: #f0f0f0;
 }
@@ -298,7 +266,6 @@ select {
   justify-content: space-between;
   align-items: stretch;
   flex-wrap: wrap;
-/*box-shadow: 0 0px 15px 0px alpha(black, .1)*/
   border-top: 1px solid #f0f0f0;
 }
 .-pagination input,

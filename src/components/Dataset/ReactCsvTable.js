@@ -3,9 +3,14 @@ import ReactTable from "react-table";
 import Papa from 'papaparse';
 import './ReactCsvTable.css';
 
+/** This is the React component for showing a table of CSV data
+ *
+ *  Component's attributes:
+ *    - csvPath:      the uri where the CSV file is located
+ * */
 class ReactCsvTable extends Component {
 
-  //Creates columns from string array
+  // Creates columns from string array
   createColumns(titles){
     let columns = [];
     titles.forEach((element, i) => {
@@ -13,7 +18,9 @@ class ReactCsvTable extends Component {
           {
             Header: element,
             accessor: i.toString(),
+            /* minimum width (in px) of table columns */
             minWidth: 144,
+            /* custom filter component */
             Filter: ({ filter, onChange }) =>
             <span>
               <input
@@ -25,18 +32,21 @@ class ReactCsvTable extends Component {
                 id={`s-${i}`}
               />
             </span>
-          });
+          }
+      );
     });
     return columns;
   }
 
+  // load data into table
   loadData(link) {
     const validate = (link) =>
       new RegExp(/[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi).test(link);
     let rows = [];
     // here check if it's a link
     if (!validate(link)) return;
-    //this url acts as proxy to bypass cors requests that block the fetching
+    // this url acts as proxy to bypass CORS requests that block the fetching of stored CSV file,
+    // because we had an issue to access some server that doesn't return us right headers
     Papa.parse("https://cors-anywhere.herokuapp.com/"+link, {
       download: true,
       dynamicTyping: true,
@@ -45,7 +55,7 @@ class ReactCsvTable extends Component {
       },
       complete: () => {
           this.setState({
-            //in the first element of the array rows there are the headers
+            // first row of array represent CSV header, while remaining ones are data
             columns: this.createColumns(rows[0]),
             data: rows.slice(1)
           })
@@ -55,7 +65,9 @@ class ReactCsvTable extends Component {
 
   constructor(props) {
     super(props);
+    // set up Papaparse lib
     Papa.SCRIPT_PATH = "./node_modules/papaparse/papaparse.js";
+    
     this.state = {
       //array of JObjects
       data: [],
@@ -64,6 +76,7 @@ class ReactCsvTable extends Component {
     }
   }
 
+  // load data asynchronously
   componentDidMount() {
     this.loadData(this.props.csvPath);  
   }
@@ -71,7 +84,6 @@ class ReactCsvTable extends Component {
   render() {
     const { data } = this.state;
     const { columns } = this.state;
-    const {initialRows} = this.props || 20;
     return (
       <div>
         <ReactTable
@@ -79,7 +91,7 @@ class ReactCsvTable extends Component {
           defaultFilterMethod={(filter, row) => String(row[filter.id]).toUpperCase().indexOf(filter.value.toUpperCase()) === 0 }
           data={data}
           columns={columns}
-          defaultPageSize={initialRows}
+          defaultPageSize={10}
           className="-striped -highlight"
         />
       </div>

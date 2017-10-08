@@ -63,12 +63,18 @@ export default class DatasetDetail extends React.Component {
                     <h3 className=" u-padding-bottom-s"><strong>Distribuzioni</strong></h3>
 
                     {this.state.dataset.resources && this.state.dataset.resources.map((res, index) => {
+                      //The data visualizer should be able to provide different kinds of previews, ideally one for every file extension/format/content-type
                       let dataVisualizer = null;
-                      if (res.format === 'CSV'){
-                        dataVisualizer = <div className="Grid-cell"><Collapsible trigger="Anteprima">
-                                            <ReactCsvTable csvPath={res.url} initialRows="10"/>
-                                         </Collapsible></div>;
-                      }else{
+
+                      if (res.format === 'CSV') {
+                      // In this section it is possible to visualize table of data given as CSV file
+                        dataVisualizer = <div className="Grid-cell">
+                                            <Collapsible trigger="Anteprima">
+                                              <ReactCsvTable csvPath={res.url} />
+                                            </Collapsible>
+                                         </div>;
+                      }
+                      else {
                         //Todo: preview for other data types/ formats
                       }
                       return (
