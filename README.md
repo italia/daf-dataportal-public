@@ -44,7 +44,7 @@ An example of usage could be:
 
 | Name           | Description                                                                                                                | Required | Default | Type                               | Usage     |
 |----------------|----------------------------------------------------------------------------------------------------------------------------|----------|---------|------------------------------------|-----------|
-| src            | The source of the csv                                                                                                      | yes      | ""      | String                             | map/table |
+| src            | The source of the csv (an url)                                                                                             | yes      | ""      | String                             | map/table |
 | delimiter      | The delimiter of the csv                                                                                                   | no       | "auto"  | String                             | map/table |
 | type           | The type of component to show                                                                                              | yes      | "table" | String ("map"\|"table")            | map/table |
 | latFieldName   | The name of the latitude field csv file                                                                                    | no       | "Lat"   | String                             | map       |
