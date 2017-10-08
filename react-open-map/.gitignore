@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-/react-open-map/node_modules
 
 # testing
 /coverage
