@@ -1242,85 +1242,118 @@
          }    
     },
     
-    "/dati-gov/v1/user-stories/getLast": {
+    "/dati-gov/v1/user-stories": {
         "get": [
-            {
-                "id":1,
-                "title": "Storia 1",
-                "published": true,
-                "subtitle": "Storia di prova",
-                "user": "User 1",
-                "dateLastEdit": "2017-06-22 09:19",
-                "graph1": {
-                    "title": "",
-                    "props": {
-                        "url": null
+          {
+            "subtitle": "<p>Naviga la mappa</p>",
+            "timestamp": {
+                "offset": {
+                    "totalSeconds": 0,
+                    "id": "Z",
+                    "rules": {
+                        "transitions": [],
+                        "transitionRules": [],
+                        "fixedOffset": true
                     }
                 },
-                "graph2": {
-                  "title": "",
-                  "props": {
-                      "url": null
-                  }
+                "zone": {
+                    "totalSeconds": 0,
+                    "id": "Z",
+                    "rules": {
+                        "transitions": [],
+                        "transitionRules": [],
+                        "fixedOffset": true
+                    }
                 },
-                "text": "Contenuto della storia",
-                "image": {
-                    "url": "https://theclayblog.files.wordpress.com/2013/03/this-is-my-story-2.jpg",
-                    "caption": "Testo Immagine"
-                },
-                "footer": "Questo è il footer"
+                "monthValue": 10,
+                "hour": 14,
+                "minute": 47,
+                "second": 47,
+                "nano": 726000000,
+                "year": 2017,
+                "month": "OCTOBER",
+                "dayOfMonth": 6,
+                "dayOfWeek": "FRIDAY",
+                "dayOfYear": 279,
+                "chronology": {
+                    "calendarType": "iso8601",
+                    "id": "ISO"
+                }
             },
-            {
-                "id":2,
-                "title": "Storia 2",
-                "published": false,
-                "subtitle": "Storia di prova",
-                "user": "User 2",
-                "dateLastEdit": "2017-06-22 09:19",
-                "graph1": {
-                  "title": "",
-                  "props": {
-                      "url": null
-                  }
+            "published": null,
+            "text": "<p>Quali sono le strade più a rischio incidenti?</p>",
+            "graph2": {
+                "props": {
+                    "url": "https://bi.daf.teamdigitale.it//superset/explore/table/19/?form_data=%7B%22datasource%22%3A%20%2219__table%22%2C%20%22viz_type%22%3A%20%22word_cloud%22%2C%20%22granularity_sqla%22%3A%20%22dataoraincidente%22%2C%20%22time_grain_sqla%22%3A%20%22week%22%2C%20%22since%22%3A%20null%2C%20%22until%22%3A%20%22now%22%2C%20%22series%22%3A%20%22strada1%22%2C%20%22metric%22%3A%20%22count%22%2C%20%22limit%22%3A%20null%2C%20%22size_from%22%3A%2010%2C%20%22size_to%22%3A%2050%2C%20%22rotation%22%3A%20%22random%22%2C%20%22color_scheme%22%3A%20%22bnbColors%22%2C%20%22where%22%3A%20%22%22%2C%20%22having%22%3A%20%22%22%2C%20%22filters%22%3A%20%5B%5D%2C%20%22slice_id%22%3A%2080%7D&standalone=true"
                 },
-                "graph2": {
-                  "title": "",
-                  "props": {
-                      "url": null
-                  }
-                },
-                "text": "Contenuto della storia",
-                "image": {
-                    "url": "https://theclayblog.files.wordpress.com/2013/03/this-is-my-story-2.jpg",
-                    "caption": "Testo Immagine"
-                },
-                "footer": "Questo è il footer"
+                "title": "word_cloud"
             },
-            {
-                "id":3,
-                "title": "Storia 3",
-                "subtitle": "Storia di prova",
-                "user": "User 3",
-                "dateLastEdit": "2017-06-22 09:19",
-                "graph1": {
-                  "title": "",
-                  "props": {
-                      "url": null
+            "id": 1,
+            "graph1": {
+                "props": {
+                    "url": "https://bi.daf.teamdigitale.it//superset/explore/table/16/?form_data=%7B%22datasource%22%3A%20%2216__table%22%2C%20%22viz_type%22%3A%20%22mapbox%22%2C%20%22granularity_sqla%22%3A%20null%2C%20%22time_grain_sqla%22%3A%20null%2C%20%22since%22%3A%20null%2C%20%22until%22%3A%20%22now%22%2C%20%22all_columns_x%22%3A%20%22longitudine%22%2C%20%22all_columns_y%22%3A%20%22latitudine%22%2C%20%22clustering_radius%22%3A%20%2260%22%2C%20%22row_limit%22%3A%20null%2C%20%22groupby%22%3A%20%5B%5D%2C%20%22point_radius%22%3A%20%22Auto%22%2C%20%22point_radius_unit%22%3A%20%22Pixels%22%2C%20%22mapbox_label%22%3A%20%5B%5D%2C%20%22pandas_aggfunc%22%3A%20%22sum%22%2C%20%22render_while_dragging%22%3A%20true%2C%20%22mapbox_style%22%3A%20%22mapbox%3A//styles/mapbox/streets-v9%22%2C%20%22global_opacity%22%3A%201%2C%20%22mapbox_color%22%3A%20%22rgb%280%2C%20122%2C%20135%29%22%2C%20%22viewport_longitude%22%3A%2012.575411383636862%2C%20%22viewport_latitude%22%3A%2041.86345563349562%2C%20%22viewport_zoom%22%3A%209.9038821661661%2C%20%22where%22%3A%20%22%22%2C%20%22having%22%3A%20%22%22%2C%20%22filters%22%3A%20%5B%5D%2C%20%22slice_id%22%3A%2076%7D&standalone=true"
+                },
+                "title": "mapbox"
+            },
+            "title": "Incidenti a Roma",
+            "footer": null,
+            "user": "marcop"
+        },  
+        {
+          "subtitle": "<p>Ecco un esempio scelgli uno o due grafici e scrivi cosa possono rappresentare</p>",
+          "timestamp": {
+              "offset": {
+                  "totalSeconds": 0,
+                  "id": "Z",
+                  "rules": {
+                      "fixedOffset": true,
+                      "transitions": [],
+                      "transitionRules": []
                   }
-                },
-                "graph2": {
-                  "title": "",
-                  "props": {
-                      "url": null
+              },
+              "zone": {
+                  "totalSeconds": 0,
+                  "id": "Z",
+                  "rules": {
+                      "fixedOffset": true,
+                      "transitions": [],
+                      "transitionRules": []
                   }
-                },
-                "text": "Contenuto della storia",
-                "image": {
-                    "url": "https://theclayblog.files.wordpress.com/2013/03/this-is-my-story-2.jpg",
-                    "caption": "Testo Immagine"
-                },
-                "footer": "Questo è il footer"
-            }
+              },
+              "monthValue": 10,
+              "hour": 16,
+              "minute": 0,
+              "second": 40,
+              "nano": 622000000,
+              "year": 2017,
+              "month": "OCTOBER",
+              "dayOfMonth": 6,
+              "dayOfWeek": "FRIDAY",
+              "dayOfYear": 279,
+              "chronology": {
+                  "calendarType": "iso8601",
+                  "id": "ISO"
+              }
+          },
+          "published": null,
+          "text": "<p>La popolazione nel mondo si divide .....</p>",
+          "graph2": {
+              "props": {
+                  "url": "https://bi.daf.teamdigitale.it//superset/explore/table/19/?form_data=%7B%22datasource%22%3A%20%2219__table%22%2C%20%22viz_type%22%3A%20%22pie%22%2C%20%22granularity_sqla%22%3A%20%22dataoraincidente%22%2C%20%22time_grain_sqla%22%3A%20%22week%22%2C%20%22since%22%3A%20null%2C%20%22until%22%3A%20%22now%22%2C%20%22metrics%22%3A%20%5B%22count%22%5D%2C%20%22groupby%22%3A%20%5B%22naturaincidente%22%5D%2C%20%22limit%22%3A%2050%2C%20%22pie_label_type%22%3A%20%22key%22%2C%20%22donut%22%3A%20true%2C%20%22show_legend%22%3A%20false%2C%20%22labels_outside%22%3A%20true%2C%20%22color_scheme%22%3A%20%22bnbColors%22%2C%20%22where%22%3A%20%22%22%2C%20%22having%22%3A%20%22%22%2C%20%22filters%22%3A%20%5B%5D%2C%20%22slice_id%22%3A%2079%7D&standalone=true"
+              },
+              "title": "pie"
+          },
+          "id": "7c903a6d-d149-4381-b953-705122d58347",
+          "graph1": {
+              "props": {
+                  "url": "https://bi.daf.teamdigitale.it//superset/explore/table/2/?form_data=%7B%22compare_lag%22%3A%20%2210%22%2C%20%22compare_suffix%22%3A%20%22o10Y%22%2C%20%22country_fieldtype%22%3A%20%22cca3%22%2C%20%22entity%22%3A%20%22country_code%22%2C%20%22granularity%22%3A%20%22year%22%2C%20%22groupby%22%3A%20%5B%22region%22%2C%20%22country_code%22%5D%2C%20%22limit%22%3A%20%2225%22%2C%20%22markup_type%22%3A%20%22markdown%22%2C%20%22metric%22%3A%20%22sum__SP_POP_TOTL%22%2C%20%22metrics%22%3A%20%5B%22sum__SP_POP_TOTL%22%5D%2C%20%22row_limit%22%3A%205000%2C%20%22secondary_metric%22%3A%20%22sum__SP_POP_TOTL%22%2C%20%22show_bubbles%22%3A%20true%2C%20%22since%22%3A%20%221960-01-01%22%2C%20%22until%22%3A%20%22now%22%2C%20%22viz_type%22%3A%20%22treemap%22%2C%20%22where%22%3A%20%22%22%2C%20%22slice_id%22%3A%2049%2C%20%22datasource%22%3A%20%222__table%22%7D&standalone=true"
+              },
+              "title": "treemap"
+          },
+          "title": "Esempio di storia",
+          "footer": null,
+          "user": "alessandro"
+      }
         ]
         
     },
@@ -2525,87 +2558,119 @@
   },
     
     "/dati-gov/v1/user-stories/1": {
-        "get": {
-            "id":1,
-            "title": "Storia 1",
-            "published": true,
-            "subtitle": "Storia di prova",
-            "user": "User 1",
-            "dateLastEdit": "2017-06-22 09:19",
-            "graph1": {
-              "title": "",
-              "props": {
-                  "url": null
+        "get":           {
+          "subtitle": "<p>Naviga la mappa</p>",
+          "timestamp": {
+              "offset": {
+                  "totalSeconds": 0,
+                  "id": "Z",
+                  "rules": {
+                      "transitions": [],
+                      "transitionRules": [],
+                      "fixedOffset": true
+                  }
+              },
+              "zone": {
+                  "totalSeconds": 0,
+                  "id": "Z",
+                  "rules": {
+                      "transitions": [],
+                      "transitionRules": [],
+                      "fixedOffset": true
+                  }
+              },
+              "monthValue": 10,
+              "hour": 14,
+              "minute": 47,
+              "second": 47,
+              "nano": 726000000,
+              "year": 2017,
+              "month": "OCTOBER",
+              "dayOfMonth": 6,
+              "dayOfWeek": "FRIDAY",
+              "dayOfYear": 279,
+              "chronology": {
+                  "calendarType": "iso8601",
+                  "id": "ISO"
               }
-            },
-            "graph2": {
-              "title": "",
+          },
+          "published": null,
+          "text": "<p>Quali sono le strade più a rischio incidenti?</p>",
+          "graph2": {
               "props": {
-                  "url": null
-              }
-            },
-            "text": "Contenuto della storia",
-            "image": {
-                "url": "https://theclayblog.files.wordpress.com/2013/03/this-is-my-story-2.jpg",
-                "caption": "Testo Immagine"
-            },
-            "footer": "Questo è il footer"
-        }
+                  "url": "https://bi.daf.teamdigitale.it//superset/explore/table/19/?form_data=%7B%22datasource%22%3A%20%2219__table%22%2C%20%22viz_type%22%3A%20%22word_cloud%22%2C%20%22granularity_sqla%22%3A%20%22dataoraincidente%22%2C%20%22time_grain_sqla%22%3A%20%22week%22%2C%20%22since%22%3A%20null%2C%20%22until%22%3A%20%22now%22%2C%20%22series%22%3A%20%22strada1%22%2C%20%22metric%22%3A%20%22count%22%2C%20%22limit%22%3A%20null%2C%20%22size_from%22%3A%2010%2C%20%22size_to%22%3A%2050%2C%20%22rotation%22%3A%20%22random%22%2C%20%22color_scheme%22%3A%20%22bnbColors%22%2C%20%22where%22%3A%20%22%22%2C%20%22having%22%3A%20%22%22%2C%20%22filters%22%3A%20%5B%5D%2C%20%22slice_id%22%3A%2080%7D&standalone=true"
+              },
+              "title": "word_cloud"
+          },
+          "id": 1,
+          "graph1": {
+              "props": {
+                  "url": "https://bi.daf.teamdigitale.it//superset/explore/table/16/?form_data=%7B%22datasource%22%3A%20%2216__table%22%2C%20%22viz_type%22%3A%20%22mapbox%22%2C%20%22granularity_sqla%22%3A%20null%2C%20%22time_grain_sqla%22%3A%20null%2C%20%22since%22%3A%20null%2C%20%22until%22%3A%20%22now%22%2C%20%22all_columns_x%22%3A%20%22longitudine%22%2C%20%22all_columns_y%22%3A%20%22latitudine%22%2C%20%22clustering_radius%22%3A%20%2260%22%2C%20%22row_limit%22%3A%20null%2C%20%22groupby%22%3A%20%5B%5D%2C%20%22point_radius%22%3A%20%22Auto%22%2C%20%22point_radius_unit%22%3A%20%22Pixels%22%2C%20%22mapbox_label%22%3A%20%5B%5D%2C%20%22pandas_aggfunc%22%3A%20%22sum%22%2C%20%22render_while_dragging%22%3A%20true%2C%20%22mapbox_style%22%3A%20%22mapbox%3A//styles/mapbox/streets-v9%22%2C%20%22global_opacity%22%3A%201%2C%20%22mapbox_color%22%3A%20%22rgb%280%2C%20122%2C%20135%29%22%2C%20%22viewport_longitude%22%3A%2012.575411383636862%2C%20%22viewport_latitude%22%3A%2041.86345563349562%2C%20%22viewport_zoom%22%3A%209.9038821661661%2C%20%22where%22%3A%20%22%22%2C%20%22having%22%3A%20%22%22%2C%20%22filters%22%3A%20%5B%5D%2C%20%22slice_id%22%3A%2076%7D&standalone=true"
+              },
+              "title": "mapbox"
+          },
+          "title": "Incidenti a Roma",
+          "footer": null,
+          "user": "marcop"
+      }
     },
     
     "/dati-gov/v1/user-stories/2": {
-        "get": {
-            "id":2,
-            "title": "Storia 2",
-            "published": false,
-            "subtitle": "Storia di prova",
-            "user": "User 2",
-            "dateLastEdit": "2017-06-22 09:19",
-            "graph1": {
-              "title": "",
-              "props": {
-                  "url": null
+        "get":     {
+          "subtitle": "<p>Ecco un esempio scelgli uno o due grafici e scrivi cosa possono rappresentare</p>",
+          "timestamp": {
+              "offset": {
+                  "totalSeconds": 0,
+                  "id": "Z",
+                  "rules": {
+                      "fixedOffset": true,
+                      "transitions": [],
+                      "transitionRules": []
+                  }
+              },
+              "zone": {
+                  "totalSeconds": 0,
+                  "id": "Z",
+                  "rules": {
+                      "fixedOffset": true,
+                      "transitions": [],
+                      "transitionRules": []
+                  }
+              },
+              "monthValue": 10,
+              "hour": 16,
+              "minute": 0,
+              "second": 40,
+              "nano": 622000000,
+              "year": 2017,
+              "month": "OCTOBER",
+              "dayOfMonth": 6,
+              "dayOfWeek": "FRIDAY",
+              "dayOfYear": 279,
+              "chronology": {
+                  "calendarType": "iso8601",
+                  "id": "ISO"
               }
-            },
-            "graph2": {
-              "title": "",
+          },
+          "published": null,
+          "text": "<p>La popolazione nel mondo si divide .....</p>",
+          "graph2": {
               "props": {
-                  "url": null
-              }
-            },
-            "text": "Contenuto della storia",
-            "image": {
-            },
-            "footer": "Questo è il footer"
-        }  
-    },
-    
-    "/dati-gov/v1/user-stories/3": {
-        "get": {
-            "id":3,
-            "title": "Storia 3",
-            "subtitle": "Storia di prova",
-            "user": "User 3",
-            "dateLastEdit": "2017-06-22 09:19",
-            "graph1": {
-              "title": "",
+                  "url": "https://bi.daf.teamdigitale.it//superset/explore/table/19/?form_data=%7B%22datasource%22%3A%20%2219__table%22%2C%20%22viz_type%22%3A%20%22pie%22%2C%20%22granularity_sqla%22%3A%20%22dataoraincidente%22%2C%20%22time_grain_sqla%22%3A%20%22week%22%2C%20%22since%22%3A%20null%2C%20%22until%22%3A%20%22now%22%2C%20%22metrics%22%3A%20%5B%22count%22%5D%2C%20%22groupby%22%3A%20%5B%22naturaincidente%22%5D%2C%20%22limit%22%3A%2050%2C%20%22pie_label_type%22%3A%20%22key%22%2C%20%22donut%22%3A%20true%2C%20%22show_legend%22%3A%20false%2C%20%22labels_outside%22%3A%20true%2C%20%22color_scheme%22%3A%20%22bnbColors%22%2C%20%22where%22%3A%20%22%22%2C%20%22having%22%3A%20%22%22%2C%20%22filters%22%3A%20%5B%5D%2C%20%22slice_id%22%3A%2079%7D&standalone=true"
+              },
+              "title": "pie"
+          },
+          "id": "7c903a6d-d149-4381-b953-705122d58347",
+          "graph1": {
               "props": {
-                  "url": null
-              }
-            },
-            "graph2": {
-              "title": "",
-              "props": {
-                  "url": null
-              }
-            },
-            "text": "Contenuto della storia",
-            "image": {
-                "url": "https://theclayblog.files.wordpress.com/2013/03/this-is-my-story-2.jpg",
-                "caption": "Testo Immagine"
-            },
-            "footer": "Questo è il footer"
-        }
+                  "url": "https://bi.daf.teamdigitale.it//superset/explore/table/2/?form_data=%7B%22compare_lag%22%3A%20%2210%22%2C%20%22compare_suffix%22%3A%20%22o10Y%22%2C%20%22country_fieldtype%22%3A%20%22cca3%22%2C%20%22entity%22%3A%20%22country_code%22%2C%20%22granularity%22%3A%20%22year%22%2C%20%22groupby%22%3A%20%5B%22region%22%2C%20%22country_code%22%5D%2C%20%22limit%22%3A%20%2225%22%2C%20%22markup_type%22%3A%20%22markdown%22%2C%20%22metric%22%3A%20%22sum__SP_POP_TOTL%22%2C%20%22metrics%22%3A%20%5B%22sum__SP_POP_TOTL%22%5D%2C%20%22row_limit%22%3A%205000%2C%20%22secondary_metric%22%3A%20%22sum__SP_POP_TOTL%22%2C%20%22show_bubbles%22%3A%20true%2C%20%22since%22%3A%20%221960-01-01%22%2C%20%22until%22%3A%20%22now%22%2C%20%22viz_type%22%3A%20%22treemap%22%2C%20%22where%22%3A%20%22%22%2C%20%22slice_id%22%3A%2049%2C%20%22datasource%22%3A%20%222__table%22%7D&standalone=true"
+              },
+              "title": "treemap"
+          },
+          "title": "Esempio di storia",
+          "footer": null,
+          "user": "alessandro"
+      }
     }
 
 }
