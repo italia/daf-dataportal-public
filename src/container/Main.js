@@ -10,6 +10,7 @@ import LineeGuida from '../container/LineeGuida'
 import Team from '../container/Team'
 import TeamDett from '../container/TeamDett'
 import Partecipa from '../container/Partecipa'
+import ViewCSV from '../container/ViewCSV'
 
 import { Footer } from '../components/HeaderFooter/Footer';
 import { Header } from '../components/HeaderFooter/Header';
@@ -46,6 +47,7 @@ class Main extends React.Component {
             <Route path='/' exact component={Home} />
             <Route path="/login" component={Login} />
             <Route path='/register' component={Register} />
+            <Route path='/viewcsv' component={ViewCSV} />
             <Route path='/user_story/:id' exact component={UserStoryView} />
             <Route path='/dataset/search' exact component={DatasetSearch} />
             <Route path='/dataset/:id' exact component={DatasetDetail} />
