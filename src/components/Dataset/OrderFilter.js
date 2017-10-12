@@ -34,8 +34,8 @@ export default class OrderFilter extends React.Component {
                     
                 return (
                     <select className="Form-input u-text-r-xs u-borderRadius-m u-padding-top-s u-padding-bottom-s " id="ordinamento" aria-required="true" onChange={this.handleChange} value={this.state.order_filter}>
-                      <option value="metadata_modified%20desc">Data dalla più recente</option>
-                      <option value="metadata_modified%20asc">Data dalla più lontana</option>
+                      <option value="metadata_modified%20desc">Dalla data più recente</option>
+                      <option value="metadata_modified%20asc">Dalla data più lontana</option>
                       <option value="relevance%20asc">Per rilevanza</option>
                     </select>
                 );
