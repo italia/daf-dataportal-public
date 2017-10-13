@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
-//import { browserHistory } from 'react-router';
+import AutocompleteDataset from '../Autocomplete/AutocompleteDataset.js'
 import {
     createBrowserHistory,
     createHashHistory,
@@ -34,7 +34,7 @@ export default class SearchBar extends React.Component {
         this.handleChange = this.handleChange.bind(this)
         this.toggleCategory = this.toggleCategory.bind(this)
         this.enableCategory = this.enableCategory.bind(this)
-	this.enterKeySearch = this.enterKeySearch.bind(this)
+	    this.enterKeySearch = this.enterKeySearch.bind(this)
 
         //init
         categoryService.list().then((list) => {
@@ -45,7 +45,7 @@ export default class SearchBar extends React.Component {
     searchDataset(){
         let path = '/dataset/search';
         this.props.history.push(path, {
-            query: this.state.text,
+            query: this.refs.auto.state.value,
             category: this.state.category_filter,
             isCategoryEnabled: this.state.isCategoryEnabled,
             group: this.state.group_filter,
@@ -102,23 +102,19 @@ export default class SearchBar extends React.Component {
                     </div>
 
                     <div className="u-textCenter u-padding-r-all u-textCenter">
-		    {/* <form className="Form u-padding-r-top u-md-size7of12 u-lg-size5of12 u-layoutCenter" > */}
+                    <form className="Form u-padding-r-top u-md-size7of12 u-lg-size5of12 u-layoutCenter" >
                             <div className="Form-field Form-field--withPlaceholder Grid u-background-white u-color-grey-30 u-borderRadius-s u-borderShadow-xxl">
                                 <button className="Grid-cell u-sizeFit Icon-search u-color-grey-40 u-text-r-m u-padding-all-s u-textWeight-400">
                                 </button>
-                                <input value={this.state.text} onChange={this.handleChange} onKeyPress={this.enterKeySearch} className="Form-input Form-input--ultraLean Grid-cell u-sizeFill u-text-r-s u-color-black u-text-r-xs u-borderHideFocus " required="" id="esplora" name="cerca" />
+                                {/*<input value={this.state.text} onChange={this.handleChange} onKeyPress={this.enterKeySearch} className="Form-input Form-input--ultraLean Grid-cell u-sizeFill u-text-r-s u-color-black u-text-r-xs u-borderHideFocus" required="" id="esplora" name="cerca" />*/}
+                                <AutocompleteDataset ref="auto" className="Form-input Form-input--ultraLean Grid-cell u-sizeFill u-text-r-s u-color-black u-text-r-xs u-borderHideFocus"/>
                                 <label className="Form-label u-color-grey-50 u-padding-left-xxl" htmlFor="esplora">
-                                    <span className="u-hidden u-md-inline u-lg-inline">
-                                        cerca
-                                    </span>
                                 </label>
                                 <button type="submit" onClick={this.searchDataset} className="Grid-cell u-sizeFit u-background-60 u-color-white u-textWeight-600 u-padding-r-left u-padding-r-right u-textUppercase u-borderRadius-s">
                                     Esplora
                                 </button>
                             </div>
-			    {/* <input type="submit" onClick={this.searchDataset} style={{display:"none"}}/>
-                        </form> */}
-                        
+                        </form>
                         <div className="u-layoutCenter u-textCenter u-color-white">
                             <ul className="u-textCenter u-layoutCenter u-padding-r-all u-margin-top">
                                 <li className="u-inlineBlock u-padding-right-xs u-padding-left-xs">

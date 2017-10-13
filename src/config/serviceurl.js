@@ -21,7 +21,7 @@ export const serviceurl = {
     // External
 
   // service url
-  // apiURLDatiGov: "https://api.daf.teamdigitale.it/dati-gov/v1", 
+   apiURLDatiGov: "https://api.daf.teamdigitale.it/dati-gov/v1", 
   // apiURLCatalogManager: "https://daf.teamdigitale.it/catalog-manager/v1", 
    apiCKAN: "https://ckan-open.daf.teamdigitale.it/api/3/action"
 }
