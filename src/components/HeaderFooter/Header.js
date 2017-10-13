@@ -1,5 +1,4 @@
 import React from 'react';
-import { logout } from '../../helpers/auth';
 import SlimHeader from '../MegaHeader/SlimHeader';
 import { Link } from 'react-router-dom';
 

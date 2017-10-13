@@ -5,7 +5,7 @@ import CategoryFilter from '../components/Dataset/CategoryFilter.js'
 import GroupFilter from '../components/Dataset/GroupFilter.js'
 import OrderFilter from '../components/Dataset/OrderFilter.js'
 import OrganizationFilter from '../components/Dataset/OrganizationFilter.js'
-
+import AutocompleteDataset from '../components/Autocomplete/AutocompleteDataset.js'
 
 // SERVICES
 import DatasetService from '../services/DatasetService';
@@ -41,6 +41,7 @@ export default class DatasetSearch extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.onSearch = this.onSearch.bind(this);
     this.onSearchOrder = this.onSearchOrder.bind(this);
+    this.setStateAndsearch = this.setStateAndsearch.bind(this);
 
     this.handleToggleClickCat = this.handleToggleClickCat.bind(this);
     this.handleToggleClickGroup = this.handleToggleClickGroup.bind(this);
@@ -85,11 +86,19 @@ export default class DatasetSearch extends React.Component {
   }
 
   handleChange(event) {
+    console.log('handleChange')
     this.setState({text: event.target.value});
+  }
+
+  setStateAndsearch(event){
+    console.log()
+    this.setState({text: this.refs.auto.state.value});
+    this.search();
   }
 
   
   search(event) {
+    console.log('search: ' + this.state.text)
     if(event) {
       event.preventDefault();
       event.stopPropagation();
@@ -195,8 +204,9 @@ export default class DatasetSearch extends React.Component {
                   <div className="Form-field Form-field--withPlaceholder Grid u-background-white u-color-grey-30 u-borderRadius-s u-border-all-xxs">
                     <button className="Grid-cell u-sizeFit Icon-search u-color-grey-40 u-text-r-m u-padding-all-s u-textWeight-400">
                     </button>
-                    <input value={this.state.text} onChange={this.handleChange} className="Form-input Form-input--ultraLean Grid-cell u-sizeFill u-text-r-s u-color-black u-text-r-xs u-borderHideFocus " required="" id="esplora" name="cerca" />
-                    <button onClick={this.search} className="Grid-cell u-sizeFit u-background-60 u-color-white u-textWeight-600 u-padding-r-left u-padding-r-right u-textUppercase u-borderRadius-s">
+                    {/*<input value={this.state.text} onChange={this.handleChange} className="Form-input Form-input--ultraLean Grid-cell u-sizeFill u-text-r-s u-color-black u-text-r-xs u-borderHideFocus " required="" id="esplora" name="cerca" />*/}
+                    <AutocompleteDataset value={this.state.text} ref="auto"/>
+                    <button onClick={this.setStateAndsearch} className="Grid-cell u-sizeFit u-background-60 u-color-white u-textWeight-600 u-padding-r-left u-padding-r-right u-textUppercase u-borderRadius-s">
                       Esplora
                     </button>
                   </div>
