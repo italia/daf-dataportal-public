@@ -202,11 +202,11 @@ export default class DatasetSearch extends React.Component {
               <form onSubmit={this.search} className="Form u-text-r-xs u-margin-bottom-l">
                 <fieldset className="Form-fieldset">
                   <div className="Form-field Form-field--withPlaceholder Grid u-background-white u-color-grey-30 u-borderRadius-s u-border-all-xxs">
-                    <button className="Grid-cell u-sizeFit Icon-search u-color-grey-40 u-text-r-m u-padding-all-s u-textWeight-400">
+                    <button style={{width: "10%"}} className="Grid-cell u-sizeFit Icon-search u-color-grey-40 u-text-r-m u-padding-all-s u-textWeight-400">
                     </button>
                     {/*<input value={this.state.text} onChange={this.handleChange} className="Form-input Form-input--ultraLean Grid-cell u-sizeFill u-text-r-s u-color-black u-text-r-xs u-borderHideFocus " required="" id="esplora" name="cerca" />*/}
                     <AutocompleteDataset value={this.state.text} ref="auto"/>
-                    <button onClick={this.setStateAndsearch} className="Grid-cell u-sizeFit u-background-60 u-color-white u-textWeight-600 u-padding-r-left u-padding-r-right u-textUppercase u-borderRadius-s">
+                    <button onClick={this.setStateAndsearch} style={{width: "20%"}} className="Grid-cell u-sizeFit u-background-60 u-color-white u-textWeight-600 u-padding-r-left u-padding-r-right u-textUppercase u-borderRadius-s">
                       Esplora
                     </button>
                   </div>
