@@ -104,13 +104,13 @@ export default class SearchBar extends React.Component {
                     <div className="u-textCenter u-padding-r-all u-textCenter">
                     <form className="Form u-padding-r-top u-md-size7of12 u-lg-size5of12 u-layoutCenter" >
                             <div className="Form-field Form-field--withPlaceholder Grid u-background-white u-color-grey-30 u-borderRadius-s u-borderShadow-xxl">
-                                <button className="Grid-cell u-sizeFit Icon-search u-color-grey-40 u-text-r-m u-padding-all-s u-textWeight-400">
+                                <button style={{width: "10%"}} className="Grid-cell u-sizeFit Icon-search u-color-grey-40 u-text-r-m u-padding-all-s u-textWeight-400">
                                 </button>
                                 {/*<input value={this.state.text} onChange={this.handleChange} onKeyPress={this.enterKeySearch} className="Form-input Form-input--ultraLean Grid-cell u-sizeFill u-text-r-s u-color-black u-text-r-xs u-borderHideFocus" required="" id="esplora" name="cerca" />*/}
                                 <AutocompleteDataset ref="auto" className="Form-input Form-input--ultraLean Grid-cell u-sizeFill u-text-r-s u-color-black u-text-r-xs u-borderHideFocus"/>
                                 <label className="Form-label u-color-grey-50 u-padding-left-xxl" htmlFor="esplora">
                                 </label>
-                                <button type="submit" onClick={this.searchDataset} className="Grid-cell u-sizeFit u-background-60 u-color-white u-textWeight-600 u-padding-r-left u-padding-r-right u-textUppercase u-borderRadius-s">
+                                <button type="submit" style={{width: "20%"}} onClick={this.searchDataset} className="Grid-cell u-sizeFit u-background-60 u-color-white u-textWeight-600 u-padding-r-left u-padding-r-right u-textUppercase u-borderRadius-s">
                                     Esplora
                                 </button>
                             </div>
