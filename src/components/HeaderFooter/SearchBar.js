@@ -118,7 +118,7 @@ export default class SearchBar extends React.Component {
                         <div className="u-layoutCenter u-textCenter u-color-white">
                             <ul className="u-textCenter u-layoutCenter u-padding-r-all u-margin-top">
                                 <li className="u-inlineBlock u-padding-right-xs u-padding-left-xs">
-                                    <a onClick={this.toggleCategory} href="#" title="" className="u-padding-all-xxs u-color-50 u-inlineBlock u-borderRadius-circle u-alignMiddle u-textWeight-600">
+                                    <a onClick={this.toggleCategory} href="#" title="" className="u-padding-all-xxs u-color-50 u-inlineBlock u-borderRadius-circle u-alignMiddle u-textWeight-600 anchor-none">
                                         {
                                             !this.state.showCategory &&
                                             <span className="Icon Icon-drop-up mr-20" ></span>
