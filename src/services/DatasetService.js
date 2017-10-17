@@ -12,7 +12,7 @@ export default class DatasetService {
 
         let queryurl = '';
         if(query) {
-            queryurl = '&q=title:*'+ query + '*';
+            queryurl = '&q=name:*'+ query + '*';
         }
 
         /*category query builder*/

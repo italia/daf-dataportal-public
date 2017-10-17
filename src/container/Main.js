@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom'
 
-import Login from '../container/Login'
-import Register from '../container/Register'
 import Crea from '../container/Crea'
 import Missione from '../container/Missione'
 import LineeGuida from '../container/LineeGuida'
@@ -44,8 +42,6 @@ class Main extends React.Component {
           <Header />
           <Switch>
             <Route path='/' exact component={Home} />
-            <Route path="/login" component={Login} />
-            <Route path='/register' component={Register} />
             <Route path='/user_story/:id' exact component={UserStoryView} />
             <Route path='/dataset/search' exact component={DatasetSearch} />
             <Route path='/dataset/:id' exact component={DatasetDetail} />

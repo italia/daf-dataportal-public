@@ -50,7 +50,7 @@ class Home extends Component {
           <div className="u-textCenter">
             <SearchBar history={this.props.history} datasetNumber={this.state.datasetNumber}/>
 
-            <section className="u-nbfc u-background-white  u-textCenter u-layout-r-withGutter u-padding-r-top u-padding-r-bottom u-posRelative u-zindex-30">
+            <section className="u-nbfc u-background-white  u-textCenter u-layout-r-withGutter u-padding-r-top u-padding-r-bottom u-zindex-30">
               <div className="u-layout-wide u-layoutCenter">
                 
                 <UserStoriesContent userStories={this.state.userStories} >
