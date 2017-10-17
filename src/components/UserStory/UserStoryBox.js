@@ -60,7 +60,7 @@ class UserStoriesBox extends React.Component {
 
                 </h3>
                 <p className="u-lineHeight-l u-text-r-xs u-textSecondary u-padding-r-right  u-padding-r-bottom">
-                  <span dangerouslySetInnerHTML={{__html: this.trunc(this.state.story.text, 300)}}></span>
+                  <span dangerouslySetInnerHTML={{__html: this.trunc(this.state.story.text, 100)}}></span>
                 </p>
                 <img style={imgStyle} src={this.getImgUrl(this.state.story)}/>
                 <p><span className="u-color-50"><strong>Pubblicato da:</strong></span>  {this.state.story.user}</p>
