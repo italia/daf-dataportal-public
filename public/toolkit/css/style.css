@@ -250,3 +250,7 @@ a:hover Icon-* {
     padding-top: 0 !important;
     border-bottom: 1px solid #127ae2;
 }
+
+.anchor-none{
+    text-decoration: none !important;
+}

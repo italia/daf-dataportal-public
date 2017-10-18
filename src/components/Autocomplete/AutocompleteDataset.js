@@ -45,7 +45,7 @@ class AutocompleteDataset extends Component {
     return (
       <Autocomplete
         inputProps={{ id: 'states-autocomplete' }}
-        wrapperStyle={{ position: 'relative', display: 'inline-block', width: '72%' }}
+        wrapperStyle={{ position: 'relative', display: 'inline-block', width: '70%' }}
         value={this.state.value}
         items={this.state.suggestions}
         getItemValue={(item) => item.name}
