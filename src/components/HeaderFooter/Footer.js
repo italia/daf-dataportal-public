@@ -1,4 +1,5 @@
 import React from 'react'
+import { uiconfig } from '../../config/uiconfig'
 
 const styleImg = {"height": "4em", 
                   "maxWidth": "100%"}
@@ -12,7 +13,7 @@ export const Footer = () => (
               <div className="Grid Grid--withGutter u-padding-top-xl">
 
                 <div className="Grid-cell u-layout-centerLeft u-padding-r-bottom">
-                  <img className="Footer-logo u-xs-padding-right-none" src="https://www.spid.gov.it/assets/img/agid-logo-bb.svg"
+                  <img className="Footer-logo u-xs-padding-right-none" src={uiconfig.footerLogoAGID}
                     alt=""/>
                   <p className="Footer-siteName">
 
@@ -21,12 +22,12 @@ export const Footer = () => (
                 <div className="Grid-cell u-layout-centerLeft u-padding-r-bottom">
                 <div className="Grid">
                     <div className="u-inlineBlock">
-                      <img className="u-padding-top-xxs u-padding-right-xs" src="https://teamdigitale.governo.it/images/loghi/governo.svg" alt="" style={styleImg}/>
-                      <img className="u-padding-top-xxs u-padding-right-xxs" src="https://developers.italia.it/assets/icons/dt-logo.svg" alt="" style={styleImg}/>
+                      <img className="u-padding-top-xxs u-padding-right-xs" src={uiconfig.footerLogoGov} alt="" style={styleImg}/>
+                      <img className="u-padding-top-xxs u-padding-right-xxs" src={uiconfig.footerLogoDevITA} alt="" style={styleImg}/>
                     </div>
                     <div className="Grid-cell u-size1of12 u-padding-left-none team-bar"></div>
                     <p className="Grid-cell u-size5of12 Footer-siteName u-padding-left-xs u-text-r-xs">
-                      TEAM PER LA TRASFORMAZIONE DIGITALE
+                      {uiconfig.footerNomeEnte}
                     </p>
                   </div>
                 </div>
