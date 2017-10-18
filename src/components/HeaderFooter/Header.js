@@ -199,7 +199,7 @@ export const Header = () => (
                 <ul className="Linklist Linklist--padded u-layout-prose u-text-r-xs Treeview Treeview--default js-Treeview">            
                   
                   <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
-                  <a href="/" className="Linklist-link">Il Progetto</a>
+                  <a href="#" className="Linklist-link">Il Progetto</a>
                   <ul>
 							      <li><a href="/missione" className="Linklist-link">Missione</a></li>
                     <li><a href="/team" className="Linklist-link">Chi Siamo</a></li>
@@ -213,7 +213,7 @@ export const Header = () => (
                   </li>
 
                   <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
-                  <a href="/" className="Linklist-link">Community</a>
+                  <a href="#" className="Linklist-link">Community</a>
                   <ul>
                     <li><a href="/crea" className="Linklist-link">Data Stories</a></li>
                     <li><a href="https://developers.italia.it/news" target="_blank" className="Linklist-link">Notizie</a></li>
