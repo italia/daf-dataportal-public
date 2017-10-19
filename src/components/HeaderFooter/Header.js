@@ -148,11 +148,19 @@ export const Header = () => (
                       <p>Seguici su</p>
                       <ul className="Header-socialIcons">
 
-                        <li><a href={uiconfig.twitterURL} title="twitter"><span className="Icon-twitter"></span>
-                          <span className="u-hiddenVisually">Twitter</span></a></li>
+                        <li>
+                          <a href={uiconfig.twitterURL} title="twitter">
+                          <span className="Icon-twitter"></span>
+                          <span className="u-hiddenVisually">Twitter</span>
+                          </a>
+                        </li>
 
-                        <li><a href={uiconfig.mediumURL} title="medium"><span className="Icon Icon-medium"></span>
-                          <span className="u-hiddenVisually">Medium</span></a></li>
+                        <li>
+                          <a href={uiconfig.mediumURL} title="medium">
+                          <span className="Icon-medium"></span>
+                          <span className="u-hiddenVisually">Medium</span>
+                          </a>
+                        </li>
 
                       </ul>
                     </div>
