@@ -5695,20 +5695,20 @@ ul {
 .u-zindex-max {
     z-index: 999999
 }
-/*
+/* 
 @font-face {
     font-family: ita;
     font-style: normal;
     font-weight: 400;
     src: url(assets/5d3ff71c.eot?v2);
     src: url(assets/5d3ff71c.eot?v2#iefix) format("embedded-opentype"), url(assets/602e9d03.ttf?v2) format("truetype"), url(assets/80f3eca6.woff?v2) format("woff"), url(assets/cf91165a.svg?v2#ita) format("svg")
-}*/
+} */
 @font-face {
     font-family: ita;
     font-style: normal;
     font-weight: 400;
-    src: url(../fonts/ita.eot?v2);
-    src: url(../fonts/ita.eot?v2#iefix) format("embedded-opentype"), url(../fonts/ita.ttf?v2) format("truetype"), url(../fonts/ita.woff?v2) format("woff"), url(../fonts/ita.svg?v2#ita) format("svg")
+    src: url(../fonts/ita.eot?v1);
+    src: url(../fonts/ita.eot?v1#iefix) format("embedded-opentype"), url(../fonts/ita.ttf?v1) format("truetype"), url(../fonts/ita.woff?v1) format("woff"), url(../fonts/ita.svg?v1#ita) format("svg")
 }
 
 .Icon,
