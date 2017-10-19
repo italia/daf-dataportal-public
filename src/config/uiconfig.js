@@ -8,4 +8,6 @@ export const uiconfig = {
     footerLogoGov: "https://teamdigitale.governo.it/images/loghi/governo.svg",
     footerLogoDevITA: "https://developers.italia.it/assets/icons/dt-logo.svg",
     footerNomeEnte: "TEAM PER LA TRASFORMAZIONE DIGITALE",
+    footerPrivacy: "https://designers.italia.it/privacy-policy/",
+    footerLegal: "https://designers.italia.it/note-legali/"
 }
