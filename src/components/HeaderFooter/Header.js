@@ -1,7 +1,6 @@
 import React from 'react';
 import SlimHeader from '../MegaHeader/SlimHeader';
 import { Link } from 'react-router-dom';
-import { uiconfig } from '../../config/uiconfig'
 
 function searchDataset(){
   let path = '/dataset/search';
@@ -16,7 +15,7 @@ function searchDataset(){
   
 }
 
-export const Header = () => (
+export const Header = (props) => (
     <div>
       <ul className="Skiplinks js-fr-bypasslinks u-hiddenPrint">
         <li><a href="#main">Vai al Contenuto</a></li>
@@ -32,7 +31,7 @@ export const Header = () => (
             <div className="u-md-hidden u-lg-hidden u-border-right-xxs u-margin-right-xs u-padding-right-xs u-inlineBlock u-alignMiddle">
               <a className="js-fr-offcanvas-open u-block" href="#network" aria-controls="network" aria-label="" title="">
               {/*   <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTkuMnB4IiBoZWlnaHQ9IjE2cHgiIHZpZXdCb3g9IjAgMCAxMiAxMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxkZWZzPjwvZGVmcz4KICAgIDxnIGlkPSIxMDI0dXAiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSItLWhvbWUtLS1wYXJhbGxheC0tLW1vYmlsZSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTI0LjAwMDAwMCwgLTIwLjAwMDAwMCkiIGZpbGw9IiNGRkZGRkYiPgogICAgICAgICAgICA8ZyBpZD0iLW5ldHdvcmstc2xpbS1oZWFkZXIiPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTI0LDI0IEwzNiwyNCBMMzYsMjYgTDI0LDI2IEwyNCwyNCBaIE0yNCwyMCBMMzIsMjAgTDMyLDIyIEwyNCwyMiBMMjQsMjAgWiBNMjQsMjggTDMyLDI4IEwzMiwzMCBMMjQsMzAgTDI0LDI4IFoiIGlkPSJpY29uLXNtYWxsLWJ1cmdlciI+PC9wYXRoPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=" />
- */}
+          */}
           </a>
         </div>
               <a href="http://www.agid.gov.it">
@@ -129,16 +128,16 @@ export const Header = () => (
                 <div className="u-layout-wide Grid Grid--alignMiddle u-layoutCenter">
                   <div className="Header-logo Grid-cell" aria-hidden="true">
                     <Link to={"/"}>
-                      <img src={uiconfig.headerLogo} alt=""/>
+                      <img src={props.styleProps.headerLogo} alt=""/>
                     </Link>
                   </div>
 
                   <div className="Header-title Grid-cell">
                     <h1 className="Header-titleLink">
                       <Link role="button" to={"/"}>
-                        {uiconfig.headerSiglaTool} <span className="u-lg-hidden u-md-hidden u-sm-hidden u-cf u-padding-top-xxs u-block"></span>
+                        {props.styleProps.headerSiglaTool} <span className="u-lg-hidden u-md-hidden u-sm-hidden u-cf u-padding-top-xxs u-block"></span>
                         <span className="u-color-20 u-text-xxs u-alignMiddle u-padding-right-xxs u-padding-left-xxs">alpha</span>
-                        <br/><small>{uiconfig.headerDescTool}</small>
+                        <br/><small>{props.styleProps.headerDescTool}</small>
                       </Link>
                     </h1>
                   </div>
@@ -149,14 +148,14 @@ export const Header = () => (
                       <ul className="Header-socialIcons">
 
                         <li>
-                          <a href={uiconfig.twitterURL} title="twitter">
+                          <a href={props.styleProps.twitterURL} title="twitter">
                           <span className="Icon-twitter"></span>
                           <span className="u-hiddenVisually">Twitter</span>
                           </a>
                         </li>
 
                         <li>
-                          <a href={uiconfig.mediumURL} title="medium">
+                          <a href={props.styleProps.mediumURL} title="medium">
                           <span className="Icon-medium"></span>
                           <span className="u-hiddenVisually">Medium</span>
                           </a>
