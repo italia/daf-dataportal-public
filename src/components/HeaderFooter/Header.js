@@ -1,12 +1,6 @@
 import React from 'react';
 import SlimHeader from '../MegaHeader/SlimHeader';
 import { Link } from 'react-router-dom';
-import { uiconfig } from '../../config/uiconfig'
-import {
-  createBrowserHistory,
-  createHashHistory,
-  createMemoryHistory
-} from 'history'
 
 function searchDataset(){
   let path = '/dataset/search';
@@ -19,7 +13,7 @@ function searchDataset(){
   });
 }
 
-export const Header = () => (
+export const Header = (props) => (
       <div>
         {/* <ul className="Skiplinks js-fr-bypasslinks u-hiddenPrint">
           <li><a href="#main">Vai al Contenuto</a></li>
@@ -111,22 +105,44 @@ export const Header = () => (
                   </div>
                 </div> */}
               </div> 
+              <div className="Header-navbar u-background-50">
+                <div className="u-layout-wide Grid Grid--alignMiddle u-layoutCenter">
+                  <div className="Header-logo Grid-cell" aria-hidden="true">
+                    <Link to={"/"}>
+                      <img src={props.styleProps.headerLogo} alt=""/>
+                    </Link>
+                  </div>
 
-
-
-            
-
-
-
-                <div className="Header-navbar u-background-50">
-                  <div className="u-layout-wide Grid Grid--alignMiddle u-layoutCenter">
-                    <div className="Header-logo Grid-cell" aria-hidden="true">
-                      <Link to={"/"}>
-                        <img src={uiconfig.headerLogo} alt=""/>
+                  <div className="Header-title Grid-cell">
+                    <h1 className="Header-titleLink">
+                      <Link role="button" to={"/"}>
+                        {props.styleProps.headerSiglaTool} <span className="u-lg-hidden u-md-hidden u-sm-hidden u-cf u-padding-top-xxs u-block"></span>
+                        <span className="u-color-20 u-text-xxs u-alignMiddle u-padding-right-xxs u-padding-left-xxs">alpha</span>
+                        <br/><small>{props.styleProps.headerDescTool}</small>
                       </Link>
-                    </div>
+                    </h1>
+                  </div>
 
-                    <div className="Header-title Grid-cell">
+                  <div className="Header-utils Grid-cell">
+                    <div className="Header-social Headroom-hideme">
+                      <p>Seguici su</p>{" "}
+                      <ul className="Header-socialIcons">
+
+                        <li>
+                          <a href={props.styleProps.twitterURL} title="twitter">
+                          <span className="Icon-twitter"></span>
+                          <span className="u-hiddenVisually">Twitter</span>
+                          </a>
+                        </li>
+                        {" "}
+                        <li>
+                          <a href={props.styleProps.mediumURL} title="medium">
+                          <span className="Icon-medium"></span>
+                          <span className="u-hiddenVisually">Medium</span>
+                          </a>
+                        </li>
+
+                    {/* <div className="Header-title Grid-cell">
                       <h1 className="Header-titleLink">
                         <Link role="button" to={"/"}>
                           {uiconfig.headerSiglaTool} <span className="u-lg-hidden u-md-hidden u-sm-hidden u-cf u-padding-top-xxs u-block"></span>
@@ -153,7 +169,7 @@ export const Header = () => (
                             <span className="Icon-medium"></span>
                             <span className="u-hiddenVisually">Medium</span>
                             </a>
-                          </li>
+                          </li> */}
 
                         </ul>
                       </div>
@@ -161,7 +177,7 @@ export const Header = () => (
                       <div className="Header-search " id="header-search">
                         <form className="Form">
                             <div className="Form-field Form-field--withPlaceholder Grid u-background-white u-color-grey-30 u-borderRadius-s">
-                              <input ref="auto" className="Form-input Form-input--ultraLean Grid-cell u-sizeFill u-text-r-s u-color-black u-text-r-xs u-borderRadius-s"
+                              <input className="Form-input Form-input--ultraLean Grid-cell u-sizeFill u-text-r-s u-color-black u-text-r-xs u-borderRadius-s"
                                 required id="cerca"/>
                               <label className="Form-label u-color-grey-50 u-text-r-xxs" htmlFor="cerca">cerca nei dataset</label>
                               <button type="submit" className="Grid-cell u-sizeFit Icon-search Icon--rotated u-color-grey-50 u-padding-all-s u-textWeight-700" onClick={this.searchDataset} title="Avvia la ricerca" aria-label="Avvia la ricerca">
@@ -187,7 +203,7 @@ export const Header = () => (
 
 
 
-            <section className="Offcanvas Offcanvas--right Offcanvas--modal js-fr-offcanvas u-jsVisibilityHidden u-nojsDisplayNone u-hiddenPrint" id="menu">
+            {/* <section className="Offcanvas Offcanvas--right Offcanvas--modal js-fr-offcanvas u-jsVisibilityHidden u-nojsDisplayNone u-hiddenPrint" id="menu">
               <h2 className="u-hiddenVisually">Menu di navigazione</h2>
               <div className="Offcanvas-content u-background-white">
                 <div className="Offcanvas-toggleContainer u-background-70 u-jsHidden">
@@ -210,17 +226,51 @@ export const Header = () => (
 
                     <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
                     {/* <a href="/dataset/search" className="Linklist-link">Esplora</a> */}
-                    <a href="/dataset/search" onClick={this.searchDataset} className="Linklist-link">Esplora</a>
-                    </li>
+                    {/* <a href="/dataset/search" onClick={this.searchDataset} className="Linklist-link">Esplora</a>
+                    </li> */}
 
-                    <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
+                    {/* <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
                     <a href="/" className="Linklist-link">Community</a>
                     <ul>
                       <li><a href="/crea" className="Linklist-link">Data Stories</a></li>
                       <li><a href="https://developers.italia.it/news" target="_blank" className="Linklist-link">Notizie</a></li>
                       <li><a href="https://forum.italia.it" target="_blank" className="Linklist-link">Forum</a></li>
-                    </ul>
-                    </li>
+                    </ul> */}
+                    
+          <section className="Offcanvas Offcanvas--right Offcanvas--modal js-fr-offcanvas u-jsVisibilityHidden u-nojsDisplayNone u-hiddenPrint" id="menu">
+            <h2 className="u-hiddenVisually">Menu di navigazione</h2>
+            <div className="Offcanvas-content u-background-white">
+              <div className="Offcanvas-toggleContainer u-background-70 u-jsHidden">
+                <a className="Hamburger-toggleContainer u-block u-color-white u-padding-bottom-xxl u-padding-left-s u-padding-top-xxl js-fr-offcanvas-close"
+                  aria-controls="menu" aria-label="esci dalla navigazione" title="esci dalla navigazione" href="#">
+                  <span className="Hamburger-toggle is-active" aria-hidden="true"></span>
+                </a>
+              </div>
+              <nav>
+                <ul className="Linklist Linklist--padded u-layout-prose u-text-r-xs Treeview Treeview--default js-Treeview">            
+                  
+                  <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
+                  <a href="#" className="Linklist-link">Il Progetto</a>
+                  <ul>
+							      <li><a href="/missione" className="Linklist-link">Missione</a></li>
+                    <li><a href="/team" className="Linklist-link">Chi Siamo</a></li>
+                    <li><a href="/lineeguida" className="Linklist-link">Linee Guida</a></li>
+                  </ul>
+                  </li>
+
+                  <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
+                  {/* <a href="/dataset/search" className="Linklist-link">Esplora</a> */}
+                  <a href="/dataset/search" onClick={this.searchDataset} className="Linklist-link">Esplora</a>
+                  </li>
+
+                  <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
+                  <a href="#" className="Linklist-link">Community</a>
+                  <ul>
+                    <li><a href="/crea" className="Linklist-link">Data Stories</a></li>
+                    <li><a href="https://developers.italia.it/news" target="_blank" className="Linklist-link">Notizie</a></li>
+                    <li><a href="https://forum.italia.it" target="_blank" className="Linklist-link">Forum</a></li>
+                  </ul>
+                  </li>
 
                     <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
                     <a href="/partecipa" className="Linklist-link">Partecipa</a>
