@@ -1,17 +1,7 @@
 import React from 'react';
 import SlimHeader from '../MegaHeader/SlimHeader';
 import { Link } from 'react-router-dom';
-
-function searchDataset(){
-  let path = '/dataset/search';
-  this.props.history.push(path, {
-      query: this.refs.auto.state.value,
-      category: this.state.category_filter,
-      isCategoryEnabled: this.state.isCategoryEnabled,
-      group: this.state.group_filter,
-      organization: this.state.organization_filter
-  });
-}
+import Headersearch from './HeaderSearch';
 
 export const Header = (props) => (
       <div>
@@ -108,7 +98,7 @@ export const Header = (props) => (
               <div className="Header-navbar u-background-50">
                 <div className="u-layout-wide Grid Grid--alignMiddle u-layoutCenter">
                   <div className="Header-logo Grid-cell" aria-hidden="true">
-                    <Link to={"/"}>
+                    <Link to={"/"} onClick={console.log(window.location.pathname)}>
                       <img src={props.styleProps.headerLogo} alt=""/>
                     </Link>
                   </div>
@@ -173,8 +163,9 @@ export const Header = (props) => (
 
                         </ul>
                       </div>
-
-                      <div className="Header-search " id="header-search">
+                      
+                      <Headersearch history={props.history}/>
+                      {/* <div className="Header-search " id="header-search">
                         <form className="Form">
                             <div className="Form-field Form-field--withPlaceholder Grid u-background-white u-color-grey-30 u-borderRadius-s">
                               <input className="Form-input Form-input--ultraLean Grid-cell u-sizeFill u-text-r-s u-color-black u-text-r-xs u-borderRadius-s"
@@ -185,7 +176,7 @@ export const Header = (props) => (
                             </div>
                         </form>
 
-                      </div>
+                      </div> */}
               
                     </div>
                   </div>
@@ -199,43 +190,6 @@ export const Header = (props) => (
                 </div>
         
         </header>
-          
-
-
-
-            {/* <section className="Offcanvas Offcanvas--right Offcanvas--modal js-fr-offcanvas u-jsVisibilityHidden u-nojsDisplayNone u-hiddenPrint" id="menu">
-              <h2 className="u-hiddenVisually">Menu di navigazione</h2>
-              <div className="Offcanvas-content u-background-white">
-                <div className="Offcanvas-toggleContainer u-background-70 u-jsHidden">
-                  <a className="Hamburger-toggleContainer u-block u-color-white u-padding-bottom-xxl u-padding-left-s u-padding-top-xxl js-fr-offcanvas-close"
-                    aria-controls="menu" aria-label="esci dalla navigazione" title="esci dalla navigazione" href="#">
-                    <span className="Hamburger-toggle is-active" aria-hidden="true"></span>
-                  </a>
-                </div>
-                <nav>
-                  <ul className="Linklist Linklist--padded u-layout-prose u-text-r-xs Treeview Treeview--default js-Treeview">            
-                    
-                    <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
-                    <a href="/" className="Linklist-link">Il Progetto</a>
-                    <ul>
-                      <li><a href="/missione" className="Linklist-link">Missione</a></li>
-                      <li><a href="/team" className="Linklist-link">Chi Siamo</a></li>
-                      <li><a href="/lineeguida" className="Linklist-link">Linee Guida</a></li>
-                    </ul>
-                    </li>
-
-                    <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
-                    {/* <a href="/dataset/search" className="Linklist-link">Esplora</a> */}
-                    {/* <a href="/dataset/search" onClick={this.searchDataset} className="Linklist-link">Esplora</a>
-                    </li> */}
-
-                    {/* <li data-megamenu-class="Megamenu-item Megamenu-item--vert">
-                    <a href="/" className="Linklist-link">Community</a>
-                    <ul>
-                      <li><a href="/crea" className="Linklist-link">Data Stories</a></li>
-                      <li><a href="https://developers.italia.it/news" target="_blank" className="Linklist-link">Notizie</a></li>
-                      <li><a href="https://forum.italia.it" target="_blank" className="Linklist-link">Forum</a></li>
-                    </ul> */}
                     
           <section className="Offcanvas Offcanvas--right Offcanvas--modal js-fr-offcanvas u-jsVisibilityHidden u-nojsDisplayNone u-hiddenPrint" id="menu">
             <h2 className="u-hiddenVisually">Menu di navigazione</h2>
