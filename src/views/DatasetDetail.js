@@ -49,8 +49,8 @@ export default class DatasetDetail extends React.Component {
                 <div className="Grid-cell u-md-size8of12 u-lg-size8of12 u-padding-right-xl">
 
                   <article className="u-padding-r-all u-background-grey-10 u-lineHeight-l u-text-r-xs u-textSecondary u-margin-bottom-l">
-                    <p><strong>Titolare del dataset: </strong> {this.state.dataset.holder_name}</p>
-                    <p><strong>Editore del dataset:</strong> {this.state.dataset.publisher_name}</p>
+                    <p><strong>Titolare del dataset: </strong> {this.state.dataset.organization.title}</p>
+                    <p><strong>Editore del dataset:</strong> {this.state.dataset.author}</p>
                     {/* Auotre solo se presente */}
                     {this.state.dataset.creator_name &&
                       <p><strong>Autore del dataset: </strong> {this.state.dataset.creator_name}</p>}
@@ -67,12 +67,12 @@ export default class DatasetDetail extends React.Component {
                       let dataVisualizer = null;
 
                       if (res.format === 'CSV') {
-                      // In this section it is possible to visualize table of data given as CSV file
+                        // In this section it is possible to visualize table of data given as CSV file
                         dataVisualizer = <div className="Grid-cell table-preview">
-                                            <Collapsible trigger="Anteprima">
-                                              <ReactCsvTable csvPath={res.url} />
-                                            </Collapsible>
-                                         </div>;
+                          <Collapsible trigger="Anteprima">
+                            <ReactCsvTable csvPath={res.url} />
+                          </Collapsible>
+                        </div>;
                       }
                       else {
                         //Todo: preview for other data types/ formats
@@ -87,7 +87,6 @@ export default class DatasetDetail extends React.Component {
                           <div className="Grid-cell  u-md-size10of12 u-lg-size10of12 ">
                             <div className=" u-margin-bottom-l u-borderRadius-m u-padding-all-xxs u-lineHeight-xxl">
                               <a href={res.url} className="u-text-s u-textWeight-600 u-textClean u-color-50">{res.name} </a><br /> {res.description}
-                              <p><strong>Licenza: </strong> {res.license} </p>
                             </div>
                           </div>
                           {dataVisualizer}
@@ -109,11 +108,11 @@ export default class DatasetDetail extends React.Component {
                       {this.state.dataset.tags && this.state.dataset.tags.map((tag, index) => {
                         if (this.state.dataset.num_tags == index + 1) {
                           return (
-                            <a href="#"><span key={index}></span>{tag.display_name} </a>
+                            <a href="#"><button type="button" className="u-background-5 u-color-black u-borderRadius-m u-padding-all-xxs u-textWeight-500"><span key={index}></span>{tag.display_name} </button></a>
                           );
                         } else {
                           return (
-                            <a href="#"><span key={index}></span>{tag.display_name}, </a>
+                            <a href="#"><button type="button" className="u-background-5 u-color-black u-borderRadius-m u-padding-all-xxs u-textWeight-500"><span key={index}></span>{tag.display_name} </button></a>
                           );
                         }
                       })
@@ -135,7 +134,26 @@ export default class DatasetDetail extends React.Component {
                         month="long"
                         year="numeric" />
                     </p>
-                    <p><strong>Lingua del dataset: </strong> {this.state.dataset.language} </p>
+
+                    <p><strong>Lingua del dataset: </strong>
+                      ITA
+                      {/*this.state.dataset.language*/}
+                    </p>
+
+                    <p><strong>Licenza: </strong>
+                      {(
+                        (this.state.dataset.license_title !== ""
+                          && this.state.dataset.license_title !== null)
+                      ) &&
+
+                        <a href={this.state.dataset.license_url} target="_blank">
+                          <button type="button" className="u-background-5 u-color-black u-borderRadius-m u-padding-all-xxs u-textWeight-500">
+                            {this.state.dataset.license_title}
+                          </button>
+                        </a>
+
+                      }
+                    </p>
                   </article>
 
 
