@@ -36,7 +36,7 @@ class DatasetBox extends React.Component {
             <div className="u-nbfc u-borderRadius-m u-background-grey-10 u-color-grey-70">
               <section className="u-text-r-l u-padding-r-all u-layout-prose">
                 
-                <p className="u-padding-r-bottom">
+                <div className="u-padding-r-bottom">
                 <div className="Grid Grid--fit Grid--withGutter ">
                        <div className="Grid-cell u-md-size2of12 u-lg-size2of12 u-layout-matchHeight">
                         
@@ -62,7 +62,7 @@ class DatasetBox extends React.Component {
                
                 </div>
                  </div>
-                </p>             
+                </div>             
 
                 <h3 className="u-padding-r-top u-padding-r-bottom">
                   <Link className="u-text-h4 u-textClean u-color-50" to={"/dataset/" + this.state.dataset.id}>

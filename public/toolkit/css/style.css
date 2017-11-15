@@ -179,6 +179,7 @@ a:hover Icon-* {
   
 .user-story-view .share {
     margin-top: 50px;
+    float: right;
 }
   
 .user-story-view .share>span {

@@ -99,13 +99,34 @@ class UserStoryView extends React.Component {
                       this.state.story &&
                       <div>
                         <UserStoryHeader story={this.state.story} />
-                        <UserStoryImage story={this.state.story} graph={1}/>
+                      
                         <div className="body">
-                          <div dangerouslySetInnerHTML={{ __html: this.state.story.text }}></div>
+                          <UserStoryImage story={this.state.story} graph={1}/>
+                          <div className="u-margin-r-top u-padding-r-top" dangerouslySetInnerHTML={{ __html: this.state.story.text }}></div>
                           <UserStoryImage story={this.state.story} graph={2}/>
                           <div className="footer" dangerouslySetInnerHTML={{ __html: this.state.story.footer }}></div>
                         </div>
 
+                        {/* SHARE */}
+                        <div className="share">
+                          <ul className="Footer-socialIcons">
+                            <li>
+                              <a href="">
+                                <span className="Icon Icon-facebook u-background-white"></span>
+                                <span className="u-hiddenVisually">Facebook</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="">
+                                <span className="Icon Icon-twitter u-background-white"></span>
+                                <span className="u-hiddenVisually">Twitter</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href=""><span className="Icon Icon-youtube u-background-white"></span><span className="u-hiddenVisually">Youtube</span></a>
+                            </li>
+                          </ul>
+                        </div>
 
                         <div id="disqus_thread"></div>
                         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
