@@ -3754,7 +3754,7 @@ ul {
 
 .Prose-blockquote,
 .u-border-left-m {
-    border-left: 1rem solid currentColor!important
+    border-left: 1px solid currentColor!important
 }
 
 .u-border-all-m {
