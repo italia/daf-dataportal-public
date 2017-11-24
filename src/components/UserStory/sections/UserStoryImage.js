@@ -17,7 +17,7 @@ class UserStoryImage extends React.Component {
     let identifier = story[graphNumber]?story[graphNumber].props.identifier:undefined;
     if(identifier){
         console.log('identifier: ' + identifier);
-        let url = 'https://api.daf.teamdigitale.it/dati-gov/v1/plot/' + identifier + '/356x280';
+        let url = 'https://api.daf.teamdigitale.it/dati-gov/v1/plot/' + identifier + '/700x600';
         const response = fetch( url, {
             method: 'GET'
           }).then(response => response.text())
