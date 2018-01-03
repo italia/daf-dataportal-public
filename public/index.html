@@ -9,6 +9,7 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
 
   <!-- <link rel="preload" href="/build/IWT.min.js" as="script"> -->
   <!--
@@ -16,6 +17,29 @@
       <link href='//fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700,' rel='stylesheet' type='text/css' />
     o dal repository locale (src/fonts)
   -->
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="../src/config/serviceurl.js"></script>
+  <script type='text/javascript'>
+    $(document).ready(function() {
+      var org = window.location.hostname.split('.')[1];
+      $.ajax({
+          type: 'Get',
+          url: "http://service:9000/dati-gov/v1/settings?organization="+ org,
+          //url: 'http://localhost:3001/api/3/action/getProp' + org,
+          success: function(returnedJson) {
+              $('body').addClass('theme' + returnedJson.theme);
+              localStorage.setItem('prop', JSON.stringify(returnedJson));
+          },
+          error: function (xhr, ajaxOptions, thrownError) {
+              console.log('file di properties non disponibile')
+              localStorage.removeItem('prop')
+          }
+      });
+    });  
+  </script>
+  
+  <meta name="prop" content="">
+  
   <script type="text/javascript">
     WebFontConfig = {
       google: {
@@ -55,7 +79,7 @@ gtag('config', 'UA-96140462-5');
   <link media="all" rel="stylesheet" href="%PUBLIC_URL%/toolkit/css/font.css">
   <link media="all" rel="stylesheet" href="%PUBLIC_URL%/toolkit/css/main.css">
   <link media="all" rel="stylesheet" href="%PUBLIC_URL%/toolkit/css/style.css">
-
+  <link media="all" rel="stylesheet" href="%PUBLIC_URL%/toolkit/css/themes.css">
     <!-- Autocomplete CSS -->
     <link media="all" rel="stylesheet" href="%PUBLIC_URL%/toolkit/css/autocomplete.css">
   <title>Daf-dataportal</title>

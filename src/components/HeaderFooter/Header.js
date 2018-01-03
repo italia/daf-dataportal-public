@@ -221,8 +221,8 @@ export const Header = (props) => (
                   <a href="#" className="Linklist-link">Community</a>
                   <ul>
                     <li><a href="/crea" className="Linklist-link">Data Stories</a></li>
-                    <li><a href="https://developers.italia.it/news" target="_blank" className="Linklist-link">Notizie</a></li>
-                    <li><a href="https://forum.italia.it" target="_blank" className="Linklist-link">Forum</a></li>
+                    <li><a href={props.styleProps.notizieURL} target="_blank" className="Linklist-link">Notizie</a></li>
+                    <li><a href={props.styleProps.forumURL} target="_blank" className="Linklist-link">Forum</a></li>
                   </ul>
                   </li>
 
