@@ -24,8 +24,8 @@
       var org = window.location.hostname.split('.')[1];
       $.ajax({
           type: 'Get',
-          url: "http://service:9000/dati-gov/v1/settings?organization="+ org,
-          //url: 'http://localhost:3001/api/3/action/getProp' + org,
+          //url: "http://service:9000/dati-gov/v1/settings?organization="+ org,
+          url: 'http://localhost:3001/api/3/action/getProp' + org,
           success: function(returnedJson) {
               $('body').addClass('theme' + returnedJson.theme);
               localStorage.setItem('prop', JSON.stringify(returnedJson));
@@ -69,7 +69,7 @@ gtag('js', new Date());
 
 gtag('config', 'UA-96140462-5');
 </script>
-
+ 
   <script src="%PUBLIC_URL%/toolkit/script/modernizr.js"></script>
   <script src="%PUBLIC_URL%/toolkit/script/jquery.min.js"></script>
   <script src="%PUBLIC_URL%/toolkit/script/IWT.min.js"></script>
