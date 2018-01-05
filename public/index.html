@@ -24,8 +24,13 @@
       var org = window.location.hostname.split('.')[1];
       $.ajax({
           type: 'Get',
-          //url: "http://service:9000/dati-gov/v1/settings?organization="+ org,
-          url: 'http://localhost:3001/api/3/action/getProp' + org,
+          url: "https://api.daf.teamdigitale.it/dati-gov/v1/settings?organization="+ org,
+          headers: {
+           'Accept': 'application/json',
+           'Content-Type': 'application/json',
+           'Authorization': "Basic Y3JpLnRvZmFuaUBnbWFpbC5jb206Y3Jpc3RpYW5v"
+         },
+          // url: 'http://localhost:3001/api/3/action/getProp' + org,
           success: function(returnedJson) {
               $('body').addClass('theme' + returnedJson.theme);
               localStorage.setItem('prop', JSON.stringify(returnedJson));

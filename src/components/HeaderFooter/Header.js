@@ -3,50 +3,12 @@ import SlimHeader from '../MegaHeader/SlimHeader';
 import { Link } from 'react-router-dom';
 import Headersearch from './HeaderSearch';
 import Customredirect from './CustomRedirect'
+import HeaderBanner from './HeaderBanner';
 
 export const Header = (props) => (
   <div>
     <header className="Header  u-hiddenPrint">
-      <div className="Header-banner u-background-50">
-        <div className="Header-owner Headroom-hideme u-flex u-flexJustifyBetween u-flexAlignItemsCenter">
-          <div className="Header-owner__institutions">
-            <div className="u-md-hidden u-lg-hidden u-border-right-xxs u-margin-right-xs u-padding-right-xs u-inlineBlock u-alignMiddle">
-              <a className="js-fr-offcanvas-open u-block" href="#network" aria-controls="network" aria-label title>
-              </a>
-            </div>
-            <a href="http://www.agid.gov.it">
-              <span className="u-inline u-md-hidden u-lg-hidden u-sm-hidden">
-                AgID
-                  </span>
-              <span className="u-hidden u-md-inline u-lg-inline u-sm-inline">
-                AgID {'\u00a0'}
-              </span>
-            </a>
-            <span className="u-color-white">+</span>
-            <a href="https://teamdigitale.governo.it">
-              <span className="u-inline u-md-hidden u-lg-hidden u-sm-hidden">
-                Team Digitale
-                  </span>
-              <span className="u-hidden u-md-inline u-lg-inline u-sm-inline">
-                {"\u00a0"} Team Digitale
-                  </span>
-            </a>
-          </div>
-          <div className="u-hidden u-md-block u-lg-block">
-            <div className="Header-slim u-background-50">
-              <ul className="Header-links u-cf">
-                <li className="delimiter"><a className="u-color-white" href="https://pianotriennale-ict.italia.it">Piano Triennale</a></li>{" "}
-                <li className><a className="u-color-white" href="https://developers.italia.it/">Developers</a></li>{" "}
-                <li className="current"><a className="u-color-white" href="/">DAF</a></li>{" "}
-                <li className="delimiter"><a className="u-color-white" href="http://designers.italia.it">Designers</a></li>{" "}
-                <li className><a className="u-color-white" href="https://forum.italia.it/c/daf">Forum</a></li>{" "}
-                <li className><a className="u-color-white" href="https://docs.developers.italia.it/">Docs</a></li>{" "}
-                <li className="delimiter"><a className="u-color-white" href="https://github.com/italia/">Github</a></li>{" "}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+      {!props.styleProps.theme && <HeaderBanner />}
       <div className="Header-navbar u-background-50">
         <div className="u-layout-wide Grid Grid--alignMiddle u-layoutCenter">
           <div className="Header-logo Grid-cell" aria-hidden="true">
@@ -97,20 +59,22 @@ export const Header = (props) => (
                 <li><Customredirect history={props.history} to='/lineeguida' label='Linee Guida' /></li>
               </ul>
             </li>
-            <li data-megamenu-class="Megamenu-item Megamenu-item--vert" className="Megamenu-item Megamenu-item--vert">
-              <a href="/dataset/search" onClick={this.searchDataset} className="Linklist-link">Esplora</a>
-            </li>
 
             <li data-megamenu-class="Megamenu-item Megamenu-item--vert" className="Megamenu-item Megamenu-item--vert">
               <a href="#" className="Linklist-link">Community</a>
               <ul>
-                <li><a href="/crea" className="Linklist-link">Data Stories</a></li>
-                <li><a href={props.styleProps.notizieURL} target="_blank" className="Linklist-link">Notizie</a></li>
-                <li><a href={props.styleProps.forumURL} target="_blank" className="Linklist-link">Forum</a></li>
+                <li><Customredirect history={props.history} to='/crea' label='Data Stories' /></li>
+                {/* <li><Customredirect history={props.history} to='/dashboardsList' label='Dashboards' /></li> */}
+                <li><a href="https://developers.italia.it/news" target="_blank" className="Linklist-link">Notizie</a></li>
+                <li><a href="https://forum.italia.it" target="_blank" className="Linklist-link">Forum</a></li>
               </ul>
             </li>
             <li data-megamenu-class="Megamenu-item Megamenu-item--vert" className="Megamenu-item Megamenu-item--vert">
-              <a href="/partecipa" className="Linklist-link">Partecipa</a>
+            <Customredirect history={props.history} to='/partecipa' label='Partecipa' />
+              {/*<a href="#" className="Linklist-link">Partecipa</a>
+              <ul>
+                <li><Customredirect history={props.history} to='/partecipa' label='Partecipa' /></li>
+              </ul>*/}
             </li>
             <li data-megamenu-class="Megamenu-item Megamenu-area u-background-40 u-padding-left-none" className="Megamenu-item Megamenu-area u-background-40 u-padding-left-none">
               <a href="https://dataportal-private.daf.teamdigitale.it" id="megamenu-1515065130642-9">Accedi</a>

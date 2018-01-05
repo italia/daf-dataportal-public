@@ -4,26 +4,36 @@ import PropTypes from 'prop-types';
 
 class CustomRedirect extends React.Component {
 
-    constructor(props){
-        super(props);
-        this.props = props;
-        this.redirect = this.redirect.bind(this);
-    }
+  constructor(props) {
+    super(props);
+    this.props = props;
+    this.redirect = this.redirect.bind(this);
+  }
 
-    redirect(event){
-        event.preventDefault();
-        console.log('custom redirect')
-        this.props.history.push(this.props.to);
-    }
+  redirect(event) {
+    event.preventDefault();
+    console.log('custom redirect')
+    this.props.history.push(this.props.to);
+  }
 
-    render(){
-/*             return(this.props.onClick ?
-            <a onClick={this.props.onClick} title="Avvia la ricerca" aria-label="Redirect" className="Linklist-link">{this.props.label}</a>
-            :
-            <a onClick={this.redirect} title="Avvia la ricerca" aria-label="Redirect" className="Linklist-link">{this.props.label}</a>) */
+  secondaryBehaviour(secondaryAction) {
+    secondaryAction
+    this.redirect
+  }
 
-            return(<a onClick={this.redirect} title="Avvia la ricerca" aria-label="Redirect" className="Linklist-link">{this.props.label}</a>)
-    }
+  render() {
+    /*             return(this.props.onClick ?
+                <a onClick={this.props.onClick} title="Avvia la ricerca" aria-label="Redirect" className="Linklist-link">{this.props.label}</a>
+                :
+                <a onClick={this.redirect} title="Avvia la ricerca" aria-label="Redirect" className="Linklist-link">{this.props.label}</a>) */
+
+    return (<a href="#" onClick={this.redirect} title="Avvia la ricerca" aria-label="Redirect" className="Linklist-link">{this.props.label}</a>)
+
+    // return this.props.onClick ?
+    // <a onClick={this.secondaryBehaviour(this.props.onClick)} title="Avvia la ricerca" aria-label="Redirect" className="Linklist-link">{this.props.label}</a>:
+    // <a onClick={this.redirect} title="Avvia la ricerca" aria-label="Redirect" className="Linklist-link">{this.props.label}</a>
+                
+  }
 }
 
 const Customredirect = withRouter(CustomRedirect);
