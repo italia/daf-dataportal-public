@@ -22,17 +22,7 @@ class CustomRedirect extends React.Component {
   }
 
   render() {
-    /*             return(this.props.onClick ?
-                <a onClick={this.props.onClick} title="Avvia la ricerca" aria-label="Redirect" className="Linklist-link">{this.props.label}</a>
-                :
-                <a onClick={this.redirect} title="Avvia la ricerca" aria-label="Redirect" className="Linklist-link">{this.props.label}</a>) */
-
-    return (<a href="#" onClick={this.redirect} title="Avvia la ricerca" aria-label="Redirect" className="Linklist-link">{this.props.label}</a>)
-
-    // return this.props.onClick ?
-    // <a onClick={this.secondaryBehaviour(this.props.onClick)} title="Avvia la ricerca" aria-label="Redirect" className="Linklist-link">{this.props.label}</a>:
-    // <a onClick={this.redirect} title="Avvia la ricerca" aria-label="Redirect" className="Linklist-link">{this.props.label}</a>
-                
+    return (<a href="#" onClick={this.redirect} title="Avvia la ricerca" aria-label="Redirect" className={this.props.linkStyle}>{this.props.label}</a>)         
   }
 }
 

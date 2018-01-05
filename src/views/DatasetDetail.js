@@ -86,7 +86,7 @@ export default class DatasetDetail extends React.Component {
                           </div>
                           <div className="Grid-cell  u-md-size10of12 u-lg-size10of12 ">
                             <div className=" u-margin-bottom-l u-borderRadius-m u-padding-all-xxs u-lineHeight-xxl">
-                              <a href={res.url} className="u-text-s u-textWeight-600 u-textClean u-color-50">{res.name} </a><br /> {res.description}
+                              <a href={res.url} target='_blank' className="u-text-s u-textWeight-600 u-textClean u-color-50">{res.name} </a><br /> {res.description}
                             </div>
                           </div>
                           {dataVisualizer}
