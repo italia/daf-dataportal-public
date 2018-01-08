@@ -20,9 +20,7 @@ import DatasetDetail from '../views/DatasetDetail';
 import {IntlProvider} from 'react-intl';
 import it from "react-intl/locale-data/it";
 import {addLocaleData} from 'react-intl';
-// SERVICES
-import PropService from '../services/PropService';
-const propService = new PropService();
+import defaultprops from '../data/props.js'
 
 addLocaleData(it);
 
@@ -35,24 +33,17 @@ class Main extends React.Component {
   constructor(props) {
     super(props)
      //init state
+     if(localStorage.getItem('prop')){
+       console.log('Carico properties')
      this.state={
-      styleProps: {}
+      styleProps: JSON.parse(localStorage.getItem('prop'))
      }
-
-     //bind functions
-    this.loadProperties = this.loadProperties.bind(this);
-    this.loadProperties();
-  }
-
-  loadProperties(){
-    console.log("path: " + window.location.hostname);
-    let orgs = window.location.hostname.split('.');
-    let styleProps = propService.getJsonProp(orgs[1]);
-    styleProps.then((json) => {
-      this.setState({
-        styleProps: json
-      });
-    });
+    }else{
+      console.log('Carico properties di default')
+      this.state={
+        styleProps: defaultprops
+       }
+     }
   }
 
   render() {

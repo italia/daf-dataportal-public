@@ -33,9 +33,9 @@
 	text-decoration: none;
 	position: relative;
 	padding: 10px;
-  background: #0066cc;
+  background: #e6e6e6;
   border-radius: 2px;
-	color: white;
+	color: rgb(0, 0, 0);
 }
 
 .Collapsible__trigger:after {

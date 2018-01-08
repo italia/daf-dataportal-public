@@ -1,7 +1,5 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
-import Async from 'react-promise'
-import Image from 'react-image'
 
 class UserStoriesBox extends React.Component {
 

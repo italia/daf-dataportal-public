@@ -1365,11 +1365,14 @@
     },
     "/api/3/action/getPropdaf": {
       "get":{
+        "theme": "1",
         "headerLogo": "https://developers.italia.it/assets/icons/logo-it.png",
         "headerSiglaTool": "/daf",
         "headerDescTool": "Il framework dei dati pubblici del Paese",
         "twitterURL": "https://twitter.com/datigovit",
         "mediumURL": "https://medium.com/team-per-la-trasformazione-digitale/",
+        "notizieURL": "https://developers.italia.it/news",
+        "forumURL": "https://forum.italia.it",
         "footerLogoAGID": "https://www.spid.gov.it/assets/img/agid-logo-bb.svg",
         "footerLogoGov": "https://teamdigitale.governo.it/images/loghi/governo.svg",
         "footerLogoDevITA": "https://developers.italia.it/assets/icons/dt-logo.svg",
@@ -1380,11 +1383,14 @@
     },
     "/api/3/action/getProproma": {
       "get":{
+        "theme": "2",
         "headerLogo": "http://www.gsr-roma.com/logo_ente/logo_comune2.jpg",
         "headerSiglaTool": "/comunediroma",
         "headerDescTool": "Il framework dei dati pubblici del Comune di Roma",
-        "twitterURL": "https://twitter.com/datigovit",
-        "mediumURL": "https://medium.com/team-per-la-trasformazione-digitale/",
+        "twitterURL": "https://twitter.com/roma",
+        "mediumURL": "https://medium.com/",
+        "notizieURL": "http://www.comune.roma.it/pcr/do/jpsite/Site/archive.action",
+        "forumURL": "http://www.comune.roma.it",
         "footerLogoAGID": "https://www.spid.gov.it/assets/img/agid-logo-bb.svg",
         "footerLogoGov": "https://teamdigitale.governo.it/images/loghi/governo.svg",
         "footerLogoDevITA": "https://developers.italia.it/assets/icons/dt-logo.svg",
