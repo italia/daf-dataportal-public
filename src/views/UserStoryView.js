@@ -4,7 +4,7 @@ import React from 'react';
 import UserStoryGraph from '../components/UserStory/sections/UserStoryGraph';
 import UserStoryHeader from '../components/UserStory/sections/UserStoryHeader';
 import UserStoryImage from '../components/UserStory/sections/UserStoryImage';
-
+import { getCookie } from '../services/FunctionalCookies'
 import UserStoriesContent from '../components/UserStory/UserStoriesContent';
 
 // SERVICES
@@ -19,13 +19,16 @@ class UserStoryView extends React.Component {
   constructor(props) {
     super(props);
     this.init(props);
+    
   }
 
   init(props) {
 
+    var loggedName = getCookie("dataportal"); 
     //init state
     this.state = {
-      id: props.match.params.id
+      id: props.match.params.id,
+      loggedName: loggedName
     };
 
     //bind functions
@@ -100,12 +103,22 @@ class UserStoryView extends React.Component {
                       <div>
                         <UserStoryHeader story={this.state.story} />
 
-                        <div className="body">
-                          <UserStoryImage story={this.state.story} graph={1} />
-                          <div className="u-margin-r-top u-padding-r-top" dangerouslySetInnerHTML={{ __html: this.state.story.text }}></div>
-                          <UserStoryImage story={this.state.story} graph={2} />
-                          <div className="footer" dangerouslySetInnerHTML={{ __html: this.state.story.footer }}></div>
-                        </div>
+                        
+                          {this.state.loggedName ?
+                            <div className="body">
+                              <UserStoryGraph graph={this.state.story.graph1} />
+                              <div className="u-margin-r-top u-padding-r-top" dangerouslySetInnerHTML={{ __html: this.state.story.text }}></div>
+                              <UserStoryGraph graph={this.state.story.graph2} />
+                              <div className="footer" dangerouslySetInnerHTML={{ __html: this.state.story.footer }}></div>
+                            </div>
+                            :
+                            <div className="body">
+                              <UserStoryImage story={this.state.story} graph={1} />
+                              <div className="u-margin-r-top u-padding-r-top" dangerouslySetInnerHTML={{ __html: this.state.story.text }}></div>
+                              <UserStoryImage story={this.state.story} graph={2} />
+                              <div className="footer" dangerouslySetInnerHTML={{ __html: this.state.story.footer }}></div> 
+                            </div>
+                        }
 
                         {/* SHARE */}
                         <div className="share">

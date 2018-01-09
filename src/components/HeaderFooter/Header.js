@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom';
 import Headersearch from './HeaderSearch';
 import Customredirect from './CustomRedirect'
 import HeaderBanner from './HeaderBanner';
-import getCookie from '../../services/FunctionalCookies'
-
-const isLogged = () => !(getCookie("dataportal") === {})
 
 export const Header = (props) => (
   <div>
@@ -67,8 +64,8 @@ export const Header = (props) => (
               <a href="#" className="Linklist-link">Community</a>
               <ul>
                 <li><Customredirect history={props.history} to='/userStoriesList' label='Data Stories' linkStyle={'Linklist-link'} /></li>
-                <li><Customredirect history={props.history} to='/dashboardsList' label='Dashboards' linkStyle={'Linklist-link'} /></li>
-                <li><a href={props.styleProps.forumURL} target="_blank" className="Linklist-link">Notizie</a></li>
+{/*                 <li><Customredirect history={props.history} to='/dashboardsList' label='Dashboards' linkStyle={'Linklist-link'} /></li>
+ */}                <li><a href={props.styleProps.forumURL} target="_blank" className="Linklist-link">Notizie</a></li>
                 <li><a href={props.styleProps.notizieURL} target="_blank" className="Linklist-link">Forum</a></li>
               </ul>
             </li>
@@ -76,12 +73,11 @@ export const Header = (props) => (
               <Customredirect history={props.history} to='/partecipa' label='Partecipa' linkStyle={'Linklist-link'} />
             </li>
             {
-              isLogged
+              (props.loggedName)
 
                 ? <li data-megamenu-class="Megamenu-item Megamenu-item--vert Megamenu-area u-padding-left-none" className="Megamenu-item Megamenu-item--vert Megamenu-area u-padding-left-none">
                   <a href="https://dataportal-private.daf.teamdigitale.it">
-                    <span><img src={"img/user.png"} className="img-avatar" />
-                      {getCookie("dataportal").value}</span></a></li>
+                    <span><img src={"img/7.jpg"} className="img-avatar" />{props.loggedName}</span></a></li>
 
                 : <li data-megamenu-class="Megamenu-item Megamenu-area u-background-40 u-padding-left-none" className="Megamenu-item Megamenu-area u-background-40 u-padding-left-none">
                   <a href="https://dataportal-private.daf.teamdigitale.it">

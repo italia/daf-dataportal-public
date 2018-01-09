@@ -23,6 +23,7 @@ import { IntlProvider } from 'react-intl';
 import it from "react-intl/locale-data/it";
 import { addLocaleData } from 'react-intl';
 import defaultprops from '../data/props.js' //remove?
+import { getCookie } from '../services/FunctionalCookies'
 
 addLocaleData(it);
 
@@ -35,26 +36,31 @@ class Main extends React.Component {
   constructor(props) {
     super(props)
     //init state
+    var loggedName = getCookie("dataportal"); 
     if (localStorage.getItem('prop')) {
       console.log('Carico properties')
       this.state = {
-        styleProps: JSON.parse(localStorage.getItem('prop'))
+        styleProps: JSON.parse(localStorage.getItem('prop')),
+        loggedName: loggedName
       }
     } else {
       console.log('Carico properties di default')
       this.state = {
-        styleProps: defaultprops
+        styleProps: defaultprops,
+        loggedName: loggedName
       }
     }
+    
   }
 
+  
   render() {
     return (
       <IntlProvider locale="it">
         <div data-reactroot className="app">
           <div className="u-background-95">
             <div className="u-layout-wide u-layoutCenter">
-              <Header styleProps={this.state.styleProps} />
+              <Header styleProps={this.state.styleProps} loggedName={this.state.loggedName}/>
               <Switch>
                 <Route path='/' exact component={Home} />
                 <Route path='/user_story/:id' exact component={UserStoryView} />

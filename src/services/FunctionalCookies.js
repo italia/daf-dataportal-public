@@ -1,15 +1,18 @@
-const returnCookie = str =>
-  str
+function returnCookie(str){
+  return str
     .trim()
     .split("=")
     .reduce((name, value) =>
-      ({ name: name, value: value }))
-
-const getCookie = name =>
-  decodeURIComponent(document.cookie)
-    .split(";")
-    .reduce((cookie, str) =>
-      str.includes(name + "=") ? returnCookie(str) : {}
-    , {})
-
-export default getCookie
+      value)
+}
+export function getCookie(name){
+  var userName = '';
+  var decodeuri = decodeURIComponent(document.cookie)
+  var split = decodeuri.split(";")
+  split.map((str) => {
+    if(str.includes(name + "=")){
+      userName = returnCookie(str);
+    }
+  })
+  return userName;
+}

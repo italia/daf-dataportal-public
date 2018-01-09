@@ -4,13 +4,14 @@ export default class DashboardService {
 
   constructor() { }
 
-  // baseUrl = serviceurl.apiURLDatiGov + "/dashboards";
-  baseUrl = "http://localhost:3001/dati-gov/v1/dashboards";
+  baseUrl = serviceurl.apiURLDatiGov + "/dashboards";
+  //baseUrl = "http://localhost:3001/dati-gov/v1/dashboards";
 
   async get(id) {
     var headers = new Headers();
     headers.append("Accept", "application/json");
     headers.append("Content-Type", "application/json");
+    headers.append("Authorization", "Basic Y3JpLnRvZmFuaUBnbWFpbC5jb206Y3Jpc3RpYW5v");
     const response = await fetch(this.baseUrl + "/" + id, {
       method: 'GET',
       headers: headers
@@ -22,6 +23,7 @@ export default class DashboardService {
     var headers = new Headers();
     headers.append("Accept", "application/json");
     headers.append("Content-Type", "application/json");
+    headers.append("Authorization", "Basic Y3JpLnRvZmFuaUBnbWFpbC5jb206Y3Jpc3RpYW5v");
     const response = await fetch(this.baseUrl, {
       method: 'GET',
       headers: headers
@@ -34,6 +36,7 @@ export default class DashboardService {
     var headers = new Headers();
     headers.append("Accept", "application/json");
     headers.append("Content-Type", "application/json");
+    headers.append("Authorization", "Basic Y3JpLnRvZmFuaUBnbWFpbC5jb206Y3Jpc3RpYW5v");
     const response = await fetch(this.baseUrl, {
       method: 'GET',
       headers: headers

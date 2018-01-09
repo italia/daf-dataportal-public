@@ -67,8 +67,8 @@ class Home extends Component {
               <UserStoriesContent userStories={this.state.userStories} >
               </UserStoriesContent>
 
-              <DashboardsContent dashboards={this.state.dashboards} >
-              </DashboardsContent>
+{/*               <DashboardsContent dashboards={this.state.dashboards} >
+              </DashboardsContent> */}
 
               <DatasetContent dataset={this.state.dataset} >
               </DatasetContent>
