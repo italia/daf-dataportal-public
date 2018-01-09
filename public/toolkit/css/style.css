@@ -255,3 +255,11 @@ a:hover Icon-* {
 .anchor-none{
     text-decoration: none !important;
 }
+
+.img-avatar {
+    border-radius: 50em;
+    width: 36px;
+    height: 36px;
+    margin: 0 10px;
+    vertical-align: middle
+}

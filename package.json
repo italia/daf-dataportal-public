@@ -36,6 +36,7 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-select": "^1.0.0-rc.5",
+    "react-slidez": "0.0.20",
     "react-table": "^6.6.0",
     "react-transition-group": "^2.2.1",
     "reactstrap": "^4.8.0",

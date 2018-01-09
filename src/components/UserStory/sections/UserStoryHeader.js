@@ -17,7 +17,7 @@ class UserStoryHeader extends React.Component {
 
               {/* USER */}
               <div className="user-box text-left">
-                <img className="user-img" src="/img/user.png"/>
+                <img className="user-img" src="/img/7.jpg"/>
                 <span className="user-caption">
                   <h4>
                     {this.props.story.user}

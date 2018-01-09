@@ -5,11 +5,14 @@ import AutocompleteDataset from '../components/Autocomplete/AutocompleteDataset.
 
 import UserStoryService from '../services/UserStoryService.js';
 import UserStoriesContent from '../components/UserStory/UserStoriesContent.js';
+import DashboardService from '../services/DashboardService.js';
+import DashboardsContent from '../components/Dashboard/DashboardsContent.js';
 import DatasetService from '../services/DatasetService.js';
 import DatasetContent from '../components/Dataset/DatasetContent.js';
 import SearchBar from '../components/HeaderFooter/SearchBar.js';
 
 let userStoryService = new UserStoryService();
+let dashboardService = new DashboardService();
 let datasetService = new DatasetService();
 
 class Home extends Component {
@@ -26,6 +29,14 @@ class Home extends Component {
       });
     });
 
+    //get dashboards
+    let dashboards = dashboardService.getLast();
+    dashboards.then((list) => {
+      this.setState({
+        dashboards: list
+      });
+    });
+
     // get dataset
     let dataset = datasetService.getLast();
     dataset.then((list) => {
@@ -38,7 +49,7 @@ class Home extends Component {
     let datasets = datasetService.getNumber();
     datasets.then((list) => {
       this.setState({
-        datasetNumber: list?list.result.length:0
+        datasetNumber: list ? list.result.length : 0
       });
     });
   }
@@ -47,21 +58,24 @@ class Home extends Component {
     const { datasets, dataset, ope } = this.props
     return (
       <div>
-          <div className="u-textCenter">
-            <SearchBar history={this.props.history} datasetNumber={this.state.datasetNumber}/>
+        <div className="u-textCenter">
+          <SearchBar history={this.props.history} datasetNumber={this.state.datasetNumber} />
 
-            <section className="u-nbfc u-background-white  u-textCenter u-layout-r-withGutter u-padding-r-top u-padding-r-bottom u-zindex-30">
-              <div className="u-layout-wide u-layoutCenter">
-                
-                <UserStoriesContent userStories={this.state.userStories} >
-                </UserStoriesContent>
+          <section className="u-nbfc u-background-white  u-textCenter u-layout-r-withGutter u-padding-r-top u-padding-r-bottom u-zindex-30">
+            <div className="u-layout-wide u-layoutCenter">
 
-                <DatasetContent dataset={this.state.dataset} >
-                </DatasetContent>
+              <UserStoriesContent userStories={this.state.userStories} >
+              </UserStoriesContent>
 
-              </div>
-            </section>
-          </div>
+{/*               <DashboardsContent dashboards={this.state.dashboards} >
+              </DashboardsContent> */}
+
+              <DatasetContent dataset={this.state.dataset} >
+              </DatasetContent>
+
+            </div>
+          </section>
+        </div>
       </div>
     )
   }

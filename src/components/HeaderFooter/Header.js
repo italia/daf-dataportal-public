@@ -8,7 +8,7 @@ import HeaderBanner from './HeaderBanner';
 export const Header = (props) => (
   <div>
     <header className="Header  u-hiddenPrint">
-      {(!props.styleProps.theme || props.styleProps.theme==1) && <HeaderBanner />}
+      {(!props.styleProps.theme || props.styleProps.theme == 1) && <HeaderBanner />}
       <div className="Header-navbar u-background-50">
         <div className="u-layout-wide Grid Grid--alignMiddle u-layoutCenter">
           <div className="Header-logo Grid-cell" aria-hidden="true">
@@ -54,26 +54,35 @@ export const Header = (props) => (
             <li data-megamenu-class="Megamenu-item Megamenu-item--vert" className="Megamenu-item Megamenu-item--vert">
               <a href="#" className="Linklist-link">Il Progetto</a>
               <ul>
-                <li><Customredirect history={props.history} to='/missione' label='Missione' linkStyle={'Linklist-link'}/></li>
-                <li><Customredirect history={props.history} to='/team' label='Chi Siamo' linkStyle={'Linklist-link'}/></li>
-                <li><Customredirect history={props.history} to='/lineeguida' label='Linee Guida' linkStyle={'Linklist-link'}/></li>
+                <li><Customredirect history={props.history} to='/missione' label='Missione' linkStyle={'Linklist-link'} /></li>
+                <li><Customredirect history={props.history} to='/team' label='Chi Siamo' linkStyle={'Linklist-link'} /></li>
+                <li><Customredirect history={props.history} to='/lineeguida' label='Linee Guida' linkStyle={'Linklist-link'} /></li>
               </ul>
             </li>
 
             <li data-megamenu-class="Megamenu-item Megamenu-item--vert" className="Megamenu-item Megamenu-item--vert">
               <a href="#" className="Linklist-link">Community</a>
               <ul>
-                <li><Customredirect history={props.history} to='/crea' label='Data Stories' linkStyle={'Linklist-link'}/></li>
-                <li><a href={props.styleProps.forumURL} target="_blank" className="Linklist-link">Notizie</a></li>
+                <li><Customredirect history={props.history} to='/userStoriesList' label='Data Stories' linkStyle={'Linklist-link'} /></li>
+{/*                 <li><Customredirect history={props.history} to='/dashboardsList' label='Dashboards' linkStyle={'Linklist-link'} /></li>
+ */}                <li><a href={props.styleProps.forumURL} target="_blank" className="Linklist-link">Notizie</a></li>
                 <li><a href={props.styleProps.notizieURL} target="_blank" className="Linklist-link">Forum</a></li>
               </ul>
             </li>
             <li data-megamenu-class="Megamenu-item Megamenu-item--vert" className="Megamenu-item Megamenu-item--vert">
-              <Customredirect history={props.history} to='/partecipa' label='Partecipa' linkStyle={'Linklist-link'}/>
+              <Customredirect history={props.history} to='/partecipa' label='Partecipa' linkStyle={'Linklist-link'} />
             </li>
-            <li data-megamenu-class="Megamenu-item Megamenu-area u-background-40 u-padding-left-none" className="Megamenu-item Megamenu-area u-background-40 u-padding-left-none">
-              <a href="https://dataportal-private.daf.teamdigitale.it" id="megamenu-1515065130642-9">Accedi</a>
-            </li>
+            {
+              (props.loggedName)
+
+                ? <li data-megamenu-class="Megamenu-item Megamenu-item--vert Megamenu-area u-padding-left-none" className="Megamenu-item Megamenu-item--vert Megamenu-area u-padding-left-none">
+                  <a href="https://dataportal-private.daf.teamdigitale.it">
+                    <span><img src={"img/7.jpg"} className="img-avatar" />{props.loggedName}</span></a></li>
+
+                : <li data-megamenu-class="Megamenu-item Megamenu-area u-background-40 u-padding-left-none" className="Megamenu-item Megamenu-area u-background-40 u-padding-left-none">
+                  <a href="https://dataportal-private.daf.teamdigitale.it">
+                    Accedi</a></li>
+            }
           </ul>
         </nav>
       </div>
