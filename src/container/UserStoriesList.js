@@ -2,17 +2,13 @@ import React, { Component } from 'react'
 import UserStoryService from '../services/UserStoryService.js';
 import UserStoriesContent from '../components/UserStory/UserStoriesContent.js';
 
-
 let userStoryService = new UserStoryService();
 
-class Crea extends Component {
+class UserStoriesList extends Component {
     constructor(props) {
       super(props)
-  
       this.state = {};
-  
-      //get stories
-      //let userStories = userStoryService.getLastCrea();
+      
       let userStories = userStoryService.getLast();
       userStories.then((list) => {
         this.setState({
@@ -53,4 +49,4 @@ class Crea extends Component {
     }
 }
 
-export default Crea
+export default UserStoriesList;

@@ -1,20 +1,19 @@
 import React from 'react';
 
 // sections
-import UserStoryGraph from '../components/UserStory/sections/UserStoryGraph';
-import UserStoryHeader from '../components/UserStory/sections/UserStoryHeader';
-import UserStoryImage from '../components/UserStory/sections/UserStoryImage';
+import DashboardHeader from '../components/Dashboard/sections/DashboardHeader';
+import DashboardImage from '../components/Dashboard/sections/DashboardImage';
 
-import UserStoriesContent from '../components/UserStory/UserStoriesContent';
+import DashboardContent from '../components/Dashboard/DashboardsContent';
 
 // SERVICES
-import UserStoryService from '../services/UserStoryService';
+import DashboardService from '../services/DashboardService';
 
-const userStoryService = new UserStoryService();
+const dashboardService = new DashboardService();
 
 var disqus_config;
 
-class UserStoryView extends React.Component {
+class DashboardView extends React.Component {
 
   constructor(props) {
     super(props);
@@ -31,32 +30,25 @@ class UserStoryView extends React.Component {
     //bind functions
 
     //load data
-    userStoryService.get(this.state.id).then((story) => {
+    dashboardService.get(this.state.id).then((dashboard) => {
       this.setState({
-        story: story
+        dashboard: dashboard
       });
     });
 
-    userStoryService.getSimili(this.state.id).then((story) => {
+    dashboardService.getSimili(this.state.id).then((dashboard) => {
       this.setState({
-        userStoriesSimili: story
+        dashboardsSimili: dashboard
       });
     });
-
-    /*   userStoryService.getCommunity().then((story) => {
-        this.setState({
-          userStoriesCommunity: story
-        });
-      }); */
 
     //INIT DISQUS
-
     var d = document;
     var sConfig = d.createElement('script');
     sConfig.onload = function () {
       disqus_config = function () {
         this.page.url = window.location.href;
-        this.page.identifier = 'user_story_' + props.match.params.id
+        this.page.identifier = 'dashboard_' + props.match.params.id
       }
     };
 
@@ -79,7 +71,7 @@ class UserStoryView extends React.Component {
       <div className="u-layout-wide u-layoutCenter">
 
         <div className="u-background-50 u-layout-r-withGutter u-padding-top-xxl">
-          <h2 className="u-text-r-l u-textWeight-300 u-color-white u-lineHeight-l">Data Stories</h2>
+          <h2 className="u-text-r-l u-textWeight-300 u-color-white u-lineHeight-l">Dashboards</h2>
         </div>
         <div className="u-padding-top-xxl u-background-50"></div>
         <hr className="Separator Separator--up u-background-white" />
@@ -96,15 +88,14 @@ class UserStoryView extends React.Component {
                   <div>
 
                     {
-                      this.state.story &&
+                      this.state.dashboard &&
                       <div>
-                        <UserStoryHeader story={this.state.story} />
+                        <DashboardHeader dashboard={this.state.dashboard} />
 
                         <div className="body">
-                          <UserStoryImage story={this.state.story} graph={1} />
-                          <div className="u-margin-r-top u-padding-r-top" dangerouslySetInnerHTML={{ __html: this.state.story.text }}></div>
-                          <UserStoryImage story={this.state.story} graph={2} />
-                          <div className="footer" dangerouslySetInnerHTML={{ __html: this.state.story.footer }}></div>
+                          {/* <div className="u-margin-r-top u-padding-r-top" dangerouslySetInnerHTML={{ __html: this.state.story.text }}></div> */}
+                          <DashboardImage dashboard={this.state.dashboard} />
+                          {/* <div className="footer" dangerouslySetInnerHTML={{ __html: this.state.story.footer }}></div> */}
                         </div>
 
                         {/* SHARE */}
@@ -171,8 +162,8 @@ class UserStoryView extends React.Component {
               <div className="Grid-cell u-sizeFull u-md-size4of12 u-lg-size4of12">
 
                 <article className="u-padding-all-l u-background-white u-lineHeight-l u-text-r-s u-textSecondary u-margin-bottom-l Prose-blockquote">
-                  <UserStoriesContent subtitle=" " title="Storie recenti" userStories={this.state.userStoriesSimili} userStoryView="true">
-                  </UserStoriesContent>
+                  <DashboardContent subtitle=" " title="Dashboards recenti" dashboards={this.state.dashboardsSimili} dashboardView={true}>
+                  </DashboardContent>
                 </article>
 
 
@@ -190,4 +181,4 @@ class UserStoryView extends React.Component {
   }
 }
 
-export default UserStoryView;
+export default DashboardView;

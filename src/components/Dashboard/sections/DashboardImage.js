@@ -1,7 +1,7 @@
 import React from 'react';
 import Async from 'react-promise'
 
-class UserStoryImage extends React.Component {
+class DashboardImage extends React.Component {
 
   constructor(props) {
     super(props);
@@ -12,9 +12,11 @@ class UserStoryImage extends React.Component {
   }
 
   componentDidMount() {
-    const { story, graph } = this.props
-    var graphNumber = 'graph' + graph;
-    let identifier = story[graphNumber] ? story[graphNumber].props.identifier : undefined;
+    const { dashboard } = this.props;
+    let identifier = "";
+    if (dashboard.widgets && dashboard.widgets !== '{}') {
+      identifier = dashboard.widgets[Object.keys(dashboard.widgets)[0]];
+    }
     if (identifier) {
       console.log('identifier: ' + identifier);
       let url = 'https://api.daf.teamdigitale.it/dati-gov/v1/plot/' + identifier + '/700x600';
@@ -48,12 +50,15 @@ class UserStoryImage extends React.Component {
     if (this.state.imageSrc) {
       base64Icon = "base64," + this.state.imageSrc.replace(/"/g, '')
     }
+
     return localStorage.getItem('username') && localStorage.getItem('token')
+
       ? <iframe className="u-margin-r-top u-padding-r-top" src=""></iframe>
+
       : this.state.loading === true ? <p>Caricamento ...</p> : (
         <div className="text-center u-margin-r-top u-padding-r-top">
           {
-            this.props.story &&
+            this.props.dashboard &&
             <div>
               {this.state.imageSrc &&
                 <img style={imgStyle} src={"data:image/jpg;" + base64Icon} />
@@ -65,4 +70,4 @@ class UserStoryImage extends React.Component {
   }
 }
 
-export default UserStoryImage;
+export default DashboardImage;
