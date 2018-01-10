@@ -29,13 +29,13 @@ class Home extends Component {
       });
     });
 
-    //get dashboards
+/*     //get dashboards
     let dashboards = dashboardService.getLast();
     dashboards.then((list) => {
       this.setState({
         dashboards: list
       });
-    });
+    }); */
 
     // get dataset
     let dataset = datasetService.getLast();
@@ -49,7 +49,7 @@ class Home extends Component {
     let datasets = datasetService.getNumber();
     datasets.then((list) => {
       this.setState({
-        datasetNumber: list ? list.result.length : 0
+        datasetNumber: list ? list.result.count : 0
       });
     });
   }

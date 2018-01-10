@@ -15,15 +15,19 @@ export default class OrganizationService {
     }
 
     async list(){
-        
-        const response = await fetch( this.baseUrl, {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        });
-        
-        return response.json();
+        var org = localStorage.getItem('organization')
+        if(org==='daf'){
+            const response = await fetch( this.baseUrl, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            });
+            return response.json();
+        } else {
+            return JSON.parse('{"result": ["'+org+'"]}')
+
+        }
     }
 
 }
