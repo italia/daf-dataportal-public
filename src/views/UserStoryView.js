@@ -90,11 +90,7 @@ class UserStoryView extends React.Component {
 
           <div className="u-layout-wide u-layoutCenter u-layout-withGutter u-padding-r-top u-padding-bottom-xxl">
             <div className="Grid Grid--withGutter">
-              <div className="Grid-cell u-md-size8of12 u-lg-size8of12 u-padding-right-xl">
-
-
-
-
+              <div className="Grid-cell u-md-size11of12 u-lg-size11of12 u-padding-right-xl">
                 <div className="row user-story-view">
                   <div>
 
@@ -181,16 +177,12 @@ class UserStoryView extends React.Component {
 
 
               </div>
-              <div className="Grid-cell u-sizeFull u-md-size4of12 u-lg-size4of12">
-
+{/*               <div className="Grid-cell u-sizeFull u-md-size4of12 u-lg-size4of12">
                 <article className="u-padding-all-l u-background-white u-lineHeight-l u-text-r-s u-textSecondary u-margin-bottom-l Prose-blockquote">
                   <UserStoriesContent subtitle=" " title="Storie recenti" userStories={this.state.userStoriesSimili} userStoryView="true">
                   </UserStoriesContent>
                 </article>
-
-
-
-              </div>
+              </div> */}
             </div>
           </div>
 
