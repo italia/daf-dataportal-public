@@ -41,8 +41,8 @@ export default class DatasetSearch extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.onSearch = this.onSearch.bind(this);
     this.onSearchOrder = this.onSearchOrder.bind(this);
-    this.setStateAndsearch = this.setStateAndsearch.bind(this);
-
+/*     this.setStateAndsearch = this.setStateAndsearch.bind(this);
+ */
     this.handleToggleClickCat = this.handleToggleClickCat.bind(this);
     this.handleToggleClickGroup = this.handleToggleClickGroup.bind(this);
     this.handleToggleClickOrganization = this.handleToggleClickOrganization.bind(this);
@@ -90,11 +90,11 @@ export default class DatasetSearch extends React.Component {
     this.setState({text: event.target.value});
   }
 
-  setStateAndsearch(event){
+/*   setStateAndsearch(event){
     console.log()
     this.setState({text: this.refs.auto.state.value});
     this.search();
-  }
+  } */
 
   
   search(event) {
@@ -104,7 +104,11 @@ export default class DatasetSearch extends React.Component {
       event.stopPropagation();
     }
     
-    let datasets = datasetService.search(this.state.totalDataDisplayed,this.state.offset,this.state.text, this.state.category_filter, this.state.group_filter, this.state.organization_filter);
+    if(!this.state.text && this.refs.auto){
+      this.setState({text: this.refs.auto.state.value});
+    }
+
+    let datasets = datasetService.search(this.state.totalDataDisplayed,this.state.offset,this.refs.auto?this.refs.auto.state.value:'', this.state.category_filter, this.state.group_filter, this.state.organization_filter);
     
     datasets.then((list) => {
       let paginator = []; 
@@ -199,14 +203,14 @@ export default class DatasetSearch extends React.Component {
               
               {/* INTESTAZIONE */}
               <h2 className=" u-padding-bottom-l">Trovati {this.state.totalResult} Dataset</h2>
-              <form onSubmit={this.search} className="Form u-text-r-xs u-margin-bottom-l">
+              <form onSubmit={this.search.bind(this)} className="Form u-text-r-xs u-margin-bottom-l">
                 <fieldset className="Form-fieldset">
                   <div className="Form-field Form-field--withPlaceholder Grid u-background-white u-color-grey-30 u-borderRadius-s u-border-all-xxs">
                     <button style={{width: "10%"}} className="Grid-cell u-sizeFit Icon-search u-color-grey-40 u-text-r-m u-padding-all-s u-textWeight-400">
                     </button>
                     {/*<input value={this.state.text} onChange={this.handleChange} className="Form-input Form-input--ultraLean Grid-cell u-sizeFill u-text-r-s u-color-black u-text-r-xs u-borderHideFocus " required="" id="esplora" name="cerca" />*/}
                     <AutocompleteDataset value={this.state.text} ref="auto"/>
-                    <button onClick={this.setStateAndsearch} style={{width: "20%"}} className="Grid-cell u-sizeFit u-background-60 u-color-white u-textWeight-600 u-padding-r-left u-padding-r-right u-textUppercase u-borderRadius-s">
+                    <button onClick={this.search.bind(this)} style={{width: "20%"}} className="Grid-cell u-sizeFit u-background-60 u-color-white u-textWeight-600 u-padding-r-left u-padding-r-right u-textUppercase u-borderRadius-s">
                       Esplora
                     </button>
                   </div>
@@ -239,7 +243,7 @@ export default class DatasetSearch extends React.Component {
                         this.state.paginator.map((page, index) => {
                           if(index < 3){
                             return(          
-                              <li className="Grid-cell u-textCenter u-hidden u-md-inlineBlock u-lg-inlineBlock">                  
+                              <li key={index} className="Grid-cell u-textCenter u-hidden u-md-inlineBlock u-lg-inlineBlock">                  
                               <a  onClick={this.handlePageChange.bind(this,index)} key={index} aria-label={"Pagina " + index} className="u-padding-all-s u-color-50 u-textClean">
                                 <span className="u-text-r-m">{index+1}</span>
                               </a>   
@@ -247,13 +251,13 @@ export default class DatasetSearch extends React.Component {
                             );
                           } else  if(index == 3){
                             return(         
-                              <li className="Grid-cell u-textCenter u-hidden u-md-inlineBlock u-lg-inlineBlock">     
+                              <li key={index} className="Grid-cell u-textCenter u-hidden u-md-inlineBlock u-lg-inlineBlock">     
                                  <span className="u-text-r-m u-color-50">...</span>  
                                  </li>                           
                             );
                           } else  if(index > this.state.paginator.length - 3){
                             return(    
-                              <li className="Grid-cell u-textCenter u-hidden u-md-inlineBlock u-lg-inlineBlock">          
+                              <li key={index} className="Grid-cell u-textCenter u-hidden u-md-inlineBlock u-lg-inlineBlock">          
                               <a  onClick={this.handlePageChange.bind(this,index)} key={index} aria-label={"Pagina " + index} className="u-padding-all-s u-color-50 u-textClean">
                                 <span className="u-text-r-m">{index+1}</span>
                               </a>        
