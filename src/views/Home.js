@@ -25,7 +25,7 @@ class Home extends Component {
     let userStories = userStoryService.getLast();
     userStories.then((list) => {
       this.setState({
-        userStories: list
+        userStories: this.filterStoriesByDomain(list)
       });
     });
 
@@ -52,6 +52,19 @@ class Home extends Component {
         datasetNumber: list ? list.result.count : 0
       });
     });
+  }
+
+  filterStoriesByDomain(json){
+    var dom = window.location.hostname.split('.')[0];
+        if(dom!='dataportal'){
+          var filteredJson = []
+          json.map((story) => {
+            if(story.title.toUpperCase().indexOf(dom.toUpperCase()) !== -1){
+              filteredJson.push(story)
+            }
+          })
+          return filteredJson
+        } else return json
   }
 
   render() {
