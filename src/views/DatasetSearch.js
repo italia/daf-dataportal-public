@@ -108,7 +108,7 @@ export default class DatasetSearch extends React.Component {
       this.setState({text: this.refs.auto.state.value});
     }
 
-    let datasets = datasetService.search(this.state.totalDataDisplayed,this.state.offset,this.refs.auto?this.refs.auto.state.value:'', this.state.category_filter, this.state.group_filter, this.state.organization_filter);
+    let datasets = datasetService.search(this.state.totalDataDisplayed,this.state.offset,this.refs.auto?this.refs.auto.state.value:this.state.text, this.state.category_filter, this.state.group_filter, this.state.organization_filter);
     
     datasets.then((list) => {
       let paginator = []; 

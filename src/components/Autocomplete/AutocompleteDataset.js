@@ -15,10 +15,10 @@ class AutocompleteDataset extends Component {
     var that = this;
     var token = '';
     // FILTER BY ORGANIZATION    
-    var url = serviceurl.apiCKAN + '/package_autocomplete?q=' + newValue;
+    var url = serviceurl.apiCKAN + '/package_search?q=name:' + newValue + '*';
     var org = localStorage.getItem('organization')
     if(org!='daf')
-        url = url + "&(organization:"+org+")"
+        url = url + "%20AND%20(organization:"+org+")"
     
     if(localStorage.getItem('username') && localStorage.getItem('token') &&
       localStorage.getItem('username') != 'null' && localStorage.getItem('token') != 'null'){
@@ -36,7 +36,7 @@ class AutocompleteDataset extends Component {
   }
 
   receiveAutocomplete(json){
-    this.setState({ suggestions: json.result });
+    this.setState({ suggestions: json.result.results });
   }
 
   render() {
