@@ -12,7 +12,7 @@ class UserStoriesContent extends React.Component {
 
     this.state = {
       title : "storie",
-      subtitle : "Le storie sono articoli scritti da noi e dalla nostra community di esperti: partendo dai dati, interpretiamo il mondo e aiutiamo la socità a prendere decisioni basate sui fatti"
+      subtitle : "Le storie sono articoli scritti da noi e dalla nostra community di esperti: partendo dai dati, interpretiamo il mondo e aiutiamo la società a prendere decisioni basate sui fatti"
     };
 
     if (this.props.title)
