@@ -58,7 +58,7 @@ class DataApplicationRifiuti extends React.Component {
                     ref="iframe"
                     frameBorder={'0'}
                     style={iframeStyle}
-                    src='http://dataportal.daf.local.teamdigitale.it:3000/rifiuti.html'
+                    src='https://dataportal.daf.teamdigitale.it/rifiuti.html'
                   />
 									</div>
 								</div>
