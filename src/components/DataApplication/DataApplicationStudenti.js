@@ -51,7 +51,7 @@ class DataApplicationStudenti extends React.Component {
                       ref="iframe"
                       frameBorder={'0'}
                       style={iframeStyle}
-                      src='http://dataportal.daf.local.teamdigitale.it:3000/studenti.html'
+                      src='https://dataportal.daf.teamdigitale.it/studenti.html'
                     />
 									</div>
 								</div>
