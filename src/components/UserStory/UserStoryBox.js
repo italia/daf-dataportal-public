@@ -27,7 +27,7 @@ class UserStoriesBox extends React.Component {
 
   componentDidMount() {
     const { story } = this.props
-    let identifier = story['graph1'].props.identifier;
+    let identifier = story['graph1']?story['graph1'].props.identifier:undefined;
     if (identifier) {
       console.log('identifier: ' + identifier);
       let url = 'https://api.daf.teamdigitale.it/dati-gov/v1/plot/' + identifier + '/330x280';

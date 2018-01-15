@@ -9,9 +9,13 @@ import LineeGuida from '../container/LineeGuida'
 import Team from '../container/Team'
 import TeamDett from '../container/TeamDett'
 import Partecipa from '../container/Partecipa'
+import DataApplication from '../container/DataApplication'
 
 import { Footer } from '../components/HeaderFooter/Footer';
 import { Header } from '../components/HeaderFooter/Header';
+import DataApplicationRifiuti from '../components/DataApplication/DataApplicationRifiuti';
+import DataApplicationStudenti from '../components/DataApplication/DataApplicationStudenti';
+
 
 import Home from '../views/Home';
 import UserStoryView from '../views/UserStoryView';
@@ -76,7 +80,9 @@ class Main extends React.Component {
                 <Route path="/team" component={Team} />
                 <Route path="/teamDett" component={TeamDett} />
                 <Route path="/partecipa" component={Partecipa} />
-
+                <Route path="/dataapplication" component={DataApplication} />
+                <Route path="/dataapplicationstudenti" component={DataApplicationStudenti} />
+                <Route path="/dataapplicationrifiuti" component={DataApplicationRifiuti} />
                 <Route render={() => <h3>Pagina non trovata</h3>} />
               </Switch>
               <Footer styleProps={this.state.styleProps} />

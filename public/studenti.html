@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<!-- task https://github.com/italia/daf-d3-visualization-->
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    
+    <title>Iscritti Anno 2015/2016</title>
+  
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="studenti.css"> 
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div>
+    <div>
+        <input type="text" data-type="search" placeholder="inserisci il nome di una regione" id="tags"OB></input>
+    </div>
+    <div style="display: none;" id="map">
+        <div id="arrowsAndLabel">
+            <table>
+	        <tr>
+                    <td>
+                        <div style="text-align: right;">
+                            <svg fill="firebrick" transform="scale(-1,1)" width="100" height="100" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+                                <g><g transform="matrix(1 0 0 -1 0 1536)"><path d="M990,1037.7c0-5.3-1.9-9.8-5.7-13.6L766.6,823.3c-6.1-5.3-12.7-6.4-19.8-3.4c-7.2,3.4-10.8,8.9-10.8,16.4v127H28.1c-5.3,0-9.6,1.7-13,5.1c-3.4,3.4-5.1,7.8-5.1,13v108.9c0,5.3,1.7,9.6,5.1,13c3.4,3.4,7.8,5.1,13,5.1h707.8v127c0,7.9,3.6,13.4,10.8,16.4c7.2,3,13.8,2.1,19.8-2.8l217.8-198.5C988.1,1046.9,990,1042.6,990,1037.7z"/></g></g>
+                            </svg>
+                        </div>
+                    </td>
+	            <td>
+                        <div id="region"></div>
+                    <td>
+	            <td>
+                        <div style="text-align: left";>
+	                    <svg fill="steelblue" transform="scale(-1,1)" id="arrow-east" width="100" height="100" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+                                <g><g transform="matrix(1 0 0 -1 0 1536)"><path d="M990,1037.7c0-5.3-1.9-9.8-5.7-13.6L766.6,823.3c-6.1-5.3-12.7-6.4-19.8-3.4c-7.2,3.4-10.8,8.9-10.8,16.4v127H28.1c-5.3,0-9.6,1.7-13,5.1c-3.4,3.4-5.1,7.8-5.1,13v108.9c0,5.3,1.7,9.6,5.1,13c3.4,3.4,7.8,5.1,13,5.1h707.8v127c0,7.9,3.6,13.4,10.8,16.4c7.2,3,13.8,2.1,19.8-2.8l217.8-198.5C988.1,1046.9,990,1042.6,990,1037.7z"/></g></g>
+                            </div>
+                        </td>
+                    <td>
+                        <div id="legend"></div>
+                    </td>
+                </table>
+            </div>
+        </div>
+        <div id="charts"></div>
+        <div id="instructions" class="instructions">
+            Inserisci il nome di una regione italiana; quindi premi invio o clicca nel menu a tendina.
+        </div>
+    <footer>
+        <p id="credits" class="credit"></p>
+    </footer>          
+</div>
+<script>
+
+var urlDati = "file02_2015-16_provenienze.csv";
+
+function crediti(regione) {
+    var urlDatiMIUR= "http://dati.ustat.miur.it/dataset/2015-16-iscritti/resource/9bebad94-3c0b-469e-8e50-b474d52aeb27";
+    var licenzaCommons = "- licenza <a href=\"http://www.gnu.org/copyleft/fdl.html\">GFDL</a> o <a href=\"https://creativecommons.org/licenses/by-sa/3.0\">CC BY-SA 3.0</a> -";
+    var autoreImmagine = "Xander89";
+    var urlImmagine = "https://commons.wikimedia.org/wiki/File%3ARegione_thumb_" + regione + ".svg"; 
+    var srcImmagine = "/img/Regione_thumb_" + regione.replace(" ", "_") + ".svg";
+    return "<br>L\'<a href=\"" +
+        urlImmagine +
+        "\">" +
+        "immagine della regione </a>" +
+        "e\' stata creata da " +
+        autoreImmagine +
+        " " +
+        licenzaCommons +
+        " ed e\' estratta da Wikimedia Commons, i dati sono stati ottenuti dal MIUR, Ufficio Statistica e Studi (<a href=\"" +
+        urlDatiMIUR + 
+        "\">link</a>).";
+}
+
+function visualizza(dati, regione, corsi) {
+    d3.select("#region").html("");
+    d3.select("#chartsSvg").remove();
+    d3.select("#map").style("display", "inline");
+    d3.select("#credits").html("");
+
+    var stat = corsi.map(function(c) {
+        return dati.reduce(function(result, d) {
+            if (d.GRUPPO_CORSO === c && d.SEDE_CORSO_REGIONE === regione && d.REGIONE_RESIDENZA !== regione.replace("-", " ").toUpperCase()) {
+                result.immigrati += parseInt(d.STUDENTI);
+                result.inSedePiuImmigrati += parseInt(d.STUDENTI);
+                result.inSedeFPiuImmigrati += parseInt(d.STUDENTI); 
+                if (d.ID_SESSO === "F") {
+                    result.immigratiF += parseInt(d.STUDENTI);
+                } 
+            } 
+
+            if (d.GRUPPO_CORSO === c && d.SEDE_CORSO_REGIONE !== regione && d.REGIONE_RESIDENZA === regione.replace("-", " ").toUpperCase()) {
+                result.emigrati -= parseInt(d.STUDENTI);
+                if (d.ID_SESSO === "F") {
+                    result.emigratiF -= parseInt(d.STUDENTI);
+                }
+            } 
+
+            if (d.GRUPPO_CORSO === c && d.SEDE_CORSO_REGIONE === regione && d.REGIONE_RESIDENZA === regione.replace("-", " ").toUpperCase()) {
+                result.inSede += parseInt(d.STUDENTI);
+                result.inSedePiuImmigrati += parseInt(d.STUDENTI);
+                if (d.ID_SESSO === "F") {
+                    result.inSedeFPiuImmigrati += parseInt(d.STUDENTI);
+                }
+            } 
+              
+            return result;
+        }, { corsi: c, inSede: 0, emigrati: 0, emigratiF: 0, immigrati: 0, immigratiF: 0, inSedePiuImmigrati: 0, inSedeFPiuImmigrati: 0 });
+    });
+  
+    var emigrati = stat.map(function(e) {return e.emigrati; });
+    var inSedePiuImmigrati = stat.map(function(e) {return e.inSede + e.immigrati; });
+
+    var margin = {top: 0, right: 250, bottom: 0, left: 50},
+        width = 960 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+
+    var x = d3.scale.linear()
+        .range([0, width]);
+
+    var y = d3.scale.ordinal()
+        .rangeRoundBands([0, height], 0.1);
+
+    var svg = d3.select("#charts")
+        .append("div")
+        .attr("id", "chartsSvg")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + ",0)");
+
+    x.domain(d3.extent(inSedePiuImmigrati.concat(emigrati), function(d) { return d; })).nice();
+    y.domain(corsi);
+
+    var container1 = svg.append('g')
+        .attr('id','container1');
+    var container2 = svg.append('g')
+        .attr('id', 'container2');
+    var container5 = svg.append('g')
+        .attr('id', 'container5');
+    var container3 = svg.append('g')
+        .attr('id', 'container3');
+    var container4 = svg.append('g')
+        .attr('id', 'container4');
+    var container6 = svg.append('g')  
+        .attr('id', 'container6');     
+
+    var bar1 = container1.selectAll(".bar")
+        .data(stat)
+        .enter();
+    bar1.append("rect")
+        .attr("class", function(d) { return "bar bar--" + (d.emigrati < 0 ? "negative" : "positive"); })
+        .attr("x", function(d) { return x(Math.min(0, d.emigrati)); })
+        .attr("y", function(d) { return y(d.corsi); })
+        .attr("width", function(d) { return Math.abs(x(d.emigrati) - x(0)); })
+        .attr("height", y.rangeBand());
+    var bar4 = container4.selectAll(".bar")
+        .data(stat)
+        .enter();
+    bar4.append("rect")
+        .attr("class", function(d) { return "bar bar--negativeF"; })
+        .attr("x", function(d) { return x(Math.min(0, d.emigratiF)); })
+        .attr("y", function(d) { return y(d.corsi); })
+        .attr("width", function(d) { return Math.abs(x(d.emigratiF) - x(0)); })
+        .attr("height", y.rangeBand());				
+    var bar2 = container2.selectAll(".bar")
+        .data(stat)
+        .enter();
+    bar2.append("rect")
+        .attr("class", "bar bar--neutral")
+        .attr("x", function(d) { return 190 + x(Math.min(0, d.inSedePiuImmigrati)); })
+        .attr("y", function(d) { return y(d.corsi); })
+        .attr("width", function(d) { return Math.abs(x(d.inSedePiuImmigrati) - x(0)); })
+        .attr("height", y.rangeBand());
+    var bar5 = container5.selectAll(".bar") 
+        .data(stat)
+        .enter();
+    bar5.append("rect")
+        .attr("class", "bar bar--neutralF")
+        .attr("x", function(d) { return 190 + x(Math.min(0, d.inSedeFPiuImmigrati)); })
+        .attr("y", function(d) { return y(d.corsi); })
+        .attr("width", function(d) { return Math.abs(x(d.inSedeFPiuImmigrati) - x(0)); })
+        .attr("height", y.rangeBand());
+    var bar3 = container3.selectAll(".bar")
+        .data(stat)
+        .enter();
+    bar3.append("rect")
+        .attr("class", "bar bar--positive")
+        .attr("x", function(d) { return 190 + x(Math.min(0, d.immigrati)); })
+        .attr("y", function(d) { return y(d.corsi); })
+        .attr("width", function(d) { return Math.abs(x(d.immigrati) - x(0)); })
+        .attr("height", y.rangeBand());
+    var bar6 = container6.selectAll(".bar") 
+        .data(stat)  
+        .enter();
+    bar6.append("rect")
+        .attr("class", "bar bar--positiveF")
+        .attr("x", function(d) { return 190 + x(Math.min(0, d.immigratiF)); })
+        .attr("y", function(d) { return y(d.corsi); })
+        .attr("width", function(d) { return Math.abs(x(d.immigratiF) - x(0)); })
+        .attr("height", y.rangeBand());
+
+    //add number of students next to each bar
+    bar1.append("text")
+        .attr("class", "value")
+        .attr("x", function(d) { return x(d.emigrati); })
+        .attr("y", function(d) { return y(d.corsi); })
+        .attr("dx", -3)
+        .attr("dy", "1.5em")
+        .attr("text-anchor", "end")
+        .text(function(d) { return -d.emigrati; });
+    bar1.append("text")
+        .attr("class", "value")
+        .attr("x", function(d) { return x(0) + 85; })
+        .attr("y", function(d) { return y(d.corsi); })
+        .attr("dx", -3)
+        .attr("dy", "1.5em")
+        .attr("text-anchor", "middle")
+        .text(function(d) { return d.corsi; });
+    bar3.append("text")
+        .attr("class", "value")
+        .attr("x", function(d) { return 190 + x(d.inSedePiuImmigrati); })
+        .attr("y", function(d) { return y(d.corsi); })
+        .attr("dx", 3)
+        .attr("dy", "1.5em")
+        .attr("text-anchor", "start")
+        .text(function(d) { return d.inSede; });
+    bar3.append("text")
+        .attr("class", "value")
+        .attr("x", function(d) { return x(0) + 180; })
+        .attr("y", function(d) { return y(d.corsi); })
+        .attr("dx", 3)
+        .attr("dy", "1.5em")
+        .attr("text-anchor", "end")
+        .text(function(d) { return d.immigrati;});
+
+    //add legend
+    var attributes = [
+        { label: "studenti immigrati", F: "darkblue", M: "steelblue" },
+        { label: "studenti emigrati", F: "darkRed", M: "firebrick" },
+        { label: "studenti in sede", F: "tan", M: "wheat" }
+    ];
+				
+    var legendRectSize = 18;
+    var legendSpacing = 4;	
+							
+    var legendBox = d3.select("#legend")
+      .attr("id", "mapSvg")
+      .append("svg")
+      .attr("width", 200)
+      .attr("height", 100)
+      .append("g")
+    
+    var legend = legendBox.selectAll('.legend')   
+      .data(attributes)             
+      .enter()                          
+      .append('g')                      
+      .attr('class', 'legend')          
+      .attr('transform', function(d, i) { 
+        var height = legendRectSize + legendSpacing; 
+          return 'translate(150,' + (i * height + 20) + ')';   
+        });                                                
+
+    legend.append('rect')                                
+      .attr('width', legendRectSize)                     
+      .attr('height', legendRectSize)                    
+      .style('fill', function(d) { return d.F; })
+      .style('stroke', function(d) { return d.F; }); 
+          
+    legend.append('rect')
+      .attr('width', legendRectSize)
+      .attr('height', legendRectSize)
+      .style('fill', function(d) { return d.M; })
+      .style('stroke', function(d) { return d.M; })
+      .attr('transform', 'translate(20,0)');
+
+    legend.append('text')                                
+      .attr('x', legendRectSize + legendSpacing)         
+      .attr('y', legendRectSize - legendSpacing)         
+      .text(function(d) { return d.label; })
+      .attr('transform', 'translate(-130, 0)');   
+  
+    legend.append('text')
+      .text(function(d,i) { if (i===0) return 'F'; })
+      .attr('transform', 'translate(5, -8)');
+
+    legend.append('text')
+      .text(function(d,i) { if (i===0) return 'M'; })
+      .attr('transform', 'translate(23, -8)');
+
+    //add credits
+    var urlImmagine = "https://commons.wikimedia.org/wiki/File%3ARegione_thumb_" + regione + ".svg";
+    var srcImmagine = "/img/Regione_thumb_" + regione.replace(" ", "_") + ".svg";
+    d3.select("#region")
+        .append("img")
+        .attr("src", srcImmagine)
+        .attr("width", 150)
+        .attr("height", 150)
+        .style("float", "middle");
+    d3.select("#credits")
+        .html(crediti(regione));
+};
+
+d3.dsv(";")("/data/file02_2015-16_provenienze.csv", function(dati) {
+    var corsi = dati.reduce(function(c, d) {
+            if (c.indexOf(d.GRUPPO_CORSO) === -1) {
+                c.push(d.GRUPPO_CORSO);
+                return c;
+            } else {
+                return c;
+            }
+        }, []);
+
+    var regioni = dati.reduce(function(c, d) {
+            if (c.indexOf(d.SEDE_CORSO_REGIONE) === -1) {
+                c.push(d.SEDE_CORSO_REGIONE);
+                return c;
+            } else {
+                return c;
+            }
+        }, []);
+    
+    $(function() {
+        $("#tags").autocomplete({
+            //select first option in dropdown menu when pushing return
+            autoFocus: true,
+            source: regioni,
+            select: function(event, ui) {
+                $(this).val(ui.item.label);
+                visualizza(dati, ui.item.value, corsi);
+                return false;
+            }
+        });
+    });
+});
+
+
+    </script>
+</body>
