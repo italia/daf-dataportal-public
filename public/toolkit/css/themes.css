@@ -367,4 +367,188 @@
     color: #D50A28;
 }
 
-/*END THEME 2 - RED*/
+/*END THEME 3 - RED*/
+
+/*START THEME 4 - */
+
+/*build.css*/
+.theme4 .u-color-teal-50 {
+    color: #3A6095!important
+}
+
+.theme4 .u-background-teal-50 {
+    background-color: #3A6095!important
+}
+
+.theme4 .u-color-10 {
+    color: #adcceb!important
+}
+
+.theme4 .Linklist-link.Linklist-link--lev3,
+.theme4 .u-background-10 {
+    background-color: #adcceb!important
+}
+
+.theme4 .u-color-20 {
+    color: #adcceb!important
+}
+
+.theme4 .Linklist-link.Linklist-link--lev2,
+.theme4 .Linklist-link.Linklist-link--lev2:hover,
+.theme4 .u-background-20 {
+    background-color: #adcceb!important
+}
+
+.theme4 .Header-owner,
+.theme4 .u-color-40 {
+    color: #062853!important
+}
+
+.theme4 .u-background-40 {
+    background-color: #062853!important
+}
+
+.theme4 .Accordion--default .Accordion-link,
+.theme4 .ErrorPage-subtitle,
+.theme4 .ErrorPage-title,
+.theme4 .Header-language-other a,
+.theme4 .Linklist-link,
+.theme4 .Linklist a,
+.theme4 .Share-revealIcon.is-open,
+.theme4 .Skiplinks>li>a,
+.theme4 .u-color-50 {
+    color: #3A6095!important
+}
+
+.theme4 .Bullets>li:before,
+.theme4 .Share-revealIcon,
+.theme4 .Share>ul>li,
+.theme4 .u-background-50 {
+    background-color: #3A6095!important
+}
+
+.theme4 .u-color-60 {
+    color: #062853!important
+}
+
+.theme4 .u-background-60 {
+    background-color: #062853!important
+}
+
+.theme4 .u-color-80 {
+    color: #3A6095!important
+}
+
+.theme4 .Header-socialIcons [class*=" Icon-"],
+.theme4 .Header-socialIcons [class^=Icon-] {
+    background-color: #fff;
+    color: #3A6095
+}
+
+.theme4 .Footer a {
+    color: #fff
+}
+
+.theme4 .Linklist-link.Linklist-link--lev2,
+.theme4 .Linklist-link.Linklist-link--lev2:hover,
+.theme4 .Linklist-link.Linklist-link--lev3,
+.theme4 .Linklist a:hover,
+.theme4 .Megamenu--default .Megamenu-subnavGroup>li>a,
+.theme4 .Treeview--default li[aria-expanded=true] li a,
+.theme4 .Treeview--default li[aria-expanded=true] li a:hover,
+.theme4 .Treeview--default li[aria-expanded=true] li li a,
+.theme4 .Treeview--default li[aria-expanded=true] li li a:hover,
+.theme4 .u-color-95 {
+    color: #0e0c0c!important
+}
+
+.theme4 .ScrollTop,
+.theme4 .u-background-95 {
+    background-color: #0e0c0c!important
+}
+
+/* main.css */
+.theme4 .section-nav a {
+    color: #3A6095;
+}
+
+.theme4 .tools-wrapper .tools-shadow {
+    color: #3A6095;
+} 
+
+.theme4 #main .project-title-wrapper .project-shadow1 {
+    color: #3A6095;
+}
+
+.theme4 #main .project-title-wrapper .project-shadow2 {
+    color: #062853;
+}
+
+.theme4 .Megamenu--default .Megamenu-subnavGroup > li > ul > li a {
+    color: #3A6095 !important;
+}    
+    
+.theme4 .Megamenu--default .Megamenu-subnavGroup > li > a {
+    color: #3A6095 !important;
+}
+
+.theme4 .Header-slim li.delimiter a {
+    border-right: 0.1rem solid #062853; 
+}
+
+.theme4 .Header-owner {
+    border-bottom: 1px solid #062853;
+}    
+
+/*style.css*/
+.theme4 .category-box .category-item.active {
+    border: 1px solid #3A6095;
+    color:#3A6095;
+}
+
+.theme4 .category-box .category-item.active:hover {
+    color:#3A6095;
+}
+
+.theme4 .category-list .category-item.active {
+    border: 1px solid #3A6095!important;
+    color:#3A6095!important;
+}
+
+.theme4 .category-list .category-item.active:hover {
+    color:#3A6095!important;
+}
+
+.theme4 .titleSeparator {
+    border-top: 2px solid #3A6095;
+}
+
+.theme4 .titleSeparator .title {
+    background-color: #3A6095;
+}
+
+/*.titleSeparatorVert {
+     border-top: 2px solid #3A6095; 
+}*/
+
+.theme4 .titleSeparatorVert .title {
+    background-color: #3A6095;
+}
+
+.theme4 .Header-owner {
+    border-bottom: 1px solid #062853;
+}
+
+.theme4 .user-story-view h1 {
+    color: #3A6095;
+}
+  
+.theme4 .user-story-view h3 {
+    color: #3A6095;
+}
+
+.theme4 .user-story-view .user-box .user-caption h4 {
+    color: #3A6095;
+}
+
+/*END THEME 4 - RED*/
