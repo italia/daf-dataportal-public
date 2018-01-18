@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
+import { serviceurl } from '../../config/serviceurl.js'
 
 class UserStoriesBox extends React.Component {
 
@@ -30,7 +31,7 @@ class UserStoriesBox extends React.Component {
     let identifier = story['graph1']?story['graph1'].props.identifier:undefined;
     if (identifier) {
       console.log('identifier: ' + identifier);
-      let url = 'https://datipubblici.daf.teamdigitale.it/dati-gov/v1/plot/' + identifier + '/330x280';
+      let url = serviceurl.apiURLDatiGov + '/plot/' + identifier + '/330x280';
       const response = fetch(url, {
         method: 'GET'
       }).then(response => response.text())

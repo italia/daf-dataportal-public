@@ -1,5 +1,7 @@
 import React from 'react';
 import Async from 'react-promise'
+import { serviceurl } from '../../../config/serviceurl.js'
+
 
 class UserStoryImage extends React.Component {
 
@@ -17,7 +19,7 @@ class UserStoryImage extends React.Component {
     let identifier = story[graphNumber] ? story[graphNumber].props.identifier : undefined;
     if (identifier) {
       console.log('identifier: ' + identifier);
-      let url = 'https://datipubblici.daf.teamdigitale.it/dati-gov/v1/plot/' + identifier + '/700x600';
+      let url = serviceurl.apiURLDatiGov + '/plot/' + identifier + '/700x600';
       const response = fetch(url, {
         method: 'GET'
       }).then(response => response.text())
