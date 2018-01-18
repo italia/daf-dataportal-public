@@ -19,7 +19,7 @@ class DashboardImage extends React.Component {
     }
     if (identifier) {
       console.log('identifier: ' + identifier);
-      let url = 'https://api.daf.teamdigitale.it/dati-gov/v1/plot/' + identifier + '/700x600';
+      let url = 'https://datipubblici.daf.teamdigitale.it/dati-gov/v1/plot/' + identifier + '/700x600';
       const response = fetch(url, {
         method: 'GET'
       }).then(response => response.text())

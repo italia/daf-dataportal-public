@@ -23,11 +23,10 @@
       var dom = window.location.hostname.split('.')[0];
       $.ajax({
           type: 'Get',
-          url: "https://api.daf.teamdigitale.it/dati-gov/v1/settings?domain="+ dom,
+          url: "https://datipubblici.daf.teamdigitale.it/dati-gov/v1/settings?domain="+ dom,
           headers: {
            'Accept': 'application/json',
-           'Content-Type': 'application/json',
-           'Authorization': "Basic Y3JpLnRvZmFuaUBnbWFpbC5jb206Y3Jpc3RpYW5v"
+           'Content-Type': 'application/json'
          },
           success: function(returnedJson) {
               localStorage.setItem('organization', returnedJson.organization)
@@ -86,6 +85,9 @@ gtag('config', 'UA-96140462-5');
   <link media="all" rel="stylesheet" href="%PUBLIC_URL%/toolkit/css/themes.css">
     <!-- Autocomplete CSS -->
     <link media="all" rel="stylesheet" href="%PUBLIC_URL%/toolkit/css/autocomplete.css">
+    <!-- Infinity Scroll -->
+    <link media="all" rel="stylesheet" href="%PUBLIC_URL%/toolkit/css/infinityscroll.css">
+
   <title>Daf-dataportal</title>
 </head>
       <!--<body class="t-Pac">-->

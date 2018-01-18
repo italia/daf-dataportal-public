@@ -77,7 +77,7 @@ class Home extends Component {
           <section className="u-nbfc u-background-white  u-textCenter u-layout-r-withGutter u-padding-r-top u-padding-r-bottom u-zindex-30">
             <div className="u-layout-wide u-layoutCenter">
 
-              <UserStoriesContent userStories={this.state.userStories} >
+              <UserStoriesContent userStories={this.state.userStories} storiesNum={2} >
               </UserStoriesContent>
 
 {/*               <DashboardsContent dashboards={this.state.dashboards} >

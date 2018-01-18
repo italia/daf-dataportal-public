@@ -46,7 +46,8 @@
     "redux-thunk": "^2.2.0",
     "superagent": "^3.6.3",
     "superagent-mock": "^3.6.0",
-    "superagent-promise": "^1.1.0"
+    "superagent-promise": "^1.1.0",
+    "throttle-debounce": "^1.0.1"
   },
   "devDependencies": {
     "react-scripts": "1.0.7"

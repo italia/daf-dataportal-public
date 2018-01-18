@@ -50,7 +50,7 @@ class UserStoriesList extends Component {
 
                                 <div className="u-layout-wide u-layoutCenter u-layout-withGutter u-padding-r-top u-padding-bottom-xxl">
 
-                                    <UserStoriesContent userStories={this.state.userStories} >
+                                    <UserStoriesContent userStories={this.state.userStories} storiesNum={10} >
                                     </UserStoriesContent>
                                 </div>
                             </div>

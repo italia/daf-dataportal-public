@@ -5,7 +5,6 @@ import UserStoryGraph from '../components/UserStory/sections/UserStoryGraph';
 import UserStoryHeader from '../components/UserStory/sections/UserStoryHeader';
 import UserStoryImage from '../components/UserStory/sections/UserStoryImage';
 import { getCookie } from '../services/FunctionalCookies'
-import UserStoriesContent from '../components/UserStory/UserStoriesContent';
 
 // SERVICES
 import UserStoryService from '../services/UserStoryService';
@@ -168,8 +167,6 @@ class UserStoryView extends React.Component {
 
 
 
-                    {/* <UserStoriesContent subtitle=" " title="Storie dalla community" userStories={this.state.userStoriesCommunity} >
-            </UserStoriesContent> */}
 
                   </div>
                 </div>
@@ -177,12 +174,7 @@ class UserStoryView extends React.Component {
 
 
               </div>
-{/*               <div className="Grid-cell u-sizeFull u-md-size4of12 u-lg-size4of12">
-                <article className="u-padding-all-l u-background-white u-lineHeight-l u-text-r-s u-textSecondary u-margin-bottom-l Prose-blockquote">
-                  <UserStoriesContent subtitle=" " title="Storie recenti" userStories={this.state.userStoriesSimili} userStoryView="true">
-                  </UserStoriesContent>
-                </article>
-              </div> */}
+
             </div>
           </div>
 
