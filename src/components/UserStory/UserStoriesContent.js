@@ -24,6 +24,8 @@ class UserStoriesContent extends React.Component {
     if (this.props.userStoryView)
       this.state.userStoryView = this.props.userStoryView;
 
+    if (this.props.storiesNum)
+      this.state.storiesNum = this.props.storiesNum
   }
 
   componentWillReceiveProps(nextProps) {
@@ -40,7 +42,7 @@ class UserStoriesContent extends React.Component {
     // in questo caso devo far vedere le altre storie in verticale  
     if (this.state.userStories && this.state.userStoryView) {
       stories = this.state.userStories.map((story, key) => {
-        if (key > 2) return;
+        if (key > this.state.storiesNum) return;
         return (
          
           <UserStoryBoxVertical key={key} story={story}>
@@ -50,7 +52,7 @@ class UserStoriesContent extends React.Component {
       });
     } else  if (this.state.userStories) {
       stories = this.state.userStories.map((story, key) => {
-        if (key > 2) return;
+        if (key > this.state.storiesNum) return;
         return (
          
           <UserStoryBox key={key} story={story}>

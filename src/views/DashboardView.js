@@ -149,10 +149,6 @@ class DashboardView extends React.Component {
                     }
 
 
-
-                    {/* <UserStoriesContent subtitle=" " title="Storie dalla community" userStories={this.state.userStoriesCommunity} >
-            </UserStoriesContent> */}
-
                   </div>
                 </div>
 
