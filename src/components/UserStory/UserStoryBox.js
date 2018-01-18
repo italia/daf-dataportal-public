@@ -30,7 +30,7 @@ class UserStoriesBox extends React.Component {
     let identifier = story['graph1']?story['graph1'].props.identifier:undefined;
     if (identifier) {
       console.log('identifier: ' + identifier);
-      let url = 'https://api.daf.teamdigitale.it/dati-gov/v1/plot/' + identifier + '/330x280';
+      let url = 'https://datipubblici.daf.teamdigitale.it/dati-gov/v1/plot/' + identifier + '/330x280';
       const response = fetch(url, {
         method: 'GET'
       }).then(response => response.text())
