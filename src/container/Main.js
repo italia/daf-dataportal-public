@@ -6,6 +6,8 @@ import UserStoriesList from '../container/UserStoriesList'
 import DashboardsList from '../container/DashboardsList'
 import Missione from '../container/Missione'
 import LineeGuida from '../container/LineeGuida'
+import NotizieSearch from '../container/NotizieSearch'
+import NotizieDetail from '../container/NotizieDetail'
 import Team from '../container/Team'
 import TeamDett from '../container/TeamDett'
 import Partecipa from '../container/Partecipa'
@@ -28,6 +30,7 @@ import it from "react-intl/locale-data/it";
 import { addLocaleData } from 'react-intl';
 import defaultprops from '../data/props.js' //remove?
 import { getCookie } from '../services/FunctionalCookies'
+import NotebookJupyter from './NotebookJupyter';
 
 addLocaleData(it);
 
@@ -54,7 +57,6 @@ class Main extends React.Component {
         loggedName: loggedName
       }
     }
-    
   }
 
   
@@ -77,6 +79,9 @@ class Main extends React.Component {
                 <Route path="/dashboardsList" component={DashboardsList} />
                 <Route path="/missione" component={Missione} />
                 <Route path="/lineeguida" component={LineeGuida} />
+                <Route path="/notizie/search" render={(props) => ( <NotizieSearch {...props} url={this.state.styleProps.notizieURL}/> )} />
+                <Route path="/notizie/:id" render={(props) => ( <NotizieDetail {...props} url={this.state.styleProps.notizieURL}/> )} /> 
+                <Route path="/jupyter/:ref" component={NotebookJupyter} />
                 <Route path="/team" component={Team} />
                 <Route path="/teamDett" component={TeamDett} />
                 <Route path="/partecipa" component={Partecipa} />
