@@ -64,9 +64,10 @@ export const Header = (props) => (
               <a href="#" className="Linklist-link">Community</a>
               <ul>
                 <li><Customredirect history={props.history} to='/userStoriesList' label='Data Stories' linkStyle={'Linklist-link'} /></li>
-{/*                 <li><Customredirect history={props.history} to='/dashboardsList' label='Dashboards' linkStyle={'Linklist-link'} /></li>
- */}                <li><a href={props.styleProps.forumURL} target="_blank" className="Linklist-link">Notizie</a></li>
-                <li><a href={props.styleProps.notizieURL} target="_blank" className="Linklist-link">Forum</a></li>
+{/*               <li><Customredirect history={props.history} to='/dashboardsList' label='Dashboards' linkStyle={'Linklist-link'} /></li>
+                  <li><a href={props.styleProps.notizieURL} target="_blank" className="Linklist-link">Notizie</a></li>
+ */}               <Customredirect history={props.history} to='/notizie/search' label='Notizie' linkStyle={'Linklist-link'} />
+                  <li><a href={props.styleProps.forumURL} target="_blank" className="Linklist-link">Forum</a></li>
               </ul>
             </li>
             <li data-megamenu-class="Megamenu-item Megamenu-item--vert" className="Megamenu-item Megamenu-item--vert">

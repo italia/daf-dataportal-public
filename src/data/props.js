@@ -5,7 +5,7 @@ const props = {
     "headerDescTool": "Il framework dei dati pubblici del Paese",
     "twitterURL": "https://twitter.com/datigovit",
     "mediumURL": "https://medium.com/team-per-la-trasformazione-digitale/",
-    "notizieURL": "https://developers.italia.it/news",
+    "notizieURL": "https://medium.com/feed/@teamdigitaleIT",
     "forumURL": "https://forum.italia.it",
     "footerLogoAGID": "https://www.spid.gov.it/assets/img/agid-logo-bb.svg",
     "footerLogoGov": "https://teamdigitale.governo.it/images/loghi/governo.svg",

@@ -29,6 +29,7 @@
     "react-dropzone": "^3.13.3",
     "react-image": "^1.3.1",
     "react-intl": "^2.4.0",
+    "react-jupyter": "^0.1.0",
     "react-modal": "^2.4.1",
     "react-paginate": "^4.4.4",
     "react-promise": "^2.0.0",
@@ -47,7 +48,8 @@
     "superagent": "^3.6.3",
     "superagent-mock": "^3.6.0",
     "superagent-promise": "^1.1.0",
-    "throttle-debounce": "^1.0.1"
+    "throttle-debounce": "^1.0.1",
+    "xml2js": "^0.4.19"
   },
   "devDependencies": {
     "react-scripts": "1.0.7"
