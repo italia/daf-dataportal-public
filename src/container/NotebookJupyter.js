@@ -30,7 +30,7 @@ class NotebookJupyter extends Component {
                 <div className="u-padding-top-xxl u-background-50"></div>
                 <hr className="Separator Separator--up u-background-white" />
                 <div className="u-background-white u-layout-r-withGutter u-posRelative u-zindex-30">
-                    <div className="u-layout-wide u-layoutCenter u-layout-withGutter u-padding-r-top u-padding-bottom-xxl">
+                    <div className="u-layout-wide u-layoutCenter u-layout-withGutter u-padding-r-top u-padding-bottom-xxl u-padding-left-xxl">
                         <div className="Grid">
                             <div className="Grid-cell u-sizeFull u-md-size10of12 u-lg-size10of12">
                                 <article className="Prose">
