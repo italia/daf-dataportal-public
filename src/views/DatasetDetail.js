@@ -6,8 +6,10 @@ import ReactCsvTable from '../components/Dataset/ReactCsvTable.js'
 import Collapsible from 'react-collapsible';
 
 // SERVICES
+import { getCookie } from '../services/FunctionalCookies'
 import DatasetService from '../services/DatasetService';
 const datasetService = new DatasetService();
+
 
 export default class DatasetDetail extends React.Component {
 
@@ -16,19 +18,33 @@ export default class DatasetDetail extends React.Component {
 
     //init state
     this.state = {
+      dafDetails: undefined
     };
 
     // get dataset
     let dataset = datasetService.get(this.props.match.params.id);
     dataset.then((dataset) => {
       this.setState({
-        dataset: dataset.result
+        dataset: dataset.result,
       });
     });
 
     //bind functions
   }
 
+  componentDidMount(){
+    var loggedName = getCookie("dataportal");
+    console.log(loggedName)
+    if (loggedName !== '') {
+      let dafDetails = datasetService.getDaf("miur_scuole_alunni")
+      dafDetails.then((details) => {
+        console.log(details.dataschema)
+        this.setState({
+          dafDetails: details
+        })
+      })
+    }
+  }
 
   render() {
     return (
@@ -98,6 +114,22 @@ export default class DatasetDetail extends React.Component {
                     }
 
                   </article>
+
+                {this.state.dafDetails && <article className="u-padding-r-all u-background-grey-10 u-lineHeight-l u-text-r-xs u-textSecondary u-margin-bottom-l">
+                  <h2><strong>Struttura Dati </strong></h2>
+                  <p><strong>Tipo di Struttura Dati</strong> JSON</p>
+                  <p><strong>Tipo di dataset: </strong> {this.state.dafDetails.operational.dataset_type}</p>
+                  <div><strong>Colonne del Dataset: </strong>
+                    <ul>
+                      {this.state.dafDetails.dataschema.flatSchema && this.state.dafDetails.dataschema.flatSchema.map((schema, index)=>{
+                      return(
+                        <li key={index}><b>Nome: </b>{schema.name}<b> Tipo: </b>{schema.type}</li>
+                      )}
+                    )
+                    }
+                    </ul>
+                  </div>
+                </article>}
                 </div>
                 <div className="Grid-cell u-sizeFull u-md-size4of12 u-lg-size4of12">
                   <article className="u-padding-r-all u-background-grey-10 u-lineHeight-l u-text-r-xs u-textSecondary u-margin-bottom-l">
