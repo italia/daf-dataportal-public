@@ -43,7 +43,8 @@ class Main extends React.Component {
   constructor(props) {
     super(props)
     //init state
-    var loggedName = getCookie("dataportal"); 
+    var dataportalCookie = getCookie("dataportal"); 
+    var loggedName = dataportalCookie.split('/')[0]
     if (localStorage.getItem('prop')) {
       console.log('Carico properties')
       this.state = {

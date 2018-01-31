@@ -23,7 +23,8 @@ class UserStoryView extends React.Component {
 
   init(props) {
 
-    var loggedName = getCookie("dataportal"); 
+    var dataportalCookie = getCookie("dataportal"); 
+    var loggedName = dataportalCookie.split('/')[0]
     //init state
     this.state = {
       id: props.match.params.id,

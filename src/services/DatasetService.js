@@ -105,13 +105,13 @@ export default class DatasetService {
         return response.json();
     }
 
-    async getDaf(nome) {
+    async getDaf(nome, token) {
         const response = await fetch(serviceurl.apiURLCatalogManager + "/catalog-ds/getbytitle/" + nome, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': 'Basic Y3JpLnRvZmFuaUBnbWFpbC5jb206Y3Jpc3RpYW5v'
+                'Authorization': 'Bearer ' + token
             }
         });
         return response.json();
