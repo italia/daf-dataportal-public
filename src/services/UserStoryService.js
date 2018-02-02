@@ -2,7 +2,7 @@ import { serviceurl } from '../config/serviceurl.js'
 
 export default class UserStoryService {
 
-    baseUrl = serviceurl.apiURLDatiGov + "/user-stories";
+    baseUrl = serviceurl.apiURLDatiGov + "/public/user-stories";
 
     constructor() {
 
