@@ -4,7 +4,7 @@ export default class DashboardService {
 
   constructor() { }
 
-  baseUrl = serviceurl.apiURLDatiGov + "/dashboards";
+  baseUrl = serviceurl.apiURLDatiGov + "/public/dashboards";
   //baseUrl = "http://localhost:3001/dati-gov/v1/dashboards";
 
   async get(id) {

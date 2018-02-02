@@ -105,6 +105,19 @@ export default class DatasetService {
         return response.json();
     }
 
+    async getDaf(nome, token) {
+        const response = await fetch(serviceurl.apiURLCatalogManager + "/catalog-ds/getbytitle/" + nome, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }
+        });
+        return response.json();
+    }
+
+
     async searchOrder(totalDataDisplayed, offset, order_filter) {
 
                 
