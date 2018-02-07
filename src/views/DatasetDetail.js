@@ -37,9 +37,9 @@ export default class DatasetDetail extends React.Component {
     var token = dataportalCookie.split('/')[1]
     console.log(token)
     if (token !== '') {
-      let dafDetails = datasetService.getDaf("miur_scuole_alunni", token)
+      let dafDetails = datasetService.getDaf(this.state.dataset?this.state.dataset.name:'', token)
       dafDetails.then((details) => {
-        console.log(details.dataschema)
+ 
         this.setState({
           dafDetails: details
         })

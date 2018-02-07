@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-
+import { serviceurl } from '../config/serviceurl.js'
 
 class NotizieSearch extends Component {
     constructor(props) {
       super(props)
       this.state = {feed: undefined}
+      // ORIG URL  https://medium.com/feed/team-per-la-trasformazione-digitale
+      // FINAL URL https://datipubblici.daf.teamdigitale.it/medium/medium.com/feed/team-per-la-trasformazione-digitale
+      let url = serviceurl.apiURLDatiGov + props.url
       this.load(props.url);
     }
 

@@ -1,0 +1,36 @@
+h2 {
+    text-align: center;
+}
+
+button {
+    margin-right: .5em;
+    margin-bottom: .3em !important;
+}
+
+.row {
+    margin-top: 1em;
+}
+
+body {
+    font-family: Helvetica Neue;
+    margin-left: 3em !important;
+}
+
+div.credits {
+    font-size: 0.8em;
+    color: gray;
+}
+
+div.instructions {
+    color: red;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.html .tag,
+.css .tag,
+.javascript .keyword {
+    color: #3182bd;
+}
+
+
