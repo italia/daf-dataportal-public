@@ -114,7 +114,8 @@ export default class DatasetService {
                 'Authorization': 'Bearer ' + token
             }
         });
-        return response.json();
+        if(response.ok)
+            return response.json();
     }
 
 
