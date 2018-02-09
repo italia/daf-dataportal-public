@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import Customredirect from '../components/HeaderFooter/CustomRedirect'
+import { serviceurl } from '../config/serviceurl.js'
 
 class NotizieDetail extends Component {
     constructor(props) {
       super(props)
       this.state = {feed: undefined}
-      this.load(props.url, props.match.params.id)
+      let url = serviceurl.apiMedium + props.url
+      this.load(url, props.match.params.id)
     }
  
     load(url, id){

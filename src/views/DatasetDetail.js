@@ -27,24 +27,24 @@ export default class DatasetDetail extends React.Component {
       this.setState({
         dataset: dataset.result,
       });
+      var dataportalCookie = getCookie("dataportal");
+      var token = dataportalCookie.split('/')[1]
+      console.log(token)
+      if (token !== '') {
+        let dafDetails = datasetService.getDaf(dataset.result.name, token)
+        dafDetails.then((details) => {
+
+          this.setState({
+            dafDetails: details
+          })
+        })
+      }
     });
 
     //bind functions
   }
 
   componentDidMount(){
-    var dataportalCookie = getCookie("dataportal"); 
-    var token = dataportalCookie.split('/')[1]
-    console.log(token)
-    if (token !== '') {
-      let dafDetails = datasetService.getDaf(this.state.dataset?this.state.dataset.name:'', token)
-      dafDetails.then((details) => {
- 
-        this.setState({
-          dafDetails: details
-        })
-      })
-    }
   }
 
   render() {
