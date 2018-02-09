@@ -23,6 +23,8 @@ export const serviceurl = {
   // service url
    apiURLDatiGov: "https://datipubblici.daf.teamdigitale.it/dati-gov/v1", 
    apiURLCatalogManager: "https://catalog-manager.daf.teamdigitale.it/catalog-manager/v1", 
-   //apiCKAN: "https://ckan-open.daf.teamdigitale.it/api/3/action"
-   apiCKAN: "http://dcatapit.geo-solutions.it/api/3/action"
+   //apiCKAN: "https://ckan-open.daf.teamdigitale.it/api/3/action/",
+   //apiCKAN: http://dcatapit.geo-solutions.it/api/3/action/,
+   apiCKAN: "https://datipubblici.daf.teamdigitale.it/dati-gov/ckan_proxy",
+  apiMedium: "https://datipubblici.daf.teamdigitale.it/dati-gov/medium/"
   }

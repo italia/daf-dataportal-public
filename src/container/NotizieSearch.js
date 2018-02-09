@@ -7,9 +7,9 @@ class NotizieSearch extends Component {
       super(props)
       this.state = {feed: undefined}
       // ORIG URL  https://medium.com/feed/team-per-la-trasformazione-digitale
-      // FINAL URL https://datipubblici.daf.teamdigitale.it/medium/medium.com/feed/team-per-la-trasformazione-digitale
-      let url = serviceurl.apiURLDatiGov + props.url
-      this.load(props.url);
+      // FINAL URL https://datipubblici.daf.teamdigitale.it/dati-gov/medium/medium.com/feed/team-per-la-trasformazione-digitale
+      let url = serviceurl.apiMedium + props.url
+      this.load(url);
     }
 
     load(url){

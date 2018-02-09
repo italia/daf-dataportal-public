@@ -32,7 +32,7 @@ export default class DatasetSearch extends React.Component {
       showDivGroup: false,
       showDivOrganization: false,
       offset: 0,
-      totalDataDisplayed: 100,
+      totalDataDisplayed: 1000,
       totalResult: 0,
       isLoading: false
       /*currentPage: 1,
