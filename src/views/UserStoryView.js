@@ -36,8 +36,11 @@ class UserStoryView extends React.Component {
     //load data
     userStoryService.get(this.state.id).then((story) => {
       this.setState({
-        story: story
+        story: story,
+        widgets: JSON.parse(story.widgets),
+        layout: JSON.parse(story.layout)
       });
+      this.buildLayout();
     });
 
     userStoryService.getSimili(this.state.id).then((story) => {
@@ -73,11 +76,35 @@ class UserStoryView extends React.Component {
 
   }
 
-  componentWillReceiveProps(newProps) {
-    this.init(newProps);
+  buildLayout(){
+    const { widgets, layout } = this.state;
+    var output = [];
+    if(layout && widgets){
+      let righe = layout.rows;
+      for (let i = 0; i < righe.length; i++) {
+        let colonne = righe[i].columns;
+        for (let j = 0; j < colonne.length; j++) {
+          let wids = colonne[j].widgets
+          for (let k = 0; k < wids.length; k++) {
+            output.push(widgets[wids[k].key])
+          }
+        }
+      }
+      this.setState({
+        outputLayout: output,
+      })
+    }
+
+
   }
 
+/*   componentWillReceiveProps(newProps) {
+    this.init(newProps);
+  } */
+
   render() {
+    console.log(this.state.widgets)
+    console.log(this.state.layout)
     return (
       <div className="u-layout-wide u-layoutCenter">
 
@@ -98,9 +125,21 @@ class UserStoryView extends React.Component {
                       this.state.story &&
                       <div>
                         <UserStoryHeader story={this.state.story} />
-
-                        
-                          {this.state.loggedName ?
+                        <div className="body">
+                        {this.state.outputLayout &&
+                          this.state.outputLayout.map((widget, key) =>{
+                          if(this.state.loggedName)
+                            return(
+                              <UserStoryGraph graph={widget} />
+                            )
+                          else
+                            return(
+                              <UserStoryImage graph={widget} />
+                            )
+                          })
+                        }
+                        </div>
+                          {/* this.state.loggedName ?
                             <div className="body">
                               <UserStoryGraph graph={this.state.story.graph1} />
                               <div className="u-margin-r-top u-padding-r-top" dangerouslySetInnerHTML={{ __html: this.state.story.text }}></div>
@@ -113,7 +152,7 @@ class UserStoryView extends React.Component {
                               <div className="u-margin-r-top u-padding-r-top" dangerouslySetInnerHTML={{ __html: this.state.story.text }}></div>
                               <UserStoryImage story={this.state.story} graph={2} />
                               <div className="footer" dangerouslySetInnerHTML={{ __html: this.state.story.footer }}></div> 
-                            </div>
+                            </div> */
                         }
 
                         {/* SHARE */}

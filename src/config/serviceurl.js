@@ -1,7 +1,7 @@
 export const serviceurl = {
-  // service url
- // apiURLDatiGov: "http://10.100.82.195:9000/dati-gov/v1", 
- // apiURLCatalogManager: "http://10.100.82.195:9001/catalog-manager/v1", 
+  //LUCAL
+/*   apiURLDatiGov: "http://10.100.208.161:9000/dati-gov/v1",
+  apiURLCatalogManager: "http://10.100.208.161:9001/catalog-manager/v1", */
   
   // mock url
   //apiURLDatiGov: "http://localhost:3001/dati-gov/v1", 

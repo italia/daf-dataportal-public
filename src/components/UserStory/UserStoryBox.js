@@ -28,24 +28,47 @@ class UserStoriesBox extends React.Component {
 
   componentDidMount() {
     const { story } = this.props
-    let identifier = story['graph1']?story['graph1'].props.identifier:undefined;
-    if (identifier) {
-      console.log('identifier: ' + identifier);
-      let url = serviceurl.apiURLDatiGov + '/plot/' + identifier + '/330x280';
-      const response = fetch(url, {
-        method: 'GET'
-      }).then(response => response.text())
-        .then(text => {
-          this.setState({
-            loading: false,
-            imageSrc: text
+    if ((story.widgets && story.widgets !== '{}') && (story.layout && story.layout !== '{}')) {
+      const dashLayout = JSON.parse(story.layout)
+      let firstLayout = ''
+
+      let righe = dashLayout.rows
+      for (let i = 0; i < righe.length; i++) {
+        let colonne = righe[i].columns;
+        for (let j = 0; j < colonne.length; j++) {
+          let wids = colonne[j].widgets
+          wids.map((index) => {
+            /*  if (!index.key.startsWith('TextWidget')) { */
+            if (index.key.indexOf('TextWidget') == -1) {
+              firstLayout = index.key
+            }
           })
+          if (firstLayout != '')
+            break
+        }
+        if (firstLayout != '')
+          break
+      }
+      console.log('identifier: ' + firstLayout);
+    /* let identifier = story['graph1']?story['graph1'].props.identifier:undefined; */
+      if (firstLayout!='') {
+        console.log('identifier: ' + firstLayout);
+        let url = serviceurl.apiURLDatiGov + '/plot/' + firstLayout + '/330x280';
+        const response = fetch(url, {
+          method: 'GET'
+        }).then(response => response.text())
+          .then(text => {
+            this.setState({
+              loading: false,
+              imageSrc: text
+            })
+          })
+      } else {
+        this.setState({
+          loading: false,
+          imageSrc: ""
         })
-    } else {
-      this.setState({
-        loading: false,
-        imageSrc: ""
-      })
+      }
     }
   }
 

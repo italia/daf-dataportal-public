@@ -14,10 +14,10 @@ class UserStoryImage extends React.Component {
   }
 
   componentDidMount() {
-    const { story, graph } = this.props
-    var graphNumber = 'graph' + graph;
-    let identifier = story[graphNumber] ? story[graphNumber].props.identifier : undefined;
-    if (identifier) {
+    const { graph } = this.props
+    /* var graphNumber = 'graph' + graph; */
+    let identifier = graph.props.wid_key
+    if (identifier && identifier.indexOf("TextWidget")===-1) {
       console.log('identifier: ' + identifier);
       let url = serviceurl.apiURLDatiGov + '/plot/' + identifier + '/700x600';
       const response = fetch(url, {
@@ -46,24 +46,30 @@ class UserStoryImage extends React.Component {
       width: '100%'
     }
 
-    var base64Icon = ""
-    if (this.state.imageSrc) {
-      base64Icon = "base64," + this.state.imageSrc.replace(/"/g, '')
+    if (this.props.graph.type === 'TextWidget')
+      return (
+        <div className="u-margin-r-top u-padding-r-top" dangerouslySetInnerHTML={{ __html: this.props.graph.props.text }}></div>
+      )
+    else{
+      var base64Icon = ""
+      if (this.state.imageSrc) {
+        base64Icon = "base64," + this.state.imageSrc.replace(/"/g, '')
+      }
+      return localStorage.getItem('username') && localStorage.getItem('token')
+        ? <iframe className="u-margin-r-top u-padding-r-top" src=""></iframe>
+        : this.state.loading === true ? <p>Caricamento ...</p> : (
+          <div className="text-center u-margin-r-top u-padding-r-top">
+            {
+              this.props.story &&
+              <div>
+                {this.state.imageSrc &&
+                  <img style={imgStyle} src={"data:image/jpg;" + base64Icon} />
+                }
+              </div>
+            }
+          </div>
+        );
     }
-    return localStorage.getItem('username') && localStorage.getItem('token')
-      ? <iframe className="u-margin-r-top u-padding-r-top" src=""></iframe>
-      : this.state.loading === true ? <p>Caricamento ...</p> : (
-        <div className="text-center u-margin-r-top u-padding-r-top">
-          {
-            this.props.story &&
-            <div>
-              {this.state.imageSrc &&
-                <img style={imgStyle} src={"data:image/jpg;" + base64Icon} />
-              }
-            </div>
-          }
-        </div>
-      );
   }
 }
 
