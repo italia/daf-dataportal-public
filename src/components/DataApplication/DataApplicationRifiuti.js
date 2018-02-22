@@ -39,9 +39,9 @@ class DataApplicationRifiuti extends React.Component {
                         per tutti i comuni ed 
                         assegnando a ciascun comune un punteggio da 1 a 10 a seconda del valore di tale rapporto. Ad esempio ai comuni con una spesa inferiore 
                         al fabbisogno standard viene assegnato un punteggio più alto.
-                        Sull’asse verticale il grafico riporta il posizionamento del comune rispetto al pvello dei servizi erogati, che viene calcolato come il rapporto fra</p>
+                        Sull’asse verticale il grafico riporta il posizionamento del comune rispetto al livello dei servizi erogati, che viene calcolato come il rapporto fra</p>
                         <ul>
-                        <li>la differenza tra il pvello storico e il pvello standard dei servizi</li> <li>il pvello standard.</li>
+                        <li>la differenza tra il livello storico e il livello standard dei servizi</li> <li>il livello standard.</li>
                         </ul>
                         <p>
                         Entrambi i posizionamenti sono espressi su una scala da 1 (comuni meno virtuosi) a 10 (comuni più virtuosi).
