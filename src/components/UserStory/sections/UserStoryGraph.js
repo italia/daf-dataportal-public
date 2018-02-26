@@ -15,7 +15,7 @@ class UserStoryView extends React.Component {
       border: '0'
     }
 
-    if(this.props.graph.type === 'TextWidget')
+    if(this.props.graph.props.wid_key.indexOf('TextWidget')!=-1)
      return(
        <div className="u-margin-r-top u-padding-r-top" dangerouslySetInnerHTML={{ __html: this.props.graph.props.text }}></div>
      )

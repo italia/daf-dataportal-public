@@ -46,7 +46,7 @@ class UserStoryImage extends React.Component {
       width: '100%'
     }
 
-    if (this.props.graph.type === 'TextWidget')
+    if (this.props.graph.props.wid_key.indexOf('TextWidget') != -1)
       return (
         <div className="u-margin-r-top u-padding-r-top" dangerouslySetInnerHTML={{ __html: this.props.graph.props.text }}></div>
       )
@@ -59,13 +59,8 @@ class UserStoryImage extends React.Component {
         ? <iframe className="u-margin-r-top u-padding-r-top" src=""></iframe>
         : this.state.loading === true ? <p>Caricamento ...</p> : (
           <div className="text-center u-margin-r-top u-padding-r-top">
-            {
-              this.props.story &&
-              <div>
-                {this.state.imageSrc &&
-                  <img style={imgStyle} src={"data:image/jpg;" + base64Icon} />
-                }
-              </div>
+            {this.state.imageSrc &&
+              <img style={imgStyle} src={"data:image/jpg;" + base64Icon} />
             }
           </div>
         );
