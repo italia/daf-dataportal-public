@@ -43,7 +43,9 @@ class App extends Component {
 		if (this.state.filteredBy.regione === '*') {
 			return (
 				<div className="DataApp">
-					<Title filteredBy={this.state.filteredBy}/>
+				<Title filteredBy={this.state.filteredBy}/>
+				<br/>
+				<br/>
 					<Controls data={this.state.conteggi} updateDataFilter={this.updateDataFilter.bind(this)}/>
 				</div>
 			);

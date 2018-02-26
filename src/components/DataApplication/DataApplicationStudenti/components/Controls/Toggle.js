@@ -12,7 +12,7 @@ class Toggle extends Component {
 		}
 
 		return (
-			<button className={className} onClick={this.handleClick.bind(this)}>
+			<button className={className} style={{borderColor:"black"}} onClick={this.handleClick.bind(this)}>
 				{this.props.label}
 			</button>
 		);

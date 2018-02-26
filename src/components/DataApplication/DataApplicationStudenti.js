@@ -18,6 +18,12 @@ class DataApplicationStudenti extends React.Component {
       border: '0'
     }
 
+      const instructionStyle = {
+	  color: "red",
+	  fontSize: "0.8em",
+	  textAlign: "center"
+      }
+
     return (
 
 
@@ -33,7 +39,9 @@ class DataApplicationStudenti extends React.Component {
                 <div className="Grid-cell u-md-size12of12 u-lg-size12of12 u-padding-right-xl">
                     <App />
                     <br/>
-                    <article className="Prose">										
+            <article className="Prose">
+	    <p style={instructionStyle}> Scegli una regione.
+	          </p>
                           <p>L'infografica visualizza i dati raccolti dal MIUR relativi al numero, la residenza ed il sesso
                           degli studenti immatricolati ed iscritti negli Atenei italiani nell'anno accademico 2015/2016.
                           </p>
