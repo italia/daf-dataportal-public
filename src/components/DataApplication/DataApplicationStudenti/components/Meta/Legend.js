@@ -13,7 +13,7 @@ class LegendPart extends Component {
 				<rect width="18" height="18" style={this.createStyle(this.props.data.F.color)}></rect>
 				<rect width="18" height="18" style={this.createStyle(this.props.data.MF.color)}
 					  transform="translate(20,0)"></rect>
-				<text x="22" y="14" transform="translate(-140,0)">{this.props.data.label}</text>
+				<text x="22" y="14" transform="translate(-150,0)">{this.props.data.label}</text>
 			</g>
 		);
 
