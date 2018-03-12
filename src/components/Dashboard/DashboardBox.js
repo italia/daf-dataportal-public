@@ -33,7 +33,7 @@ class DashboardBox extends React.Component {
     }
     if (identifier) {
       console.log('identifier: ' + identifier);
-      let url = 'https://datipubblici.daf.teamdigitale.it/dati-gov/v1/plot/' + identifier + '/330x280';
+      let url = 'https://api.daf.teamdigitale.it/dati-gov/v1/plot/' + identifier + '/330x280';
       const response = fetch(url, {
         method: 'GET'
       }).then(response => response.text())
