@@ -132,11 +132,11 @@ export default class DatasetService {
     }
 
     async getLast() {
-        // FILTER BY ORGANIZATION    
+        // FILTER BY HOLDER_IDENTIFIER=ORGANIZATION    
         var url = serviceurl.apiCKAN + "/package_search"   
         var org = localStorage.getItem('organization')
         if(org!='daf')
-            url = url + "?q=(organization:"+org+")"
+            url = url + "?q=(holder_name:"+org+")"
         const response = await fetch(url, {
             headers: {
                 'Accept': 'application/json',
@@ -151,7 +151,7 @@ export default class DatasetService {
         var url = serviceurl.apiCKAN + "/package_search"   
         var org = localStorage.getItem('organization')
         if(org!='daf')
-            url = url + "?q=(organization:"+org+")"
+            url = url + "?q=(holder_name:"+org+")"
         
 
         const response = await fetch(url , {
