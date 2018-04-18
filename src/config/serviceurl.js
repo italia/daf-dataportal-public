@@ -25,6 +25,9 @@ export const serviceurl = {
    apiURLCatalogManager: "https://api.daf.teamdigitale.it/catalog-manager/v1", 
    //apiCKAN: "https://ckan-open.daf.teamdigitale.it/api/3/action/",
    //apiCKAN: http://dcatapit.geo-solutions.it/api/3/action/,
-   apiCKAN: "https://api.daf.teamdigitale.it/dati-gov/ckan_proxy",
+  
+   apiCKAN:  window.location.hostname.split('.')[0].indexOf('dataportal')!==-1?"https://api.daf.teamdigitale.it/dati-gov/ckan_proxy":"https://api.daf.teamdigitale.it/dati-gov/ckan_geo_proxy",
    apiMedium: "https://api.daf.teamdigitale.it/dati-gov/medium/"
   }
+
+  

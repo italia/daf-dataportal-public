@@ -34,7 +34,7 @@ export default class DatasetSearch extends React.Component {
       offset: 0,
       totalDataDisplayed: 1000,
       totalResult: 0,
-      isLoading: false
+      isLoading: true
       /*currentPage: 1,
       activePage: 10 */
         
@@ -109,19 +109,23 @@ export default class DatasetSearch extends React.Component {
   }
 
   search(event) {
-    console.log('search: ' + this.state.text)
-    this.setState({items: 10})
+    console.log(this.refs.auto)
+    this.setState({items: 10, isLoading:true})
     if(event) {
       event.preventDefault();
       event.stopPropagation();
     }
     
-    if(!this.state.text && this.refs.auto){
+     if(this.refs.auto){
       this.setState({text: this.refs.auto.state.value});
-    }
+    } 
 
+    /*
     let datasets = datasetService.search(this.state.totalDataDisplayed,this.state.offset,this.refs.auto?this.refs.auto.state.value:this.state.text, this.state.category_filter, this.state.group_filter, this.state.organization_filter);
-    
+    */
+
+   let datasets = datasetService.search(this.state.totalDataDisplayed,this.state.offset,this.refs.auto?this.refs.auto.state.value:'', this.state.category_filter, this.state.group_filter, this.state.organization_filter);
+
     datasets.then((list) => {
       let paginator = []; 
       let i = 0;
@@ -135,7 +139,8 @@ export default class DatasetSearch extends React.Component {
       this.setState({
         datasets: list.result.results,
         paginator: paginator,
-        totalResult: totalResult
+        totalResult: totalResult,
+        isLoading:false
       });
     });
 
@@ -217,8 +222,8 @@ export default class DatasetSearch extends React.Component {
     <div className="u-background-white u-layout-r-withGutter u-posRelative u-zindex-30">
         <div className="u-layout-wide u-layoutCenter u-layout-withGutter u-padding-r-top u-padding-bottom-xxl">
           <div className="Grid Grid--withGutter">
+            {isLoading?<h2 className="Grid-cell u-md-size8of12 u-lg-size8of12 u-padding-right-xl">Caricamento...</h2>:
             <div className="Grid-cell u-md-size8of12 u-lg-size8of12 u-padding-right-xl">
-              
               {/* INTESTAZIONE */}
               <h2 className=" u-padding-bottom-l">Trovati {this.state.totalResult} Dataset</h2>
               <form onSubmit={this.search.bind(this)} className="Form u-text-r-xs u-margin-bottom-l">
@@ -255,6 +260,7 @@ export default class DatasetSearch extends React.Component {
                   </InfiniteScroll>
               </div>
             </div>
+            }
             {/* FILTRI RICERCA */}
             <div className="Grid-cell u-sizeFull u-md-size4of12 u-lg-size4of12">
               <form className="Form u-text-r-xs u-padding-bottom-l">
@@ -292,8 +298,6 @@ export default class DatasetSearch extends React.Component {
 
               <a href="#" title="torna all'inizio del contenuto" className="u-hiddenVisually">torna all'inizio del contenuto</a>
             </div>
-
-
           </div>
         </div>
         </div>

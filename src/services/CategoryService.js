@@ -3,8 +3,6 @@ import  categories  from '../data/categories.js'
 
 export default class CategoryService {
     
-    //baseUrl = serviceurl.apiURLDatiGov + "/category";
-    //baseUrl = serviceurl.apiCKAN + "/tag_list";
     
     constructor() {
 

@@ -49,7 +49,7 @@ class Home extends Component {
     let datasets = datasetService.getNumber();
     datasets.then((list) => {
       this.setState({
-        datasetNumber: list ? list.result.count : 0
+        datasetNumber: list&&list.result ? list.result.count : 0
       });
     });
   }
