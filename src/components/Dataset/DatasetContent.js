@@ -23,7 +23,7 @@ class DatasetContent extends React.Component {
 
     let dataset = [];
 
-    if (this.state.dataset) {
+    if (this.state.dataset && this.state.dataset.result) {
       dataset = this.state.dataset.result.results.map && this.state.dataset.result.results.map((dataset, key) => {
         // dataset = this.state.dataset.map && this.state.dataset.map((dataset, key) => {
         if (key > 2) return

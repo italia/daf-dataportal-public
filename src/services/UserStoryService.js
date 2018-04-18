@@ -49,6 +49,9 @@ export default class UserStoryService {
     }
 
     async getLast() {
+        var org = localStorage.getItem('organization')
+        if(org!='daf')
+            this.baseUrl = this.baseUrl + '?org=' + org
         var headers = new Headers();
         headers.append("Accept", "application/json");
         headers.append("Content-Type", "application/json");

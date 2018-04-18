@@ -2,11 +2,7 @@ import { serviceurl } from '../config/serviceurl.js'
 import  formats  from '../data/formats.js'
 
 export default class GroupService {
-    
-    //baseUrl = serviceurl.apiURLDatiGov + "/group";
 
-    //chiamata a CKAN per il recupero dei gruppi
-    //baseUrl = serviceurl.apiCKAN + "/group_list";
     
     constructor() {
 
