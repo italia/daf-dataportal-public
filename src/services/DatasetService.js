@@ -106,12 +106,15 @@ export default class DatasetService {
     }
 
     async getDaf(nome, token) {
-        const response = await fetch(serviceurl.apiURLCatalogManager + "/catalog-ds/getbytitle/" + nome, {
+        const base64 = require('base-64');
+        
+        const response = await fetch(serviceurl.apiURLCatalogManager + "/catalog-ds/getbyname/" + nome, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token
+                //'Authorization': 'Bearer ' + token
+                "Authorization": "Basic " + base64.encode('d_mc@daf.it:ALDC72?MCLsa')
             }
         });
         if(response.ok)

@@ -4,6 +4,7 @@ import { FormattedDate } from 'react-intl';
 import DatasetSearchCard from '../components/Dataset/DatasetSearchCard.js'
 import ReactCsvTable from '../components/Dataset/ReactCsvTable.js'
 import Collapsible from 'react-collapsible';
+import download from 'downloadjs'
 
 // SERVICES
 import { getCookie } from '../services/FunctionalCookies'
@@ -18,7 +19,8 @@ export default class DatasetDetail extends React.Component {
 
     //init state
     this.state = {
-      dafDetails: undefined
+      dafDetails: undefined,
+      downloadErr: undefined
     };
 
     // get dataset
@@ -44,8 +46,38 @@ export default class DatasetDetail extends React.Component {
     //bind functions
   }
 
-  componentDidMount(){
-  }
+  handleDownloadFile(nomeFile, logical_uri, e) {
+    e.preventDefault()
+    this.setState({downloadErr: undefined})
+    console.log('download file: ' + nomeFile)
+    let dataset =this.getDataset(logical_uri)
+    dataset.then((response) => {
+      if (response.ok) {
+        response.json().then(json => {
+          download(JSON.stringify(json), nomeFile + '.json', 'application/json')
+        })
+      }else{
+        this.setState({downloadErr: 'Risorsa non disponibile.'})
+    }})
+    dataset.catch(error => {
+      this.setState({downloadErr: 'Risorsa non disponibile.'})
+    })
+} 
+
+async getDataset(uri) {
+  var url = "https://api.daf.teamdigitale.it/dataset-manager/v1/dataset/" + encodeURIComponent(uri)
+  const base64 = require('base-64');
+  const response = await fetch(url, {
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          "Authorization": "Basic " + base64.encode('d_mc@daf.it:ALDC72?MCLsa')
+      }
+  });
+  return response;
+}
+
+
 
   render() {
     return (
@@ -62,6 +94,15 @@ export default class DatasetDetail extends React.Component {
               <div className="Grid Grid--withGutter">
                 <div className="Grid-cell u-md-size8of12 u-lg-size8of12 u-padding-right-xl">
                   <h2 className=" u-padding-bottom-l">{this.state.dataset.title}</h2>
+
+                </div>
+                <div className="Grid-cell u-md-size4of12 u-lg-size4of12 u-padding-right-xl">
+                  {this.state.dafDetails && 
+                    <button type="button" onClick={this.handleDownloadFile.bind(this,this.state.dataset.name, this.state.dafDetails.operational.logical_uri)} className="u-background-5 u-color-black u-borderRadius-m u-padding-all-xxs u-textWeight-500">Download</button>
+                  }
+                  {this.state.downloadErr && 
+                    <b style={{color:'red', marginLeft:'15px'}}>{this.state.downloadErr}</b>
+                  }
                 </div>
                 <div className="Grid-cell u-md-size8of12 u-lg-size8of12 u-padding-right-xl">
 
@@ -141,11 +182,11 @@ export default class DatasetDetail extends React.Component {
                       {this.state.dataset.tags && this.state.dataset.tags.map((tag, index) => {
                         if (this.state.dataset.num_tags == index + 1) {
                           return (
-                            <a href="#"><button type="button" className="u-background-5 u-color-black u-borderRadius-m u-padding-all-xxs u-textWeight-500"><span key={index}></span>{tag.display_name} </button></a>
+                            <a href="#" key={index}><button type="button" className="u-background-5 u-color-black u-borderRadius-m u-padding-all-xxs u-textWeight-500"><span key={index}></span>{tag.display_name} </button></a>
                           );
                         } else {
                           return (
-                            <a href="#"><button type="button" className="u-background-5 u-color-black u-borderRadius-m u-padding-all-xxs u-textWeight-500"><span key={index}></span>{tag.display_name} </button></a>
+                            <a href="#" key={index}><button type="button" className="u-background-5 u-color-black u-borderRadius-m u-padding-all-xxs u-textWeight-500"><span key={index}></span>{tag.display_name} </button></a>
                           );
                         }
                       })
