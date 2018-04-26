@@ -15,20 +15,26 @@ class UserStoryView extends React.Component {
       border: '0'
     }
 
-    return (
-        <div>
-            {
-              this.props.graph &&
-              <iframe
-                className={this.props.class}
-                ref="iframe"
-                frameBorder={'0'}
-                style={iframeStyle}
-                src={this.props.graph.props.url}
-              />
-            }
-        </div>
-      );
+    if(this.props.graph.props.wid_key.indexOf('TextWidget')!=-1)
+     return(
+       <div className="u-margin-r-top u-padding-r-top" dangerouslySetInnerHTML={{ __html: this.props.graph.props.text }}></div>
+     )
+    else{
+      return (
+          <div>
+              {
+                this.props.graph &&
+                <iframe
+                  className={this.props.class}
+                  ref="iframe"
+                  frameBorder={'0'}
+                  style={iframeStyle}
+                  src={this.props.graph.props.url}
+                />
+              }
+          </div>
+        );
+    }
   }
 }
 

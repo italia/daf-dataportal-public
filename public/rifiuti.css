@@ -1,0 +1,96 @@
+#chart {
+    margin-left: -2em;
+    height: 35em;
+ }
+ 
+ text {    
+    font: 0.8em sans-serif;    
+ }
+ 
+ .dot { 
+    stroke: #000;  
+ }
+ 
+ .axis path, .axis line {   
+    fill: none;       
+    stroke: #000;   
+    shape-rendering: crispEdges;  
+ }
+ 
+ .label { 
+    fill: #777;  
+ }
+ 
+ .year.label {    
+    font: 500 7em "Helvetica Neue";     
+    fill: #ddd;
+ }
+ 
+ .year.label.active {   
+    fill: #aaa;   
+ }
+ 
+ .overlay {
+    fill: none;    
+    pointer-events: all; 
+    cursor: ew-resize;
+ }
+ 
+ #myForm {
+    display: inline;
+ }
+ 
+ .year {
+     text-align: center;
+     font: 500 2em "Helvetica Neue";
+     color: silver;
+ }
+ 
+ .data {
+     text-align: center;
+     font: 500 1.2em "Helvetica Neue";
+ }
+ 
+ .header {
+     text-align: center;
+ }
+ 
+ h2 {
+     font: 700 1.5em "Helvetica Neue";
+     color: silver;
+     margin-bottom: 0em;
+ }
+ 
+ td.data {
+     padding: 0.7em;
+ }
+ 
+ span.arrow.red {
+     font-size: 1.5em;
+     color: red;
+ }
+ 
+ span.arrow.green {
+     font-size: 1.5em;
+     color: green;
+ }
+ 
+ span.instruction {
+     font-size: 1em;
+     color: red;
+ }
+ 
+ div.description {
+     width: 100%;
+     font-size: 1.2em !important;
+ }
+ 
+ p.credit {
+     color: grey;
+     font-size: 1em;
+ }
+ 
+ ul, li {
+     width: 100%;
+     font-size: 1em;
+ }

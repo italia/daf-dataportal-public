@@ -6,6 +6,7 @@ import GroupFilter from '../components/Dataset/GroupFilter.js'
 import OrderFilter from '../components/Dataset/OrderFilter.js'
 import OrganizationFilter from '../components/Dataset/OrganizationFilter.js'
 import AutocompleteDataset from '../components/Autocomplete/AutocompleteDataset.js'
+import InfiniteScroll from '../components/InfinityScroll'
 
 // SERVICES
 import DatasetService from '../services/DatasetService';
@@ -18,6 +19,8 @@ export default class DatasetSearch extends React.Component {
 
     //init state
     this.state={
+      items: 10,
+      visibility: 'visible',
       datasets: [],   
       paginator: [],   
       text: props.history.location.state && props.history.location.state.query,
@@ -29,8 +32,9 @@ export default class DatasetSearch extends React.Component {
       showDivGroup: false,
       showDivOrganization: false,
       offset: 0,
-      totalDataDisplayed: 15,
-      totalResult: 0
+      totalDataDisplayed: 1000,
+      totalResult: 0,
+      isLoading: true
       /*currentPage: 1,
       activePage: 10 */
         
@@ -41,8 +45,8 @@ export default class DatasetSearch extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.onSearch = this.onSearch.bind(this);
     this.onSearchOrder = this.onSearchOrder.bind(this);
-    this.setStateAndsearch = this.setStateAndsearch.bind(this);
-
+/*     this.setStateAndsearch = this.setStateAndsearch.bind(this);
+ */
     this.handleToggleClickCat = this.handleToggleClickCat.bind(this);
     this.handleToggleClickGroup = this.handleToggleClickGroup.bind(this);
     this.handleToggleClickOrganization = this.handleToggleClickOrganization.bind(this);
@@ -90,22 +94,38 @@ export default class DatasetSearch extends React.Component {
     this.setState({text: event.target.value});
   }
 
-  setStateAndsearch(event){
+/*   setStateAndsearch(event){
     console.log()
     this.setState({text: this.refs.auto.state.value});
     this.search();
+  } */
+
+  handleScrollToBottom = () => this.loadMore()
+  
+  loadMore = () => {
+    if (this.state.isLoading) { return }
+    var totitems = this.state.items + 10;
+    this.setState({ items: totitems, visibility: "hidden" });
   }
 
-  
   search(event) {
-    console.log('search: ' + this.state.text)
+    console.log(this.refs.auto)
+    this.setState({items: 10, isLoading:true})
     if(event) {
       event.preventDefault();
       event.stopPropagation();
     }
     
-    let datasets = datasetService.search(this.state.totalDataDisplayed,this.state.offset,this.state.text, this.state.category_filter, this.state.group_filter, this.state.organization_filter);
-    
+     if(this.refs.auto){
+      this.setState({text: this.refs.auto.state.value});
+    } 
+
+    /*
+    let datasets = datasetService.search(this.state.totalDataDisplayed,this.state.offset,this.refs.auto?this.refs.auto.state.value:this.state.text, this.state.category_filter, this.state.group_filter, this.state.organization_filter);
+    */
+
+   let datasets = datasetService.search(this.state.totalDataDisplayed,this.state.offset,this.refs.auto?this.refs.auto.state.value:'', this.state.category_filter, this.state.group_filter, this.state.organization_filter);
+
     datasets.then((list) => {
       let paginator = []; 
       let i = 0;
@@ -119,7 +139,8 @@ export default class DatasetSearch extends React.Component {
       this.setState({
         datasets: list.result.results,
         paginator: paginator,
-        totalResult: totalResult
+        totalResult: totalResult,
+        isLoading:false
       });
     });
 
@@ -185,6 +206,12 @@ export default class DatasetSearch extends React.Component {
 
   
   render() {
+    const { isLoading, items, visibility } = this.state;
+    if(this.state.datasets)
+      var subdatasets = this.state.datasets.slice(0, items)
+    let length = this.state.datasets?this.state.datasets.length:0
+    let visible = length<=items ? 'hidden':visibility;
+
     return (
         
         <div>
@@ -195,85 +222,45 @@ export default class DatasetSearch extends React.Component {
     <div className="u-background-white u-layout-r-withGutter u-posRelative u-zindex-30">
         <div className="u-layout-wide u-layoutCenter u-layout-withGutter u-padding-r-top u-padding-bottom-xxl">
           <div className="Grid Grid--withGutter">
+            {isLoading?<h2 className="Grid-cell u-md-size8of12 u-lg-size8of12 u-padding-right-xl">Caricamento...</h2>:
             <div className="Grid-cell u-md-size8of12 u-lg-size8of12 u-padding-right-xl">
-              
               {/* INTESTAZIONE */}
               <h2 className=" u-padding-bottom-l">Trovati {this.state.totalResult} Dataset</h2>
-              <form onSubmit={this.search} className="Form u-text-r-xs u-margin-bottom-l">
+              <form onSubmit={this.search.bind(this)} className="Form u-text-r-xs u-margin-bottom-l">
                 <fieldset className="Form-fieldset">
                   <div className="Form-field Form-field--withPlaceholder Grid u-background-white u-color-grey-30 u-borderRadius-s u-border-all-xxs">
                     <button style={{width: "10%"}} className="Grid-cell u-sizeFit Icon-search u-color-grey-40 u-text-r-m u-padding-all-s u-textWeight-400">
                     </button>
                     {/*<input value={this.state.text} onChange={this.handleChange} className="Form-input Form-input--ultraLean Grid-cell u-sizeFill u-text-r-s u-color-black u-text-r-xs u-borderHideFocus " required="" id="esplora" name="cerca" />*/}
                     <AutocompleteDataset value={this.state.text} ref="auto"/>
-                    <button onClick={this.setStateAndsearch} style={{width: "20%"}} className="Grid-cell u-sizeFit u-background-60 u-color-white u-textWeight-600 u-padding-r-left u-padding-r-right u-textUppercase u-borderRadius-s">
+                    <button onClick={this.search.bind(this)} style={{width: "20%"}} className="Grid-cell u-sizeFit u-background-60 u-color-white u-textWeight-600 u-padding-r-left u-padding-r-right u-textUppercase u-borderRadius-s">
                       Esplora
                     </button>
                   </div>
                 </fieldset>
               </form>
 
-              {/* LISTA RISULTATI */}
-              {
-                this.state.datasets.map((dataset, index) => {
-                  return(
-                    <DatasetSearchCard key={index} dataset={dataset}/>
-                  );
-                })
-              }            
-
-
-              {/*#######################   PAGINAZIONE prova */}
-              <nav role="navigation" aria-label="Navigazione paginata" className="u-layout-prose Grid-cell--center u-text-r-xss u-padding-top-xxl u-padding-bottom-l">
-                <ul className="Grid Grid--fit Grid--alignMiddle">
-                    
-                    <li className="Grid-cell u-textCenter">
-                        <a onClick={this.handlePageChange.bind(this,0)} className="u-color-50 u-textClean u-padding-all-s" title="Prima Pagina">
-                          <span className="Icon-chevron-left u-text-r-s" role="presentation"></span>
-                          <span className="u-hiddenVisually">Prima Pagina</span>
-                        </a>
-                      </li>
-                     
-                      
-                      {
-                        this.state.paginator.map((page, index) => {
-                          if(index < 3){
-                            return(          
-                              <li className="Grid-cell u-textCenter u-hidden u-md-inlineBlock u-lg-inlineBlock">                  
-                              <a  onClick={this.handlePageChange.bind(this,index)} key={index} aria-label={"Pagina " + index} className="u-padding-all-s u-color-50 u-textClean">
-                                <span className="u-text-r-m">{index+1}</span>
-                              </a>   
-                              </li>                         
-                            );
-                          } else  if(index == 3){
-                            return(         
-                              <li className="Grid-cell u-textCenter u-hidden u-md-inlineBlock u-lg-inlineBlock">     
-                                 <span className="u-text-r-m u-color-50">...</span>  
-                                 </li>                           
-                            );
-                          } else  if(index > this.state.paginator.length - 3){
-                            return(    
-                              <li className="Grid-cell u-textCenter u-hidden u-md-inlineBlock u-lg-inlineBlock">          
-                              <a  onClick={this.handlePageChange.bind(this,index)} key={index} aria-label={"Pagina " + index} className="u-padding-all-s u-color-50 u-textClean">
-                                <span className="u-text-r-m">{index+1}</span>
-                              </a>        
-                              </li>                     
-                            );
-                          }
-                        })
-                        
-                      } 
-
-                      <li className="Grid-cell u-textCenter">
-                        <a onClick={this.handlePageChange.bind(this,this.state.paginator.length-1)} className="u-padding-all-s u-color-50 u-textClean" title="Ultima Pagina">
-                          <span className="Icon-chevron-right u-text-r-s" role="presentation"></span>
-                          <span className="u-hiddenVisually">Ultima Pagina</span>
-                        </a>
-                      </li>
-                </ul>
-              </nav> 
- </div>
-     
+              <div className="App">
+                <div className="App-header-thin">
+                </div>
+                  {/* LISTA RISULTATI */}
+                  <InfiniteScroll onScrollToBottom={this.handleScrollToBottom}>
+                    {subdatasets.map((dataset, index) => {
+                        return(
+                          <DatasetSearchCard key={index} dataset={dataset}/>
+                        );
+                      })
+                    }
+                    <button
+                      className="List-load-more-button"
+                      onClick={this.handleLoadMoreClick}
+                      disabled={isLoading} style={{visibility: visible }}>
+                      {isLoading ? 'Loading...' : 'Load more'}
+                    </button>
+                  </InfiniteScroll>
+              </div>
+            </div>
+            }
             {/* FILTRI RICERCA */}
             <div className="Grid-cell u-sizeFull u-md-size4of12 u-lg-size4of12">
               <form className="Form u-text-r-xs u-padding-bottom-l">
@@ -311,8 +298,6 @@ export default class DatasetSearch extends React.Component {
 
               <a href="#" title="torna all'inizio del contenuto" className="u-hiddenVisually">torna all'inizio del contenuto</a>
             </div>
-
-
           </div>
         </div>
         </div>

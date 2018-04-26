@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Customredirect from '../components/HeaderFooter/CustomRedirect'
 
 class Partecipa extends Component {
     constructor(props) {
@@ -34,7 +35,7 @@ class Partecipa extends Component {
 											{/* <img src="img/partecipa/metabase.png" className="u-inlineBlock u-margin-bottom-s u-border-all-xxs u-color-grey-30" alt="" /> */}
 											<p>Le DataStory sono dei blog post in cui descrivere un'analisi fatta sui dati del DAF. È possibile integrare dashboard e grafici creati con gli strumenti messi a disposizione (Superset e Metabase) e condividere i risultati con la community. Le storie create verranno pubblicate nella relativa sezione pubblica del Dataportal.
 											<br></br>
-											<a href="/crea">DataStory</a>
+											<Customredirect history={this.props.history} to='/userStoriesList' label='Data Stories' />
 											</p>
 
 

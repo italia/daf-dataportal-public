@@ -4,10 +4,13 @@ import { FormattedDate } from 'react-intl';
 import DatasetSearchCard from '../components/Dataset/DatasetSearchCard.js'
 import ReactCsvTable from '../components/Dataset/ReactCsvTable.js'
 import Collapsible from 'react-collapsible';
+import download from 'downloadjs'
 
 // SERVICES
+import { getCookie } from '../services/FunctionalCookies'
 import DatasetService from '../services/DatasetService';
 const datasetService = new DatasetService();
+
 
 export default class DatasetDetail extends React.Component {
 
@@ -16,18 +19,64 @@ export default class DatasetDetail extends React.Component {
 
     //init state
     this.state = {
+      dafDetails: undefined,
+      downloadErr: undefined
     };
 
     // get dataset
     let dataset = datasetService.get(this.props.match.params.id);
     dataset.then((dataset) => {
       this.setState({
-        dataset: dataset.result
+        dataset: dataset.result,
       });
+      var dataportalCookie = getCookie("dataportal");
+      var token = dataportalCookie.split('/')[1]
+      console.log(token)
+      if (token !== '') {
+        let dafDetails = datasetService.getDaf(dataset.result.name, token)
+        dafDetails.then((details) => {
+
+          this.setState({
+            dafDetails: details
+          })
+        })
+      }
     });
 
     //bind functions
   }
+
+  handleDownloadFile(nomeFile, logical_uri, e) {
+    e.preventDefault()
+    this.setState({downloadErr: undefined})
+    console.log('download file: ' + nomeFile)
+    let dataset =this.getDataset(logical_uri)
+    dataset.then((response) => {
+      if (response.ok) {
+        response.json().then(json => {
+          download(JSON.stringify(json), nomeFile + '.json', 'application/json')
+        })
+      }else{
+        this.setState({downloadErr: 'Risorsa non disponibile.'})
+    }})
+    dataset.catch(error => {
+      this.setState({downloadErr: 'Risorsa non disponibile.'})
+    })
+} 
+
+async getDataset(uri) {
+  var url = "https://api.daf.teamdigitale.it/dataset-manager/v1/dataset/" + encodeURIComponent(uri)
+  const base64 = require('base-64');
+  const response = await fetch(url, {
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          "Authorization": "Basic " + base64.encode('d_mc@daf.it:ALDC72?MCLsa')
+      }
+  });
+  return response;
+}
+
 
 
   render() {
@@ -45,12 +94,21 @@ export default class DatasetDetail extends React.Component {
               <div className="Grid Grid--withGutter">
                 <div className="Grid-cell u-md-size8of12 u-lg-size8of12 u-padding-right-xl">
                   <h2 className=" u-padding-bottom-l">{this.state.dataset.title}</h2>
+
+                </div>
+                <div className="Grid-cell u-md-size4of12 u-lg-size4of12 u-padding-right-xl">
+                  {this.state.dafDetails && 
+                    <button type="button" onClick={this.handleDownloadFile.bind(this,this.state.dataset.name, this.state.dafDetails.operational.logical_uri)} className="u-background-5 u-color-black u-borderRadius-m u-padding-all-xxs u-textWeight-500">Download</button>
+                  }
+                  {this.state.downloadErr && 
+                    <b style={{color:'red', marginLeft:'15px'}}>{this.state.downloadErr}</b>
+                  }
                 </div>
                 <div className="Grid-cell u-md-size8of12 u-lg-size8of12 u-padding-right-xl">
 
                   <article className="u-padding-r-all u-background-grey-10 u-lineHeight-l u-text-r-xs u-textSecondary u-margin-bottom-l">
-                    <p><strong>Titolare del dataset: </strong> {this.state.dataset.holder_name}</p>
-                    <p><strong>Editore del dataset:</strong> {this.state.dataset.publisher_name}</p>
+                    <p><strong>Titolare del dataset: </strong> {this.state.dataset.organization.title}</p>
+                    <p><strong>Editore del dataset:</strong> {this.state.dataset.author}</p>
                     {/* Auotre solo se presente */}
                     {this.state.dataset.creator_name &&
                       <p><strong>Autore del dataset: </strong> {this.state.dataset.creator_name}</p>}
@@ -67,12 +125,12 @@ export default class DatasetDetail extends React.Component {
                       let dataVisualizer = null;
 
                       if (res.format === 'CSV') {
-                      // In this section it is possible to visualize table of data given as CSV file
+                        // In this section it is possible to visualize table of data given as CSV file
                         dataVisualizer = <div className="Grid-cell table-preview">
-                                            <Collapsible trigger="Anteprima">
-                                              <ReactCsvTable csvPath={res.url} />
-                                            </Collapsible>
-                                         </div>;
+                          <Collapsible trigger="Anteprima">
+                            <ReactCsvTable csvPath={res.url} />
+                          </Collapsible>
+                        </div>;
                       }
                       else {
                         //Todo: preview for other data types/ formats
@@ -86,8 +144,7 @@ export default class DatasetDetail extends React.Component {
                           </div>
                           <div className="Grid-cell  u-md-size10of12 u-lg-size10of12 ">
                             <div className=" u-margin-bottom-l u-borderRadius-m u-padding-all-xxs u-lineHeight-xxl">
-                              <a href={res.url} className="u-text-s u-textWeight-600 u-textClean u-color-50">{res.name} </a><br /> {res.description}
-                              <p><strong>Licenza: </strong> {res.license} </p>
+                              <a href={res.url} target='_blank' className="u-text-s u-textWeight-600 u-textClean u-color-50">{res.name} </a><br /> {res.description}
                             </div>
                           </div>
                           {dataVisualizer}
@@ -99,6 +156,22 @@ export default class DatasetDetail extends React.Component {
                     }
 
                   </article>
+
+                {this.state.dafDetails && <article className="u-padding-r-all u-background-grey-10 u-lineHeight-l u-text-r-xs u-textSecondary u-margin-bottom-l">
+                  <h2><strong>Struttura Dati </strong></h2>
+                  <p><strong>Tipo di Struttura Dati</strong> JSON</p>
+                  <p><strong>Tipo di dataset: </strong> {this.state.dafDetails.operational.dataset_type}</p>
+                  <div><strong>Colonne del Dataset: </strong>
+                    <ul>
+                      {this.state.dafDetails.dataschema.flatSchema && this.state.dafDetails.dataschema.flatSchema.map((schema, index)=>{
+                      return(
+                        <li key={index}><b>Nome: </b>{schema.name}<b> Tipo: </b>{schema.type}</li>
+                      )}
+                    )
+                    }
+                    </ul>
+                  </div>
+                </article>}
                 </div>
                 <div className="Grid-cell u-sizeFull u-md-size4of12 u-lg-size4of12">
                   <article className="u-padding-r-all u-background-grey-10 u-lineHeight-l u-text-r-xs u-textSecondary u-margin-bottom-l">
@@ -109,11 +182,11 @@ export default class DatasetDetail extends React.Component {
                       {this.state.dataset.tags && this.state.dataset.tags.map((tag, index) => {
                         if (this.state.dataset.num_tags == index + 1) {
                           return (
-                            <a href="#"><span key={index}></span>{tag.display_name} </a>
+                            <a href="#" key={index}><button type="button" className="u-background-5 u-color-black u-borderRadius-m u-padding-all-xxs u-textWeight-500"><span key={index}></span>{tag.display_name} </button></a>
                           );
                         } else {
                           return (
-                            <a href="#"><span key={index}></span>{tag.display_name}, </a>
+                            <a href="#" key={index}><button type="button" className="u-background-5 u-color-black u-borderRadius-m u-padding-all-xxs u-textWeight-500"><span key={index}></span>{tag.display_name} </button></a>
                           );
                         }
                       })
@@ -135,7 +208,26 @@ export default class DatasetDetail extends React.Component {
                         month="long"
                         year="numeric" />
                     </p>
-                    <p><strong>Lingua del dataset: </strong> {this.state.dataset.language} </p>
+
+                    <p><strong>Lingua del dataset: </strong>
+                      ITA
+                      {/*this.state.dataset.language*/}
+                    </p>
+
+                    <p><strong>Licenza: </strong>
+                      {(
+                        (this.state.dataset.license_title !== ""
+                          && this.state.dataset.license_title !== null)
+                      ) &&
+
+                        <a href={this.state.dataset.license_url} target="_blank">
+                          <button type="button" className="u-background-5 u-color-black u-borderRadius-m u-padding-all-xxs u-textWeight-500">
+                            {this.state.dataset.license_title}
+                          </button>
+                        </a>
+
+                      }
+                    </p>
                   </article>
 
 

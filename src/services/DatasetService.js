@@ -2,13 +2,17 @@
 import { serviceurl } from '../config/serviceurl.js'
 
 export default class DatasetService {
-    
+
     baseUrl = serviceurl.apiURLCatalogManager + "/ckan";
     
     constructor() {
     }
 
     async search(totalDataDisplayed,offset,query, category_filter, group_filter, organization_filter){
+        // FILTER BY ORGANIZATION        
+        var org = localStorage.getItem('organization')
+        if(org!='daf')
+            organization_filter = JSON.parse('{ "'+org+'":true}');
 
         let queryurl = '';
         if(query) {
@@ -101,6 +105,23 @@ export default class DatasetService {
         return response.json();
     }
 
+    async getDaf(nome, token) {
+        const base64 = require('base-64');
+        
+        const response = await fetch(serviceurl.apiURLCatalogManager + "/catalog-ds/getbyname/" + nome, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                //'Authorization': 'Bearer ' + token
+                "Authorization": "Basic " + base64.encode('d_mc@daf.it:ALDC72?MCLsa')
+            }
+        });
+        if(response.ok)
+            return response.json();
+    }
+
+
     async searchOrder(totalDataDisplayed, offset, order_filter) {
 
                 
@@ -114,7 +135,12 @@ export default class DatasetService {
     }
 
     async getLast() {
-        const response = await fetch( serviceurl.apiCKAN + "/package_search?rows=3", {
+        // FILTER BY ORGANIZATION    
+        var url = serviceurl.apiCKAN + "/package_search"   
+        var org = localStorage.getItem('organization')
+        if(org!='daf')
+            url = url + "?q=(organization:"+org+")"
+        const response = await fetch(url, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -124,7 +150,14 @@ export default class DatasetService {
     }
 
     async getNumber() {
-        const response = await fetch( serviceurl.apiCKAN + "/package_list", {
+        // FILTER BY ORGANIZATION    
+        var url = serviceurl.apiCKAN + "/package_search"   
+        var org = localStorage.getItem('organization')
+        if(org!='daf')
+            url = url + "?q=(organization:"+org+")"
+        
+
+        const response = await fetch(url , {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'

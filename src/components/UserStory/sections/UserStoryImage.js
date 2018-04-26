@@ -1,44 +1,70 @@
 import React from 'react';
+import Async from 'react-promise'
+import { serviceurl } from '../../../config/serviceurl.js'
 
 
 class UserStoryImage extends React.Component {
 
   constructor(props) {
     super(props);
-
-  }
-
-  getQueryStringValue (url, key) {  
-    return decodeURIComponent(url.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
-  }
-
-  getImgUrl(story, graph){
-    var graph = 'graph' + graph; 
-    let title = story[graph].props.url;
-    if(title.indexOf('metabase')>-1){
-      title = story[graph].props.url.substr(story[graph].props.url.lastIndexOf('/') + 1);
-    }else if(title.indexOf('superset')>-1){
-      const url = story[graph].props.url
-      const formdata = this.getQueryStringValue(url, 'form_data')
-      const value  = JSON.parse(formdata)
-      title = value['slice_id']
+    this.state = {
+      loading: true,
+      imageSrc: ""
     }
-    return 'https://api.daf.teamdigitale.it/dati-gov/img/' + title + '.png';
+  }
+
+  componentDidMount() {
+    const { graph } = this.props
+    /* var graphNumber = 'graph' + graph; */
+    let identifier = graph.props.wid_key
+    if (identifier && identifier.indexOf("TextWidget")===-1) {
+      console.log('identifier: ' + identifier);
+      let url = serviceurl.apiURLDatiGov + '/plot/' + identifier + '/700x600';
+      const response = fetch(url, {
+        method: 'GET'
+      }).then(response => response.text())
+        .then(text => {
+          this.setState({
+            loading: false,
+            imageSrc: text
+          })
+        })
+    } else {
+      this.setState({
+        loading: false,
+        imageSrc: ""
+      })
+    }
+  }
+
+  getQueryStringValue(url, key) {
+    return decodeURIComponent(url.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
   }
 
   render() {
-    
+    const imgStyle = {
+      width: '100%'
+    }
 
-    return (
-        <div className="text-center">
-          {
-            this.props.story &&
-            <div>
-              <img className="image-container" src={this.getImgUrl(this.props.story, this.props.graph)} />
-            </div>
-          }
-        </div>
-      );
+    if (this.props.graph.props.wid_key.indexOf('TextWidget') != -1)
+      return (
+        <div className="u-margin-r-top u-padding-r-top" dangerouslySetInnerHTML={{ __html: this.props.graph.props.text }}></div>
+      )
+    else{
+      var base64Icon = ""
+      if (this.state.imageSrc) {
+        base64Icon = "base64," + this.state.imageSrc.replace(/"/g, '')
+      }
+      return localStorage.getItem('username') && localStorage.getItem('token')
+        ? <iframe className="u-margin-r-top u-padding-r-top" src=""></iframe>
+        : this.state.loading === true ? <p>Caricamento ...</p> : (
+          <div className="text-center u-margin-r-top u-padding-r-top">
+            {this.state.imageSrc &&
+              <img style={imgStyle} src={"data:image/jpg;" + base64Icon} />
+            }
+          </div>
+        );
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 export const serviceurl = {
-  // service url
- // apiURLDatiGov: "http://10.100.82.195:9000/dati-gov/v1", 
- // apiURLCatalogManager: "http://10.100.82.195:9001/catalog-manager/v1", 
+  //LUCAL
+/*   apiURLDatiGov: "http://10.100.208.161:9000/dati-gov/v1",
+  apiURLCatalogManager: "http://10.100.208.161:9001/catalog-manager/v1", */
   
   // mock url
   //apiURLDatiGov: "http://localhost:3001/dati-gov/v1", 
@@ -23,5 +23,11 @@ export const serviceurl = {
   // service url
    apiURLDatiGov: "https://api.daf.teamdigitale.it/dati-gov/v1", 
    apiURLCatalogManager: "https://api.daf.teamdigitale.it/catalog-manager/v1", 
-   apiCKAN: "https://ckan-open.daf.teamdigitale.it/api/3/action"
-}
+   //apiCKAN: "https://ckan-open.daf.teamdigitale.it/api/3/action/",
+   //apiCKAN: http://dcatapit.geo-solutions.it/api/3/action/,
+  
+   apiCKAN:  window.location.hostname.split('.')[0].indexOf('dataportal')!==-1?"https://api.daf.teamdigitale.it/dati-gov/ckan_proxy":"https://api.daf.teamdigitale.it/dati-gov/ckan_geo_proxy",
+   apiMedium: "https://api.daf.teamdigitale.it/dati-gov/medium/"
+  }
+
+  

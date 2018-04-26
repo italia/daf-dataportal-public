@@ -9,6 +9,7 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
 
   <!-- <link rel="preload" href="/build/IWT.min.js" as="script"> -->
   <!--
@@ -16,6 +17,32 @@
       <link href='//fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700,' rel='stylesheet' type='text/css' />
     o dal repository locale (src/fonts)
   -->
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script type='text/javascript'>
+    $(document).ready(function() {
+      var dom = window.location.hostname.split('.')[0];
+      $.ajax({
+          type: 'Get',
+          url: "https://api.daf.teamdigitale.it/dati-gov/v1/settings?domain="+ dom,
+          headers: {
+           'Accept': 'application/json',
+           'Content-Type': 'application/json'
+         },
+          success: function(returnedJson) {
+              localStorage.setItem('organization', returnedJson.organization)
+              $('body').addClass('theme' + returnedJson.theme);
+              localStorage.setItem('prop', JSON.stringify(returnedJson));
+          },
+          error: function (xhr, ajaxOptions, thrownError) {
+              console.log('file di properties non disponibile')
+              localStorage.removeItem('prop')
+          }
+      });
+    });  
+  </script>
+  
+  <meta name="prop" content="">
+  
   <script type="text/javascript">
     WebFontConfig = {
       google: {
@@ -45,20 +72,27 @@ gtag('js', new Date());
 
 gtag('config', 'UA-96140462-5');
 </script>
-
+ 
   <script src="%PUBLIC_URL%/toolkit/script/modernizr.js"></script>
   <script src="%PUBLIC_URL%/toolkit/script/jquery.min.js"></script>
   <script src="%PUBLIC_URL%/toolkit/script/IWT.min.js"></script>
 
- <!--  <link media="all" rel="stylesheet" href="%PUBLIC_URL%/build/build.css"> -->
+  <!-- Polyfill -->
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Array.prototype.includes"></script>
+
+
+  <!--  <link media="all" rel="stylesheet" href="%PUBLIC_URL%/build/build.css"> -->
   <link media="all" rel="stylesheet" href="%PUBLIC_URL%/toolkit/css/build.css">
   <link media="all" rel="stylesheet" href="%PUBLIC_URL%/toolkit/css/font.css">
   <link media="all" rel="stylesheet" href="%PUBLIC_URL%/toolkit/css/main.css">
   <link media="all" rel="stylesheet" href="%PUBLIC_URL%/toolkit/css/style.css">
-
+  <link media="all" rel="stylesheet" href="%PUBLIC_URL%/toolkit/css/themes.css">
     <!-- Autocomplete CSS -->
     <link media="all" rel="stylesheet" href="%PUBLIC_URL%/toolkit/css/autocomplete.css">
-  <title>Preview Layout</title>
+    <!-- Infinity Scroll -->
+    <link media="all" rel="stylesheet" href="%PUBLIC_URL%/toolkit/css/infinityscroll.css">
+
+  <title>Daf-dataportal</title>
 </head>
       <!--<body class="t-Pac">-->
       <body class="t-Pac app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">

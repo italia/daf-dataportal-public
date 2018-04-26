@@ -3754,7 +3754,7 @@ ul {
 
 .Prose-blockquote,
 .u-border-left-m {
-    border-left: 1rem solid currentColor!important
+    border-left: 1px solid currentColor!important
 }
 
 .u-border-all-m {
@@ -4024,6 +4024,7 @@ ul {
 .u-background-40 {
     background-color: #127ae2!important
 }
+
 
 .Accordion--default .Accordion-link,
 .ErrorPage-subtitle,

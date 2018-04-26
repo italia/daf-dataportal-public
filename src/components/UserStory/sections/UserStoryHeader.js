@@ -14,35 +14,10 @@ class UserStoryHeader extends React.Component {
     return (
       <div >
             <div className="text-center">
-              <h1>{this.props.story.title}</h1>
-              <h3 dangerouslySetInnerHTML={{__html: this.props.story.subtitle}}></h3> 
-              
-
-              {/* SHARE */}
-              <div className="share">
-                <span>Share</span>
-                <ul className="Footer-socialIcons">
-                  <li>
-                    <a href="">
-                      <span className="Icon Icon-facebook u-background-white"></span>
-                      <span className="u-hiddenVisually">Facebook</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="">
-                      <span className="Icon Icon-twitter u-background-white"></span>
-                      <span className="u-hiddenVisually">Twitter</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href=""><span className="Icon Icon-youtube u-background-white"></span><span className="u-hiddenVisually">Youtube</span></a>
-                  </li>
-                </ul>
-              </div>
 
               {/* USER */}
               <div className="user-box text-left">
-                <img className="user-img" src="/img/user.png"/>
+                <img className="user-img" src="/img/7.jpg"/>
                 <span className="user-caption">
                   <h4>
                     {this.props.story.user}
@@ -54,6 +29,9 @@ class UserStoryHeader extends React.Component {
                   </span>
                 </span>
               </div>
+
+              <h1>{this.props.story.title}</h1>
+              <h3 dangerouslySetInnerHTML={{__html: this.props.story.subtitle}}></h3> 
 
             </div>
 

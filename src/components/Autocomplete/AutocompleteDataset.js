@@ -14,7 +14,12 @@ class AutocompleteDataset extends Component {
   loadCkanSuggestion(newValue) {  
     var that = this;
     var token = '';
-    var url = serviceurl.apiCKAN + '/package_autocomplete?q=' + newValue;
+    // FILTER BY ORGANIZATION    
+    var url = serviceurl.apiCKAN + '/package_search?q=name:' + newValue + '*';
+    var org = localStorage.getItem('organization')
+    if(org!='daf')
+        url = url + "%20AND%20(organization:"+org+")"
+    
     if(localStorage.getItem('username') && localStorage.getItem('token') &&
       localStorage.getItem('username') != 'null' && localStorage.getItem('token') != 'null'){
         token = localStorage.getItem('token')
@@ -31,7 +36,7 @@ class AutocompleteDataset extends Component {
   }
 
   receiveAutocomplete(json){
-    this.setState({ suggestions: json.result });
+    this.setState({ suggestions: json.result.results });
   }
 
   render() {
